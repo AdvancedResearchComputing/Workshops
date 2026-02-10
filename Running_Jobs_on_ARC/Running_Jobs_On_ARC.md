@@ -44,7 +44,7 @@ Video tutorial for login: [https://docs.arc.vt.edu/usage/video.html#login](https
 3. In VS Code, create an new ssh connection or connect to an existing remote host. [https://docs.arc.vt.edu/usage/vscode_remote_ssh.html#connect-vs-code-to-the-login-node](https://docs.arc.vt.edu/usage/vscode_remote_ssh.html#connect-vs-code-to-the-login-node) or video tutorial called "Connect to ARC systems with VS code" [https://docs.arc.vt.edu/usage/video.html#connecting-to-arc-clusters](https://docs.arc.vt.edu/usage/video.html#connecting-to-arc-clusters).
 
 # Batch Jobs
-Batch jobs are the preferred method to running jobs on ARC systems as they maximize utlization of the computer resources and don't require waiting on user input during the calculation. For batch jobs, you will need a batch script with an extension `.sh` or `.slurm`.
+Batch jobs are the preferred method to running jobs on ARC systems as they maximize utlization of the computer resources and don't require waiting on user input during the calculation. For batch jobs, you will need a batch script that usually has an extension `.sh` or `.slurm`.
 
 The batch script contains the information to tell Slurm (our cluster scheduler) what resources are needed, for how long they are needed, and what job to run. 
 
@@ -75,7 +75,7 @@ Other optional configurations
 #SBATCH --mail-user=nbraunsc@vt.edu
 #SBATCH --mail-type=START,END,FAIL
 ```
-If you forget what the syntax is or what each of these stand for, you can run the command `sbatch --help` to see all the available options. 
+If you forget what the syntax is or what each of these stand for, you can run the command `sbatch --help` or `man sbatch` to see all the available options. 
 ```
 nbraunsc@tinkercliffs1:~ sbatch --help
 Usage: sbatch [OPTIONS(0)...] [ : [OPTIONS(N)...]] script(0) [args(0)...]
@@ -108,6 +108,7 @@ Parallel run options:
 ...
 ...
 ```
+
 ### Quality of Service (QoS)
 ARC must balance the needs of individuals with the needs of all to ensure fairness so we implemented QoS options. 
 
