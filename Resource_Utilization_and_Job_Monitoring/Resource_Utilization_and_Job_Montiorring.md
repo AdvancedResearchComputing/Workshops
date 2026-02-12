@@ -101,16 +101,35 @@ htop -u $USER
 # Job Monitoring
 Inspecting your jobs is a create way to optimize the amount of resources you request for future jobs and to make sure your current jobs are actively using the compute resources that have been allocated.
 
-A general tool you can use is `sacct`. There are a lot of options for what you want `sacct` to look for and how you would like the output. To see the available options you can run the following:
+A general tool you can use is `sacct` which is a slurm command that queries the slurm database. There are a lot of options for what you want `sacct` to look for and how you would like the output. To see the available fields you can run the following:
 ```
 sacct -h
 ```
+or 
+```
+sacct -e
+```
+The default `sacct` will show something like the following:
+```
+nbraunsc@tinkercliffs1:~$ sacct
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+4574632      hello-wor+   normal_q     arcadm          1 OUT_OF_ME+    0:125
+4574632.bat+      batch                arcadm          1 OUT_OF_ME+    0:125
+4574632.ext+     extern                arcadm          1  COMPLETED      0:0
+4574752      hello-wor+   normal_q     arcadm          1 OUT_OF_ME+    0:125
+4574752.bat+      batch                arcadm          1 OUT_OF_ME+    0:125
+4574752.ext+     extern                arcadm          1  COMPLETED      0:0
+4574752.0          bash                arcadm          1  COMPLETED      0:0
+4574752.1          bash                arcadm          1     FAILED    127:0
+4574752.2          bash                arcadm          1  COMPLETED      0:0
+```
+This will show multiple lines per job like the `.batch`, `.extern`, and the `.0` lines. 
+
 A useful command to see all the jobs you have submitted in the last month with the output (`-o`) in the format of jobid, start (start time of job), state, and what the allocated resources were for that job:
 ```
 sacct -u $USER --start=YEAR-Month-Day -X -o jobid,start,state,alloctres%45
 ```
-Note: The `-X` is just showing one line per job and `%45` for allocated resources is just increasing the number of character it will show.
-
 ```
 nbraunsc@owl1:~$ sacct -u $USER --start=2026-01-01 -X -o jobid,start,state,alloctres%45
 JobID                      Start      State                                     AllocTRES
@@ -131,6 +150,7 @@ JobID                      Start      State                                     
 299333       2026-02-06T12:50:47     FAILED            billing=19,cpu=8,mem=63424M,node=1
 299334       2026-02-06T12:52:48 CANCELLED+            billing=19,cpu=8,mem=63424M,node=1
 ```
+Note: The `-X` is just showing one line per job and `%45` for allocated resources is just increasing the number of character it will show. You might have to increase `%45` depending on how long the output is.
 
 ## Active jobs (i.e. jobs that are currently running)
 You can use the command `showjobusage JOBID` to inspect real-time usage.
