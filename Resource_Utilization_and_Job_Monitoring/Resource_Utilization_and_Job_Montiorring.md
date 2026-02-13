@@ -13,8 +13,8 @@ Feedback form: [https://forms.gle/oa1BrfZGhLEmbbzF9](https://forms.gle/oa1BrfZGh
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- This PDF is uploaded in Files on the Canvas site
-- There will be no recording of this workshop but we have a lot of short video tutorials: [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
+- This document in both PDF and HTML format is uploaded in Files on the Canvas site or you can also access it here: [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md)
+- We have a lot of short video tutorials (I will eventually record this workshop without attendees): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
 Useful links:
@@ -35,27 +35,19 @@ If you want to follow along, make sure you are connected to eduroam or the Cisco
 # Login Node Monitoring
 A login node is used to gain access to ARC clusters but **SHOULD NOT** be used to run any software or calculations.
 
-## Accetable uses of login nodes:
-- Understanding files and directories (e.g., their existence, size, permissions, whether data or code, file formats)
-- File/directory management (e.g., create a new directory, change permissions on a file, moving files)
-- Moving files between local computer and remote-ARC clusters (e.g., using rsync and scp)
-- Requesting compute resources through batch or interactive jobs (e.g. sbatch and interact)
+## Acceptable uses of login nodes:
+- File management (e.g., create a new directories/folders, changing permissions, moving files around within ARC)
+- Moving files between local computer and remote-ARC clusters (e.g., using rsync and scp) [https://docs.arc.vt.edu/usage/data_transfer.html](https://docs.arc.vt.edu/usage/data_transfer.html)
+- Requesting compute resources through batch or interactive jobs (e.g. sbatch and interact): Documentation page [https://docs.arc.vt.edu/usage/job_scheduling.html](https://docs.arc.vt.edu/usage/job_scheduling.html), Workshop material "Running Jobs on ARC Systems" [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md)
 
 ## Unacceptable uses of login nodes (misuse):
 - Running code (Python, Matlab, R, etc.)
 - Running code through VS Code without requesting compute resources
-- Running AI Extenstions through VS Code (remote connections only)
+- Running AI Extensions through VS Code (remote connections only)
 
 ## Gray Area (somewhere in-between):
-- Compling source code
-- Building small virutal environments
-
-## How to get access to compute resources?
- To gain access to compute resources, please refer to the following resources:
--  Documentation page [https://docs.arc.vt.edu/usage/job_scheduling.html#](https://docs.arc.vt.edu/usage/job_scheduling.html#)
-- Workshop material "Running Jobs on ARC Systems" [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md)
-- Video Tutorial [https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software](https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software)
-
+- Compiling source code
+- Building small virtual environments
 
 We have the following login nodes on our Tinkercliffs, Owl, and Falcon clusters and each has a "Max CPU Quota" per user:
 
@@ -101,13 +93,13 @@ htop -u $USER
 # Job Monitoring
 Inspecting your jobs is a create way to optimize the amount of resources you request for future jobs and to make sure your current jobs are actively using the compute resources that have been allocated.
 
-A general tool you can use is `sacct` which is a slurm command that queries the slurm database. There are a lot of options for what you want `sacct` to look for and how you would like the output. To see the available fields you can run the following:
+A general tool you can use is `sacct` which is a slurm command that queries the slurm database. Slurm documentation can help [https://slurm.schedmd.com/sacct.html](https://slurm.schedmd.com/sacct.html). There are a lot of options for what you want `sacct` to look for and how you would like the output. To see the available fields you can run the following:
 ```
-sacct -h
+sacct --help
 ```
 or 
 ```
-sacct -e
+sacct --helpformat
 ```
 The default `sacct` will show something like the following:
 ```
@@ -126,7 +118,7 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 ```
 This will show multiple lines per job like the `.batch`, `.extern`, and the `.0` lines. 
 
-A useful command to see all the jobs you have submitted in the last month with the output (`-o`) in the format of jobid, start (start time of job), state, and what the allocated resources were for that job:
+A useful command to see all the jobs you have submitted in the last month with a single line per job (`-X`) with the output (`-o`) in the format of jobid, start (start time of job), state, and what the allocated resources were for that job:
 ```
 sacct -u $USER --start=YEAR-Month-Day -X -o jobid,start,state,alloctres%45
 ```
@@ -150,7 +142,7 @@ JobID                      Start      State                                     
 299333       2026-02-06T12:50:47     FAILED            billing=19,cpu=8,mem=63424M,node=1
 299334       2026-02-06T12:52:48 CANCELLED+            billing=19,cpu=8,mem=63424M,node=1
 ```
-Note: The `-X` is just showing one line per job and `%45` for allocated resources is just increasing the number of character it will show. You might have to increase `%45` depending on how long the output is.
+Note: The `%45` for allocated resources is just increasing the number of character it will show You might have to increase `%45` depending on how long the output is.
 
 ## Active jobs (i.e. jobs that are currently running)
 You can use the command `showjobusage JOBID` to inspect real-time usage.
@@ -190,7 +182,7 @@ You can also use `scontrol`. Again there are various options for what you would 
 ```
 scontrol -h
 ```
-A useful command string with `scontrol` is the following
+A useful command string with `scontrol` is the following:
 ```
 scontrol show job -d JOBID
 ```
@@ -216,7 +208,7 @@ The output looks something like the following:
     AllocTRES=cpu=1,mem=10M,node=1,billing=1
     Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
     JOB_GRES=(null)
-      Nodes=tc017 CPU_IDs=1 Mem=10 GRES=
+    Nodes=tc017 CPU_IDs=1 Mem=10 GRES=
     MinCPUsNode=1 MinMemoryNode=10M MinTmpDiskNode=0
     Features=amd DelayBoot=00:00:00
     OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
@@ -256,7 +248,7 @@ You may also use the dashboards for finished jobs.
 
 # GPU Performance Monitoring
 We have two clusters (Tinkercliffs and Falcon), that have various types of GPUs.
-Tinkercliffs has A100 and H200 GPUS while Falcon has L40s, A30, V100, and T4 GPUs. 
+Tinkercliffs has A100 and H200 GPUs while Falcon has L40s, A30, V100, and T4 GPUs. 
 You can see the full list and additional details on our documentation page [https://docs.arc.vt.edu/resources/compute.html](https://docs.arc.vt.edu/resources/compute.html).
 
 Our GPUs are in high-demand, so making sure you are properly using them is extremely important. 
