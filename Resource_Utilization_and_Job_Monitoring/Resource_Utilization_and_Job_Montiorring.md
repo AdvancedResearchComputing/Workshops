@@ -409,7 +409,7 @@ This will create a file named `gpu_monitoring.txt` in the directory that you sub
 [https://dashboard.arc.vt.edu/dashboards](https://dashboard.arc.vt.edu/dashboards)
 
 
-Use the command `getjobutil JOBID`
+Use the command `getjobutilurl JOBID`
 ```
 nbraunsc@tinkercliffs1:~$ getjobutilurl 4XXXXXX
 RUNNING
