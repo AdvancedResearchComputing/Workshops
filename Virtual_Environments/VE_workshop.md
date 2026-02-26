@@ -1,20 +1,19 @@
-# Virtual Environments with Python on ARC  
-
-October 17, 2025
+# Virtual Environments on ARC  
 
 Nicole Braunscheidel\
 Computational Scientist (ARC)\
 nbraunsc@vt.edu
 
 ## Logistics
-Please sign in: [https://docs.google.com/document/d/1TlmeFI1MKF5HGlRnos3kDR1XbQu953vFyCTsrM1vCgA/edit?usp=sharing](https://docs.google.com/document/d/1TlmeFI1MKF5HGlRnos3kDR1XbQu953vFyCTsrM1vCgA/edit?usp=sharing)
+Please sign in: [https://docs.google.com/document/d/1jmMzTOsw9PACbf1_EDGZlEHL2Uj7TAlmXcEXH0LlWFA/edit?usp=sharing](https://docs.google.com/document/d/1jmMzTOsw9PACbf1_EDGZlEHL2Uj7TAlmXcEXH0LlWFA/edit?usp=sharing)
 
 Feedback form: [https://forms.gle/P7BwENWMTpwHiH3bA](https://forms.gle/P7BwENWMTpwHiH3bA)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- This PDF is uploaded in Files on the Canvas site
-- There will be no recording of this workshop but we have a lot of short video tutorials (work in-progress): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
+- This material is uploaded in Files on the Canvas site and in our Github Repo [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Virtual_Environments/VE_workshop.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Virtual_Environments/VE_workshop.md)
+- I will post a recording of this workshop: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html) 
+- We also have a lot of shorter video tutorials: [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
 Useful links:
@@ -34,7 +33,7 @@ Useful links:
 7. [Best practices & Wrap up](#wrap-up)
 
 ___
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Background & Motivation</span>
+# Background & Motivation
 A virtual environment is a self-contained directory that contains a specific collection of installed packages and their dependencies. 
 
 Virtual environments (VE) on ARC can allow you to:
@@ -46,28 +45,28 @@ Most common types of VE are conda environments or using `pip` and `venv`.
 
 ___
 
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Conda Virtual Environments:  How to Build Using Miniforge/Miniconda</span>
+# Conda Virtual Environments:  How to Build Using Miniforge/Miniconda
 ARC suggests the use of Miniforge or Miniconda as the preferred way to build conda virtual environments (CVEs). ARC's provided Miniforge/Miniconda will work faster than user-installed anaconda in $HOME.
 
 ## Steps for Building a Conda Virtual Environment (CVE)
 
 1. Create an interactive session to a compute node.
 ```
-interact --account=<account> --mem 8G --partition=normal_q
+interact --account=<account> --mem 8G --partition=v100_normal_q --gres=gpu:1
 ```
 
-2. Load Miniconda3.
+2. Load Miniforge3/25.11.0-1.
 ```
-module load Miniconda3
+module load Miniforge3/25.11.0-1
 ```
 
 3. Create a CVE with a given name and this will be stored in `$HOME/.conda/envs/<name>`.
 ```
-conda create -n tc_python
+conda create -n falcon_v100_pytorch
 ```
 OR you can create a CVE with a specified path and/or a specific python version
 ```
-conda create -p ~/path/to/env/<name of CVE> python=3.12
+conda create -p ~/path/to/env/falcon_v100_pytorch python=3.12
 ```
 
 4. Will have to type `y` to say yes to installing the listed packages:
@@ -137,7 +136,7 @@ exit
 ```
 
 ___
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Using Virtual Environments and Jupyter Notebooks in OnDemand</span>
+# Using Virtual Environments and Jupyter Notebooks in OnDemand
 [Open On-Demand (OOD)](https://ood.arc.vt.edu) is a web-based portal for using applications with a graphical interface on ARC systems. Many users use the Jupyter Notebook app on OOD and you can also use your VE's through OOD with a few modifications.
 
 Follow these steps to use your VE in a Jupyter Notebook interactive session on OnDemand:
@@ -151,17 +150,18 @@ pip install ipykernel
 ```
 
 2. Set up the environment 'Kernel'.
-Assuming your environment is named `myenv`, activate it and run the following command:
+Assuming your environment is named `falcon_v100_pytorch`, activate it and run the following command:
 ```
-python -m ipykernel install --user --name myenv --display-name "Python (myenv)"
+python -m ipykernel install --user --name falcon_v100_pytorch --display-name "Pytorch Falcon V100"
 ```
 This will create a Jupyter Kernel named "Python (my_env)," which allows you to use 'myenv' within your notebooks.
+Note: you do not need to include the path of the virtual environment in the ipykernel, just the name. 
 
 3. Launch and select the Kernel in Jupyter Notebook.
 After launching Jupyter Notebook on OnDemand (ood.arc.vt.edu),
-open your notebook, then go to 'Kernel' in the top menu bar, select 'Change Kernel', and choose 'Python (my_env)' kernel. Remember to delete your OOD session when you are done using it, simply closing the browser WILL NOT stop the OOD job. 
+open your notebook, then go to 'Kernel' in the top menu bar, select 'Change Kernel', and choose 'Pytorch Falcon V100' kernel. Remember to delete your OOD session when you are done using it, simply closing the browser WILL NOT stop the OOD job. 
 ___
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Naming/Organizing Virtual Environments for Different Node Types</span>
+# Naming/Organizing Virtual Environments for Different Node Types
 Each cluster has at least two different node types. Each node type is equipped with a different cpu micro-architecture, slightly different operating system and/or kernel versions, slightly different system configuration and packages. All are tuned to be customized and efficient for the particular node features. These system differences can make virtual environments non-portable between node types.
 
 As a result, you should create and build a virtual environment on a node of the type where you will use the environment. 
@@ -174,11 +174,11 @@ If given the `-n` flag, conda will create the environment in `$HOME/.conda/envs/
 The `-p` flag may be used to specify a another location for your environment. This may be desirable if you want the environment in a shared location.
 
 ```
-[user@tinkercliffs1 ~]$ module load Miniconda3
+[user@tinkercliffs1 ~]$ module load Miniforge3/25.11.0-1
 [user@tinkercliffs1 ~]$ conda env list
 # conda environments:
 #
-base                     /apps/arch/software/Miniconda3/24.11.3-0
+base                     /apps/arch/software/Miniforge3/25.11.0-1
 vis_tc_normal            /home/user/.conda/envs/vis_tc_normal
                          /projects/arcadm/graph_modeling/env_l40s/geoDL
 
@@ -189,7 +189,7 @@ vis_tc_normal            /home/user/.conda/envs/vis_tc_normal
 However environments are organized, they should be used only for their corresponding node type.
 
 ___
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Submitting jobs with Conda environments</span>
+# Submitting jobs with Conda environments
 If you want to follow along and also submit a job, you can do one of the following to obtain the scripts:
 1. Download the slurm and python script from our Github repo example: https://github.com/AdvancedResearchComputing/examples/blob/master/python/miniconda/ and move them over to your ARC directory (either via scp or VS Code)
 Here is an example of a secure copy command from local computer to remote ARC systems:
@@ -215,7 +215,7 @@ squeue
 ```
 
 ___
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Virtual Environments:  How to Build Using `pip` and `venv`</span>
+# Virtual Environments:  How to Build Using `pip` and `venv`
 
 ARC suggests the use of Miniforge/Miniconda as the preferred way to build conda virtual environments (CVEs).
 
@@ -225,7 +225,7 @@ However, there may be times when you want to go with a different approach to cre
 
 1. Create an interactive session to a compute node.
 ```
-interact --account=<account> --mem 16G
+interact --account=<account> --mem 8G --partition=v100_normal_q --gres=gpu:1
 ```
 
 2. Identify the Python versions available on the clusters.
@@ -292,10 +292,10 @@ deactivate
 exit
 ```
 ___
-# <span style="background-color:rgb(184, 202, 218, 0.5)">Wrap up</span>
+# Wrap up
 Virtual environments are great ways to create clean workflows on HPC systems like ARC. 
 - Each VE should be cluster/node specific to work properly so naming and organizing is VERY important
-- Suggest using Miniforge/Miniconda for VEs (`module load Miniconda3`)
+- Suggest using Miniforge/Miniconda for VEs (`module load Miniforge3`)
 - If using VE with OOD Jupyter Notebooks, make sure `ipykernel` is install in conda environment
 - Will have to `source activate` your VE in your slurm batch script
 
@@ -314,12 +314,17 @@ OR if the VE is in a specific location other than  `$HOME/.conda/envs`
 conda env remove -p /full/path/to/your/environment
 ```
 
-Please sign in: [https://docs.google.com/document/d/1TlmeFI1MKF5HGlRnos3kDR1XbQu953vFyCTsrM1vCgA/edit?usp=sharing](https://docs.google.com/document/d/1TlmeFI1MKF5HGlRnos3kDR1XbQu953vFyCTsrM1vCgA/edit?usp=sharing)
-
-Feedback form: [https://forms.gle/P7BwENWMTpwHiH3bA](https://forms.gle/P7BwENWMTpwHiH3bA)
-
-Useful links:
-- ARC's documentation site: [https://docs.arc.vt.edu/](https://docs.arc.vt.edu/)
-- GitHub Examples: [https://github.com/AdvancedResearchComputing/examples](https://github.com/AdvancedResearchComputing/examples)
-- Office Hours: [https://arc.vt.edu/about/office-hours.html](https://arc.vt.edu/about/office-hours.html)
-- 4Help: [https://arc.vt.edu/help](https://arc.vt.edu/help)
+## Debugging
+Sometimes if `source activate <environment_name>` doesn't work, try running the following:
+```
+eval "$(conda shell.bash hook)"
+```
+then activate your environment:
+```
+source activate <environment_name>
+```
+verify that it is loaded correctly with your python version by running
+```
+which python
+```
+and this should point to the python version within your environment.
