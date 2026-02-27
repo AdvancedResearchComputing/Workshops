@@ -137,23 +137,27 @@ ___
 
 Follow these steps to use your VE in a Jupyter Notebook interactive session on OnDemand:
 
-1. Check for `ipykernel` installation.
-Ensure that `ipykernel` is installed in your environment.
-After activating your environment, you can run the `pip freeze` command to list all the installed libraries.
+1. Make sure your environment is activated:
+```
+source activate  ~/path/to/env/<name of CVE>
+```
+
+2. Check for `ipykernel` installation by using either `conda list` or `pip freeze`. Both of these commands will list all the packages that are currently installed in your virtual environment.
+
 If `ipykernel` is not listed, you can install it by the following:
 ```
 pip install ipykernel
 ```
 
-2. Set up the environment 'Kernel'.
-Assuming your environment is named `falcon_v100_pytorch`, activate it and run the following command:
+3. Set up the environment 'Kernel'.
+Assuming your environment is named `falcon_v100_pytorch`, make sure it is activated (from step 1) and run the following command:
 ```
 python -m ipykernel install --user --name falcon_v100_pytorch --display-name "Pytorch Falcon V100"
 ```
-This will create a Jupyter Kernel named "Python (my_env)," which allows you to use 'falcon_v100_pytorch' within your notebooks.
+This will create a Jupyter Kernel named "Pytorch Falcon V100," which allows you to use 'falcon_v100_pytorch' within your notebooks.
 Note: you do not need to include the path of the virtual environment in the ipykernel, just the name. 
 
-3. Launch and select the Kernel in Jupyter Notebook.
+4. Launch and select the Kernel in Jupyter Notebook.
 After launching Jupyter Notebook on OnDemand (ood.arc.vt.edu),
 open your notebook, then go to 'Kernel' in the top menu bar, select 'Change Kernel', and choose 'Pytorch Falcon V100' kernel. Remember to delete your OOD session when you are done using it, simply closing the browser WILL NOT stop the OOD job. 
 ___
