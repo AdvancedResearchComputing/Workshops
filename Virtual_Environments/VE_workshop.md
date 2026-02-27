@@ -1,9 +1,5 @@
 # Virtual Environments on ARC  
 
-Nicole Braunscheidel\
-Computational Scientist (ARC)\
-nbraunsc@vt.edu
-
 ## Logistics
 Please sign in: [https://docs.google.com/document/d/1jmMzTOsw9PACbf1_EDGZlEHL2Uj7TAlmXcEXH0LlWFA/edit?usp=sharing](https://docs.google.com/document/d/1jmMzTOsw9PACbf1_EDGZlEHL2Uj7TAlmXcEXH0LlWFA/edit?usp=sharing)
 
@@ -154,7 +150,7 @@ Assuming your environment is named `falcon_v100_pytorch`, activate it and run th
 ```
 python -m ipykernel install --user --name falcon_v100_pytorch --display-name "Pytorch Falcon V100"
 ```
-This will create a Jupyter Kernel named "Python (my_env)," which allows you to use 'myenv' within your notebooks.
+This will create a Jupyter Kernel named "Python (my_env)," which allows you to use 'falcon_v100_pytorch' within your notebooks.
 Note: you do not need to include the path of the virtual environment in the ipykernel, just the name. 
 
 3. Launch and select the Kernel in Jupyter Notebook.
