@@ -49,3 +49,9 @@ Tip:
 ## Media
 Include images:
 ![A100 GPU Architecture](Best_Practices_Overview/images/Filesystems_locality.png)
+
+## Media Files
+All original files should also be pushed to github.
+Example:  you make a file in Google Slides or MS PPTX.
+Then include the PPTX file in the github repo so that if it needs editing,
+one does not have to start from scratch.
