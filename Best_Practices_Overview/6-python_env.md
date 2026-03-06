@@ -8,8 +8,8 @@ There are several options available for managing `conda` environments. The open 
  - Miniconda: Lightweight version of Anaconda, prefers licensed channel
  - Miniforge: Open source `conda` and does not use Anaconda licensed channels
 
- [!TIP]
- **Tip:** Load the latest Miniforge module to start using `conda` for managing python environments
+> [!TIP]
+> **Tip:** Load the latest Miniforge module to start using `conda` for managing python environments
 
 ## How to submit jobs with conda environments 
 
