@@ -355,7 +355,8 @@ Now a new VE should be:  ~/env-python/owl/normal_q/genoa/py314_mf_networkx
 
 The sbatch slurm script, named _run.01.slurm_, is:
 
-~~~
+
+```bash
 #!/bin/bash
 
 #SBATCH -J networkx
@@ -403,16 +404,16 @@ source activate  ~/env-python/owl/normal_q/genoa/py314_mf_networkx
 
 # Code to execute.
 ./run.01
-~~~
+```
 
 
 The run script, _run.01_, is:
 
-~~~
+```bash
 # file: run.01
 
 python short.path.01.py
-~~~
+```
 
 
 This python code uses NetworkX to construct a graph and
@@ -421,7 +422,7 @@ then find a shortest path between two nodes, A and E.
 The NetworkX python source code---file _short.path.01.py_---is:
 
 
-~~~
+```python
 import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib
@@ -494,7 +495,7 @@ if __name__ == "__main__":
     print("    total execution duration (s, hr): ",duration,dur_hours)
     print (" ----- good termination -----")
 
-~~~
+```
 
 
 
@@ -502,9 +503,9 @@ if __name__ == "__main__":
 
 Issue this command to submit the job to slurm.
 
-~~~
+```bash
 sbatch run.01.slurm
-~~~
+```
 
 
 #### Analysis (Summary)
