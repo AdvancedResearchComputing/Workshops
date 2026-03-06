@@ -4,7 +4,7 @@
 
 If you're making frequent SSH connections to ARC systems or transferring data, SSH-keys can make the authentication steps more seamless.
 
-(SSH Keys overview)[https://docs.arc.vt.edu/usage/sshkeys.html]
+[SSH Keys overview](https://docs.arc.vt.edu/usage/sshkeys.html)
 
 
 ## File system awareness and login node limitations
