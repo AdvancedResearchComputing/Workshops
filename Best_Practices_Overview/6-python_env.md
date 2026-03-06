@@ -55,8 +55,19 @@ pip install ...
 ```
 > [!WARNING]
 > Some software packages will provide a `requirements.yml` defining a complete list of packages for the environment. This are often overly specific and quickly become outdated which may result in `conda` failing to resolve the set of dependencies to install.
+> Provide the minimal necessary information when naming packages to install.
 
 
-## Sbatch and interactive jobs
+## How to use conda within Jupyter Notebooks on OnDemand
+ARC's Open OnDemand platform provides a great way to run python and other notebooks on ARC resources with a full graphical interface. Packages installed into python environments provide vast possibilities for extending the functionality.
 
-## How to use conda within Jupyter Notebooks on OOD
+Generally, we recommend creating an environment in an interactive shell job and then specifying the environment as part of the Jupyter notebook app launch. For this to work, you should:
+
+1. Ensure `ipykernel` package is installed:
+```
+pip install ipykernel
+```
+2. Set up the environment "kernel". For example:
+```
+python -m ipykernel install --user --name falcon_v100_pytorch --display-name "Pytorch Falcon V100"
+```
