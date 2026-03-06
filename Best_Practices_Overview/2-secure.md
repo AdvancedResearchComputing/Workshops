@@ -15,6 +15,7 @@ If you're making frequent SSH connections to ARC systems or transferring data, S
 `loginusage`
 
 ```
+[brownm12@tinkercliffs2 ~]$ loginusage
 Control Group                                                                                                      Tasks   %CPU   Memory  Input/s Output/s
 user.slice/user-1709627.slice                                                                                          7    3.4    30.4M        -        -
 user.slice/user-1709627.slice/user@1709627.service                                                                     2    3.3     8.2M        -        -
