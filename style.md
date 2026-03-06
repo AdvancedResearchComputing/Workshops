@@ -35,3 +35,7 @@ Tip:
 
 > [!NOTE]
 > **Note:** You need to do some cleanup in your `/home`.
+
+## Media
+Include images:
+![A100 GPU Architecture](Best_Practices_Overview/images/Filesystems_locality.png)
