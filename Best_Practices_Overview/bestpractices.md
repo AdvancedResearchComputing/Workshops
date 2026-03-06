@@ -15,48 +15,48 @@ This workshop consolidates the most important concepts, tools, and best practice
 
 
 ## Spring 2026 Workshops so far...
-2026-01-23 Advanced Research Computing Roadmap
-2026-01-30 Connect to ARC Systems with VSCode
-2026-02-06 Running Jobs on ARC Systems
-2026-02-13 Monitoring Resource Utilization and Job Efficiency
-2026-02-20 Managing Data on ARC File Systems
-2026-02-27 Virtual Environments on ARC
+- 2026-01-23 Advanced Research Computing Roadmap
+- 2026-01-30 Connect to ARC Systems with VSCode
+- 2026-02-06 Running Jobs on ARC Systems
+- 2026-02-13 Monitoring Resource Utilization and Job Efficiency
+- 2026-02-20 Managing Data on ARC File Systems
+- 2026-02-27 Virtual Environments on ARC
 
 
 ## Outline:
 1. ARC Systems Overview (Refresher)
-    a. Summary of cluster types (standard, controlled, visualization)
-    b. Storage types (/home, /projects, /scratch, archival, TMPDIR)
-    c. Access points and support channels (Globus, OOD, 4Help, Office Hours)
+- Summary of cluster types (standard, controlled, visualization)
+- Storage types (/home, /projects, /scratch, archival, TMPDIR)
+- Access points and support channels (Globus, OOD, 4Help, Office Hours)
 
 2. [Secure Remote Development](2-secure)
-    a. SSH key management and usage
-    b. Connecting and coding via VSCode and Remote-SSH
-    c. File system awareness and login node limitations
-    d. Login node usage dos and don’ts
+- SSH key management and usage
+- Connecting and coding via VSCode and Remote-SSH
+- File system awareness and login node limitations
+- Login node usage dos and don’ts
 
 3. [Efficient Job Submission with Slurm](3-job_submission)
-    a. Job types: batch vs. interactive
-    b. QoS, partitions, memory settings
-    c. Tools: sbatch, salloc, srun
+- Job types: batch vs. interactive
+- QoS, partitions, memory settings
+- Tools: sbatch, salloc, srun
     
 4. [Job Monitoring and Optimization](4-monitoring)
-    a. Tools: getusage, seff, billing calculator
-    b. Tools: seff, htop, gpumon, jobload, sacct, Grafana
-    c. Dashboard
+- Tools: getusage, seff, billing calculator
+- Tools: seff, htop, gpumon, jobload, sacct, Grafana
+- Dashboard
 
 5. [Data Management Essentials](5-data_management)
-    a. permissions and ownership
-    b. how to manage lots of small files
+- permissions and ownership
+- how to manage lots of small files
 
 6. [Virtual Environments on ARC](6-python_env)
-    a. Using conda conda commands (list, load, channels)
-    b. How to submit jobs with conda environments 
-    c. Sbatch and interactive jobs
-    d. How to use conda within Jupyter Notebooks on OOD
+- Using conda conda commands (list, load, channels)
+- How to submit jobs with conda environments 
+- Sbatch and interactive jobs
+- How to use conda within Jupyter Notebooks on OOD
 
 7. [Support and Documentation](7-support)
-    a. ARC documentation site
-    b. example code repository
-    c. office hours
-    d. help request
+- ARC documentation site
+- example code repository
+- office hours
+- help request
