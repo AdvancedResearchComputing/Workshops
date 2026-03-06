@@ -3,8 +3,9 @@
 
 ## Description:
 
-This workshop consolidates the most important concepts, tools, and best practices from the ARC workshop series into a single, integrated session. We will concisely review summary best practices from the previous workshops covering how to:
+This workshop consolidates the most important concepts, tools, and best practices from the ARC workshop series into a single, integrated session. We will concisely review summary best practices from the previous workshops this semester covering how to:
 
+[Workshop list](https://docs.arc.vt.edu/usage/workshops.html)
  - connect to ARC systems securely
  - build and run computational jobs
  - monitor performance
