@@ -9,10 +9,10 @@
 3. Thus, you can stay under the limit.
 4. This is not trickery.
 5. There are times when you need to run a lot of jobs and they are small;
-   submitting each job individually actually generates more overhead.
+   submitting each job individually actually generates more overhead for slurm.
    So these small jobs can be packed.
 6. Even collections of larger jobs can be grouped together.
-7. The purpose of this video is to present and demonstrate tools to 
+7. The purpose of this workshop is to present and demonstrate tools to 
    enable job "packing."
 
 
@@ -70,7 +70,7 @@ How can this be done?
 
 There are several ways to do this.
 
-These are the subject of this workshop.
+These ways are the subjects of this workshop.
 
 We note that there is also a limit on the maximum number of steps
 that can be executed in slurm jobs, and this issue will also
@@ -308,13 +308,14 @@ slurm_job_num_nodes: 2
 [1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
 ```
 
-To build intuition, always run `seff` on your job after it completes:
+To build intuition about the performance of your codes,
+always run `seff` on your job after it completes:
 
 ```bash
 seff  SLURM_JOB_ID
 ```
 
-where here the SLURM_JOB_ID is 2967761.
+to see the use of CPUs and memory.
 
 ## Use of GNU parallel
 
@@ -819,7 +820,8 @@ A cat moonwalking on a ceiling
 
 ### Example 4:  GNU Parallel
 
-Just as we did in Example 2, we can
+Make another example from Example 3 above:
+
 1. Copy the file _sbatch.fast.03.slurm_ and call it _sbatch.fast.03.slurm_
 2. Delete the line `#SBATCH --cpus-per-task=12` and in its place insert
    `#SBATCH --cpus-per-task=1`.
