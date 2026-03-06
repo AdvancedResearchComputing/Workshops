@@ -73,3 +73,7 @@ Count of inodes at each top-level directory
 
 > [!NOTE]
 > Write permission on a file provides capability to change the contents, including emptying them.
+
+### Recommended modes for `/projects`
+`2770` - All group members can manage contents of all directories.
+`2750` - Group members can access files, but cannot add or delete contents unless they own the directory.
