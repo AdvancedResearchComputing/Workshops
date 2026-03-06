@@ -547,6 +547,893 @@ file _graph.png_.
 
 ## Snappy Graph Library
 
+### Example 1:  Creating a Virtual Environment for Snappy
+
+#### Module
+
+Nothing.
+
+
+#### Virtual Environments
+
+
+We use a Snappy virtual environment (a conda virtual environment)
+to run the Python-wrapped SNAP network analysis library (called Snappy).
+
+
+
+Also, we are giving instructions for snappy with python=3.7.
+This is an old python version; it may not even be supported now.
+We tried python=3.12 and then 3.10 and Stanford does not have a library
+version snappy to handle these newer versions.
+It might work with python 3.8 or 3.9.
+
+The commands for building the VE are:
+
+```
+# Acquire resources.
+salloc --account=<account>  --partition=normal_q    --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+
+# Go onto compute node that salloc returns.
+# Here it is compute node 84; for each instance, it will be different.
+ssh owl084
+
+# List modules.
+module list
+
+# Load Miniforge to create VE.
+module reset
+module load Miniforge3
+
+# Create VE.
+conda create -p ~/env/owl/normal_q/py37_mf_snappy
+
+# Activate VE.
+source activate ~/env/owl/normal_q/py37_mf_snappy
+
+# Install packages.
+# Will have to answer yes [y] many times.
+conda install python=3.7
+# Check python version, should be 3.7.
+python --version
+
+# Install any other packages you desire.
+conda install pandas
+conda install matplotlib
+
+# Always try to do 'pip install' after all 'conda install'.
+# This is the one for snappy.
+python -m pip install snap-stanford
+
+# All done with building VE.
+# You can list all packages.
+conda list
+
+# Deactivate the VE.
+conda deactivate
+
+# Get off of compute node.
+exit
+
+# Now back on login node of the ARC cluster.
+
+# Release resources.
+scancel <job ID of the salloc command>
+
+```
+
+
+
+
+
+### Example 2:  Running a Snappy Job in Batch Mode
+
+The snappy code is used to generate a 10000-node G(n,m) graph
+and compute the weakly connected component distribution,
+the degree distribution,
+and estimated graph diameter.
+
+#### Inputs
+
+Put all files in the same directory.
+
+The slurm script, named _run.01.slurm_, is:
+
+```bash
+#!/bin/bash
+
+#SBATCH -J snappy
+
+## Wall time.
+#SBATCH --time=00:30:00 # 1 hour
+
+## #SBATCH --account=personal
+#SBATCH --account=arcadm
+
+### This requests 1 node, 1 core.
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+
+### Other queues are:  a100_normal_q,  dgx_normal_q
+#SBATCH --partition=normal_q
+
+## Use the compute node only for this job, and use all memory on this node.
+## #SBATCH --exclusive
+## #SBATCH --mem=0
+## #SBATCH --mem=10G
+
+## Slurm output and error files.
+#SBATCH -o slurm.snappy.01.code.job.%j.out
+#SBATCH -e slurm.snappy.01.code.job.%j.err
+
+## #SBATCH --mail-type=BEGIN,END
+## #SBATCH --mail-user=ckuhlman@vt.edu
+## #SBATCH --mail-user=hugo3751@gmail.com
+
+# #SBATCH --gres=gpu:1 # use this directive if you're requesting a GPU on a GPU partition such as dgx_normal_q or t4_normal_q
+
+# Load modules.
+# module load Anaconda3/2020.11
+# module load Python/3.11.5-GCCcore-13.2.0
+module load Miniforge3
+
+
+# Activate a python env.
+## source activate ~/env/tc/cpu/py39_base
+## source /home/ckuhlman/env/tc/cpu/py39_na_basic/bin/activate
+## source /home/ckuhlman/env/tc/cpu/py311_pv_basic/bin/activate
+source activate ~/env/owl/normal_q/py37_mf_snappy
+
+
+# Code to execute.
+./run.01
+```
+
+
+
+The run script, _run.01_, is:
+
+```bash
+# file: run.01
+
+## Use snappy to generate a
+## graph and some properties of the graph.
+python snap.var.properties.01.py
+```
+
+
+This python code uses Snappy to construct a graph and
+then find a shortest path between two nodes, A and E.
+
+The Snappy python source code---file _snap.var.properties.01.py_---is:
+
+
+
+```python
+import snap
+import matplotlib.pyplot as plt
+import matplotlib
+import time
+import sys
+
+
+
+## =======================================
+def main():
+
+    begin_time = time.time()
+
+
+    ## random G(n,m) graph with 10000 nodes and 1000 edges.
+    g9 = snap.GenRndGnm(snap.TNGraph, 10000, 8000)
+
+    ## Generate weakly connected component (wcc) sizes, distribution.
+    print(" weakly connected component size distribution")
+    CntV = g9.GetWccSzCnt()
+    for p in CntV:
+        print("size %d: count %d" % (p.GetVal1(), p.GetVal2()))
+
+    ## Gen degree distribution (outdegree, count) pairs.
+    print(" ")
+    print(" ")
+    print(" degree distribution")
+    CntV = g9.GetOutDegCnt()
+    for p in CntV:
+        print("degree %d: count %d" % (p.GetVal1(), p.GetVal2()))
+
+    ## Approximation of graph diameter.
+    print(" ")
+    print(" ")
+    print(" approximate graph diameter")
+    diam = g9.GetBfsFullDiam(10)
+
+    print(" approximate graph diameter: ",diam)
+
+    print(" ")
+    print(" ")
+
+
+    ## ---------------------------
+    duration = time.time() - begin_time
+    ## print("\n")
+    ## print("    Total Execution Duration (s, hr): ",str(duration)," ", str((float)(duration)/3600.0) + "\n")
+    ## print(" ----- good termination -----\n\n")
+
+    return duration
+
+## =======================================
+if __name__ == "__main__":
+    ## Driver.
+    duration = main()
+    dur_hours = (float)(duration)/3600.0
+    print("    total execution duration (s, hr): ",duration,dur_hours)
+    print (" ----- good termination -----")
+```
+
+
+The _run.01_ bash script is:
+
+
+```bash
+# file: run.01
+
+## Use snappy to generate a
+## graph and some properties of the graph.
+python snap.var.properties.01.py
+```
+
+#### Sbatch Slurm Job Submission
+
+
+Submit the job to the slurm scheduler by entering:
+
+```bash
+sbatch run.01.slurm
+```
+
+
+### Analysis (Summary)
+
+Procedure to run a slurm batch job:
+
+1. Copy each of the above file contents into files on Owl or Tinkercliffs.
+2. Use the provided file names.
+3. Put all files in the same directory.
+4. cd to that directory on the appropriate cluster.
+5. Issue the command in the section on job submission.
+6. The slurm batch job should run.
+
+### Results
+
+### Results
+
+The results are as follows, and are written to the slurm-generated
+output file, _slurm.snappy.01.code.job.82548.out_, since all output is text
+written to standard out.
+(The JOB ID is 82548 in this instance; yours will be different.)
+
+
+```output
+ weakly connected component size distribution
+size 1: count 1950
+size 2: count 367
+size 3: count 106
+size 4: count 58
+size 5: count 35
+size 6: count 16
+size 7: count 9
+size 8: count 2
+size 9: count 4
+size 10: count 1
+size 11: count 3
+size 13: count 1
+size 16: count 1
+size 17: count 1
+size 21: count 1
+size 6270: count 1
+
+
+ degree distribution
+degree 0: count 4475
+degree 1: count 3610
+degree 2: count 1457
+degree 3: count 380
+degree 4: count 59
+degree 5: count 16
+degree 6: count 2
+degree 8: count 1
+
+
+ approximate graph diameter
+ approximate graph diameter:  31
+
+
+    total execution duration (s, hr):  0.007993459701538086 2.2204054726494683e-06
+ ----- good termination -----
+```
+
+
+## NetworKit Graph Library
+
+### Example 1:  Creating a Virtual Environment for NetworKit
+
+#### Module
+
+Nothing.
+
+
+#### Virtual Environments
+
+We create a virtual environment (VE) with the commands above.
+This is a conda VE (CVE); we use Miniforge3 module.
+
+
+These procedures were run on Owl cluster.
+Should work on Tinkercliffs, too, with suitable changes in paths
+for the VE, and `--constraints`.
+
+```bash
+# Acquire resources.
+salloc --account=<account>  --partition=normal_q    --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+
+# Go onto compute node that salloc returns.
+ssh owl084
+
+# List modules.
+module list
+
+# Load Miniforge to create VE.
+module reset
+module load Miniforge3
+
+# Create VE.
+conda create -p ~/env/owl/normal_q/py312_mf_networkit
+
+# Activate VE.
+source activate ~/env/owl/normal_q/py312_mf_networkit
+
+# Install packages.
+# Will have to answer yes [y] many times.
+conda install python=3.12
+# Check python version, should be 3.12.
+python --version
+conda install pandas
+conda install matplotlib
+# Always try to do 'pip install' after all 'conda install'.
+pip3 install networkit
+
+# All done with building VE.  Deactivate the VE.
+conda deactivate
+
+# Now get back in and test simply:  load packages.
+# Use the python interpreter.
+# Each import should give NO feedback; successful
+# loads will give no error message, so that is what we want to see.
+source activate ~/env/owl/normal_q/py312_mf_networkit
+python
+import matplotlib
+import pandas
+import networkit
+exit()
+
+
+# Get off of compute node.
+exit
+
+# Now back on login node of the ARC cluster.
+
+# See what slurm job is our salloc command above.
+squeue -u <username>
+
+# Release resources.
+scancel <job ID of the salloc command>
+
+```
+
+
+### Example 2:  Running a NetworKit Batch Job
+
+
+This examples uses the OpenMP-based NetworKit to run
+analyses in parallel for an inputted graph.
+
+#### Input Files
+
+The input graph file, named _graph.inp_, is below.
+This is an edge list file:  two nodes one one line form an edge.
+Note that in NetworKit, you can only have one
+delimiting character between numbers
+(here, one blank):
+
+```
+1 2 
+1 8 
+2 3 
+2 8 
+3 4 
+3 6 
+3 9
+4 5
+4 6
+5 6
+6 7
+7 8
+7 9
+8 9
+```
+
+This sbatch slurm script, named _run.01.slurm_, uses two threads, so taking advantage of
+NetworKit's concurrency.
+
+```bash
+#!/bin/bash
+
+#SBATCH -J networkx
+
+## Wall time.
+#SBATCH --time=00:10:00 # 1 hour
+
+## #SBATCH --account=personal
+# Have to use your own account.
+#SBATCH --account=arcadm
+
+### This requests 1 node, 1 core.
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=2
+
+#SBATCH --partition=normal_q
+
+## Use the compute node only for this job, and use all memory on this node.
+## #SBATCH --exclusive
+## #SBATCH --mem=0
+## #SBATCH --mem=10G
+
+## Slurm output and error files.
+#SBATCH -o slurm.networkx.01.code.output.job.%j.out
+#SBATCH -e slurm.networkx.01.code.output.job.%j.err
+
+#SBATCH --mail-type=BEGIN,END
+# Have to use your own email.
+#SBATCH --mail-user=hugo3751@gmail.com
+
+
+# Load modules.
+module load Miniforge3
+
+
+# Activate a python env.
+# Have to use your own VE (virtual environment); name and location can vary.
+source activate ~/env/owl/normal_q/py312_mf_networkit
+
+
+# Code to execute.
+./run.01
+```
+
+The run script, named _run.01_, is:
+
+```bash
+# file: run.01
+
+python deg.distro.01.py
+```
+
+
+This python code uses NetworKit to read in a
+graph (in edge list format) and
+then compute the degree distribution.
+
+The NetworKit python source code---file _deg.distro.01.py_---is:
+
+
+```python
+import time
+import sys
+import matplotlib.pyplot as plt
+import matplotlib
+import networkit as nk
+import numpy
+
+
+
+## =======================================
+def main():
+
+    begin_time = time.time()
+
+
+    # Read graph
+    # https://networkit.github.io/dev-docs/python_api/graphio.html#networkit.graphio.EdgeListReader
+    # networkit.graphio.EdgeListReader(self, separator, firstNode, commentPrefix='#', continuous=True, directed=False)
+    isContinuousNodeNumbering=True
+    isDirected=False
+    nkGraphReader = nk.graphio.EdgeListReader(separator=' ',
+                                              firstNode=1,
+                                              commentPrefix='#',
+                                              continuous=isContinuousNodeNumbering,
+                                              directed=isDirected)
+    graph = nkGraphReader.read("./graph.inp")
+
+    # Compute degree distribution.
+    dd = sorted(nk.centrality.DegreeCentrality(graph).run().scores(), reverse=True)
+    degrees, numberOfNodes = numpy.unique(dd, return_counts=True)
+
+    # Plot the degree distribution.
+    fig = plt.figure()
+    plt.xscale("log")
+    plt.xlabel("degree")
+    plt.yscale("log")
+    plt.ylabel("number of nodes")
+    plt.plot(degrees, numberOfNodes, linestyle="",marker="o")
+    # plt.show()
+    matplotlib.use("Agg")
+    fig.savefig("deg.distro.png")
+
+    # Output data to file.
+    fhout = open("deg.distro.out","w")
+    fhout.write("  degree  NumberOfNodes \n")
+    lengthArray = len(degrees)
+    print(" length of degrees array: ",lengthArray)
+    for itime in range(0,lengthArray):
+        fhout.write(str(degrees[itime]) + "       " + str(numberOfNodes[itime]) + "\n")
+    fhout.close()
+
+
+    ## ---------------------------
+    duration = time.time() - begin_time
+
+    return duration
+
+
+## =======================================
+if __name__ == "__main__":
+    ## Driver.
+    duration = main()
+    dur_hours = (float)(duration)/3600.0
+    print("    total execution duration (s, hr): ",duration,dur_hours)
+    print (" ----- good termination -----")
+```
+
+
+
+####  Sbatch Slurm Job Submission
+
+```
+sbatch run.01.slurm
+```
+
+
+#### Analysis (Summary)
+
+Procedure to run a slurm batch job:
+
+1. Copy each of the above file contents into files on Owl or Tinkercliffs.
+2. Use the provided file names.
+3. Put all files in the same directory.
+4. cd to that directory on the appropriate cluster.
+5. Issue this command:  sbatch run.01.slurm
+6. The slurm batch job should run.
+
+#### Results
+
+
+
+The results are as follows.
+
+The degree distribution data in the python code are written to
+screen.
+Since this is a slurm-submitted job, slurm intercepts this write
+and redirects the data to the slurm-generated output file,
+which in this case is _slurm.networkx.01.code.output.job.%j.out_,
+where "%j" is replaced with the slurm-generated unique JOB ID.
+
+The degree distribution is:
+
+```
+  degree  NumberOfNodes
+2.0       2
+3.0       4
+4.0       3
+```
+
+These data are plotted, and the plot is in file deg.distro.png,
+per the python code above.
+
+The plot is:
+
+![degree distribution](figures/networkit/deg.distro.png)
+
+
+## RAPIDS
+
+
+### Restriction
+
+Rapids (cuGraph) can only be run on NVIDIA GPUs.
+
+### Example 1:  Creating a Virtual Environment for RAPIDS
+
+#### Module
+
+Nothing.  We will use VEs instead.
+
+
+##### Virtual Environments
+
+
+We use a conda virtual environment (CVE).
+
+
+
+It is common to also install pandas and matplotlib for data
+manipulation and plotting, respectively.
+But one does not have to.
+Also, one can add additional packages not installed here.
+A VE/CVE should be customized for your needs.
+
+These procedures were run on Falcon cluster.
+Should work on Tinkercliffs A100 or DGX nodes, too.
+However, Rapids only works with Nvidia GPU nodes.
+
+Here are the commands to build a conda virtual environment
+containing Rapids for Nvidia GPUs.
+
+
+
+This is why in the `conda create` command below, you see the name of the
+CVE, with its path, being pretty verbose.
+This is to fully describe the CVEs applicability.
+Specifically, the path (`~/env/falcon/l40s_normal_q`) and CVE name (`py312_mf_nvidia_rapids-25.02`)
+combined (using the `-p` switch) tell us this:
+
+1. The CVE was built on falcon.
+2. It uses the l40s_normal_q partition.
+3. This means that this CVE can only be used on falcon and with the l40s_normal_q partition, to run jobs.
+4. That the CVE uses python=3.12 (`py312`).
+5. That the CVE was built with Miniforge3 and hence is a _conda_ virtual environment (CVE),
+say, as opposed to a pip-venv-built VE (`mf`).
+1. That this CVE can only be used with nvidia GPUs (`nvidia`).
+2. That the "central" capability in this CVE is rapids (`rapids-25.02`).
+
+All of this information can be obtained instantaneously by looking at the
+path and CVE names.
+
+In the `conda create` command below, the switches are:
+
+- `-p` specify the path to and name of the new virtual environment.
+- `-c` channels or locations on the internet to search for and obtain packages (can be
+used multiple times).
+- `-n` name of VE.
+
+
+
+```bash
+# Acquire resources.
+salloc --account=<account>  --partition=l40s_normal_q --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --gres=gpu:1 --time=2:00:00
+
+# Go onto compute node that salloc returns.
+ssh fal051
+
+# List modules.
+module list
+
+# Reset to base set of modules and then load Miniforge to create VE.
+module reset
+module load Miniforge3
+
+# List modules to see new module added.
+module list
+
+# Create VE, this should also install rapids.
+# Please use this one.
+conda create -p ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
+
+# Another way, which will create the CVE in your current directory, named rapids-25.02, is:
+# Here, please do not use this one.
+conda create -n rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
+
+# Activate VE.  We are assuming the long name here:  ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
+source activate ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
+
+# Check python version, should be 3.12.
+python --version
+
+# Install packages.  (Again, Rapids is already in the CVE; was put in on creation.)
+# You do not need to install these two if you do not want.
+# Install the ones you want.
+conda install pandas
+conda install matplotlib
+
+# All done with building VE.  Deactivate the VE.
+conda deactivate
+
+# Get off of compute node.
+exit
+
+# Now back on login node of the ARC cluster.
+
+# Release resources.
+scancel <job ID of the salloc command>
+
+```
+
+During the CVE creation, you will see statements:
+
+```
+To enable CUDA support, UCX requires the CUDA Runtime library (libcudart).
+The library can be installed with the appropriate command below:
+
+* For CUDA 11, run:    conda install cudatoolkit cuda-version=11
+* For CUDA 12, run:    conda install cuda-cudart cuda-version=12
+```
+
+### Example 2:  Running a RAPIDS Batch Job
+
+In this example, we download a famous small graph, called the "Karate
+network" and compute the pagerank of all nodes.
+We then select the node with the greatest pagerank
+as the most important node.
+This type of analysis comes under the heading of "key player"
+analysis.
+
+We use the Rapids cuGraph graph analysis library, developed
+by Nvidia, and run it on an Nvidia GPU.
+
+#### Inputs
+
+
+The slurm script, named _run.01.slurm_, is:
+
+```python
+#!/bin/bash
+
+#SBATCH -J rapids
+
+## Wall time.
+#SBATCH --time=01:00:00 # 1 hour
+
+## #SBATCH --account=personal
+# Have to use your own account.
+#SBATCH --account=arcadm
+
+### This requests 1 node, 1 core.
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=2
+#SBATCH --gres=gpu:1
+#SBATCH --partition=l40s_normal_q
+
+## Slurm output and error files.
+#SBATCH -o slurm.rapids.01.code.output.job.%j.out
+#SBATCH -e slurm.rapids.01.code.output.job.%j.err
+
+## This is set up to send you an email when the job
+## starts and when it ends.
+## Be careful about using these:  if you run a lot of
+## jobs, your email account will fill up with these
+## messages.  Also, if you are on the cluster a lot,
+## it is just as easy to check your job with the `squeue`
+## command.
+## I personally never use these, but am showing in case useful to you.
+#SBATCH --mail-type=BEGIN,END
+## Have to use your own email.
+#SBATCH --mail-user=hugo3751@gmail.com
+
+# Load modules.
+module load Miniforge3
+
+# Activate a python env.
+# Have to use your own VE (virtual environment); name and location can vary.
+source activate ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
+
+# Code to execute.
+python pagerank.01.py
+```
+
+
+This python code uses rapids to fetch the famous
+Karate network (containing about 34 nodes, so it is small)
+and
+then find a shortest path between two nodes, A and E.
+This is ordinarily a very expensive (i.e., time-consuming)
+computation, but here, the graph is small.
+
+The rapids python source code---file _pagerank.01.py_---is:
+
+```
+import matplotlib.pyplot as plt
+import matplotlib
+import time
+import sys
+from scipy.io import mmread
+
+import cugraph
+import cudf
+from collections import OrderedDict
+from cugraph.datasets import karate
+
+## =======================================
+def main():
+
+    # Get start time.
+    begin_time = time.time()
+
+    G = karate.get_graph(download=True)
+
+    # Call cugraph.pagerank to get the pagerank scores
+    gdf_page = cugraph.pagerank(G)
+
+    # Find the most important vertex using the scores
+    # These methods should only be used for small graph
+    bestScore = gdf_page['pagerank'][0]
+    bestVert = gdf_page['vertex'][0]
+
+    for i in range(len(gdf_page)):
+        if gdf_page['pagerank'].iloc[i] > bestScore:
+            bestScore = gdf_page['pagerank'].iloc[i]
+            bestVert = gdf_page['vertex'].iloc[i]
+
+    print("Best vertex is " + str(bestVert) + " with score of " + str(bestScore))
+
+    duration = time.time() - begin_time
+
+    return duration
+
+
+## =======================================
+if __name__ == "__main__":
+    ## Driver.
+    duration = main()
+    dur_hours = (float)(duration)/3600.0
+    print("    total execution duration (s, hr): ",duration,dur_hours)
+    print (" ----- good termination -----")
+
+```
+
+#### Sbatch Slurm Job Submission
+
+To submit the job to the slurm scheduler, do:
+
+
+```bash
+sbatch run.01.slurm
+```
+
+
+### Analysis (Summary)
+
+Procedure to run a slurm batch job:
+
+1. Copy each of the above file contents into files on Falcon or Tinkercliffs.
+These directions are to create a CVE and input files and run the python code on
+Falcon.
+If you want to repeat this on Tinkercliffs (TC), then you have to:
+(1) create a CVE for TC and for the particular GPU node type.
+(2) run the code on TC with the newly-made CVE.
+2. Use the provided file names.
+3. Put all files in the same directory.
+4. cd to that directory on the appropriate cluster.
+5. Issue this command:  _sbatch run.01.slurm_.
+6. The slurm batch job should run.
+
+### Results
+
+As we have discussed before, all output written by scripts and codes to screen
+will be redirected to the slurm output file, when a job is submitted via
+slurm batch mode (as is the case here).
+
+Thus, if we open the file `slurm.rapids.01.code.output.job.%j.out`,
+based on command `#SBATCH -o slurm.rapids.01.code.output.job.%j.out`,
+where the JOB ID is 9681 in this case, we see the output:
+
+
+```
+Best vertex is 33 with score of 0.100917324
+    total execution duration (s, hr):  1.2069733142852783 0.000335270365079244
+ ----- good termination -----
+```
 
 
 
