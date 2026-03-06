@@ -45,9 +45,11 @@
 
 1. List some of the major graph analysis libraries.
 2. Learn how to customize your ARC work areas to use different graph libraries.
-3. Learn how to use modules and virtual environments.
-4. Learn how to compute graphs and properties with these graph libraries.
-5. Learn out to set up files, launch jobs, view results:  running in batch mode.
+3. Learn the syntax.
+4. Learn how to use modules and virtual environments.
+5. Learn some best practices for creating VEs and composing slurm sbatch scripts.
+6. Learn how to compute graphs and properties with these graph libraries.
+7. Learn out to set up files, launch jobs, view results:  running in batch mode.
 
 
 
@@ -297,19 +299,25 @@ But to work on TC, you have to:
 
 The steps to create the VE are given below.
 
-~~~
-# Acquire resources.
-salloc --account=<account>  --partition=normal_q  --constraint==genoa&avx512  --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+Note:  choose the resources for the `interact` command for the
+type of compute nodes that you want to _**run your job on**_.
+The type of compute node on which the VE is constructed _**MUST**_ match
+the type of compute node on which the VE is used.
 
+```bash
+# Acquire resources.
+interact --account=<account>  --partition=normal_q  --constraint=genoa  --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+
+# The interact command will PUT YOU on the compute node it provides.
 # Go onto compute node that salloc returns.  Here we assume that it is owl084.
-ssh owl084
+# ssh owl084
 
 # List modules.
 module list
 
-# Load Miniforge to create VE.
+# Load Miniforge to create VE.  Fully specify it.
 module reset
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 # Create VE.
 # conda create -p ~/env/owl/normal_q/py312_mf_networkx
@@ -329,6 +337,17 @@ conda install matplotlib
 # Always try to do 'pip install' after all 'conda install'.
 pip install networkx
 
+# List what packages are in the VE.
+conda list
+
+# Do some checks.  Import some packages.
+# Success is no feedback from python interpreter.
+python
+import pandas as pd
+import matplotlib
+import networkx as nx
+exit()
+
 # All done with building VE.  Deactivate the VE.
 conda deactivate
 
@@ -340,7 +359,7 @@ exit
 # Release resources.
 scancel <job ID of the salloc command>
 
-~~~
+```
 
 
 Now a new VE should be:  ~/env-python/owl/normal_q/genoa/py314_mf_networkx
@@ -374,7 +393,7 @@ The sbatch slurm script, named _run.01.slurm_, is:
 #SBATCH --cpus-per-task=1
 
 #SBATCH --partition=normal_q
-#SBATCH --constraint==genoa&avx512
+#SBATCH --constraint=genoa&avx512
 
 ## Use the compute node only for this job, and use all memory on this node.
 ## #SBATCH --exclusive
@@ -385,16 +404,16 @@ The sbatch slurm script, named _run.01.slurm_, is:
 #SBATCH --output slurm.networkx.01.code.output.job.%j.out
 #SBATCH --error slurm.networkx.01.code.output.job.%j.err
 
-#SBATCH --mail-type=BEGIN,END
+# #SBATCH --mail-type=BEGIN,END
 # Have to use your own email.
-#SBATCH --mail-user=ckuhlman@vt.edu
+# #SBATCH --mail-user=ckuhlman@vt.edu
 
 # Print the ACTUAL resources provided by slurm to
 # the output file.
 scontrol show job --details $SLURM_JOB_ID
 
 # Load modules.
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 
 # Activate a python env.
@@ -402,8 +421,44 @@ module load Miniforge3
 source activate  ~/env-python/owl/normal_q/genoa/py314_mf_networkx
 
 
+echo " " 
+echo " ------------"
+echo "Running IOSTAT"
+
+iostat 2 >iostat-stdout.txt 2>iostat-stderr.txt &
+
+echo " ------------"
+echo "Running MPSTAT"
+
+mpstat -P ALL 2 >mpstat-stdout.txt 2>mpstat-stderr.txt &
+
+echo " ------------"
+echo "Running VMSTAT"
+
+vmstat -t 2 >vmstat-stdout.txt 2>vmstat-stderr.txt &
+
+echo " ------------"
+echo "Running executable"
+
 # Code to execute.
-./run.01
+sh run.01
+
+echo " ------------"
+echo "Executable done"
+
+echo " ------------"
+echo "Killing IOSTAT"
+kill %1
+
+echo " ------------"
+echo "Killing MPSTAT"
+kill %2
+
+echo " ------------"
+echo "Killing VMSTAT"
+kill %3
+
+
 ```
 
 
@@ -570,26 +625,26 @@ It might work with python 3.8 or 3.9.
 
 The commands for building the VE are:
 
-```
+```bash
 # Acquire resources.
-salloc --account=<account>  --partition=normal_q    --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+interact   --account=<account>  --partition=normal_q   --constraint=genoa&avx512  --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
 
 # Go onto compute node that salloc returns.
 # Here it is compute node 84; for each instance, it will be different.
-ssh owl084
+# ssh owl084
 
 # List modules.
 module list
 
 # Load Miniforge to create VE.
 module reset
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 # Create VE.
-conda create -p ~/env/owl/normal_q/py37_mf_snappy
+conda create -p ~/env-python/owl/normal_q/genoa/py37_mf_snappy
 
 # Activate VE.
-source activate ~/env/owl/normal_q/py37_mf_snappy
+source activate ~/env-python/owl/normal_q/genoa/py37_mf_snappy
 
 # Install packages.
 # Will have to answer yes [y] many times.
@@ -657,6 +712,7 @@ The slurm script, named _run.01.slurm_, is:
 
 ### Other queues are:  a100_normal_q,  dgx_normal_q
 #SBATCH --partition=normal_q
+#SBATCH --constraint=genoa&avx512
 
 ## Use the compute node only for this job, and use all memory on this node.
 ## #SBATCH --exclusive
