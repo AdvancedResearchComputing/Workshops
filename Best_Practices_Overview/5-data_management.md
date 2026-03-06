@@ -77,3 +77,5 @@ Count of inodes at each top-level directory
 ### Recommended modes for `/projects`
 `2770` - All group members can manage contents of all directories.
 `2750` - Group members can access files, but cannot add or delete contents unless they own the directory.
+
+Next > [Virtual Environments on ARC](6-python_env)

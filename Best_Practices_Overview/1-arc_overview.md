@@ -1,6 +1,6 @@
 # ARC Overview
 
-## Summary of cluster types (standard, controlled, visualization)
+## Summary of resources
 
 ## Storage types (/home, /projects, /scratch, archival, TMPDIR)
   
