@@ -26,3 +26,12 @@ print(f"{n} is {'even' if n % 2 == 0 else 'odd'}")
 Tip:
 > [!TIP]
 > **Tip:** This is how to do a tip in GitHub markdown
+
+> [!WARNING]
+> **Warning:** Watch out for snakes!
+
+> [!INFO]
+> **Fact:** Three (also written as "3") is considered by most experts to be a number.
+
+> [!NOTE]
+> **Note:** You need to do some cleanup in your `/home`.
