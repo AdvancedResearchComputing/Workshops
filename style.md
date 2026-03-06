@@ -23,6 +23,16 @@ n = int(input("Enter an integer: "))
 print(f"{n} is {'even' if n % 2 == 0 else 'odd'}")
 ```
 
+"R"
+```R
+args = commandArgs(trailingOnly=TRUE)
+
+fmt_str = paste("This is coming from ", Sys.info()["nodename"], "...   Arguments: ")
+for (a in args) {fmt_str <- paste(fmt_str, " ",  a)}
+print(fmt_str)
+```
+
+
 Tip:
 > [!TIP]
 > **Tip:** This is how to do a tip in GitHub markdown
