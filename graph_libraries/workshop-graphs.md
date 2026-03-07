@@ -62,6 +62,17 @@
 2. Laptop (or local machine)
    1. Alter the _config_ file under directory _.ssh_ as below
 
+## Outline
+
+1. [Overview of Graphs and Libraries](#graph-overview)
+2. [NetworkX Example](#networkx-graph-library)
+3. [Snappy/Snap Example](#snappy-graph-library)
+4. [NetworKit Example](#networkit-graph-library)
+5. [RAPIDS Example](#rapids-network-library)
+6. [Best Practices--General](#best-practices-general)
+7. [Best Practices--Graph Libraries](#best-practices-graph-libraries)
+8. [Acknowledgments](#acknowledgments)
+
 
 
 -----------------------------
@@ -1377,7 +1388,7 @@ And you have the three performance-based output files:
 - mpstat-stdout.txt
 
 
-## RAPIDS
+## RAPIDS Network Library
 
 
 ### Restriction
@@ -1793,7 +1804,7 @@ And you have the four performance-based output files:
 
 ## Best Practices
 
-### General
+### Best Practices General
 
 1. Modules.
    - When using modules, use the "fully qualified" module name,
@@ -1887,7 +1898,7 @@ And you have the four performance-based output files:
        - `squeue -u $USER` (or `squeue`)
        - `scancel <SLURM_JOB_ID>` 
 
-### Graph Library Specific
+### Best Practices Graph Libraries
 
 1. There are modules for NetworkX, Snappy, and NetworKit.
    - You are better off using VEs to build the environment
