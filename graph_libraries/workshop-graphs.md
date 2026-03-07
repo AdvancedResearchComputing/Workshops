@@ -619,6 +619,12 @@ file _graph.png_.
 
 ![output graph](figures/networkx/graph.png)
 
+And you have the three performance-based output files:
+
+- iostat-stdout.txt
+- vmstat-stdout.txt
+- mpstat-stdout.txt
+
 
 ## Snappy Graph Library
 
@@ -985,6 +991,12 @@ degree 8: count 1
     total execution duration (s, hr):  0.007993459701538086 2.2204054726494683e-06
  ----- good termination -----
 ```
+
+And you have the three performance-based output files:
+
+- iostat-stdout.txt
+- vmstat-stdout.txt
+- mpstat-stdout.txt
 
 
 ## NetworKit Graph Library
@@ -1358,6 +1370,12 @@ The plot is:
 
 ![degree distribution](figures/networkit/deg.distro.png)
 
+And you have the three performance-based output files:
+
+- iostat-stdout.txt
+- vmstat-stdout.txt
+- mpstat-stdout.txt
+
 
 ## RAPIDS
 
@@ -1434,27 +1452,27 @@ module list
 
 # Reset to base set of modules and then load Miniforge to create VE.
 module reset
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 # List modules to see new module added.
 module list
 
 # Create VE, this should also install rapids.
-# Please use this one.
-conda create -p ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
+conda create -p ~/env-python/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
 
 # Another way, which will create the CVE in your current directory, named rapids-25.02, is:
 # Here, please ---DO NOT--- use this one.
-conda create -n rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
+# conda create -n rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
 
-# Activate VE.  We are assuming the long name here:  ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
-source activate ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
+# Activate VE. 
+source activate ~/env-python/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
 
 # Check python version, should be 3.12.
 python --version
 
 # Install packages.  (Again, Rapids is already in the CVE; was put in on creation.)
 # You do not need to install these two if you do not want.
+# But here is where you install additional packages.
 # Install the ones you want.
 conda install pandas
 conda install matplotlib
@@ -1482,6 +1500,10 @@ The library can be installed with the appropriate command below:
 * For CUDA 12, run:    conda install cuda-cudart cuda-version=12
 ```
 
+We installed CUDA (in the command to create the VE), so
+we are good.
+
+
 ### Example 2:  Running a RAPIDS Batch Job
 
 In this example, we download a famous small graph, called the "Karate
@@ -1499,7 +1521,7 @@ by Nvidia, and run it on an Nvidia GPU.
 
 The slurm script, named _run.01.slurm_, is:
 
-```python
+```bash
 #!/bin/bash
 
 #SBATCH -J rapids
@@ -1519,8 +1541,8 @@ The slurm script, named _run.01.slurm_, is:
 #SBATCH --partition=l40s_normal_q
 
 ## Slurm output and error files.
-#SBATCH -o slurm.rapids.01.code.output.job.%j.out
-#SBATCH -e slurm.rapids.01.code.output.job.%j.err
+#SBATCH --output slurm.rapids.01.code.output.job.%j.out
+#SBATCH --error slurm.rapids.01.code.output.job.%j.err
 
 ## This is set up to send you an email when the job
 ## starts and when it ends.
@@ -1530,19 +1552,83 @@ The slurm script, named _run.01.slurm_, is:
 ## it is just as easy to check your job with the `squeue`
 ## command.
 ## I personally never use these, but am showing in case useful to you.
-#SBATCH --mail-type=BEGIN,END
+# #SBATCH --mail-type=BEGIN,END
 ## Have to use your own email.
-#SBATCH --mail-user=hugo3751@gmail.com
+# #SBATCH --mail-user=hugo3751@gmail.com
+
+# Print the ACTUAL resources provided by slurm to
+# the output file.
+echo " " 
+echo " Hardware job run on"
+echo " -------------------"
+scontrol show job --details $SLURM_JOB_ID
+echo " -------------------"
+echo " "
 
 # Load modules.
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 # Activate a python env.
 # Have to use your own VE (virtual environment); name and location can vary.
-source activate ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
+source activate ~/env-python/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
+
+## Monitor the GPU.
+## The 3 means output data every 3 seconds; you will have to tweek
+## based on your execution duration.
+echo " "
+echo " "
+echo "Start file and monitoring of GPU."
+gpu_data_recording_interval_s=3
+nvidia-smi --query-gpu=timestamp,name,pci.bus_id,driver_version,temperature.gpu,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l ${gpu_data_recording_interval_s} > gpu.perform.$SLURM_JOBID.log &
+echo " "
+echo " "
+
+# Start running background processes to gather data
+# about:
+#   - CPU usage.
+#   - memory usage.
+#   - I/O (input/output)
+# When job is done (below), stop these processes.
+# The "-t 2" means gather data every 2 seconds; you have
+# to specify this with knowledge of how long you think
+# the job will last; file explosion.
+echo " " 
+echo " ------------"
+echo "Running IOSTAT"
+
+iostat 2 >iostat-stdout.txt 2>iostat-stderr.txt &
+
+echo " ------------"
+echo "Running MPSTAT"
+
+mpstat -P ALL 2 >mpstat-stdout.txt 2>mpstat-stderr.txt &
+
+echo " ------------"
+echo "Running VMSTAT"
+
+vmstat -t 2 >vmstat-stdout.txt 2>vmstat-stderr.txt &
+
+echo " ------------"
+echo "Running executable"
 
 # Code to execute.
-python pagerank.01.py
+python pagerank.01.py  pagerank.out
+
+echo " ------------"
+echo "Executable done"
+
+echo " ------------"
+echo "Killing IOSTAT"
+kill %1
+
+echo " ------------"
+echo "Killing MPSTAT"
+kill %2
+
+echo " ------------"
+echo "Killing VMSTAT"
+kill %3
+
 ```
 
 
@@ -1555,9 +1641,9 @@ computation, but here, the graph is small.
 
 The rapids python source code---file _pagerank.01.py_---is:
 
-```
-import matplotlib.pyplot as plt
-import matplotlib
+```python
+## import matplotlib.pyplot as plt
+## import matplotlib
 import time
 import sys
 from scipy.io import mmread
@@ -1573,6 +1659,9 @@ def main():
     # Get start time.
     begin_time = time.time()
 
+    # The output file name as a CLA.
+    output_file = sys.argv[1]
+
     G = karate.get_graph(download=True)
 
     # Call cugraph.pagerank to get the pagerank scores
@@ -1583,10 +1672,16 @@ def main():
     bestScore = gdf_page['pagerank'][0]
     bestVert = gdf_page['vertex'][0]
 
+    fh_out = open(output_file,"w")
+    fh_out.write("   vertex     pagerank\n")
+
     for i in range(len(gdf_page)):
+        fh_out.write(str(gdf_page['vertex'].iloc[i])  + "  " + str(gdf_page['pagerank'].iloc[i])  + "\n")
         if gdf_page['pagerank'].iloc[i] > bestScore:
             bestScore = gdf_page['pagerank'].iloc[i]
             bestVert = gdf_page['vertex'].iloc[i]
+
+    fh_out.close()
 
     print("Best vertex is " + str(bestVert) + " with score of " + str(bestScore))
 
@@ -1648,6 +1743,52 @@ Best vertex is 33 with score of 0.100917324
  ----- good termination -----
 ```
 
+You have the output file _pagerank.out_, whose contents are:
+
+```
+   vertex     pagerank
+33  0.100917324
+0  0.09699853
+32  0.0716918
+2  0.05707842
+1  0.052877165
+3  0.035860166
+31  0.037157826
+8  0.029765978
+13  0.029536655
+23  0.03152205
+5  0.02911206
+6  0.02911206
+7  0.024490748
+27  0.025639473
+29  0.026288139
+30  0.024590053
+4  0.02197855
+10  0.02197855
+19  0.019604774
+24  0.021075727
+25  0.021005858
+28  0.019573301
+9  0.014309339
+12  0.014645076
+14  0.014535879
+15  0.014535879
+16  0.016784508
+17  0.014558868
+18  0.014535879
+20  0.014535879
+21  0.014558868
+22  0.014535879
+26  0.015043843
+11  0.009564867
+```
+ 
+And you have the four performance-based output files:
+
+- iostat-stdout.txt
+- vmstat-stdout.txt
+- mpstat-stdout.txt
+- gpu.perform.246580.log
 
 
 ## Best Practices
@@ -1704,21 +1845,23 @@ Best vertex is 33 with score of 0.100917324
          uniquely specify the compute node type.
    - After installing all packages into a VE, before 
      exiting that VE, you might want to invoke the python
-     interpreter and import the packages that you believe
+     interpreter and import the packages (using `import package-name`) that you believe
      you have just installed to ensure that the packages are
-     indeed there.
+     indeed there when you execute your code.
        - This also tests the name of the package---sometimes
          the name of the import is NOT the name of the package.
          Example:  snappy vs. snap.
        - Some packages come with the base (python) install,
          so you can check that you will be able to import
-         them.  Example:  argparse.           
+         them.  Example:  argparse.
+            - So you may not explicitly load a package with `conda install <package-name>` but it is there because it resides within another package.           
 3. In your sbatch slurm script, consider:
    - Printing out the hardware that you are running on.
        - Use `scontrol show job $SLURM_JOB_ID`
    - Printing out performance data.
-       - For CPU and node-based memory data, use
-         `mpstat`, `vmstat`, and `iostat`.
+       - For CPU and node-based memory data, use the commands
+         `mpstat`, `vmstat`, and `iostat` to generate performance
+         output files.
        - For GPU data (with nvidia), use `nvidia-smi` to collect
          data on GPU performance, and use the CPU commands
          immediately above to also collect CPU data.
