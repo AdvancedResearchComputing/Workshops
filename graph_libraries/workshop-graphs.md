@@ -1021,20 +1021,35 @@ module reset
 module load Miniforge3/25.11.0-1
 
 # Create VE.
-conda create -p ~/env/owl/normal_q/py312_mf_networkit
+conda create -p ~/env-python/owl/normal_q/genoa/py314_mf_networkit
 
 # Activate VE.
-source activate ~/env/owl/normal_q/py312_mf_networkit
+source activate ~/env-python/owl/normal_q/genoa/py314_mf_networkit
 
 # Install packages.
 # Will have to answer yes [y] many times.
-conda install python=3.12
+conda install python=3.14
 # Check python version, should be 3.12.
 python --version
 conda install pandas
 conda install matplotlib
 # Always try to do 'pip install' after all 'conda install'.
 pip3 install networkit
+
+# All done with building VE.
+# You can list all packages.
+# You can do "conda list" after every "conda install"
+# to see the new packages added to the VE.
+conda list
+
+# Optional.
+# Do some checks.  Import some packages.
+# Success is no feedback from python interpreter.
+python
+import pandas as pd
+import matplotlib
+import networkit as nk
+exit()
 
 # All done with building VE.  Deactivate the VE.
 conda deactivate
