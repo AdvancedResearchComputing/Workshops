@@ -1,6 +1,10 @@
 # Using Graph Libraries on ARC Clusters
 
 
+## ARC Resources and Mechanisms for Assistance
+
+A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help and access to information, and links to those resources, are provided.
+
 ## Ideas Behind This Workshop
 
 1. Graphs are an abstraction and there
