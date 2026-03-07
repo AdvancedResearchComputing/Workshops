@@ -369,8 +369,13 @@ Now a new VE should be:  ~/env-python/owl/normal_q/genoa/py314_mf_networkx
 ### Example 2:  Running a NetworkX Job in Batch Mode
 
 
-#### Inputs
+#### Files
 
+Put all files in the same directory.
+Files are:
+- slurm sbatch script.
+- run bash script.
+- python code.
 
 The sbatch slurm script, named _run.01.slurm_, is:
 
@@ -410,7 +415,12 @@ The sbatch slurm script, named _run.01.slurm_, is:
 
 # Print the ACTUAL resources provided by slurm to
 # the output file.
+echo " " 
+echo " Hardware job run on"
+echo " -------------------"
 scontrol show job --details $SLURM_JOB_ID
+echo " -------------------"
+echo " "
 
 # Load modules.
 module load Miniforge3/25.11.0-1
@@ -421,6 +431,12 @@ module load Miniforge3/25.11.0-1
 source activate  ~/env-python/owl/normal_q/genoa/py314_mf_networkx
 
 
+# Start running background processes to gather data
+# about:
+#   - CPU usage.
+#   - memory usage.
+#   - I/O (input/output)
+# When job is done (below), stop these processes.
 echo " " 
 echo " ------------"
 echo "Running IOSTAT"
@@ -627,7 +643,7 @@ The commands for building the VE are:
 
 ```bash
 # Acquire resources.
-interact   --account=<account>  --partition=normal_q   --constraint=genoa&avx512  --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+interact   --account=<account>  --partition=normal_q   --constraint=genoa  --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
 
 # Go onto compute node that salloc returns.
 # Here it is compute node 84; for each instance, it will be different.
@@ -662,7 +678,18 @@ python -m pip install snap-stanford
 
 # All done with building VE.
 # You can list all packages.
+# You can do "conda list" after every "conda install"
+# to see the new packages added to the VE.
 conda list
+
+# Optional.
+# Do some checks.  Import some packages.
+# Success is no feedback from python interpreter.
+python
+import pandas as pd
+import matplotlib
+import snap as snp
+exit()
 
 # Deactivate the VE.
 conda deactivate
@@ -688,9 +715,13 @@ and compute the weakly connected component distribution,
 the degree distribution,
 and estimated graph diameter.
 
-#### Inputs
+#### Files
 
 Put all files in the same directory.
+Files are:
+- slurm sbatch script.
+- run bash script.
+- python code.
 
 The slurm script, named _run.01.slurm_, is:
 
@@ -729,21 +760,74 @@ The slurm script, named _run.01.slurm_, is:
 
 # #SBATCH --gres=gpu:1 # use this directive if you're requesting a GPU on a GPU partition such as dgx_normal_q or t4_normal_q
 
+# Print the ACTUAL resources provided by slurm to
+# the output file.
+echo " " 
+echo " Hardware job run on"
+echo " -------------------"
+scontrol show job --details $SLURM_JOB_ID
+echo " -------------------"
+echo " "
+
+
 # Load modules.
 # module load Anaconda3/2020.11
 # module load Python/3.11.5-GCCcore-13.2.0
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 
 # Activate a python env.
 ## source activate ~/env/tc/cpu/py39_base
 ## source /home/ckuhlman/env/tc/cpu/py39_na_basic/bin/activate
 ## source /home/ckuhlman/env/tc/cpu/py311_pv_basic/bin/activate
-source activate ~/env/owl/normal_q/py37_mf_snappy
+# source activate ~/env/owl/normal_q/py37_mf_snappy
+source activate ~/env-python/owl/normal_q/genoa/py37_mf_snappy
 
+
+
+# Start running background processes to gather data
+# about:
+#   - CPU usage.
+#   - memory usage.
+#   - I/O (input/output)
+# When job is done (below), stop these processes.
+echo " " 
+echo " ------------"
+echo "Running IOSTAT"
+
+iostat 2 >iostat-stdout.txt 2>iostat-stderr.txt &
+
+echo " ------------"
+echo "Running MPSTAT"
+
+mpstat -P ALL 2 >mpstat-stdout.txt 2>mpstat-stderr.txt &
+
+echo " ------------"
+echo "Running VMSTAT"
+
+vmstat -t 2 >vmstat-stdout.txt 2>vmstat-stderr.txt &
+
+echo " ------------"
+echo "Running executable"
 
 # Code to execute.
-./run.01
+sh run.01
+
+echo " ------------"
+echo "Executable done"
+
+echo " ------------"
+echo "Killing IOSTAT"
+kill %1
+
+echo " ------------"
+echo "Killing MPSTAT"
+kill %2
+
+echo " ------------"
+echo "Killing VMSTAT"
+kill %3
+
 ```
 
 
@@ -767,11 +851,11 @@ The Snappy python source code---file _snap.var.properties.01.py_---is:
 
 
 ```python
+import time
+import sys
 import snap
 import matplotlib.pyplot as plt
 import matplotlib
-import time
-import sys
 
 
 
@@ -828,16 +912,6 @@ if __name__ == "__main__":
 ```
 
 
-The _run.01_ bash script is:
-
-
-```bash
-# file: run.01
-
-## Use snappy to generate a
-## graph and some properties of the graph.
-python snap.var.properties.01.py
-```
 
 #### Sbatch Slurm Job Submission
 
@@ -862,7 +936,6 @@ Procedure to run a slurm batch job:
 
 ### Results
 
-### Results
 
 The results are as follows, and are written to the slurm-generated
 output file, _slurm.snappy.01.code.job.82548.out_, since all output is text
@@ -1493,5 +1566,55 @@ Best vertex is 33 with score of 0.100917324
 
 
 
+## Best Practices
+
+1. Virtual environments.
+   - When working with VEs, construct VE on the same type of compute
+   node as the type of nodes that you will run on.
+       - If you want to run on four different types of compute node,
+         perhaps even across clusters, then you need four different VEs.
+   - Be careful to note when a partition has only one type of
+      compute node and when it has different types.
+       - If you care about what type of compute node your code
+         runs on---and you WILL if you use VEs---then pay 
+         attention to the compute node types in the partition.   
+       - If a partition has only one type of compute node, then
+         the partition name uniquely identifies the type of 
+         compute node, and "you are golden." 
+       - If the partition that you are using has different
+         types of compute nodes---and this is done to increase
+         the efficiency/performance of the cluster---then you
+         must use constraints, i.e., `--constraint=`, 
+         along with `--partition`, to
+         uniquely specify the compute node type.
+   - After installing all packages into a VE, before 
+     exiting that VE, you might want to invoke the python
+     interpreter and import the packages that you believe
+     you have just installed to ensure that the packages are
+     indeed there.
+       - This also tests the name of the package---sometimes
+         the name of the import is NOT the name of the package.
+         Example:  snappy vs. snap.
+       - Some packages come with the base (python) install,
+         so you can check that you will be able to import
+         them.  Example:  argparse.           
+2. In your sbatch slurm script, consider:
+   - Printing out the hardware that you are running on.
+       - Use `scontrol show job $SLURM_JOB_ID`
+   - Printing out performance data.
+       - For CPU and node-based memory data, use
+         `mpstat`, `vmstat`, and `iostat`.
+       - For GPU data (with nvidia), use `nvidia-smi`.
+3. Anal job construction
+   - One file for each of:
+       - sbatch slurm script.
+       - run script.
+       - code (source if interpretted, machine code if compiled).
+   - This separates concerns:  coding principle---scope.
+   - Also enables you to use the latter two in interactive jobs.
+   - If running code on a different node type (and possibly 
+     cluster), then only thing you change is the sbatch slurm
+     script.  Note:  on different architecture and with compiled
+     code, you will have to recompile your code.  
 
 
