@@ -1004,21 +1004,21 @@ This is a conda VE (CVE); we use Miniforge3 module.
 
 These procedures were run on Owl cluster.
 Should work on Tinkercliffs, too, with suitable changes in paths
-for the VE, and `--constraints`.
+for the VE, and `--constraint=`.
 
 ```bash
 # Acquire resources.
-salloc --account=<account>  --partition=normal_q    --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+interact   --account=<account>  --partition=normal_q   --constraint=genoa  --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
 
 # Go onto compute node that salloc returns.
-ssh owl084
+# ssh owl084
 
 # List modules.
 module list
 
 # Load Miniforge to create VE.
 module reset
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 # Create VE.
 conda create -p ~/env/owl/normal_q/py312_mf_networkit
@@ -1572,7 +1572,14 @@ Best vertex is 33 with score of 0.100917324
 
 ## Best Practices
 
-1. Virtual environments.
+### General
+
+1. When using modules, use the "fully qualified" module name,
+   not just the default name.
+   - Example:
+       - Do NOT use `module load Miniforge`.
+       - DO use `module load Miniforge3/25.11.0-1`. 
+2. Virtual environments.
    - Organize your VEs.
       - Motivation:  you can reach Owl, Falcon, TC from any of
         these three clusters, so "seeing" a VE tells you nothing
@@ -1618,7 +1625,7 @@ Best vertex is 33 with score of 0.100917324
        - Some packages come with the base (python) install,
          so you can check that you will be able to import
          them.  Example:  argparse.           
-2. In your sbatch slurm script, consider:
+3. In your sbatch slurm script, consider:
    - Printing out the hardware that you are running on.
        - Use `scontrol show job $SLURM_JOB_ID`
    - Printing out performance data.
@@ -1627,7 +1634,7 @@ Best vertex is 33 with score of 0.100917324
        - For GPU data (with nvidia), use `nvidia-smi` to collect
          data on GPU performance, and use the CPU commands
          immediately above to also collect CPU data. 
-3. Anal job construction
+4. Anal job construction
    - One file for each of:
        - sbatch slurm script.
        - run script.
@@ -1638,10 +1645,41 @@ Best vertex is 33 with score of 0.100917324
      cluster), then only thing you change is the sbatch slurm
      script.  Note:  on different architecture and with compiled
      code, you will have to recompile your code.  
-4. _**For the love of all you hold dear, if you are doing an
+5. _**For the love of all you hold dear, if you are doing an
    interactive job, GIVE BACK the resources when you are done.**_
    - Commands to help you in this regard:
        - `squeue -u $USER` (or `squeue`)
        - `scancel <SLURM_JOB_ID>` 
 
+### Graph Library Specific
+
+1. There are modules for NetworkX, Snappy, and NetworKit.
+   - You are better off using VEs to build the environment
+     than using the provided modules because the VE approach
+     is _**more flexible and more customizable and more versatile**_.
+   - If you have some simple ditty to do, then you might
+     use the module. 
+2. NetworkX
+   - Greatest number of graph algorithms and operations.
+     By a mile; not even close. 
+   - Handles all sorts of graph labels.
+   - Can be slow.
+   - Does not scale well to large networks (but with greater
+     hardware ...)
+3. Snappy.
+   - Much more high performant.  Under a python wrapper is
+     a C++ code.
+   - Leskovec, Sosic, and students know what they are doing.
+   - Serial code (mostly)
+4.  NetworKit.
+   - Concurrent code.
+   - Uses multithreading (not distributed computing).
+5.  RAPIDS
+   - GPU-based.
+   - Only runs on Nvidia hardware.
+
+## Acknowledgments
+
+_**Massive shout-out**_ to Ms. Sonal Jha for constructing
+the RAPIDS example.  May she win the lottery.
 
