@@ -248,11 +248,19 @@ able to run there, too.
 |    Gunrock      |   Tinkercliffs, Falcon    |
 |    RAPIDS      |   Tinkercliffs, Falcon    |
 
+-----------------------------
+
+-----------------------------
+
 ## Slurm Job Structure
 
 The elements of a slurm job used in this workshop.
 
 ![slurm job structure](figures/concept-job-components.png)
+
+-----------------------------
+
+-----------------------------
 
 
 ## NetworkX Graph Library
@@ -617,6 +625,9 @@ And you have the three performance-based output files:
 - vmstat-stdout.txt
 - mpstat-stdout.txt
 
+-----------------------------
+
+-----------------------------
 
 ## Snappy Graph Library
 
@@ -990,6 +1001,9 @@ And you have the three performance-based output files:
 - vmstat-stdout.txt
 - mpstat-stdout.txt
 
+-----------------------------
+
+-----------------------------
 
 ## NetworKit Graph Library
 
@@ -1368,6 +1382,9 @@ And you have the three performance-based output files:
 - vmstat-stdout.txt
 - mpstat-stdout.txt
 
+-----------------------------
+
+-----------------------------
 
 ## RAPIDS Network Library
 
@@ -1782,6 +1799,10 @@ And you have the four performance-based output files:
 - mpstat-stdout.txt
 - gpu.perform.246580.log
 
+-----------------------------
+
+-----------------------------
+
 
 ## Best Practices
 
@@ -1905,6 +1926,10 @@ And you have the four performance-based output files:
 5.  RAPIDS
    - GPU-based.
    - Only runs on Nvidia hardware.
+
+-----------------------------
+
+-----------------------------
 
 ## Acknowledgments
 
