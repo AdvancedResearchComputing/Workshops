@@ -1019,6 +1019,8 @@ module list
 # Load Miniforge to create VE.
 module reset
 module load Miniforge3/25.11.0-1
+module load CMake/4.0.3-GCCcore-14.3.0
+
 
 # Create VE.
 conda create -p ~/env-python/owl/normal_q/genoa/py314_mf_networkit
@@ -1034,6 +1036,8 @@ python --version
 conda install pandas
 conda install matplotlib
 # Always try to do 'pip install' after all 'conda install'.
+# This install is pretty involved, so pay attention
+# to it.  It will take time.
 pip3 install networkit
 
 # All done with building VE.
@@ -1043,8 +1047,13 @@ pip3 install networkit
 conda list
 
 # Optional.
+# Get out of the VE.
+# Then get back in. (You did not have to get out; just demo'ing.)
 # Do some checks.  Import some packages.
 # Success is no feedback from python interpreter.
+conda deactivate
+
+source activate ~/env-python/owl/normal_q/genoa/py314_mf_networkit
 python
 import pandas as pd
 import matplotlib
@@ -1054,17 +1063,6 @@ exit()
 # All done with building VE.  Deactivate the VE.
 conda deactivate
 
-# Now get back in and test simply:  load packages.
-# Use the python interpreter.
-# Each import should give NO feedback; successful
-# loads will give no error message, so that is what we want to see.
-source activate ~/env/owl/normal_q/py312_mf_networkit
-python
-import matplotlib
-import pandas
-import networkit
-exit()
-
 
 # Get off of compute node.
 exit
@@ -1072,9 +1070,10 @@ exit
 # Now back on login node of the ARC cluster.
 
 # See what slurm job is our salloc command above.
-squeue -u <username>
+squeue -u $USER
 
-# Release resources.
+# IF you see an interactive job, cancel 
+# it to release resources.
 scancel <job ID of the salloc command>
 
 ```
@@ -1111,6 +1110,15 @@ delimiting character between numbers
 8 9
 ```
 
+#### Code-Related Files
+
+Put all files in the same directory.
+Files are:
+- slurm sbatch script.
+- run bash script.
+- python code.
+
+
 This sbatch slurm script, named _run.01.slurm_, uses two threads, so taking advantage of
 NetworKit's concurrency.
 
@@ -1132,6 +1140,7 @@ NetworKit's concurrency.
 #SBATCH --cpus-per-task=2
 
 #SBATCH --partition=normal_q
+#SBATCH --constraint=genoa&avx512
 
 ## Use the compute node only for this job, and use all memory on this node.
 ## #SBATCH --exclusive
@@ -1139,25 +1148,81 @@ NetworKit's concurrency.
 ## #SBATCH --mem=10G
 
 ## Slurm output and error files.
-#SBATCH -o slurm.networkx.01.code.output.job.%j.out
-#SBATCH -e slurm.networkx.01.code.output.job.%j.err
+#SBATCH --output slurm.networkx.01.code.output.job.%j.out
+#SBATCH --error slurm.networkx.01.code.output.job.%j.err
 
-#SBATCH --mail-type=BEGIN,END
+# I don't like this mail notification feature but ...
+# #SBATCH --mail-type=BEGIN,END
 # Have to use your own email.
-#SBATCH --mail-user=hugo3751@gmail.com
+# #SBATCH --mail-user=hugo3751@gmail.com
+
+
+# Print the ACTUAL resources provided by slurm to
+# the output file.
+echo " " 
+echo " Hardware job run on"
+echo " -------------------"
+scontrol show job --details $SLURM_JOB_ID
+echo " -------------------"
+echo " "
 
 
 # Load modules.
-module load Miniforge3
+module reset
+module load Miniforge3/25.11.0-1
+module load CMake/4.0.3-GCCcore-14.3.0
 
 
 # Activate a python env.
 # Have to use your own VE (virtual environment); name and location can vary.
-source activate ~/env/owl/normal_q/py312_mf_networkit
+source activate ~/env-python/owl/normal_q/genoa/py314_mf_networkit
 
+# Start running background processes to gather data
+# about:
+#   - CPU usage.
+#   - memory usage.
+#   - I/O (input/output)
+# When job is done (below), stop these processes.
+# The "-t 2" means gather data every 2 seconds; you have
+# to specify this with knowledge of how long you think
+# the job will last; file explosion.
+echo " " 
+echo " ------------"
+echo "Running IOSTAT"
+
+iostat 2 >iostat-stdout.txt 2>iostat-stderr.txt &
+
+echo " ------------"
+echo "Running MPSTAT"
+
+mpstat -P ALL 2 >mpstat-stdout.txt 2>mpstat-stderr.txt &
+
+echo " ------------"
+echo "Running VMSTAT"
+
+vmstat -t 2 >vmstat-stdout.txt 2>vmstat-stderr.txt &
+
+echo " ------------"
+echo "Running executable"
 
 # Code to execute.
-./run.01
+sh run.01
+
+echo " ------------"
+echo "Executable done"
+
+echo " ------------"
+echo "Killing IOSTAT"
+kill %1
+
+echo " ------------"
+echo "Killing MPSTAT"
+kill %2
+
+echo " ------------"
+echo "Killing VMSTAT"
+kill %3
+
 ```
 
 The run script, named _run.01_, is:
@@ -1648,8 +1713,13 @@ Best vertex is 33 with score of 0.100917324
          `mpstat`, `vmstat`, and `iostat`.
        - For GPU data (with nvidia), use `nvidia-smi` to collect
          data on GPU performance, and use the CPU commands
-         immediately above to also collect CPU data. 
-4. Anal job construction
+         immediately above to also collect CPU data.
+4. Your source code.
+   - Always measure your run time.  Builds up intuition.
+   - If you run a code a lot (100s, 1000s, 10_000s, 100_000s of 
+     times), print a message at the VERY END of your code.
+       - Python Example:  `print (" ----- good termination -----")` 
+5. Anal job construction
    - One file for each of:
        - sbatch slurm script.
        - run script.
@@ -1660,7 +1730,7 @@ Best vertex is 33 with score of 0.100917324
      cluster), then only thing you change is the sbatch slurm
      script.  Note:  on different architecture and with compiled
      code, you will have to recompile your code.  
-5. _**For the love of all you hold dear, if you are doing an
+6. _**For the love of all you hold dear, if you are doing an
    interactive job, GIVE BACK the resources when you are done.**_
    - Commands to help you in this regard:
        - `squeue -u $USER` (or `squeue`)
