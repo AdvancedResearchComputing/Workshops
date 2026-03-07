@@ -277,6 +277,12 @@ able to run there, too.
 |    Gunrock      |   Tinkercliffs, Falcon    |
 |    RAPIDS      |   Tinkercliffs, Falcon    |
 
+## Slurm Job Structure
+
+The elements of a slurm job used in this workshop.
+
+[slurm job structure](concept-job-components.png)
+
 
 ## NetworkX Graph Library
 
