@@ -1424,10 +1424,10 @@ used multiple times).
 
 ```bash
 # Acquire resources.
-salloc --account=<account>  --partition=l40s_normal_q --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --gres=gpu:1 --time=2:00:00
+interact --account=<account>  --partition=l40s_normal_q --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --gres=gpu:1 --time=2:00:00
 
 # Go onto compute node that salloc returns.
-ssh fal051
+# ssh fal051
 
 # List modules.
 module list
@@ -1444,7 +1444,7 @@ module list
 conda create -p ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
 
 # Another way, which will create the CVE in your current directory, named rapids-25.02, is:
-# Here, please do not use this one.
+# Here, please ---DO NOT--- use this one.
 conda create -n rapids-25.02 -c rapidsai -c conda-forge -c nvidia rapids=25.02 python=3.12 cuda-version=12.8
 
 # Activate VE.  We are assuming the long name here:  ~/env/falcon/l40s_normal_q/py312_mf_nvidia_rapids-25.02
@@ -1654,11 +1654,19 @@ Best vertex is 33 with score of 0.100917324
 
 ### General
 
-1. When using modules, use the "fully qualified" module name,
+1. Modules.
+   - When using modules, use the "fully qualified" module name,
    not just the default name.
-   - Example:
-       - Do NOT use `module load Miniforge`.
-       - DO use `module load Miniforge3/25.11.0-1`. 
+       - Example:
+           - Do NOT use `module load Miniforge`.
+           - DO use `module load Miniforge3/25.11.0-1`. 
+   - When using modules at the command line (e.g., for 
+     creating VEs or whehther inside of scripts, before
+     doing your first `module load <module-name>`, please
+     do `module reset`.
+      - This gets rid of any modules you have active and 
+        loads only a very minimal set of modules.  Then
+        you load the modules for your environment. 
 2. Virtual environments.
    - Organize your VEs.
       - Motivation:  you can reach Owl, Falcon, TC from any of
