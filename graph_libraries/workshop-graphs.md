@@ -303,6 +303,10 @@ Note:  choose the resources for the `interact` command for the
 type of compute nodes that you want to _**run your job on**_.
 The type of compute node on which the VE is constructed _**MUST**_ match
 the type of compute node on which the VE is used.
+This is no different than having my own, say C++ code, and wanting
+to run it on different types of compute nodes:
+I have to compile that source code on every architecture that
+I want to run that code on.
 
 ```bash
 # Acquire resources.
@@ -1569,6 +1573,22 @@ Best vertex is 33 with score of 0.100917324
 ## Best Practices
 
 1. Virtual environments.
+   - Organize your VEs.
+      - Motivation:  you can reach Owl, Falcon, TC from any of
+        these three clusters, so "seeing" a VE tells you nothing
+        about where and how it was made.
+          - You are asking for trouble in running a VE that
+            you built on Falcon, say on an L40S node, and
+            running it on the normal_q on, say, Owl. 
+      - I organize mine in my $HOME area and the structure is:
+         - PL (programming language)
+             - cluster
+                 - partition
+                     -  (if partition has more than one type
+                        compute node) compute node type.
+         - This way, when I follow a path to a VE, I know 
+           EXACTLY where I can execute code with that VE.
+         - Structure:  $HOME/cluster-name/partition-name/compute-node-type-name/VE-name  
    - When working with VEs, construct VE on the same type of compute
    node as the type of nodes that you will run on.
        - If you want to run on four different types of compute node,
@@ -1618,5 +1638,10 @@ Best vertex is 33 with score of 0.100917324
      cluster), then only thing you change is the sbatch slurm
      script.  Note:  on different architecture and with compiled
      code, you will have to recompile your code.  
+4. _**For the love of all you hold dear, if you are doing an
+   interactive job, GIVE BACK the resources when you are done.**_
+   - Commands to help you in this regard:
+       - `squeue -u $USER` (or `squeue`)
+       - `scancel <SLURM_JOB_ID>` 
 
 
