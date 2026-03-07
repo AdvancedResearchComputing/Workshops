@@ -281,7 +281,7 @@ able to run there, too.
 
 The elements of a slurm job used in this workshop.
 
-[slurm job structure](concept-job-components.png)
+![slurm job structure](concept-job-components.png)
 
 
 ## NetworkX Graph Library
