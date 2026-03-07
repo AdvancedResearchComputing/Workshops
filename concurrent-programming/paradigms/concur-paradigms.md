@@ -1,15 +1,8 @@
----
-title: "Concurrent Programming Paradigms"
-teaching: 20
-exercises: 0
-questions:
-- "What are main concurrent programming concepts?"
-objectives:
-- "Learn main concurrency concepts."
-keypoints:
-- "Different parallel processing tools use different models of concurrency."
----
+# Concurrency Paradigms:  Concepts
 
+## Link Back To Main
+
+[Back to Main Page](../concurrency-main.md)
 
 
 ## Embarrassingly Parallel
@@ -23,8 +16,8 @@ For embarrassingly parallel:
 5. Therefore, processes can run in any order (including simultaneously).
 
 
-[embarrassingly parallel concept](../../figures/concept-embarrassingly-parallel.pdf)
-![embarrassingly parallel concept](../../figures/concept-embarrassingly-parallel.png)
+[embarrassingly parallel concept](figures/concept-embarrassingly-parallel.pdf)
+![embarrassingly parallel concept](figures/concept-embarrassingly-parallel.png)
 
 ## Forking
 
@@ -52,8 +45,8 @@ One needs header files `<unistd. h>` and `<sys/types. h>`.
 
 In python, the multiprocessing package is used.
 
-[forking concept](../../figures/concept-forking.pdf)
-![forking concept](../../figures/concept-forking.png)
+[forking concept](figures/concept-forking.pdf)
+![forking concept](figures/concept-forking.png)
 
 
 
@@ -134,18 +127,18 @@ More information on python is at:
 
 ### Concept of threads (e.g., pthreads) doing work 
 
-[thread work concept](../../figures/concept-pthreading-work.pdf)
-![thread work concept](../../figures/concept-pthreading-work.png)
+[thread work concept](figures/concept-pthreading-work.pdf)
+![thread work concept](figures/concept-pthreading-work.png)
 
 ### Concept of threads (e.g., pthreads) handling events 
 
-[thread event concept](../../figures/concept-pthreading-events.pdf)
-![thread event concept](../../figures/concept-pthreading-events.png)
+[thread event concept](figures/concept-pthreading-events.pdf)
+![thread event concept](figures/concept-pthreading-events.png)
 
 ### Concept of OpenMP threads doing work 
 
-[thread OpenMP (OMP) concept](../../figures/concept-omp-work.pdf)
-![thread OpenMP (OMP) concept](../../figures/concept-omp-work.png)
+[thread OpenMP (OMP) concept](figures/concept-omp-work.pdf)
+![thread OpenMP (OMP) concept](figures/concept-omp-work.png)
 
 
 ## Inter-Process Communication (IPC), Distributed Systems
@@ -189,8 +182,8 @@ more or less work in the same way.
 A useful quick overview is here:  https://medium.com/parallel-distributed-computing-for-data-enthusiast/high-performance-network-fabrics-and-libraries-d423fa3db445
 
 
-[distribution concept](../../figures/concept-distributed.pdf)
-![distribution concept](../../figures/concept-distributed.png)
+[distribution concept](figures/concept-distributed.pdf)
+![distribution concept](figures/concept-distributed.png)
 
 
 ## Graphics Processing Units (GPUs)
@@ -198,8 +191,8 @@ A useful quick overview is here:  https://medium.com/parallel-distributed-comput
 Accelerator attached to a compute node.
 
 
-[GPU concept](../../figures/concept-gpu.pdf)
-![GPU concept](../../figures/concept-gpu.png)
+[GPU concept](figures/concept-gpu.pdf)
+![GPU concept](figures/concept-gpu.png)
 
 ## Combinations
 
@@ -217,5 +210,4 @@ or
 1. MPI
 2. GPU
 
-{% include links.md %}
 

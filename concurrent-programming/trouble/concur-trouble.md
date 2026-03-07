@@ -23,8 +23,8 @@ Our starting point is as before:  threads executing concurrently.
 In this graphic, it is ASSUMED that the data are independent so that they can be operated on 
 by the threads in any execution order of the threads (non-determinism).
 
-[critical sections-1](../../figures/concept-crit-section-1.pdf)
-![critical sections-1](../../figures/concept-crit-section-1.png)
+[critical sections-1](figures/concept-crit-section-1.pdf)
+![critical sections-1](figures/concept-crit-section-1.png)
 
 
 Now, what happens if we have critical sections in the code?
@@ -40,8 +40,8 @@ access the data in any way, then two threads may be updating the same piece of d
 This is shown below.
 
 
-[critical sections-2](../../figures/concept-crit-section-2.pdf)
-![critical sections-2](../../figures/concept-crit-section-2.png)
+[critical sections-2](figures/concept-crit-section-2.pdf)
+![critical sections-2](figures/concept-crit-section-2.png)
 
 
 Since one cannot now have all threads run concurrently, what is going on?
@@ -50,8 +50,8 @@ In the graphic below, threads are now numbered to see how they map from the uppe
 graphic to the lower one.
 
 
-[critical sections-3](../../figures/concept-crit-section-3.pdf)
-![critical sections-3](../../figures/concept-crit-section-3.png)
+[critical sections-3](figures/concept-crit-section-3.pdf)
+![critical sections-3](figures/concept-crit-section-3.png)
 
 Also, a key and unfortunate outcome of this phenomenon is that as the number of 
 threads or processes increases, so that you hope to achieve greater concurrency and
@@ -73,8 +73,8 @@ This is an issue for forking, threads, distributed processing, and combinations 
 We will use MPI (distributed) computing, just to be different from the threading above.
 Our original distributed processing graphic is below.
 
-[distributed-1](../../figures/concept-distributed.pdf)
-![distributed-1](../../figures/concept-distributed.png)
+[distributed-1](figures/concept-distributed.pdf)
+![distributed-1](figures/concept-distributed.png)
 
 Each of the four processes is now represented by a cyan arrow in the following graphic.
 In the first case, all four processes execute for about the same amount of time
@@ -93,8 +93,8 @@ combined lengths of the arrows for processes
 
 
 
-[distributed-2](../../figures/concept-load-balance-1.pdf)
-![distributed-2](../../figures/concept-load-balance-1.png)
+[distributed-2](figures/concept-load-balance-1.pdf)
+![distributed-2](figures/concept-load-balance-1.png)
 
 
 ## Load Balancing:  Threading
@@ -126,6 +126,4 @@ Critical sections can arise in distributed codes because each process can have t
 
 So critical sections and load balancing have wide scope.
 
-
-{% include links.md %}
 
