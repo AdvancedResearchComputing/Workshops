@@ -5,35 +5,15 @@
 
 A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help and access to information, and links to those resources, are provided.
 
+
 ## Ideas Behind This Workshop
 
-1. Graphs are an abstraction and there
-2. Running VS Code is allowable on head nodes IF
-   1. You do not run with plugins, e.g., do not run with AI plugins.
-   2. You do not run code:  no code execution, no major code debugging.
-3. Why these restrictions?
-   1. Because head nodes are communal resources that all users make use of _**simultaneously**_.
-   2. (Compute nodes, on the other hand, _**ARE**_ used by a selected few users at a time according to Slurm scheduler operations.)
-   3. So if you are consuming lots of resources on head nodes, then you are degrading 
-          the performance of the head nodes for all other users.
-       1. VS Code is a _**primary**_ way that users consume too many resources on head nodes.
-   4. It is most useful to think of yourself and all other 1000 ARC users as being in the same boat:
-         we need to be respectful of others, by following agreed upon procedures, so that everyone
-         can work efficiently and get their work done.
-4. To summarize:  I want to use VS Code to do my work and
-   1. I want to debug and run my code.
-   2. I want to use AI or other plugins.
-5. How do I do this?
-6. By running your instance of VS Code on a _**compute**_ node.
-7. This workshop is all about running VS Code on compute nodes.
-
-
-
-## Organization
-
-### Applicability
-
-1. These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
+1. A graph is an abstraction.
+2. Therefore, there are many fields of science and engineering that employ them.
+3. Use of graphs on ARC clusters---for generating and analyzing them---can take many forms.
+4. We demonstrate various tools; tools that have different strengths and weaknesses.
+5. We provide files for batch jobs to run on ARC clusters and demonstrate how to construct virtual environments for their use.
+6. We also provide examples for how to collect performance data on your jobs. 
 
 
 ### Prerequisites
@@ -52,19 +32,10 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 3. Learn the syntax.
 4. Learn how to use modules and virtual environments.
 5. Learn some best practices for creating VEs and composing slurm sbatch scripts.
-6. Learn how to compute graphs and properties with these graph libraries.
-7. Learn out to set up files, launch jobs, view results:  running in batch mode.
+6. Learn how to collect performance data on your jobs.
+7. Learn how to compute graphs and properties with these graph libraries.
+8. Learn out to set up files, launch jobs, view results:  running in batch mode.
 
-
-
-### Major Activities  TODO
-
-1. VS Code
-   1. Install VS Code (VSC) on your laptop.
-   2. Install the `Remote-ssh` plugin in your VSC.
-   3. Make sure you have a 
-2. Laptop (or local machine)
-   1. Alter the _config_ file under directory _.ssh_ as below
 
 ## Outline
 
@@ -77,7 +48,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 7. [Best Practices--Graph Libraries](#best-practices-graph-libraries)
 8. [Acknowledgments](#acknowledgments)
 
-
+## TODO:  bust out the performance data ideas and expand into processing.
 
 -----------------------------
 
