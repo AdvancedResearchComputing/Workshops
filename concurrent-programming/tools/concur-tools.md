@@ -18,7 +18,8 @@ This is an issue for the individual developer of an individual code.
 
 __If you have basic parallel setups for which you'd like to see examples, let us know.__
 
-| ---------------- | -------------- | -------------- | -------------- |
+
+
 | Programming Language    |   Construct        |  Implementation  |  Example in Workshop |
 | ---------------- | -------------- | ------------- |-------------- |
 |    Any language, via Slurm     | Multiple independent processes (embarrassingly parallel)  |   srun (with slurm) | v1, v2 |
