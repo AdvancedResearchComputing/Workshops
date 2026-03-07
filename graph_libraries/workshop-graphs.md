@@ -1604,7 +1604,9 @@ Best vertex is 33 with score of 0.100917324
    - Printing out performance data.
        - For CPU and node-based memory data, use
          `mpstat`, `vmstat`, and `iostat`.
-       - For GPU data (with nvidia), use `nvidia-smi`.
+       - For GPU data (with nvidia), use `nvidia-smi` to collect
+         data on GPU performance, and use the CPU commands
+         immediately above to also collect CPU data. 
 3. Anal job construction
    - One file for each of:
        - sbatch slurm script.
