@@ -138,31 +138,31 @@ When finished compiling:
 
 ## Examples Listing
 
-This section is getting fairly big.  Lets map out the examples.
+This section is getting fairly big.  Lets map out the examples.  Most examples use C; one uses Fortran.
 
-1.  Example 1:  how to iterate through a vector and sum up values.
-2.  Example 2:  how to do #1, but badly.  Emphasizes the disaster of critical sections.
-3.  Example 3:  illustrates that you can compile code with OpenMP pragmas (i.e., directives)
+1.  [Example 1](#example-1--openmp-and-c):  how to iterate through a vector and sum up values.
+2.  [Example 2](#example-2--get-rid-of-the-total_sum-variable):  how to do #1, but badly.  Emphasizes the disaster of critical sections.
+3.  [Example 3](#example-3--compile-code-without-the-openmp-library):  illustrates that you can compile code with OpenMP pragmas (i.e., directives)
     in it and it will compile fine WITHOUT using the OpenMP library and in this case,
     the code will just run in searial mode.
     - Note that only OpenMP directives are ignored; if you have particular OpenMP commands
       in the code, then you must comment them out for successful compile.
-4.  Example 4:  runs the code of Example 1, but whereas Example 1 used 20 cores, this 
+4.  [Example 4](#example-4-run-first-code-with-one-thread):  runs the code of Example 1, but whereas Example 1 used 20 cores, this 
     execution uses only one core for threading, meaning it is a serial code. 
     - We can compare the execution times from all four of these examples because the amount
       of work done is the same in the examples, but the number of cores (and threads) and
       the pragmas are different..
-5.  Example 5:  Matrix-matrix multiplication.
+5.  [Example 5](#example-5--matrix-matrix--multiplication):  Matrix-matrix multiplication.
     - All of the earlier examples address iterating through a vector (array) of values.
     - This example gives a different kind of example and shows how matrices can be
       handled. 
 6.  Examples for how to schedule the iterations of a loop.
     - Loops are the focal point for parallelization (concurrency) when using OpenMP.
     - There are at least three ways to schdule the handling of iterations.
-        - static (Example 6)
-        - dynamic (Example 7)
-        - guided  (Example 8)
-7.  Example 9:  Use of OpenMP with Fortran.  
+        - static [(Example 6)](#example-6--schedule-loops-with-static)
+        - dynamic [Example 7](#example-7--schedule-loops-with-dynamic)
+        - guided  [Example 8](#example-8--schedule-loops-with-guided)
+7.  [Example 9](#example-9--fortran-and-openmp):  Use of OpenMP with Fortran.  
 
 
 
