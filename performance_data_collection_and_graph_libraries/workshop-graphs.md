@@ -1822,7 +1822,7 @@ And you have the four performance-based output files:
         loads only a very minimal set of modules.  Then
         you load the modules for your environment.
       - This produces an environment for your work that is 
-      - "minimalist" and "clean." 
+         "minimalist" and "clean." 
 2. Virtual environments.
    - Organize your VEs.
       - Motivation:  you can reach Owl, Falcon, TC from any of
