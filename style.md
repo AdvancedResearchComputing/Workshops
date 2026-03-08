@@ -47,6 +47,19 @@ print(fmt_str)
 << place your C++ source code here >>
 ```
 
+[!NOTE]
+_**Offsetting code/text**_:
+If you open this raw file, you will see code sections set off by ` ``` ` at the
+beginning and end of the code/text block.
+Uniformity is good and this is the approach used here---so we should use
+it to the extent possible.
+However, there is another approach for offsetting text:
+using three tildes rather than the backtick,
+like so ` ~~~ `.
+Thus, if you inherit a file that uses ` ~~~~ ` at the start and end of code/text
+blocks, it will work here.
+
+
 
 Tip:
 > [!TIP]
