@@ -1878,12 +1878,17 @@ And you have the four performance-based output files:
        - For GPU data (with nvidia), use `nvidia-smi` to collect
          data on GPU performance, and use the CPU commands
          immediately above to also collect CPU data.
-4. Your source code.
+4. After your slurm batch job completes, run the `seff <SLURM_JOB_ID>`
+   command to view the CPU utilization and memory utilization of your
+   job.  This will help you build intuition about
+    - how your code operates
+    - what resources to request in future jobs.
+5. Your source code.
    - Always measure your run time.  Builds up intuition.
    - If you run a code a lot (100s, 1000s, 10_000s, 100_000s of 
      times), print a message at the VERY END of your code.
        - Python Example:  `print (" ----- good termination -----")` 
-5. Anal job construction
+6. Anal job construction
    - One file for each of:
        - sbatch slurm script.
        - run script.
@@ -1894,7 +1899,7 @@ And you have the four performance-based output files:
      cluster), then only thing you change is the sbatch slurm
      script.  Note:  on different architecture and with compiled
      code, you will have to recompile your code.  
-6. _**For the love of all you hold dear, if you are doing an
+7. _**For the love of all you hold dear, if you are doing an
    interactive job, GIVE BACK the resources when you are done.**_
    - Commands to help you in this regard:
        - `squeue -u $USER` (or `squeue`)
