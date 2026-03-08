@@ -13,6 +13,15 @@ The first four items below address concepts.
 The remaining items provide concrete examples of concurrency
 software tools that run on ARC clusters.
 
+These tools are at various levels of software.  These include:
+
+- UNIX/Linux tools.
+- Slurm tools.
+- POSIX tools.
+- PL constructs.
+- Software libraries.
+- Software frameworks. 
+
 ## Outline
 
 1. [Overview](overview/concur-overview.md)
@@ -22,3 +31,4 @@ software tools that run on ARC clusters.
 5. [srun Tool](srun/srun.md)
 6. [GNU Parallel Tool](gnu-parallel/gnu-parallel.md)
 7. [srun and GNU Parallel Combined](srun-and-parallel/srun-and-parallel.md)
+8. [Slurm Job Arrays](slurm-job-arrays/slurm-job-arrays.md)
