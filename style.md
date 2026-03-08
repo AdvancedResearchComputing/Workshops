@@ -32,6 +32,10 @@ for (a in args) {fmt_str <- paste(fmt_str, " ",  a)}
 print(fmt_str)
 ```
 
+"Java"
+```java
+<< place your java source code here >>
+```
 
 Tip:
 > [!TIP]
