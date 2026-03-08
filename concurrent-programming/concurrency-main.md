@@ -34,7 +34,7 @@ Rather, we are interested in multiple threads of control executing code at the s
 moment in time.
 
 > [!NOTE]
-_**Note on example codes**_.
+_**Notes on example codes**_.
 - Examples are the backbone of this document.  The idea is to save you time and energy
 by providing examples for how codes run on ARC systems.
 - The approach used here is that the source code for examples is embedded right in the 
