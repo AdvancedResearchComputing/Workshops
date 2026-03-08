@@ -83,12 +83,12 @@ spaces and hence do not have the same data.
 
 This job is run on the Owl cluster.
 
-### Input Files
+#### Input Files
 
 The sbatch slurm script file _run.01.sbatch_.
 
 
-~~~
+```bash
 #!/bin/bash
 
 #SBATCH -J p-multiprocess
@@ -131,21 +131,19 @@ module load Python/3.12.3-GCCcore-13.3.0
 
 # Code to execute.
 sh run.01
-~~~
-{:  .language-bash}
+```
 
 The run script is _run.01_.
 
-~~~
+```
 python main.py
-~~~
-{:  .language-bash}
+```
 
 
 The python code filename is _main.py_.
 
 
-~~~
+```python
 from multiprocessing import Process
 import time
 
@@ -176,21 +174,18 @@ if __name__ == "__main__":  # confirms that the code is under main function
     for proc in procs:
         proc.join()
 
-~~~
-{:  .language-bash}
+```
 
 
-### Submit the Slurm Job
+#### Submit the Slurm Job
 
 The job is submitted by:
 
-~~~
+```bash
 sbatch run.01.sbatch
-~~~
-{:  .language-bash}
+```
 
-
-### Results
+#### Results
 
 Output is written to the slurm-generated output file, whose name
 in this instance is _slurm.python.multiprocessing.04.job.82421.out_.
@@ -201,7 +196,7 @@ Thereafter, each forked process adds another element to the list.
 Rather than each process having a list of all entries, 
 each process has a unique fifth element of its list.
 
-~~~
+```
 The name of continent is :  Asia
  All continents, including added one:  ['Asia', 'America', 'Europe', 'Africa', 'Asia']
 The name of continent is :  America
@@ -210,15 +205,13 @@ The name of continent is :  Europe
  All continents, including added one:  ['Asia', 'America', 'Europe', 'Africa', 'Europe']
 The name of continent is :  Africa
  All continents, including added one:  ['Asia', 'America', 'Europe', 'Africa', 'Africa']
-~~~
-{:  .language-bash}
+```
 
 
 When the slurm job has finished, do not forget to run `seff` according to:
 
-~~~
+```
 seff SLURM_JOB_ID
-~~~
-{:  .language-bash}
+```
 
 
