@@ -48,7 +48,7 @@ print(fmt_str)
 ```
 
 [!NOTE]
-_**Offsetting code/text**_:
+**Offsetting code/text**:
 If you open this raw file, you will see code sections set off by ` ``` ` at the
 beginning and end of the code/text block.
 Uniformity is good and this is the approach used here---so we should use
