@@ -40,7 +40,8 @@ Since there are few files for each example and the files are small to keep examp
 minimalistic, the time required to paste contents of these pages into files using
 a text editor is almost zero.
 Also, the reason the codes are placed here and not in some github repo is because 
-one can realize a lot of value by SEEING the codes (even if you do not execute them).
+one can realize a LOT of value by SEEING the codes even if you do not execute them.
+(It is recommended that you execute them.)
 This approach makes the text and the code integrated in one place.
 
 
@@ -55,3 +56,4 @@ This approach makes the text and the code integrated in one place.
 7. [srun and GNU Parallel Combined](srun-and-parallel/srun-and-parallel.md)
 8. [Slurm Job Arrays](slurm-job-arrays/slurm-job-arrays.md)
 9. [Python Multiprocessing](python-multiprocessing/python-multiprocessing.md)
+10. [Java Threading](java-threading/java-threading.md)
