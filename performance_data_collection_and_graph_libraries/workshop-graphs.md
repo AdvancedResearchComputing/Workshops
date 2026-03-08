@@ -1820,7 +1820,9 @@ And you have the four performance-based output files:
      do `module reset`.
       - This gets rid of any modules you have active and 
         loads only a very minimal set of modules.  Then
-        you load the modules for your environment. 
+        you load the modules for your environment.
+      - This produces an environment for your work that is 
+      - "minimalist" and "clean." 
 2. Virtual environments.
    - Organize your VEs.
       - Motivation:  you can reach Owl, Falcon, TC from any of
