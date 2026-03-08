@@ -22,6 +22,16 @@ These tools are at various levels of software.  These include:
 - Software libraries.
 - Software frameworks. 
 
+By _**concurrency**_ we mean that multiple sequences of code are executing simultaneously.
+Herein, we use "concurrency" synonymously with "parallel execution."
+We are not interested in, for example, two "threads of control" or sequences of commands
+being alive or active at the same time but not executing at the same time.
+This behavior is either time-slicing or akin to it.
+We have one or two examples of this, but they are only to recognize the limitations of
+such approaches---they are not advocated.
+Rather, we are interested in multiple threads of control executing code at the same 
+moment in time.
+
 _**Note on example codes**_.
 Examples are the backbone of this document.  The idea is to save you time and energy
 by providing examples for how codes run on ARC systems.
