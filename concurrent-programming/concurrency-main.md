@@ -69,3 +69,5 @@ This approach makes the text and the code integrated in one place.
 10. [Java Threading](java-threading/java-threading.md)
 11. [Pthreads](pthreads/pthreads.md)
 12. [OpenMP](open-mp/openmp.md)
+13. [MPI (Message Passing Interface) Patterns](mpi-patterns/mpi-patterns.md)
+14. 
