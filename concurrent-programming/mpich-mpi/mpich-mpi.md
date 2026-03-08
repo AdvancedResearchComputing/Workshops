@@ -52,6 +52,9 @@ Therefore, what are the big changes between this episode and the previous one?
 1. Modules. Note we use these at the command line for compiling and in the sbatch slurm scripts.
     - For OpenMpi, we used `foss/2023b`.
     - For MPICH, we are using `MPICH/4.3.0-GCC-14.2.0` or just `MPICH`.
+    - To confirm this module for MPICH, go to a cluster like Owl and type `module spider MPICH` and
+      see what versions of MPICH are available.  If a different vintage of MPICH is given, simply
+      substitute that new module for the `MPICH/4.3.0-GCC-14.2.0` specified. 
 2. We change the names of the slurm-generated output and error files in the sbatch slurm script.
     - For OpenMpi, we use "open.mpi"
     - For MPICH, we use "mpich"
@@ -84,25 +87,39 @@ These should all be done on the the type of compute node on which you are going 
 Since we are running on the Owl cluster and Genoa nodes, that is where we want to create the 
 binary executable. 
  
-So the commands are: 
- 
-~~~ 
+So the commands are:
+
+_**Option 1:  The preferred option**_:
+
+Option 1 is preferred because the interactive job will be cleaned up automatically.
+
+~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa --constraint=avx512
+interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+--nodes=1  --tasks-per-node=1  --cpus-per-task=2  
+~~~
+
+
+_**Option 2:  The not-preferred option**_:
+
+
+~~~bash
+## From the owl head node, issues this command to start your interactive job:
+salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 
 ## The results returned by slurm for the above command will include an owl compute node id, <cnode-id>
 ssh <cnode-id>
-~~~ 
-{:  .language-bash} 
+~~~
 
 where you have to supply your own account.
+
 Now you can enter the compile commands.
 
 When finished compiling:
 
 1. `exit` off of the compute node.
-2. use `scancel` to cancel this interactive job.
+2. If you used the not-recommended Option 2, then use `scancel` to cancel this interactive job.
 
 
 ## Example 1
@@ -119,7 +136,7 @@ But what this examples shows, importantly, is the mechanics of
 specifying a sbatch slurm script, a makefile, the source code,
 building the source code, and executing a code across compute nodes.
 
-### Inputs
+#### Files (Scripts and Codes)
 
 Each of these files should be created on TC and put in the 
 same directory.
@@ -149,7 +166,7 @@ text here and pasting it into a file with the specified name.
 
 The sbatch slurm script is _job.01.slurm_.
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -179,8 +196,7 @@ The sbatch slurm script is _job.01.slurm_.
 ## Number of cores (total) per compute node (e.g., for hybrid threading).
 #SBATCH --cpus-per-task=1
 
-#SBATCH --constraint=genoa
-#SBATCH --constraint=avx512
+#SBATCH --constraint=genoa&avx512
 
 
 ## -----------------------
@@ -194,8 +210,8 @@ The sbatch slurm script is _job.01.slurm_.
 
 ## -----------------------
 ## SLURM OUTPUT AND ERROR FILES.
-#SBATCH -o slurm.mpich.%j.out
-#SBATCH -e slurm.mpich.%j.err
+#SBATCH --output slurm.mpich.%j.out
+#SBATCH --error slurm.mpich.%j.err
 
 
 ## -----------------------
@@ -228,8 +244,12 @@ cd $SLURM_SUBMIT_DIR
 
 ## -----------------------
 ## Record slurm conditions.
+echo " "
 echo "slurm scontrol" 
+echo " "
 scontrol show job --details $SLURM_JOB_ID
+echo " "
+echo "<< end slurm scontrol >>" 
 echo " "
 
 
@@ -256,13 +276,13 @@ THE_INPUT=""
 ## For MPICH.
 mpiexec -n $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
+
 
 
 This C++ code just has the worker MPI processes print their ranks.
 The C code is _main.C_.
 
-~~~
+~~~cpp
 #include <stdio.h>
 #include "mpi.h"
 
@@ -295,7 +315,7 @@ int main(int argc,char* argv[])
     return 0;
 }
 ~~~
-{:  .language-cpp}
+
 
 
 The makefile to build the C++ executable is _makefile.owl.mpich_.
@@ -312,7 +332,7 @@ The line AFTER each of these three lines in the file below must start with a tab
 
 
 
-~~~
+~~~bash
 #### Aug 2024.
 #### At VT, on TC cluster.
 #### Process:
@@ -347,40 +367,38 @@ clean:
         rm mpi-simple01 *.o
 
 ~~~
-{:  .language-bash}
 
-### C++ Code Compilation
+
+#### C++ Code Compilation
 
 The module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
 
-~~~
+~~~bash
 module reset
 module load MPICH/4.3.0-GCC-14.2.0
 ~~~
-{:  .language-bash}
 
 
-The compile is through the makefile above called _makefile.tc.mpich_.
+
+The compile is through the makefile above called _makefile.owl.mpich_.
 Invoke like this:
 
-~~~
+~~~bash
 make -f makefile.owl.mpich
 ~~~
-{:  .language-bash}
 
 The executable should be _mpi-simple01_.
 
 
 ### Slurm Sbatch Job Submission
 
-~~~
+~~~bash
 sbatch job.01.slurm
 ~~~
-{:  .language-bash}
 
 
-### Output
+#### Output
 
 The output in the specified slurm output file, with SLURM JOB ID 104999,
 is _slurm.mpich.104999.out_.
@@ -388,7 +406,7 @@ Your output will vary, but the same types of information will be output.
 
 __This output was generated on Owl.__
 
-~~~
+~~~output
 slurm scontrol
 JobId=169299 JobName=job.01.slurm
    UserId=ckuhlman(1344122) GroupId=ckuhlman(1344122) MCS_label=N/A
@@ -438,7 +456,7 @@ hello world from sending process 1
 hello world from receiving process 0 (my_rank); received from process 1
 hello world from receiving process 0 (my_rank); received from process 2
 ~~~
-{:  .output}
+
 
 
 
@@ -454,11 +472,11 @@ The two processes switch roles on each consecutive iteration:
 2. in iteration (i+1), process 1 sends and process 0 receives.
 
 
-### Input
+#### Files (Scripts and Codes)
 
 This is the sbatch slurm job submission script _job.02.slurm_.
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -492,8 +510,7 @@ This is the sbatch slurm job submission script _job.02.slurm_.
 
 ## -----------------------
 ## CONSTRAINTS
-#SBATCH --constraint=genoa
-#SBATCH --constraint=avx512
+#SBATCH --constraint=genoa&avx512
 
 
 
@@ -508,8 +525,8 @@ This is the sbatch slurm job submission script _job.02.slurm_.
 
 ## -----------------------
 ## SLURM OUTPUT AND ERROR FILES.
-#SBATCH -o slurm.mpich.%j.out
-#SBATCH -e slurm.mpich.%j.err
+#SBATCH --output slurm.mpich.%j.out
+#SBATCH --error slurm.mpich.%j.err
 
 
 ## -----------------------
@@ -538,8 +555,12 @@ cd $SLURM_SUBMIT_DIR
 
 ## -----------------------
 ## Record slurm conditions.
+echo " "
 echo "slurm scontrol" 
+echo " "
 scontrol show job --details $SLURM_JOB_ID
+echo " "
+echo "<< end slurm scontrol >>" 
 echo " "
 
 
@@ -565,7 +586,7 @@ THE_EXEC="./mpi-simple02"
 ## For MPICH.
 mpiexec -n $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
+
 
 The C++ code is next.
 Notice that the variable that constitutes the message
@@ -577,7 +598,7 @@ value.
 This is the C++ code _main02.C_.
 
 
-~~~
+~~~cpp
 #include <stdio.h>
 #include "mpi.h"
 
@@ -627,7 +648,7 @@ int main(int argc,char* argv[])
     return 0;
 }
 ~~~
-{:  .language-cpp}
+
 
 The makefile for compiling the C++ code is _makefile.owl.02.mpich_:
 
@@ -641,7 +662,7 @@ The line AFTER each of these three lines in the file below must start with a tab
 3. `clean:` 
 
 
-~~~
+~~~bash
 #### Aug 2024.
 #### At VT, on TC cluster.
 #### Process:
@@ -677,11 +698,11 @@ mpi-simple02: main02.C
 clean:
         rm mpi-simple02 *.o
 ~~~
-{:  .language-bash}
 
 
 
-### Code Compilation
+
+#### Code Compilation
 
 We assume that we are in the same session as for Example 1, so we still have
 loaded the MPICH module.
@@ -689,24 +710,23 @@ If not, repeat the `module reset` and `module load MPICH` commands above.
 
 To compile the C++ code, we use the makefile above as follows:
 
-~~~
+~~~bash
 make -f makefile.owl.02.mpich
 ~~~
-{:  .language-bash}
+
+The generated executable file should be _mpi-simple02_.
 
 
-
-### Slurm Sbatch Job Submission
+#### Slurm Sbatch Job Submission
 
 To submit this job to the slurm scheduler, we execute:
 
-~~~
+~~~bash
 sbatch job.02.slurm
 ~~~
-{:  .language-bash}
 
 
-### Output
+#### Output
 
 The output file contains the following.
 The first prints are from the sbatch slurm script.
@@ -753,7 +773,7 @@ __This output was generated on Owl.__
 The output may not be in the same order in your *.out file because there is 
 non-determinism as far as what process writes output when.
 
-~~~
+~~~output
 slurm scontrol
 JobId=169370 JobName=job.02.slurm
    UserId=ckuhlman(1344122) GroupId=ckuhlman(1344122) MCS_label=N/A
@@ -822,7 +842,7 @@ iteration counter: 7;  MY_RANK: 1;   RECEIVED by rank: 1;   FROM rank 0
 iteration counter: 8;  MY_RANK: 1;   SENT from rank: 1;  TO rank 0
 iteration counter: 8;  MY_RANK: 0;   RECEIVED by rank: 0;   FROM rank 1
 ~~~
-{:  .output}
+
 
 
 
@@ -855,9 +875,12 @@ are given below.
 Make copies of these files on Owl by copying the text here in these pages and pasting
 it into files with the specified names.
 
-File main08.C code.
+#### Files (Scripts and Codes)
 
-~~~
+
+File _main08.C_ C++ code.
+
+~~~cpp
 #include <iostream>
 #include <vector>
 #include <mpi.h>
@@ -1059,9 +1082,9 @@ int main(int argc, char** argv) {
     return 0;
 }
 ~~~
-{:  .language-cpp}
 
-File makefile.owl.08.mpich.
+
+The makefile is _makefile.owl.08.mpich_.
 
 __THIS IS ONE PLACE WHERE THE IDEA OF COPYING TEXT FROM THESE WEB PAGES AND PASTING THEM INTO FILES FALLS DOWN.__
 
@@ -1073,7 +1096,7 @@ The line AFTER each of these three lines in the file below must start with a tab
 3. `clean:`
 
 
-~~~
+~~~bash
 #### Aug 2024.
 #### At VT, on TC cluster.
 #### Process:
@@ -1109,13 +1132,13 @@ mpi-simple08: main08.C
 clean:
         rm mpi-simple08 *.o
 ~~~
-{:  .language-bash}
 
-File job.05.np.100.slurm
+
+The sbatch slurm script file is _job.05.np.100.slurm_:
 
 Here, "np" means number of processes, i.e., number of MPI processes, which for this file is 100.
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -1149,8 +1172,7 @@ Here, "np" means number of processes, i.e., number of MPI processes, which for t
 
 ## -----------------------
 ## CONSTRAINTS.
-#SBATCH --constraint=genoa
-#SBATCH --constraint=avx512
+#SBATCH --constraint=genoa&avx512
 
 
 ## -----------------------
@@ -1164,8 +1186,8 @@ Here, "np" means number of processes, i.e., number of MPI processes, which for t
 
 ## -----------------------
 ## SLURM OUTPUT AND ERROR FILES.
-#SBATCH -o slurm.mpich.np.100.%j.out
-#SBATCH -e slurm.mpich.np.100.%j.err
+#SBATCH --output slurm.mpich.np.100.%j.out
+#SBATCH --error slurm.mpich.np.100.%j.err
 
 
 ## -----------------------
@@ -1195,8 +1217,12 @@ cd $SLURM_SUBMIT_DIR
 
 ## -----------------------
 ## Record slurm conditions.
+echo " "
 echo "slurm scontrol" 
+echo " "
 scontrol show job --details $SLURM_JOB_ID
+echo " "
+echo "<< end slurm scontrol >>" 
 echo " "
 
 
@@ -1222,29 +1248,28 @@ THE_EXEC="./mpi-simple08"
 ## For MPICH.
 mpiexec -n $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
 
 
 
-### C++ Code Compilation
+#### C++ Code Compilation
 
-~~~
+~~~bash
 module reset
 module load MPICH/4.3.0-GCC-14.2.0
 make -f makefile.owl.08.mpich
 ~~~
-{:  .language-bash}
 
+This should produce the executable code _mpi-simple08_.
 
-### Slurm Sbatch Job Submission
+#### Slurm Sbatch Job Submission
 
-~~~
+~~~bash
 sbatch job.05.np.100.slurm
 ~~~
-{:  .language-bash}
 
 
-**Other Files**
+
+#### Other Files
 
 The above three files are for one execution, involving
 100 MPI processes.
@@ -1282,12 +1307,12 @@ of cores [one process per core]):
 
 Submit the three other sbatch slurm scripts:
 
-~~~
+~~~bash
 sbatch job.05.np.1000.slurm
 sbatch job.05.np.10.slurm
 sbatch job.05.np.1.slurm
 ~~~
-{:  .language-bash}
+
 
 The above four jobs will provide four data points of execution time,
 all for a matix size of 10000x10000.
@@ -1323,17 +1348,17 @@ This last change is to accommodate the larger matrix size with more memory.
 Submit four jobs, where the size of the matrix is 40000x40000:
 
 
-~~~
+~~~bash
 sbatch job.06.np.1000.slurm
 sbatch job.06.np.100.slurm
 sbatch job.06.np.10.slurm
 sbatch job.06.np.1.slurm
 ~~~
-{:  .language-bash}
 
 The above four jobs will provide four data points of execution time,
 all of which are the execution times when the matrix is 40000x40000.
 
+#### Results
 
 Results follow.
 
@@ -1344,7 +1369,6 @@ Time obtained via C++ method.
 
 
 
-| ------------- | ------------- | ------------------ | ------------ |
 | Number of Processes | Total Execution Time (s) |  Total Compute Time (s)  |  Parallel Multiply Time (s) |
 | ------------- | ------------- | ------------------ | ------------ |
 |     1         |   0.963119 |  0.383029   |   0.079726   |
@@ -1384,7 +1408,6 @@ You see the overhead in comparing times #1 and #2.
 **Matrix-vector multiply.  Matrix is sxs where s=40000**
 
 
-| ------------- | ------------- | ------------------ | ------------ |
 | Number of Processes | Total Execution Time (s) |  Total Compute Time (s)  |  Parallel Multiply Time (s) |
 | ------------- | ------------- | ------------------ | ------------ |
 |     1         |   7.3215   |  6.69962  |  1.33984     |
@@ -1404,6 +1427,4 @@ Notes:
 been specified, will print out the hardware that is being used:
 `scontrol show job --details <SLURM JOB ID>`.
 
-
-{% include links.md %}
 
