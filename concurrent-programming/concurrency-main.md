@@ -22,6 +22,28 @@ These tools are at various levels of software.  These include:
 - Software libraries.
 - Software frameworks. 
 
+_**Note on example codes**_.
+Examples are the backbone of this document.  The idea is to save you time and energy
+by providing examples for how codes run on ARC systems.
+The approach used here is that the source code for examples is embedded right in the 
+text files.
+To run these codes---and they have been tested on ARC clusters---simply copy the contents
+and paste them into a file (on the clusters).
+For each code or slurm script or bash script or makefile or whatever, a file _**name**_ is
+provided.  You can use your own filenames, but very often, those names appear within other 
+code files.  For example (and this happens a LOT), say:  code A invokes code B.
+If you give a different name to code B than what is specified in these pages, then you have
+to modify the contents of code A so that it calls code "whatever-new-name-you-used" rather
+than code B.
+So it is most straight-forward to use the file names provided.
+Since there are few files for each example and the files are small to keep examples 
+minimalistic, the time required to paste contents of these pages into files using
+a text editor is almost zero.
+Also, the reason the codes are placed here and not in some github repo is because 
+one can realize a lot of value by SEEING the codes (even if you do not execute them).
+This approach makes the text and the code integrated in one place.
+
+
 ## Outline
 
 1. [Overview](overview/concur-overview.md)
