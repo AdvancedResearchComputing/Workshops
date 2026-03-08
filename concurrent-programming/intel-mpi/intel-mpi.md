@@ -72,25 +72,39 @@ These should all be done on the the type of compute node on which you are going 
 Since we are running on the TC cluster and Genoa nodes, that is where we want to create the 
 binary executable. 
  
-So the commands are: 
- 
-~~~ 
-## From the Tinkercliffs (TC) head node, issues this command to start your interactive job:
-salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=intel --constraint=avx512
+So the commands are:
+
+_**Option 1:  The preferred option**_:
+
+Option 1 is preferred because the interactive job will be cleaned up automatically.
+
+~~~bash
+## From the owl head node, issues this command to start your interactive job:
+interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+--nodes=1  --tasks-per-node=1  --cpus-per-task=2  
+~~~
+
+
+_**Option 2:  The not-preferred option**_:
+
+
+~~~bash
+## From the owl head node, issues this command to start your interactive job:
+salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 
-## The results returned by slurm for the above command will include a TC compute node id, <cnode-id>
+## The results returned by slurm for the above command will include an owl compute node id, <cnode-id>
 ssh <cnode-id>
-~~~ 
-{:  .language-bash} 
+~~~
 
 where you have to supply your own account.
+
 Now you can enter the compile commands.
 
 When finished compiling:
 
 1. `exit` off of the compute node.
-2. use `scancel` to cancel this interactive job.
+2. If you use Option 2 (which is not recommended), use `scancel` to cancel this interactive job.
 
 
 
