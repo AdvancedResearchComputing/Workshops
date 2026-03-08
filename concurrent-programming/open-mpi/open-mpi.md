@@ -106,7 +106,7 @@ What this examples shows, importantly, is the mechanics of
 specifying a sbatch slurm script, a makefile, the source code,
 building the source code, and executing a code across compute nodes.
 
-### Inputs
+#### Files (Scripts and Code)
 
 Each of these files should be created on Owl and put in the 
 same directory.
@@ -291,7 +291,7 @@ The makefile to build the C++ executable is _makefile.owl.open.mpi_.
 __THIS IS ONE PLACE WHERE THE IDEA OF COPYING TEXT FROM THESE WEB PAGES AND PASTING THEM INTO FILES FALLS DOWN.__
 
 The line AFTER each of these three lines in the file below must start with a tab
-(i.e., the tab is what is moving the characters over:
+(i.e., the tab is what is moving the characters over):
 
 1. `.C.o:`
 2. `mpi-simple01: main.C`
@@ -610,7 +610,7 @@ The makefile for compiling the C++ code is _makefile.owl.02.open.mpi_:
 __THIS IS ONE PLACE WHERE THE IDEA OF COPYING TEXT FROM THESE WEB PAGES AND PASTING THEM INTO FILES FALLS DOWN.__
 
 The line AFTER each of these three lines in the file below must start with a tab
-(i.e., the tab is what is moving the characters over:
+(i.e., the tab is what is moving the characters over):
 
 1. `.C.o:`
 2. `mpi-simple01: main.C`
@@ -1017,7 +1017,7 @@ File makefile.owl.08.open.mpi.
 __THIS IS ONE PLACE WHERE THE IDEA OF COPYING TEXT FROM THESE WEB PAGES AND PASTING THEM INTO FILES FALLS DOWN.__
 
 The line AFTER each of these three lines in the file below must start with a tab
-(i.e., the tab is what is moving the characters over:
+(i.e., the tab is what is moving the characters over):
 
 1. `.C.o:`
 2. `mpi-simple05: main05.C`
