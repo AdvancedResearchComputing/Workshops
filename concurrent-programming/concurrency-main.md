@@ -70,4 +70,4 @@ This approach makes the text and the code integrated in one place.
 11. [Pthreads](pthreads/pthreads.md)
 12. [OpenMP](open-mp/openmp.md)
 13. [MPI (Message Passing Interface) Patterns](mpi-patterns/mpi-patterns.md)
-14. 
+14. [Open MPI](open-mpi/open-mpi.md)
