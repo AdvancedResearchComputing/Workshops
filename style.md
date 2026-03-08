@@ -42,10 +42,18 @@ print(fmt_str)
 << place your C source code here >>
 ```
 
-"C++:
-```cpp
+"C++"
+~~~cpp
 << place your C++ source code here >>
-```
+~~~
+
+"Fortran"
+~~~fortran
+<< place your Fortran source code here >>
+~~~
+
+
+
 
 > [!NOTE]
 > **Offsetting code/text**:
@@ -56,8 +64,8 @@ print(fmt_str)
 > However, there is another approach for offsetting text:
 > using three tildes rather than the backtick,
 > like so ` ~~~ `.
-> Thus, if you inherit a file that uses ` ~~~~ ` at the start and end of code/text
-> blocks, it will work here.
+> Thus, if you inherit a file that uses ` ~~~ ` at the start and end of code/text
+> blocks, it will work here. (See the "C++" block above.)
 
 
 
