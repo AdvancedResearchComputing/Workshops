@@ -149,7 +149,7 @@ The _test_args.R_ file is below.
 ```R
 args = commandArgs(trailingOnly=TRUE)
 
-fmt_str = paste("Tag, from ", Sys.info()["nodename"], "...   Arguments: ")
+fmt_str = paste("Message from ", Sys.info()["nodename"], "...   Arguments: ")
 for (a in args) {fmt_str <- paste(fmt_str, " ",  a)}
 print(fmt_str)
 ```
@@ -222,69 +222,69 @@ echo my_num_srun 3
  output
 
 values : 12 14 16 18
-[1] "Tag, from  owl036 ...   Arguments:    12   14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   16   18"
+[1] "Message from  owl036 ...   Arguments:    12   14   16   18"
+[1] "Message from  owl036 ...   Arguments:    12   14   16   18"
+[1] "Message from  owl036 ...   Arguments:    12   14   16   18"
 values : 12 14 16 -18
-[1] "Tag, from  owl036 ...   Arguments:    12   14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   14   16   -18"
 values : -12 14 16 -18
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   16   -18"
 values : 12 -14 -16 18
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   -16   18"
 values : -12 -14 16 -18
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   16   -18"
 values : -12 14 16 18
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   16   18"
 values : -12 -14 -16 -18
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   -16   -18"
 values : -12 14 -16 18
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   -16   18"
 values : -12 -14 -16 18
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   -16   18"
 values : 12 14 -16 -18
-[1] "Tag, from  owl036 ...   Arguments:    12   14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   14   -16   -18"
 values : -12 14 -16 -18
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    -12   14   -16   -18"
 values : -12 -14 16 18
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    -12   -14   16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   16   18"
+[1] "Message from  owl036 ...   Arguments:    -12   -14   16   18"
 values : 12 -14 16 -18
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   16   -18"
 values : 12 -14 -16 -18
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   -16   -18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   -16   -18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   -16   -18"
 values : 12 -14 16 18
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   -14   16   18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   16   18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   16   18"
+[1] "Message from  owl036 ...   Arguments:    12   -14   16   18"
 values : 12 14 -16 18
-[1] "Tag, from  owl036 ...   Arguments:    12   14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   -16   18"
-[1] "Tag, from  owl036 ...   Arguments:    12   14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    12   14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    12   14   -16   18"
+[1] "Message from  owl036 ...   Arguments:    12   14   -16   18"
 ```
 
 

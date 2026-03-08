@@ -107,7 +107,7 @@ can be put into the R script.
 ```R
 args = commandArgs(trailingOnly=TRUE)
 
-fmt_str = paste("Tag, from ", Sys.info()["nodename"], "...   Arguments: ")
+fmt_str = paste("Message from ", Sys.info()["nodename"], "...   Arguments: ")
 for (a in args) {fmt_str <- paste(fmt_str, " ",  a)}
 print(fmt_str)
 ```
@@ -138,7 +138,7 @@ There is also a slurm-generated error file `r.para.srun.2967761.err`.
 
 
 The last part of the *.out file contains lines like this:
-`"Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"`.
+`"Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"`.
 There are 32 such lines because, as you see in the second line below,
 there are 32 total tasks (2 nodes, 16 tasks per node) in the slurm job.
 Each execution of srun is one task.
@@ -148,38 +148,38 @@ Each execution of srun is one task.
 ```output
 slurm_ntasks (total number of tasks across all nodes):  32
 slurm_job_num_nodes: 2
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Message from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
 ```
 
 To build intuition about the performance of your codes,
