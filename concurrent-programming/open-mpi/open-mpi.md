@@ -1289,7 +1289,6 @@ Results follow.
 
 Using MPI method to obtain time.
 
-| ------------- | ------------- | ------------------ | ------------ |
 | Number of Processes | Total Execution Time (s) |  Total Compute Time (s)  |  Parallel Multiply Time (s) |
 | ------------- | ------------- | ------------------ | ------------ |
 |     1         |   0.922435  |  0.326278    |    0.0814236    |
@@ -1299,7 +1298,6 @@ Using MPI method to obtain time.
 
 Using C++ method to obtain time.
 
-| ------------- | ------------- | ------------------ | ------------ |
 | Number of Processes | Total Execution Time (s) |  Total Compute Time (s)  |  Parallel Multiply Time (s) |
 | ------------- | ------------- | ------------------ | ------------ |
 |     1         |  0.874863    |  0.325708    |  0.081417     |
@@ -1340,7 +1338,6 @@ You see the overhead in comparing times #1 and #2.
 
 **Matrix-vector multiply.  Matrix is sxs where s=40000**
 
-| ------------- | ------------- | ------------------ | ------------ |
 | Number of Processes | Total Execution Time (s) |  Total Compute Time (s)  |  Parallel Multiply Time (s) |
 | ------------- | ------------- | ------------------ | ------------ |
 |     1         |   5.95987  |   5.24455   |  1.29852     |
