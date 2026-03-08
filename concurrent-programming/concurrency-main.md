@@ -67,3 +67,4 @@ This approach makes the text and the code integrated in one place.
 8. [Slurm Job Arrays](slurm-job-arrays/slurm-job-arrays.md)
 9. [Python Multiprocessing](python-multiprocessing/python-multiprocessing.md)
 10. [Java Threading](java-threading/java-threading.md)
+11. [Pthreads](pthreads/pthreads.md)
