@@ -42,6 +42,17 @@ Some of these are:
 
 There is a lot more, a lot more, to MPI.  One has to get into it (i.e., into the details) to see what it can do.
 
+## Invoking MPI
+
+One reason to provide examples for MPICH, Open MPI, Intel MPI is because the invocations are different.
+
+1. Open MPI uses `srun`.
+2. MPICH uses `mpiexec`.
+3. Intel uses `mpirun`.
+
+These choices are according to manuals.
+You may be able to launch MPI with a different code/script.
+
 
 ## Different Implementations
 
