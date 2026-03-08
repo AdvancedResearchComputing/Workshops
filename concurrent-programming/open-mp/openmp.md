@@ -1106,6 +1106,10 @@ What is going on here?  The loop is so small/fast to execute that the overhead i
 and running OMP threads is costlier than the benefits from parallel execution.
 With bigger, more realistic problem sizes, the overhead/instantiating times will
 be insignificant.
+However, for most codes, the use of threads will provide good (or even massive) benefits.
+So the structure of the codes here should/can be used.
+This example serves as a word of caution:  not EVERY single loop should be parallelized
+(this applies mainly to very small loops).
 
 
 ## Example 4: Run first code with one thread
