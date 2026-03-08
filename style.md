@@ -34,8 +34,19 @@ print(fmt_str)
 
 "Java"
 ```java
-<< place your java source code here >>
+<< place your Java source code here >>
 ```
+
+"C"
+```c
+<< place your C source code here >>
+```
+
+"C++:
+```cpp
+<< place your C++ source code here >>
+```
+
 
 Tip:
 > [!TIP]
