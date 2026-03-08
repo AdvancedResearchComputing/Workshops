@@ -75,3 +75,4 @@ one can realize a LOT of value by SEEING the codes even if you do not execute th
 12. [OpenMP](open-mp/openmp.md)
 13. [MPI (Message Passing Interface) Patterns](mpi-patterns/mpi-patterns.md)
 14. [Open MPI](open-mpi/open-mpi.md)
+15. [MPICH (MPI)](mpich-mpi/mpich-mpi.md)
