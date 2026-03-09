@@ -103,9 +103,7 @@ The sbatch slurm script, to run the job on TC or Owl in batch mode, is:
 ~~~bash
 #!/bin/bash
 
-
-## TC openmpi.
-
+# Owl.
 
 ## -----------------------
 # SLURM JOB SCRIPT OPTIONS:
@@ -177,9 +175,9 @@ cd $SLURM_SUBMIT_DIR
 
 ## -----------------------
 ## JOB.
-./run.02
+sh run.02
 ~~~
-{:  .language-bash}
+
 
 
 The bash script that invokes the client and server codes (below) is (call this
@@ -187,7 +185,7 @@ file _run.02_):
 
 
 
-~~~
+~~~bash
 ## Start server in background.
 ./server01 &
 
@@ -199,13 +197,13 @@ sleep 3
 ## Now start client.
 ./client01
 ~~~
-{:  .language-bash}
+
 
 
 
 The C server code is _udpserver01.c_.
 
-~~~
+~~~cpp
 // Server side implementation of UDP client-server model 
 #include <bits/stdc++.h>
 #include <stdlib.h>
@@ -275,12 +273,11 @@ int main() {
     return 0;
 }
 ~~~
-{:  .language-cpp}
 
 
 The C client code is _udpclient01.c_.
 
-~~~
+~~~cpp
 // Client side implementation of UDP client-server model 
 // #include <bits/stdc++.h> 
 #include <iostream>
@@ -337,7 +334,7 @@ int main() {
     return 0;
 }
 ~~~
-{:  .language-cpp}
+
 
 
 The last file to create is the bash script to compile the source codes
@@ -348,65 +345,68 @@ The shell script to compile and link both the _udpserver01.c_ and
 _udpclient01.c_ codes is _build.sh_:
 
 
-~~~
+~~~bash
 g++ udpclient01.c -o client01
 g++ udpserver01.c -o server01
 ~~~
-{:  .language-bash}
+
 
 
 We have to change the permissions on file _run.02_ so that it is executable.
 To do this, type
 
-~~~
+~~~bash
 chmod u+x run.02
 ~~~
-{:  .language-bash}
 
 
 
 
-### C Code Compilation
+#### C Code Compilation
+
+You must create an interactive section using the `interact` command as specified
+near the beginning of this file.
+
+Onece on the compute node, go to the directory where the source files and build script
+reside.
 
 The module below must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script, if
 there is an sbatch script.
 We use here:
 
-~~~
+~~~bash
 module reset
 module load foss/2023b
 ~~~
-{:  .language-bash}
 
 
 Now buid or compile by issuing this command:
 
-~~~
+~~~bash
 sh build.sh
 ~~~
-{:  .language-bash}
 
 
 The resulting executables will be _server_ and _client_.
 
 
-### Submitting the Job to Slurm
+#### Submitting the Job to Slurm
+
+Go to a head node on Owl.
 
 To submit the job, type:
 
-~~~
+~~~bash
 sbatch job.02.sbatch
 ~~~
-{:  .language-bash}
 
 
 Monitor the job using 
 
-~~~
+~~~bash
 squeue -u $USER
 ~~~
-{:  .language-bash}
 
 
 When the job completes, the file _slurm.udp.sockets.01.SLURM_JOB_ID.out_
@@ -426,7 +426,7 @@ Client action:  Hello message sent.
 Client action:  Received message from server.
     Message content received: Message--Hello from server
 ~~~
-{:  .language-bash}
+
 
 
 ## Example 2
@@ -436,7 +436,7 @@ and you compile the codes just as above.
 But now we will run them from the command line, because they only
 take a fraction of one second to run.
 
-### Executing the Codes
+#### Executing the Codes
 
 We will not run this code in slurm batch mode.
 Instead we will run the two codes on terminal screens,
@@ -449,23 +449,21 @@ above in Example 1 in both terminal windows.
 
 Then, in one window launch the server by typing:
 
-~~~
+~~~bash
 ./server01
 ~~~
-{:  .language-bash}
 
 
 In the other window, launch the client (but make sure the server is running) by typing:
 
-~~~
+~~~bash
 ./client01
 ~~~
-{:  .language-bash}
 
 
 
 
-### Output
+####  Output
 
 
 The server output is:
@@ -480,7 +478,7 @@ Server action:  Received message from client.
 Server action:  Send message to client.
     Message content: Message--Hello from server
 ~~~
-{:  .output}
+
 
 The horizontal line and the blank line together denote the 
 server waiting for a client to make a connection requeset.
@@ -495,11 +493,10 @@ Client action:  Hello message sent.
 Client action:  Received message from server.
     Message content received: Message--Hello from server
 ~~~
-{:  .output}
+
 
 
 
 These outputs are as those for Example 1.
 
-{% include links.md %}
 
