@@ -78,3 +78,5 @@ one can realize a LOT of value by SEEING the codes even if you do not execute th
 15. [MPICH (MPI)](mpich-mpi/mpich-mpi.md)
 16. [Intel MPI](intel-mpi/intel-mpi.md)
 17. [Python MPI (MPI4Py)](mpi-python/mpi-python.md)
+18. [TCP Sockets](sockets-tcp/sockets-tcp.md)
+19. [UDP Sockets](sockets-udp/sockets-udp.md)
