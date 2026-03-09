@@ -50,6 +50,9 @@ gpumon > ${SLURM_JOB_ID}.gpu.log &
 ```
 
 ## `showjobusage <jobid>`
+
+ARC provides the `showjobusage` command which is useful for inspecting the current resource usage of a running job. It will collect information from Slurm about the job and then make SSH connections to the allocated nodes to collect detailed usage information and then print a detailed summary and hints about potentially underutilized resources.
+
 ```bash
 [brownm12@fal003 gpuessentials]$ showjobusage $SLURM_JOB_ID
 JOBID:     249839
