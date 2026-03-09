@@ -49,7 +49,7 @@ ssh <cnode-id>
 
 where you have to supply your own account.
 
-Now you can enter the compile commands and run the codes, as described below for Example 1.
+Now you can enter the compile commands and run the codes, as described below for Example 1 and 2.
 
 When finished with these examples:
 
@@ -295,7 +295,7 @@ We use here:
 module reset
 module load foss/2023b
 ~~~
-{:  .language-bash}
+
 
 
 Now buid or compile by issuing this command:
@@ -303,7 +303,7 @@ Now buid or compile by issuing this command:
 ~~~
 sh build.sh
 ~~~
-{:  .language-bash}
+
 
 
 The resulting executables will be _server_ and _client_.
@@ -320,18 +320,18 @@ They will run very fast.
 
 In one window launch the server by typing:
 
-~~~
+~~~bash
 ./server
 ~~~
-{:  .language-bash}
+
 
 
 In the other window, launch the client (but make sure the server is running) by typing:
 
-~~~
+~~~bash
 ./client
 ~~~
-{:  .language-bash}
+
 
 
 
@@ -744,10 +744,9 @@ Now all of the codes and files we need exist.
 We have to change the permissions on file _run.02_ so that it is executable.
 To do this, type
 
-~~~
+~~~bash
 chmod u+x run.02
 ~~~
-{:  .language-bash}
 
 
 
