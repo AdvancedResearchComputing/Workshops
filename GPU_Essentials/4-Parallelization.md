@@ -5,7 +5,7 @@
 
 ### Keep the GPUs busy
 GPUs are useful to accelerate workloads, but they do not help at all with serial portions of the code or i/o.
-> [!INFO]
+> [!TIP]
 > Amdahl's Law: "the overall performance improvement gained by optimizing a single part of a system is limited by the fraction of time that the improved part is actually used"
 
 #### Use large chunk sizes
@@ -17,8 +17,10 @@ If your workload with either read from or write to a large dataset, then it's hi
 ```bash
 #!/bin/bash
 # prototype usage of TMPDIR in a batch script
+# -----------------------------------------
 #SBATCH ...
 #SBATCH ...
+
 echo "Copying data from /scratch to TMPDIR=$TMPDIR/input"
 cp /scratch/user/data.tar $TMPDIR/input
 cd $TMPDIR/input
