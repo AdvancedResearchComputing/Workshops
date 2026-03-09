@@ -1,5 +1,9 @@
 # Welcome to the ARC "GPU Essentials" Workshop
 
+Date: March 9, 2026
+Presented by: Matthew Brown
+[Spring 2026 ARC Workshop Schedule](https://github.com/AdvancedResearchComputing/Workshops/blob/main/README.md)
+
 ## Outline
 0. (10 min) [Welcome](./0-intro.md)
 1. (20 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
