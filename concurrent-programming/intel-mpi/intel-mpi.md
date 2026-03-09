@@ -20,9 +20,7 @@ The manual for Intel MPI is here (this may change over time) and more current re
 
 ## Overview
 
-These jobs were run on Tinkercliffs (TC) using Intel MPI.
-
-We run jobs on Intel nodes.
+These jobs were run on Tinkercliffs (TC) using Intel MPI with the Intel multicore compute nodes.
 
 The directions here are for use on TC.
 
@@ -69,9 +67,11 @@ Those give the commands to:
 
 These should all be done on the the type of compute node on which you are going to run.
 
-Since we are running on the TC cluster and Genoa nodes, that is where we want to create the 
+Since we are running on the TC cluster and Intel nodes, that is where we want to create the 
 binary executable. 
  
+You are on the TC cluster.
+
 So the commands are:
 
 _**Option 1:  The preferred option**_:
@@ -80,7 +80,7 @@ Option 1 is preferred because the interactive job will be cleaned up automatical
 
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=intel&avx512
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 ~~~
 
@@ -90,7 +90,7 @@ _**Option 2:  The not-preferred option**_:
 
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=intel&avx512
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 
 ## The results returned by slurm for the above command will include an owl compute node id, <cnode-id>
@@ -110,7 +110,6 @@ When finished compiling:
 
 ## Example 1
 
-This example is about as simple a code as you can write.
 There are three MPI processes, two of which are worker processes
 and one is the master process,
 in a master-worker relationship.
@@ -122,7 +121,7 @@ But what this examples shows, importantly, is the mechanics of
 specifying a sbatch slurm script, a makefile, the source code,
 building the source code, and executing a code across compute nodes.
 
-### Inputs
+### Files (Scripts and Codes)
 
 Each of these files should be created on TC and put in the 
 same directory.
@@ -144,6 +143,7 @@ Specifically:
 2. `--ntasks-per-node`:  how many of these MPI processes will run on each compute node.
 3. `--cpus-per-task`:  how many cores (and most likely, threads) each MPI process will have.
 
+The above is only a suggestion.
 Note that you can use `--nodes` instead of `--ntasks`.
 You can get one from the other as long as `--ntasks-per-node` is specified.
 
@@ -152,7 +152,7 @@ text here and pasting it into a file with the specified name.
 
 The sbatch slurm script is _job.01.slurm_.
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -185,8 +185,7 @@ The sbatch slurm script is _job.01.slurm_.
 
 ## -----------------------
 ## CONSTRAINTS
-#SBATCH --constraint=intel
-#SBATCH --constraint=avx512
+#SBATCH --constraint=intel&avx512
 
 
 ## -----------------------
@@ -200,8 +199,8 @@ The sbatch slurm script is _job.01.slurm_.
 
 ## -----------------------
 ## SLURM OUTPUT AND ERROR FILES.
-#SBATCH -o slurm.intel.mpi.%j.out
-#SBATCH -e slurm.intel.mpi.%j.err
+#SBATCH --output slurm.intel.mpi.%j.out
+#SBATCH --error slurm.intel.mpi.%j.err
 
 
 ## -----------------------
@@ -231,8 +230,12 @@ cd $SLURM_SUBMIT_DIR
 
 ## -----------------------
 ## Record slurm conditions.
+echo " "
 echo "slurm scontrol" 
+echo " "
 scontrol show job --details $SLURM_JOB_ID
+echo " "
+echo "<< end slurm scontrol >>" 
 echo " "
 
 
@@ -254,13 +257,13 @@ THE_EXEC="./mpi-simple01"
 THE_INPUT=""
 mpirun -n  $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
+
 
 
 This C++ code just has the worker MPI processes print their ranks.
 The C code is _main.C_.
 
-~~~
+~~~cpp
 #include <stdio.h>
 #include "mpi.h"
 
@@ -293,7 +296,7 @@ int main(int argc,char* argv[])
     return 0;
 }
 ~~~
-{:  .language-cpp}
+
 
 
 The makefile to build the C++ executable is _makefile.tc.intel.mpiicpx_.
@@ -310,7 +313,7 @@ The line AFTER each of these three lines in the file below must start with a tab
 
 
 
-~~~
+~~~bash
 #### Aug 2024.
 #### At VT, on TC cluster.
 #### Process:
@@ -349,32 +352,39 @@ mpi-simple01: main.C
 clean:
         rm mpi-simple01 *.o
 ~~~
-{:  .language-bash}
 
-### C++ Code Compilation
+
+#### C++ Code Compilation
+
+You should be on the Intel compute node by issuing the `interact` command
+near the beginning of this file.
 
 The module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
 
-~~~
+~~~bash
 module reset
 module load intel 
 ~~~
-{:  .language-bash}
+
 
 
 The compile is through the makefile above called _makefile.tc.intel.mpiicpx_.
 Invoke like this:
 
-~~~
+~~~bash
 make -f makefile.tc.intel.mpiicpx
 ~~~
-{:  .language-bash}
+
 
 The executable should be _mpi-simple01_.
 
 
-### Slurm Sbatch Job Submission
+#### Slurm Sbatch Job Submission
+
+Now you are back on a head node.
+
+Enter:
 
 ~~~
 sbatch job.01.slurm
@@ -382,7 +392,7 @@ sbatch job.01.slurm
 {:  .language-bash}
 
 
-### Output
+#### Output
 
 The output in the specified slurm output file, with job id 3495069,
 is _slurm.intel.mpi.3495069.out_.
@@ -391,7 +401,7 @@ The code output lines will all be there, but perhaps in different order.
 
 __This output was generated on TC.__
 
-~~~
+~~~output
 slurm scontrol
 JobId=3495069 JobName=job.01.slurm
    UserId=ckuhlman(1344122) GroupId=ckuhlman(1344122) MCS_label=N/A
@@ -440,7 +450,7 @@ hello world from receiving process 0 (my_rank); received from process 1
 hello world from sending process 1
 hello world from receiving process 0 (my_rank); received from process 2
 ~~~
-{:  .output}
+
 
 
 
@@ -456,11 +466,11 @@ The two processes switch roles on each consecutive iteration:
 2. in iteration (i+1), process 1 sends and process 0 receives.
 
 
-### Input
+#### Files (Scripts and Codes)
 
 This is the sbatch slurm job submission script _job.02.slurm_.
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -562,7 +572,8 @@ THE_EXEC="./mpi-simple02"
 THE_INPUT=""
 mpirun -n  $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
+
+
 
 The C++ code is next.
 Notice that the variable that constitutes the message
@@ -574,7 +585,7 @@ value.
 This is the C++ code _main02.C_.
 
 
-~~~
+~~~cpp
 #include <stdio.h>
 #include "mpi.h"
 
@@ -624,7 +635,7 @@ int main(int argc,char* argv[])
     return 0;
 }
 ~~~
-{:  .language-cpp}
+
 
 
 The makefile for compiling the C++ code is _makefile.tc.02.intel_:
@@ -639,7 +650,7 @@ The line AFTER each of these three lines in the file below must start with a tab
 3. `clean:` 
 
 
-~~~
+~~~bash
 #### Aug 2024.
 #### At VT, on TC cluster.
 #### Process:
@@ -678,17 +689,24 @@ mpi-simple02: main02.C
 clean:
         rm mpi-simple02 *.o
 ~~~
-{:  .language-bash}
 
 
 
-### Code Compilation
 
-We assume that we are in the same session as for Example 1, so we still have
+#### Code Compilation
+
+You have to be on an Intel compute node on TC to compile the code.
+C/C++ or any other compiled code has to be compiled on the machine
+it will run on.
+We need the `interact` command above to get an interactive job on
+an Intel compute node.
+
+We assume that we are in the same session as for Example 1, 
+so we still have
 loaded the intel module.
 If not, repeat the `module reset` and `module load intel` commands above.
 
-To compile the C++ code, we use the makefile above as follows:
+To compile the C++ code (on an Intel compute node), we use the makefile above as follows:
 
 ~~~
 make -f makefile.tc.02.intel
@@ -697,7 +715,9 @@ make -f makefile.tc.02.intel
 
 
 
-### Slurm Sbatch Job Submission
+#### Slurm Sbatch Job Submission
+
+Now we are back on a head node.
 
 To submit this job to the slurm scheduler, we execute:
 
@@ -707,7 +727,7 @@ sbatch job.02.slurm
 {:  .language-bash}
 
 
-### Output
+#### Output
 
 The output file contains the following.
 The first prints are from the sbatch slurm script.
@@ -754,7 +774,7 @@ __This output was generated on TC.__
 The output may not be in the same order in your *.out file because there is 
 non-determinism as far as what process writes output when.
 
-~~~
+~~~output
 slurm scontrol
 JobId=3540870 JobName=job.02.slurm
    UserId=ckuhlman(1344122) GroupId=ckuhlman(1344122) MCS_label=N/A
@@ -856,9 +876,9 @@ are given below.
 Make copies of these files on TC by copying the text here in these pages and pasting
 it into files with the specified names.
 
-File main08.C code.
+File _main08.C_ code.
 
-~~~
+~~~cpp
 #include <iostream>
 #include <vector>
 #include <mpi.h>
@@ -1034,9 +1054,9 @@ int main(int argc, char** argv) {
     return 0;
 }
 ~~~
-{:  .language-cpp}
 
-File makefile.tc.intel.mpiicpx.
+
+The makefile _makefile.tc.intel.mpiicpx_.
 
 __THIS IS ONE PLACE WHERE THE IDEA OF COPYING TEXT FROM THESE WEB PAGES AND PASTING THEM INTO FILES FALLS DOWN.__
 
@@ -1048,7 +1068,7 @@ The line AFTER each of these three lines in the file below must start with a tab
 3. `clean:`
 
 
-~~~
+~~~bash
 #### Aug 2024.
 #### At VT, on TC cluster.
 #### Process:
@@ -1197,29 +1217,34 @@ THE_INPUT="10000"
 THE_EXEC="./mpi-simple08"
 mpirun -n $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
 
 
 
-### C++ Code Compilation
 
-~~~
+#### C++ Code Compilation
+
+You have to compile the source code on the same kind of compute node that
+you run the code on.
+So use the `interact` command at the top of this file to 
+obtain an interactive session on an Intel compute node.
+
+~~~bash
 module reset
 module load intel
 make -f makefile.tc.intel.mpiicpx
 ~~~
-{:  .language-bash}
 
 
-### Slurm Sbatch Job Submission
+#### Slurm Sbatch Job Submission
 
-~~~
+On a head node, enter: 
+
+~~~bash
 sbatch job.05.np.100.slurm
 ~~~
-{:  .language-bash}
 
 
-**Other Files**
+#### Other Files
 
 The above three files are for one execution, involving
 100 MPI processes.
@@ -1257,12 +1282,11 @@ of cores [one process per core]):
 
 Submit the three other sbatch slurm scripts:
 
-~~~
+~~~bash
 sbatch job.05.np.1000.slurm
 sbatch job.05.np.10.slurm
 sbatch job.05.np.1.slurm
 ~~~
-{:  .language-bash}
 
 The above four jobs will provide four data points of execution time,
 all for a matix size of 10000x10000.
@@ -1292,17 +1316,18 @@ And in each new file, change:
 Submit four jobs, where the size of the matrix is 40000x40000:
 
 
-~~~
+~~~bash
 sbatch job.06.np.1000.slurm
 sbatch job.06.np.100.slurm
 sbatch job.06.np.10.slurm
 sbatch job.06.np.1.slurm
 ~~~
-{:  .language-bash}
+
 
 The above four jobs will provide four data points of execution time,
 all of which are the execution times when the matrix is 40000x40000.
 
+#### Output
 
 Results follow.
 
@@ -1371,15 +1396,9 @@ But the calculations are of such short duration that total execution
 and computation times do not decrease with increasing numbers of MPI processes.
 
 
-Notes:
-
 
 Notes:
 1. Putting the following command in your sbatch slurm script, after all of the `#SBATCH` directives have
 been specified, will print out the hardware that is being used:
 `scontrol show job --details <SLURM JOB ID>`.
-
-
-
-{% include links.md %}
 
