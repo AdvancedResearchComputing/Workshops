@@ -1,23 +1,5 @@
 # Inspections, Interfacing, and Interactions with GPUs
 
-```bash
-nvidia-smi
-```
-
-```bash
-nvidia-smi topo -m
-```
-
-```bash
-nvidia-smi --help-query-gpu | more
-```
-
-```bash
-nvidia-smi --query-gpu=timestamp,name,pci.bus_id,temperature.gpu,utilization.gpu,utilization.memory,memory.used --format=csv -lms 1000
-```
-
-
-
 ## Requesting GPUs
 
 ### Slurm 
@@ -36,3 +18,26 @@ Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
 #SBATCH --cpus-per-task=4   # A least 1 CPU
 #SBATCH --mem=12G           # Memory per-node
 ```
+> [!HINT]
+> When starting out with GPUs, first make sure that you can make good use of a single, mid-range GPU before scaling up to high-end or multiple GPUs.
+
+## `nvidia-smi`
+
+```bash
+nvidia-smi
+```
+
+```bash
+nvidia-smi topo -m
+```
+
+```bash
+nvidia-smi --help-query-gpu | more
+```
+
+```bash
+nvidia-smi --query-gpu=timestamp,name,pci.bus_id,temperature.gpu,utilization.gpu,utilization.memory,memory.used --format=csv -lms 1000
+```
+
+## `showjobusage <jobid>`
+
