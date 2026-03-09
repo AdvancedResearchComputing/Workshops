@@ -92,7 +92,7 @@ module load Miniforge3
 module load foss/2023b
 
 ## Load CUDA.  <--- Optional, not done here.
-module load CUDA/12.6.0
+## module load CUDA/12.6.0
 
 ## Create the VE.
 conda create -p ~/env/owl/normal_q_genoa/py312_mf_openmpi
@@ -165,17 +165,19 @@ mpiexec --mca opal_cuda_support 1 ...
 Note that you might also need to set UCX_MEMTYPE_CACHE=n for CUDA awareness via
 UCX. Please consult UCX documentation for further details.
 ~~~
-{:  .output}
 
 
 
 
 
-### Create Files
+
+#### Files (Scripts and Codes)
+
+We need to create these files in one directory.
 
 The sbatch slurm script for running job in batch mode is _job.01.slurm_:
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -295,11 +297,11 @@ THE_EXEC="./src.01.py"
 THE_INPUT=""
 srun --mpi=pmix  python $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
+
 
 The python source code file is _src.01.py_ immediately below:
 
-~~~
+~~~python
 ## Obtained from:  https://mpi4py.readthedocs.io/en/4.0.3/tutorial.html
 
 import time
@@ -348,17 +350,19 @@ if __name__ == "__main__":
 
     print("  ---- good termination ---")
 ~~~
-{:  .language-python}
 
 
-### Job Submission
 
-~~~
+#### Job Submission
+
+From a head node, enter:
+
+
+~~~bash
 sbatch job.01.slurm
 ~~~
-{:  .language-bash}
 
-### Job Output/Results
+#### Job Output/Results
 
 Results will be in the file _slurm.mpi4py.SLURM-JOB-ID.out_ file
 because this is the slurm output file specified by the
@@ -392,12 +396,15 @@ it is useful to print these results.
 
 To build intuition, always try to do:
 
-~~~
+~~~bash
 seff SLURM_JOB_ID
 ~~~
-{:  .language-bash}
 
 after a job completes to see memory usage and cpu usage.
+
+-------------------------
+
+-------------------------
 
 ## Example 2
 
@@ -420,7 +427,7 @@ you must run your code on the type of node used to
 create the VE.
 This is a universal constraint.
 
-~~~
+~~~bash
 ## Obtain resources from slurm.
 ## On the genoa nodes (because there are more of them than milan: 84 vs. 4).
 salloc --account=<account>  --partition=l40s_normal_q    --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --gres=gpu:1  --time=2:00:00
@@ -441,10 +448,10 @@ module load foss/2023b
 module load CUDA/12.6.0
 
 ## Create the VE.
-conda create -p ~/env/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+conda create -p ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
 
 ## Activate the VE.
-source activate ~/env/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
 
 ## Install python.
 conda install python=3.12
@@ -506,7 +513,7 @@ exit
 squeue -u $USER
 scancel JOBID
 ~~~
-{:   .language-bash}
+
 
 
 __NOTE:__ After the command `conda install nccl`, you might receive a message (it is ok):
@@ -525,15 +532,17 @@ UCX. Please consult UCX documentation for further details.
 
 
 
-## Create Files
+#### Files (Scripts and Codes)
+
+We need to create these files in the same directory.
 
 Create sbatch slurm script _job.02.slurm_ with this content:
 
-~~~
+~~~bash
 #!/bin/bash
 
 
-## TC open MPI. (Or Falcon.  Need gpu.)
+## Falcon open MPI.
 
 ## -----------------------
 # SLURM JOB SCRIPT OPTIONS:
@@ -605,7 +614,7 @@ module load CUDA/12.6.0
 
 ## -----------------------
 ## VE (virtual environment).
-source activate ~/env/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
 
 
 ## -----------------------
@@ -657,12 +666,12 @@ THE_INPUT=""
 ## The four here is four MPI processes, to match the four tasks above.
 srun --mpi=pmix -n 4  python $THE_EXEC  $THE_INPUT
 ~~~
-{:  .language-bash}
+
 
 
 The python source code file _src.02.py_ is:
 
-~~~
+~~~python
 ## Obtained from:  https://mpi4py.readthedocs.io/en/4.0.3/tutorial.html
 
 import time
@@ -717,10 +726,10 @@ if __name__ == "__main__":
 
     print("  ---- good termination ---")
 ~~~
-{:  .language-python}
 
 
-### Job Submission
+
+#### Job Submission
 
 Submit job to slurm via:
 
@@ -729,21 +738,18 @@ sbatch job.02.slurm
 ~~~
 {:  .language-bash}
 
-### Job Output/Results
+#### Job Output/Results
 
 Results will be in the file _slurm.mpi4py.gpu.SLURM_JOB_ID.out_ file
 
-### `seff` Command
+#### `seff` Command
 
 To build intuition, always try to do:
 
-~~~
+~~~bash
 seff SLURM_JOB_ID
 ~~~
-{:  .language-bash}
 
 after a job completes to see memory usage and cpu usage.
 
 
-
-{% include links.md %}
