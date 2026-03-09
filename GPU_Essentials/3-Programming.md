@@ -6,10 +6,11 @@ Some applications have built-in capabilities for using GPUs as accelerators. For
 
 ### Matlab
 ```matlab
-%N=13800*1.25;
+gpuDevice(1)
 for ii=1:10
     N=10000;
-    prec="single";
+    %prec="single";
+    prec="double";
     A=rand(N,prec); 
     B=rand(N,prec); 
     C=ones(N,prec); 
@@ -23,7 +24,7 @@ for ii=1:10
     %tic; [u,s,v] = svd(c); gpusvd=toc;
 
     fprintf("speedup mult: %f \n",cpumult/gpumult)
-    fprintf("speedup svd: %f \n",cpusvd/gpusvd)
+    %fprintf("speedup svd: %f \n",cpusvd/gpusvd)
 end
 
 ```
@@ -31,33 +32,52 @@ end
 ### Computational Chemistry and Molecular Dynamics
 Many of the calculations in these fields have matrix multiplications at their core and were early adopters of GPU accelerators. ARC provides installations which are built with GPU capabilities:
 
+> [note]
+> Get an interactive job on a compute node to inspect the modules available there. Especially for GPU-enabled software, the modules may be different from those on the login nodes.
+
+#### Amber
+"Amber (originally Assisted Model Building with Energy Refinement) is software for performing molecular dynamics and structure prediction."
 ```
 Amber/24.0-foss-2023b-AmberTools-24.0-CUDA-12.4.0
 ```
 
+#### Gromacs
+"GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. This is a GPU enabled build, containing both MPI and threadMPI binaries. It also contains the gmxapi extension for the single precision MPI build."
 ```
 GROMACS/2024.4-foss-2023b-CUDA-12.6.0-PLUMED-2.9.2
 GROMACS/2024.4-foss-2023b-CUDA-12.6.0
 ```
 
+#### LAMMPS
+"LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale Atomic/Molecular Massively Parallel Simulator. LAMMPS has potentials for solid-state materials (metals, semiconductors) and soft matter (biomolecules, polymers) and coarse-grained or mesoscopic systems. It can be used to model atoms or, more generically, as a parallel particle simulator at the atomic, meso, or continuum scale. LAMMPS runs on single processors or in parallel using message-passing techniques and a spatial-decomposition of the simulation domain. The code is designed to be easy to modify or extend with new functionality."
 ```
 LAMMPS/22Jul2025-foss-2024a-kokkos-CUDA-12.6.0
 LAMMPS/28Oct2024-foss-2023a-kokkos-mace-CUDA-12.1.1
 LAMMPS/29Aug2024_update2-foss-2024a-kokkos-CUDA-12.6.0
 LAMMPS/29Aug2024-foss-2023b-kokkos-CUDA-12.6.0
 ```
+Use the command `lmp -h` after loading the module to inspect the list of invididual "style options" included in the installation. Styles with `kk` suffixes indicate they were built with Kokkos and should be able to use GPU accelerators.
+
+#### Quantum Espresso
+"Quantum ESPRESSO is an integrated suite of Open-Source computer codes for electronic-structure calculations and materials modeling at the nanoscale. This build uses the NVHPC compiler suite with GPU acceleration via CUDA."
 ```
 QuantumESPRESSO/7.4.1-NVHPC-24.9-CUDA-12.6.0
 ```
+
+#### Vienna Ab initio Simulation Package
+"VASP is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles.
 ```
 VASP/5.4.4-CUDA-12.6.0
 VASP/6.4.2-OpenMPI-5.0.3-NVHPC-24.9-CUDA-12.6.0
 VASP/6.5.1-OpenMPI-5.0.3-NVHPC-24.9-CUDA-12.6.0
 ```
+> [NOTE]
+> VASP sells licenses only at the research-group level, so there are no "VT-wide" licenses for this package and access is restricted. If you have purchased a license, let us know and we can enable access to the software.
 
 ### Libraries
 
-"Fastest Fourier Transform in the West"
+#### "Fastest Fourier Transform in the West"
+"FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data."
 ```
 FFTW/3.3.10-NVHPC-24.9-CUDA-12.6.0
 ```
