@@ -18,10 +18,13 @@ In the 2000's PC display resolutions crept up from 800x600 to 1024x768 to 1600x1
 
 
 ### Recent CPU specs and capabilities
-This image exposes some of the architectural components of an Intel "Skylake" CPU processor. These were released around 2015 and the model in the image shows 28 CPU cores. These CPU are growing in internal parallelism, but also have to serve the full spectrum of computational.
+This image exposes some of the architectural components of an Intel "Skylake" CPU processor as found on Infer T4 and V100 nodes. These were released around 2016 and the model in the image shows 28 CPU cores. 
+
+HPC CPUs are growing in internal parallelism, but also have to serve the full spectrum of workloads and considerable portions of the cores and overall CPU area do not perform arithmetic.
 
 ![Intel Skylake Die Shot](images/skylake-dieshot.jpg)
 
+This AMD Epyc Zen2 "Rome" CPU, as found in Tinkercliffs nodes, shows AMD's "system on a chip" design and focus on dense arithmetic capability and modularity:
 ![AMD Zen2 Rome Die Shot](images/zen2rome-dieshot.jpg)
 
 | **CPU**            | **Year** | **Clock (MHz)** | **Process (nm)** | **Max Cores** | **AVX?** | **GFLOPs Theoretical** | **Watts** | **GF/W** | **Watts/Rack (est. peak)** |
@@ -33,6 +36,8 @@ This image exposes some of the architectural components of an Intel "Skylake" CP
 | Zen 4 “Genoa”      | 2022     | 3800            | 5                 | 48            | AVX512  | 1 459.2                | 290       | 5.03    | 34 800                     |
 
 ## Conceptual GPU Architecture
+GPUs can do a wide variety of things, but clearly prioritize fast, vectorized, arithmetic. It's not enough to increase arithmetic density, but the accelerators also have to grow internal memory circuits, data busses, GPU-to-host and GPU-to-GPU connectivity, and other architectural components to avoid bottlenecks.
+
 Nvidia GA100 architecture: 
 "The NVIDIA GA100 GPU is composed of multiple GPU Processing Clusters (GPCs), Texture Processing Clusters (TPCs), Streaming Multiprocessors (SMs), and HBM2 memory controllers."
  - 52.4 billion transistors

@@ -18,10 +18,16 @@
 |T4|   16G|   70W| - | - |8.1TF| - | 130TO| -|115G (FP)| 1857G |
 |V100| 16G|  250W| 7TF | - | 14TF | - | 250TO |  28G (FP)|56G (FP)|1000G|
 |A30|  24G|  165W| 5.2TF| 10.3TF|10.3TF|82TF|330TO| 62.4G (TF)|328G (TF)|1320G|
-|A100| 80G|  400W| 9.7TF | 19.5TF | 19.5TF | 156TF | 624TF| 48.8G  (TF) |390G (TF) |1560G|
+|A100| 80G|  400W| 9.7TF | 19.5TF | 19.5TF | 156TF | 624TO| 48.8G  (TF) |390G (TF) |1560G|
 |L40S| 48G|  350W|  - | - | 91.6TF | 183TF | 733TO |-| 523G (TF)|2094G|
-|H200|141G|  700W| 34TF | 67TF | 67TF | 989TF | 3958TF| 95.7G (TF) |1413G (TF)|5654G|
-|_B200_|_184G_| _1000W_|_37T_|_37T_|_75T_|_1100T_|_4500T_|_37G (TF_)| _75G (TF)_|_4500G_|
+|H200|141G|  700W| 34TF | 67TF | 67TF | 989TF | 3958TO| 95.7G (TF) |1413G (TF)|5654G|
+|_B200_|_184G_| _1000W_|_37TF_|_37TF_|_75TF_|_1100TF_|_4500TO_|_37G (TF_)| _75G (TF)_|_4500G_|
+
+Takeaways:
+ - 64-bit arithemtic is not universally available in GPUs. Try to determine whether or not you need that double-precision capability when selecting a GPU
+ - Increasing power consumption and resulting density is stretching the limits of datacenter infrastructure
+ - Latest GPUs (Blackwell) are prioritizing lower-precision capabilities which are needed by AI
+
 
 ## Outline
 0. (10 min) [Welcome](./0-intro.md)
