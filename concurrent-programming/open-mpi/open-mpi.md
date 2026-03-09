@@ -339,8 +339,12 @@ clean:
 
 #### C++ Code Compilation
 
+You should be on the compute node by issuing the `interact` command near the beginning of this file.
+
 The module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
+
+Then issue:
 
 ~~~bash
 module reset
@@ -662,7 +666,9 @@ clean:
 
 #### Code Compilation
 
-Reset and load the appropriate module.
+You should be on the compute node by issuing the `interact` command near the beginning of this file.
+
+Then reset and load the appropriate module, as follows:
 
 ~~~bash
 module reset
@@ -1180,6 +1186,10 @@ srun --mpi=pmix  $THE_EXEC  $THE_INPUT
 
 
 #### C++ Code Compilation
+
+You should be on the compute node by issuing the `interact` command near the beginning of this file.
+
+Then:
 
 ~~~bash
 module reset
