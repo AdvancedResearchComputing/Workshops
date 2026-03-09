@@ -15,7 +15,7 @@ Otherwise, the program will die.
 
 These jobs were run on Tinkercliffs (TC) and Owl clusters using sockets.
 
-These are Berkeley (and as of CY 2000 also POSIX sockets).
+These are Berkeley (and as of CY 2000 also POSIX) sockets.
 
 ## Work on a Compute Node
 
