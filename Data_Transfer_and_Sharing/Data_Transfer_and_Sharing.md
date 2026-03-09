@@ -11,7 +11,7 @@ Feedback form: [https://forms.gle/NK3AiVxMLbintCJT8](https://forms.gle/NK3AiVxML
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- You can also access the material here: [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Data_Transfer_and_Sharing.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Data_Transfer_and_Sharing.md)
+- You can also access the material here: [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Data_Transfer_and_Sharing.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Data_Transfer_and_Sharing.md)
 - We have a lot of short video tutorials (I will eventually record this workshop without attendees): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
@@ -20,22 +20,21 @@ Useful links:
 - GitHub Examples: [https://github.com/AdvancedResearchComputing/examples](https://github.com/AdvancedResearchComputing/examples)
 - Office Hours: [https://arc.vt.edu/about/office-hours.html](https://arc.vt.edu/about/office-hours.html)
 - 4Help: [https://arc.vt.edu/help](https://arc.vt.edu/help)
-- Job scheduling and monitoring: [https://docs.arc.vt.edu/usage/job_scheduling.html](https://docs.arc.vt.edu/usage/job_scheduling.html)
+- Data Transfer: https://docs.arc.vt.edu/usage/data_transfer.html
 
 ## Outline of this Workshop
-1. [Transfer Tools](#transfer-tools) (internally, local -> remote, Globus)
+1. [Transfer Tools](#transfer-tools) (internally, local <-> remote, Globus)
 2. [Tar and Compression Tools](#tar-and-compression-tools) (tar, compression/zip)
 3. [File Management via IDE](#file-management-via-ide) (vs code, OOD)
 
 # Transfer Tools
 ARC resources are a remote host so you need additional tools to move, copy, delete files. You can think of ARC systems as another computer so you will have to move your files or code to that "computer" in order to run them on ARC. 
 
-
-
 Some terminalogy:
-- internal/local: refers to your personal computer
+- local: refers to your personal computer
 - remote: refers to ARC systems
-- external: refers to computers outside of Virginia Tech's network
+- internal: refers to files on the same computer/machine/system
+- external to VT: refers to computers outside of Virginia Tech's network
 
 ## Handling files internally
 There are two main tools we use to move or copy files that are on ARC. Both of this tools work in a similar fashion with the first argument defines what/where that file is and the second argument defines the where/what do you want to name the "new" file.
