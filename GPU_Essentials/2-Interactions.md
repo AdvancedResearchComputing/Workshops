@@ -113,9 +113,9 @@ ARC's [dashboard](https://dashboard.arc.vt.edu) site collects cluster and node i
 > These dashboard pages show node-level utilization information. If multiple jobs were running on the same node, the displayed usage is the aggregate for all the jobs.
 
 ## Outline
-0. (10 min) [Welcome](./0-intro.md)
-1. (20 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
-2. (25 min) [Inspection and Interfacing with GPUs](./2-Interactions.md)
-3. (10 min) Break
-3. (25 min) [Programming with GPUs](./3-Programming.md)
-4. (25 min) [Parallelization with GPUs](./4-Parallelization.md)
+0. [Welcome](./0-intro.md)
+1. [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
+2. [Inspection and Interfacing with GPUs](./2-Interactions.md)
+3. Break
+3. [Programming with GPUs](./3-Programming.md)
+4. [Parallelization with GPUs](./4-Parallelization.md)

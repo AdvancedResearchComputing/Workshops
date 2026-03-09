@@ -6,11 +6,11 @@ Presented by: Matthew Brown
 
 ## Outline
 0. (10 min) [Welcome](./0-intro.md)
-1. (20 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
-2. (25 min) [Inspection and Interfacing with GPUs](./2-Interactions.md)
+1. (15 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
+2. (30 min) [Inspection and Interfacing with GPUs](./2-Interactions.md)
 3. (10 min) Break
-3. (25 min) [Programming with GPUs](./3-Programming.md)
-4. (25 min) [Parallelization with GPUs](./4-Parallelization.md)
+3. (30 min) [Programming with GPUs](./3-Programming.md)
+4. (20 min) [Parallelization with GPUs](./4-Parallelization.md)
 
 ## Why are we using GPUs for scientific computing?
 
