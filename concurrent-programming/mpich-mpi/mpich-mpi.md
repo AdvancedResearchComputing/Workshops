@@ -371,6 +371,8 @@ clean:
 
 #### C++ Code Compilation
 
+You should be on the compute node by issuing the `interact` command near the beginning of this file.
+
 The module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
 
@@ -703,6 +705,8 @@ clean:
 
 
 #### Code Compilation
+
+You should be on the compute node by issuing the `interact` command near the beginning of this file.
 
 We assume that we are in the same session as for Example 1, so we still have
 loaded the MPICH module.
@@ -1252,6 +1256,8 @@ mpiexec -n $SLURM_NTASKS  $THE_EXEC  $THE_INPUT
 
 
 #### C++ Code Compilation
+
+You should be on the compute node by issuing the `interact` command near the beginning of this file.
 
 ~~~bash
 module reset
