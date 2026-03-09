@@ -26,8 +26,8 @@ But the specific instance of Mpi4Py depends on the MPI implementation.
 Assuming you are using conda, e.g., via the `Miniforge3` module, the table below
 shows the correspondence.
 
-| ------------------ | ----------------------- |
 |   MPI Implementation   |    Install Commands | 
+| ------------------ | ----------------------- |
 |  MPICH           |    `conda install -c conda-forge mpi4py mpich` |
 |  Open MPI        |    `conda install -c conda-forge mpi4py openmpi`  |
 | Intel MPI        |    `conda install -c conda-forge mpi4py impi_rt` |
