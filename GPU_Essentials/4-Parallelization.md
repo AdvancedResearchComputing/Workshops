@@ -29,7 +29,7 @@ tar -xf data.tar
 echo "Setting output directory to $TMPDIR/output"
 OUTDIR=$TMPDIR/output
 
-myprog -i $TMPIDR/input -o $TMPDIR/output
+myprog -i $TMPDIR/input -o $TMPDIR/output
 
 echo "myprog execution completed.. packaging output data"
 cd $TMPDIR
