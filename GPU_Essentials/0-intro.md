@@ -45,8 +45,11 @@ Nvidia GA100 architecture:
  - 64 FP32 CUDA Cores/SM, 6912 FP32 CUDA Cores per GPU
  - 4 Third-generation Tensor Cores/SM, 432 Third-generation Tensor Cores per GPU
  - 5 HBM2 stacks, 10 512-bit Memory Controllers
+
+A100 SM Layout:
 ![A100 SM Layout](images/a100-smlayout.png)
 
+108 of these make up A100 GPU:
 ![A100 GPU Architecture](images/a100-layout.jpg)
 
 ## What problems run well on GPUs?
