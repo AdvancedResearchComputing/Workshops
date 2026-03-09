@@ -1,8 +1,8 @@
 # Welcome to the ARC "GPU Essentials" Workshop
 
 ## Outline
-0. (10 min) [Welcome](https://github.com/AdvancedResearchComputing/Workshops/blob/fa73f8483e0f2d1b59e15f3609f182abb38b56f1/GPU_Essentials/0-intro.md)
-1. (20 min) [ARC Cluster GPU Offerings and Comparisons](https://github.com/AdvancedResearchComputing/Workshops/blob/fa73f8483e0f2d1b59e15f3609f182abb38b56f1/GPU_Essentials/1-arc_gpus.md)
+0. (10 min) [Welcome](./0-intro.md)
+1. (20 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
 2. (25 min) [Inspection and Interfacing with GPUs](./2-Interactions.md)
 3. (10 min) Break
 3. (25 min) [Programming with GPUs](./3-Programming.md)

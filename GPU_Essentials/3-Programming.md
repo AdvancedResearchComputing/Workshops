@@ -107,6 +107,26 @@ NVHPC/24.11-CUDA-12.6.0
 NVHPC/25.1-CUDA-12.6.0
 ```
 
+### Example: C program
+
+Attempt to compile using NVHPC
+```bash
+module load NVHPC
+nvcc ex2-large.c -o ex2-large-a30
+```
+The "`ld: undefinited reference to ...`" errors indicate that the linker couldn't find necessary libraries. Inspect the environment and adapt:
+```bash
+$ which nvcc
+/apps/arch/software/NVHPC/25.1-CUDA-12.6.0/Linux_x86_64/25.1/compilers/bin/nvcc
+$ echo $LD_LIBRARY_PATH
+/apps/arch/software/NVHPC/25.1-CUDA-12.6.0/Linux_x86_64/25.1/compilers/lib:/apps/common/software/CUDA/12.6.0/nvvm/lib64:/apps/common/software/CUDA/12.6.0/extras/CUPTI/lib64:/apps/common/software/CUDA/12.6.0/targets/x86_64-linux/lib:/apps/arch/software/numactl/2.0.18-GCCcore-13.3.0/lib:/apps/arch/software/binutils/2.42-GCCcore-13.3.0/lib:/apps/arch/software/zlib/1.3.1-GCCcore-13.3.0/lib:/apps/arch/software/GCCcore/13.3.0/lib64:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64
+```
+
+Instruct the linker to use the cublas library:
+```bash
+nvcc ex2-large.c -o ex2-large-a30 -lcublas
+```
+
 ### Nvidia Collective Communications Library
 ```
 NCCL/2.18.3-GCCcore-12.3.0-CUDA-12.1.1
@@ -144,3 +164,11 @@ ollama/0.17.4-GCCcore-14.3.0-CUDA-13.0.2
 vLLM/0.15.1
 vLLM/0.17.0
 ```
+
+## Outline
+0. (10 min) [Welcome](./0-intro.md)
+1. (20 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
+2. (25 min) [Inspection and Interfacing with GPUs](./2-Interactions.md)
+3. (10 min) Break
+3. (25 min) [Programming with GPUs](./3-Programming.md)
+4. (25 min) [Parallelization with GPUs](./4-Parallelization.md)
