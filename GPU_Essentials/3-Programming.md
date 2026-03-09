@@ -32,7 +32,7 @@ end
 ### Computational Chemistry and Molecular Dynamics
 Many of the calculations in these fields have matrix multiplications at their core and were early adopters of GPU accelerators. ARC provides installations which are built with GPU capabilities:
 
-> ![NOTE]
+> [!NOTE]
 > Get an interactive job on a compute node to inspect the modules available there. Especially for GPU-enabled software, the modules may be different from those on the login nodes. `interact --account=<slurm account> --partition=<gpu partition> --gres=gpu:1`
 
 #### Amber
@@ -57,7 +57,7 @@ LAMMPS/29Aug2024_update2-foss-2024a-kokkos-CUDA-12.6.0
 LAMMPS/29Aug2024-foss-2023b-kokkos-CUDA-12.6.0
 ```
 Use the command `lmp -h` after loading the module to inspect the list of invididual "style options" included in the installation. 
-> ![NOTE]
+> [!NOTE]
 > Styles with `kk` suffixes indicate they were built with Kokkos and should be able to use GPU accelerators.
 
 #### Quantum Espresso
@@ -73,7 +73,7 @@ VASP/5.4.4-CUDA-12.6.0
 VASP/6.4.2-OpenMPI-5.0.3-NVHPC-24.9-CUDA-12.6.0
 VASP/6.5.1-OpenMPI-5.0.3-NVHPC-24.9-CUDA-12.6.0
 ```
-> [NOTE]
+> [!NOTE]
 > VASP sells licenses only at the research-group level, so there are no "VT-wide" licenses for this package and access is restricted. If you have purchased a license, let us know and we can enable access to the software.
 
 ### Libraries
@@ -97,7 +97,7 @@ CUDA/12.6.0
 CUDA/12.8.0
 CUDA/13.0.2
 ```
-> ![note]
+> [!NOTE]
 > Over time, Nvidia will drop support for older GPU architectures from their software. For example, CUDA versions 13+ do not support V100 GPUs (compute capability 7.0).
 
 ### Nvidia SDK for HPC
@@ -123,8 +123,24 @@ cuDNN/9.5.0.50-CUDA-12.6.0
 
 ## AI Model Hosting Packages
 
+The ecosystem software and prerequistes for hosting AI models is rapidly evolving. ARC is closely monitoring and frequently updating models and engines.
+
+### llama.cpp
+"High-performance C/C++ LLM inference engine (llama-server) using GPU acceleration."
+```
+llama.cpp/server-cuda12-b8172
+llama.cpp/server-cuda13-b8193
+```
+
 ### OLLAMA
+"Get up and running with large language models."
 ```
 ollama/0.17.4-GCCcore-14.3.0-CUDA-13.0.2
 ```
 
+### VLLM
+"High-throughput, memory-efficient LLM inference engine."
+```
+vLLM/0.15.1
+vLLM/0.17.0
+```
