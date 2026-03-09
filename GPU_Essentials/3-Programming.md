@@ -32,8 +32,8 @@ end
 ### Computational Chemistry and Molecular Dynamics
 Many of the calculations in these fields have matrix multiplications at their core and were early adopters of GPU accelerators. ARC provides installations which are built with GPU capabilities:
 
-> [note]
-> Get an interactive job on a compute node to inspect the modules available there. Especially for GPU-enabled software, the modules may be different from those on the login nodes.
+> ![NOTE]
+> Get an interactive job on a compute node to inspect the modules available there. Especially for GPU-enabled software, the modules may be different from those on the login nodes. `interact --account=<slurm account> --partition=<gpu partition> --gres=gpu:1`
 
 #### Amber
 "Amber (originally Assisted Model Building with Energy Refinement) is software for performing molecular dynamics and structure prediction."
@@ -56,7 +56,9 @@ LAMMPS/28Oct2024-foss-2023a-kokkos-mace-CUDA-12.1.1
 LAMMPS/29Aug2024_update2-foss-2024a-kokkos-CUDA-12.6.0
 LAMMPS/29Aug2024-foss-2023b-kokkos-CUDA-12.6.0
 ```
-Use the command `lmp -h` after loading the module to inspect the list of invididual "style options" included in the installation. Styles with `kk` suffixes indicate they were built with Kokkos and should be able to use GPU accelerators.
+Use the command `lmp -h` after loading the module to inspect the list of invididual "style options" included in the installation. 
+> ![NOTE]
+> Styles with `kk` suffixes indicate they were built with Kokkos and should be able to use GPU accelerators.
 
 #### Quantum Espresso
 "Quantum ESPRESSO is an integrated suite of Open-Source computer codes for electronic-structure calculations and materials modeling at the nanoscale. This build uses the NVHPC compiler suite with GPU acceleration via CUDA."
