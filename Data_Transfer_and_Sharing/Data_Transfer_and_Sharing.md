@@ -162,25 +162,6 @@ total size is 50479  speedup is 0.99
 nicole@MacBook-Pro-3:~/Old Drive/code/demo/rsync_demo$ ls
 demo            happy.txt       hello_world.txt
 ```
-Example with the `-z` compression flag:
-```
-nicole@MacBook-Pro-3:~/Old Drive/code/demo/rsync_demo$ rsync -azvh nbraunsc@tinkercliffs1.arc.vt.edu:/home/nbraunsc/workshops/data_transfer/ .
-Transfer starting: 9 files
-./
-happy.txt
-hello_world.txt
-demo/
-demo/Manifest.toml
-demo/Project.toml
-demo/src/
-demo/src/demo.jl
-demo/src/happy.txt
-
-sent 166 bytes  received 18299 bytes  185M bytes/sec
-total size is 50479  speedup is 2.73
-nicole@MacBook-Pro-3:~/Old Drive/code/demo/rsync_demo$ ls
-demo            happy.txt       hello_world.txt
-```
 
 Example with only the `-a` flag:
 ```
@@ -300,7 +281,8 @@ tar -zxf archive_filename.tar.gz
 ## Compression/Zip
 Compression and Zip work to minimize the size of the tar directory. Compression algorithms take advantage of redundancy to reduce size. They are CPU-bound so they can consumes considerable time and energy.
 
-`gzip` is popular and widely supported and is natively supported by many analysis tools.
+`gzip` is popular and widely supported and is natively supported by many analysis tools. The following examples are using DNA sequencing files that are in a FASTQ format (“Q” stands for quality score). This format is necessary for bioinformatics software.
+
 Compress with `gzip`:
 ```
 gzip archive_filename.fastq
