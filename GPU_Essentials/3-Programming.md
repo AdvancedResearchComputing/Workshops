@@ -108,13 +108,16 @@ NVHPC/25.1-CUDA-12.6.0
 ```
 
 ### Example: C program
+[Example 2](./ex2-large.c) from Nvidia's [docs on cuBLAS](https://docs.nvidia.com/cuda/cublas/#example-code) "_shows an application written in C using the cuBLAS library API._"
 
 Attempt to compile using NVHPC
 ```bash
 module load NVHPC
 nvcc ex2-large.c -o ex2-large-a30
 ```
-The "`ld: undefinited reference to ...`" errors indicate that the linker couldn't find necessary libraries. Inspect the environment and adapt:
+
+The "`ld: undefined reference to ...`" errors indicate that the linker couldn't find necessary libraries. Inspect the environment and adapt:
+
 ```bash
 $ which nvcc
 /apps/arch/software/NVHPC/25.1-CUDA-12.6.0/Linux_x86_64/25.1/compilers/bin/nvcc
@@ -128,6 +131,11 @@ nvcc ex2-large.c -o ex2-large-a30 -lcublas
 ```
 
 ### Nvidia Collective Communications Library
+Analogous to the "Message Passing Interface" (MPI), NCCL is an Nvidia-centric library for inter-process communication with the processes are running on GPUs. 
+
+Arxive: "[Demystifying NCCL](https://arxiv.org/html/2507.04786v1)":
+
+"_Unlike general-purpose message-passing frameworks, such as MPI [3], NCCL specifically targets GPU-to-GPU interactions, utilizing interconnect technologies such as NVLink, PCIe, and InfiniBand (IB) to achieve high bandwidth and low latency._"
 ```
 NCCL/2.18.3-GCCcore-12.3.0-CUDA-12.1.1
 NCCL/2.20.5-GCCcore-13.2.0-CUDA-12.4.0
