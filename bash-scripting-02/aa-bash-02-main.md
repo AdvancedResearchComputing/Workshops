@@ -23,4 +23,5 @@ on the system.
 3. [Control Structures:  FOR Blocks](./control-structures-for.md)
 4. [Control Structures:  WHILE Blocks](./control-structures-while.md)
 5. [Iterating Over Collections](./iterating-over-collections.md)
-6. 
+6. [Input-Output Redirection](./io-redirection.md)
+7. [Program Input-Output](./program-io.md)
