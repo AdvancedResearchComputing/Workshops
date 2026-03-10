@@ -22,5 +22,5 @@ on the system.
 2. [Control Structures:  CASE Blocks](./control-structures-case.md)
 3. [Control Structures:  FOR Blocks](./control-structures-for.md)
 4. [Control Structures:  WHILE Blocks](./control-structures-while.md)
-5. [Iterating over Collections](./iterating-over-collections.md)
+5. [Iterating Over Collections](./iterating-over-collections.md)
 6. 
