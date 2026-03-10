@@ -13,6 +13,9 @@ number of alternatives to consider,
 and the work a code or script needs to do is dependent on which alternative
 is true.
 
+It is hard to overstate the variations of `if` statements.
+We cover many here, but not all.
+
 Alternatively, many workflows are not a fixed sequence
 of codes, and (almost) all workflows will
 have exceptional cases in which
@@ -59,55 +62,111 @@ Common operators for numbers are:
 - `-lt` for _less than_
 - `-le` for _less than or equal to_
 
-The basic structure of an "_if-then-else_" block is
-~~~
+#### Some Basic Structures of `if` blocks.
+
+In the examples below, `<< statement(s) >>` means one or more bash statements
+or utility commands.
+
+The basic structure of an "_if-then_" block is
+
+~~~bash
 if [[ CONDITIONAL ]]
 then
-  echo "Statements here are executed when the conditional is True."
-  echo "These statements can include `for`, `while`, `if`, and `case` blocks."
-else
-  echo "Statements here are executed when the conditional is False."
-  echo "These statements can include `for`, `while`, `if`, and `case` blocks."
+  << statement(s) >>
 fi
 ~~~
-{: .language-bash}
 
 
-Note:
+The basic structure of an "_if-then-else_" block is
+
+~~~bash
+if [[ CONDITIONAL ]]
+then
+  << statement(s) >>
+else
+  << statement(s) >>
+fi
+~~~
+
+The basic structure of an "_if-then-elif_" block is
+
+~~~bash
+if [[ CONDITIONAL01 ]]
+then
+  << statement(s) >>
+elif [[  CONDITIONAL02]]
+then
+  << statement(s) >>
+fi
+~~~
+
+
+The basic structure of an "_if-then-elif-else_" block is
+
+~~~bash
+if [[ CONDITIONAL01 ]]
+then
+  << statement(s) >>
+elif [[  CONDITIONAL02]]
+then
+  << statement(s) >>
+else
+  << statement(s) >>
+fi
+~~~
+
+In the structure above, you can have any number of `elif` blocks.
+They come after the `if` portion and before the `else` portion.
+
+
+The keyword `else` is often used to denote an error condition.
+That is, the `if` and `elif` substructures test for conditions you would 
+expect.
+If none of these conditions are met---which may or may not be
+a surprise to the writer of the code---then the `else` subblock
+prints an error message and the code halts.
+Note:  this does not always happen, but this approach is widely 
+used.
+
+
+#### Some Notes and Tips
+
 
 - Always leave one or more blanks before and after the above operators like `-lt`.
 - Always have one or more blanks before and after `[[` and `]]`.
 
-The following code will be an error because there is no space between _$age_ and _-gt_,
-and between _-gt_ and _30_:
+The following code is not recommended beccause it is harder to read.
+Putting spaces between variables and operators (e.g., _-gt_ and _-lt_)
+and constants will 
+make your code more readable, particularly with the `if` operators.
 
-~~~
+This will work:
+
+~~~bash
 age=43
 if [[ $age-gt30 ]]
 then
   echo "Man, you are old."
 fi
 ~~~
-{: .language-bash}
 
-This will work:
+... but this is easier to grasp:
 
-~~~
+~~~bash
 age=43
 if [[ $age -gt   30 ]]
 then
   echo "Man, you are old."
 fi
 ~~~
-{: .language-bash}
 
 And the output is:
 
 
-~~~
+~~~output
 Man, you are old.
 ~~~
-{:  .output}
+
 
 Note that all of the code in the code blocks can be copied
 from these pages and pasted directly into a terminal
@@ -119,19 +178,18 @@ All of the examples below will run.
 
 Basic `if` block with one conditional.
 
-~~~
+~~~bash
 age=43
 if [[ $age -gt 30 ]]
 then
   echo "Man, you are old."
 fi
 ~~~
-{: .language-bash}
 
 
 Basic `if` block with ``if-then-else'' structure.
 
-~~~
+~~~bash
 age=43
 if [[ $age -ge 30 ]]
 then
@@ -140,12 +198,11 @@ else
   echo "Man, you are young."
 fi
 ~~~
-{: .language-bash}
 
-~~~
+
+~~~output
 Man, you are old.
 ~~~
-{:  .output}
 
 
 
@@ -155,7 +212,7 @@ Basic `if` block with ``if-then-else if'' structure.
 So this code snippet has two conditionals.
 
 
-~~~
+~~~bash
 age=43
 if [[ $age -gt 30 ]]
 then
@@ -165,13 +222,11 @@ then
   echo "Man, you are young."
 fi
 ~~~
-{: .language-bash}
 
 
-~~~
+~~~output
 Man, you are old.
 ~~~
-{:  .output}
 
 
 
@@ -181,7 +236,7 @@ the first is executed because that conditional is
 evaluated first.
 
 
-~~~
+~~~bash
 age=43
 if [[ $age -ge 30 ]]
 then
@@ -191,12 +246,11 @@ then
   echo "I am the SECOND true statement."
 fi
 ~~~
-{: .language-bash}
 
-~~~
+
+~~~output
 I am the first true statement.
 ~~~
-{:  .output}
 
 
 
@@ -205,7 +259,7 @@ I am the first true statement.
 Basic `if` block with "if-then-else if-then-else" structure.
 
 
-~~~
+~~~bash
 age=43
 if [[ $age -gt 50 ]]
 then
@@ -217,20 +271,18 @@ else
   echo "You have a weird age."
 fi
 ~~~
-{: .language-bash}
 
 
-~~~
+~~~output
 You have a weird age.
 ~~~
-{:  .output}
 
 
 
 Nested `if` blocks with ``if-then-else if-then-else'' structure.
 
 
-~~~
+~~~bash
 zip_code=22903
 zc_bb=24060
 zc_cb=24073
@@ -251,40 +303,39 @@ else
   echo "I do not know where you live."
 fi
 ~~~
-{: .language-bash}
+
 
 
 The output is:
 
-~~~
+~~~output
 You live in Virginia (VA).
 You live in Charlottesville, VA.
 ~~~
-{:  .output}
+
 
 
 Strings can be evaluated.
 
 But the operators are different.
 
+[!NOTE]
 It is a point of confusion that the operators for strings are
-are those for numbers in C, C++, Java, Python, and other PLs.
+are the SAME those for numbers in C, C++, Java, Python, and other PLs.
 
 See the tables below for compendiums of operators.
 
-~~~
+~~~bash
 if [[ b > a ]];then
   echo "b is greater than a"
 fi
 ~~~
-{: .language-bash}
 
 Since it is true that b is greater than a, the output is:
 
-~~~
+~~~output
 b is greater than a
 ~~~
-{: .language-bash}
 
 
 
@@ -292,54 +343,49 @@ These are lexicographic comparisons of the strings, using the alphabetical order
 non-numeric conditions available are `<`, `>=`, `<=`, `==` and `!=` (described in the
 table at the end of this section):
 
-~~~
+~~~bash
 if [[ b != a ]];then
   echo "b is not the same as a"
 fi
 ~~~
-{: .language-bash}
 
 
-~~~
+~~~output
 b is not the same as a
 ~~~
-{: .output}
-
-
 
 For arithmetic comparisons inside `[[ ]]` brackets we instead would use the operators `-gt`,
 `-lt`, `-le`, `-ge`, `-eq` and `-ne`:
-~~~
+
+~~~bash
 if [[ 8 -gt 7 ]];then
   echo "8 is greater than 7"
 fi
 ~~~
-{: .language-bash}
 
 
 Since it is true that 8 is greater than 7, the string is printed and
 the output is:
 
-~~~
+~~~output
 8 is greater than 7
 ~~~
-{: .output}
 
 
 For arithmetic expressions we can also use `(( ))`, as described in the section above:
 
-~~~
+~~~bash
 if (( 8 > 7 ));then
   echo "8 is greater than 7"
 fi
 ~~~
-{: .language-bash}
+
 
 
 And the output is the same as for the previous code.
 
 
-~~~
+~~~bash
 a=7
 b=8
 
@@ -347,14 +393,12 @@ if (( $b > $a ));then
   echo "8 is greater than 7"
 fi
 ~~~
-{: .language-bash}
 
-~~~
+~~~output
 8 is greater than 7
 ~~~
-{: .output}
 
-~~~
+~~~bash
 a=7
 b=8
 
@@ -362,16 +406,14 @@ if (( (( $b + $a ))  > (( $a - $b))   ));then
   echo "15 is greater than -1"
 fi
 ~~~
-{: .language-bash}
 
 
-~~~
+~~~output
 15 is greater than -1
 ~~~
-{: .output}
 
 
-## String Equality
+#### String Equality
 
 
 Common operators for strings are:
@@ -382,7 +424,7 @@ Common operators for strings are:
 
 String example testing for equality.
 
-~~~
+~~~bash
 string1="I am a libra."
 string2="I am a taurus."
 
@@ -398,22 +440,19 @@ else
     echo "You guys are different zodiac."
 fi
 ~~~
-{: .language-bash}
 
 And the output is:
 
-
-~~~
+~~~output
 You guys are different zodiac.
 ~~~
-{: .output}
 
 
 
 String example testing for equality.
 Strings are case sensitive.
 
-~~~
+~~~bash
 #!/bin/bash
 string1="I am a libra."
 string2="I am a LIBRA."
@@ -447,11 +486,10 @@ else
 fi
 
 ~~~
-{: .language-bash}
 
 
 
-~~~
+~~~output
   string1 is I am a libra.
   string2 is I am a LIBRA.
   string1 is  I am a libra.
@@ -463,7 +501,7 @@ You guys are different zodiac.
   string2b is  i am a libra.
 You guys are different zodiac.
 ~~~
-{:  .output}
+
 
 Note that the second occurrence of "You guys are different zodiac." is __not__
 caused by the zodiac word, but rather because string1 has capital "I"
