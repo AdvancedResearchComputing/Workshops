@@ -319,7 +319,7 @@ Strings can be evaluated.
 
 But the operators are different.
 
-[!NOTE]
+[> !NOTE]
 It is a point of confusion that the operators for strings are
 are the SAME those for numbers in C, C++, Java, Python, and other PLs.
 
@@ -531,67 +531,58 @@ __non-numeric__ conditionals in the `[[ ]]`
 environment, rather than being the same as the numerical operators.
 
 
-> ## Logical Test
->
-> Which of these conditionals are True, which are False, and which don't work?
->
-> 1. `[[ 4 -eq 4 ]]`
-> 2. `[[ be == eb ]]`
-> 3. `[[ 4 == 4 ]]`
-> 4. `[[ 4 == 04 ]]`
-> 5. `(( 4 == 04 ))`
-> 6. `(( 4 -eq 04 ))`
->
-> > ## Solution
-> >
-> > 1. True.
-> > 2. False.
-> > 3. True (but a string, not arithmetic comparison).
-> > 4. False, because it is a string comparison.
-> > 5. True, because this is a math context.
-> > 6. Error, because `-eq` can't be used within a math context
-> {: .solution}
-{: .challenge}
+#### Logical Test
+
+Which of these conditionals are True, which are False, and which don't work?
+
+1. `[[ 4 -eq 4 ]]`
+2. `[[ be == eb ]]`
+3. `[[ 4 == 4 ]]`
+4. `[[ 4 == 04 ]]`
+5. `(( 4 == 04 ))`
+6. `(( 4 -eq 04 ))`
+
+####  Solution
+
+1. True.
+2. False.
+3. True (but a string, not arithmetic comparison).
+4. False, because it is a string comparison.
+5. True, because this is a math context.
+6. Error, because `-eq` can't be used within a math context
 
 
-> ## Arithmetic Comparisons of Strings
->
-> You should never do this, if you can help it.
-> This type of programming and coding is not good; it is error-prone.
->
-> Be aware that if you try to make an arithmetic comparison of strings,
-> the `[[ ]]` command converts any non-numeric strings to variable names.
->
-> ~~~
-> a=2
-> b=6
-> if [[ "b" -gt "a" ]];then
->  echo "this is slightly less obvious"
-> fi
-> ~~~
-> {: .language-bash}
-> ~~~
->
-> ~~~
->
-{: .callout}
+#### Arithmetic Comparisons of Strings
+
+You should never do this, if you can help it.
+This type of programming and coding is not good; it is error-prone.
+
+Be aware that if you try to make an arithmetic comparison of strings,
+the `[[ ]]` command converts any non-numeric strings to variable names.
+
+~~~
+a=2
+b=6
+if [[ "b" -gt "a" ]];then
+echo "this is slightly less obvious"
+fi
+~~~
 
 
 
 
 
-> ## One bracket or two?
->
-> `[[ ]]` is a, relatively, new command, which is not universally available in other,
-> non-bash, shells. Previous to this there was `[ ]` (synonymous for the `test` command),
-> which is more portable than `[[ ]]`, but is not as powerful or robust. `[ ]` wont be
-> covered here - more information on the differences between these can be found here:
-> [http://mywiki.wooledge.org/BashFAQ/031](http://mywiki.wooledge.org/BashFAQ/031)
-{: .callout}
+####  One bracket or two?
+
+`[[ ]]` is a relatively new command, which is not universally available in other,
+non-bash, shells. Previous to this there was `[ ]` (synonymous for the `test` command),
+which is more portable than `[[ ]]`, but is not as powerful or robust. `[ ]` wont be
+covered here - more information on the differences between these can be found here:
+[http://mywiki.wooledge.org/BashFAQ/031](http://mywiki.wooledge.org/BashFAQ/031)
 
 
 
-
+# LEFT OFF
 
 
 ## Logical _and_ and _or_

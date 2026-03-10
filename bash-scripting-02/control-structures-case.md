@@ -15,11 +15,19 @@ essentially interchangeably.
 The first pattern that matches/satisfies the expression
 is executed.
 
-Format for the dase statement:
+> [!NOTE]
+You have to include the `;;` after the statements of each
+pattern, otherwise, the shell will execute all of the 
+statements from that point through the rest of the 
+CASE statement, until a `;;` is reached.
+
+#### Format for CASE Statement
+
+Format for the case statement:
 
 
 
-~~~
+~~~bash
 case EXPRESSION in
 
   PATTERN_1)
@@ -39,13 +47,15 @@ case EXPRESSION in
     ;;
 esac
 ~~~
-{: .language-bash}
+
+> [!NOTE]
+> The `*)` is the equivalent of the `if` statement's `else` keyword.
 
 
 Example.
 
 
-~~~
+~~~bash
 home_state="Nebraska"
 
 echo "Your home state is ${home_state}."
@@ -82,13 +92,12 @@ case ${home_state} in
     ;;
 esac
 ~~~
-{: .language-bash}
 
 
-~~~
+
+~~~output
 You are a cornhusker.
 ~~~
-{:  .output}
 
 
 A different kind of example,
