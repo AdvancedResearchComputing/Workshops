@@ -7,9 +7,9 @@
 
 
 
-## Background
+### Background
 
-### Motivation
+#### Motivation
 
 A computer program takes in input, performs some operations, and then
 outputs results.
@@ -18,20 +18,16 @@ Here, we look at two major issues:
 - How to input data/information into a code.
 - How to specify where outputs are written.
 
-__For inputs:__
+__For Inputs:__
 
-1. Interactive mode:  enter (type) information during code execution at command prompts.
-2. Batch mode:
+1. program-prompt mode:  enter (type) information during code execution at command prompts.
+2. command line mode:
     - a. use command line arguments (CLAs)
     - b. store inputs in files.
 
-The interactive mode can be useful for debugging.
+The command line alternatives are used most often.
 
-The batch mode approaches, as the category implies, are used when there is
-large amounts of data and/or many code executions to complete.
-
-
-__For outputs:__
+__For Outputs:__
 
 1. Redirection:  output that is supposed to be written to screen is redirected to file.
 2. Write output to output file, one line at a time.
@@ -40,7 +36,7 @@ __For outputs:__
 
 We start with inputs.
 
-# Interactive Input:  Providing Input at Command Prompt
+#### Interactive Input:  Providing Input at a Command Prompt
 
 
 This is the data file that we will work with.
@@ -48,7 +44,7 @@ These are fictitious company data.
 The file is company.data.
 
 
-~~~
+~~~data
 xerox       copying       business       international    6000000
 exxon       oil           energy         international   10000000
 mcdonalds   fast_food     restaurant     international   11000000
@@ -57,7 +53,6 @@ dq          ice_cream     restaurant     national            3560
 pge         natural_gas   energy         national           35640
 hp          printers      business       international     456340
 ~~~
-{:  .data}
 
 
 
@@ -69,13 +64,7 @@ input file for the search string.
 
 This code is file _mySearchCode01.sh_
 
-Assuming you are in the same directory with the code, it is invoked using:
-
-- _bash mySearchCode01.sh_
-- _sh mySearchCode01.sh_
-- if the permissions on the file make it executable, then _./mySearchCode01.sh_
-
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -91,13 +80,18 @@ echo " "
 ## This is the grep command; see the grep command.
 grep $searchString $infile
 ~~~
-{: .language-bash}
+
+Assuming you are in the same directory with the code, it is invoked using one of these:
+
+- _bash mySearchCode01.sh_
+- _sh mySearchCode01.sh_
+- if the permissions on the file make it executable, then _./mySearchCode01.sh_
 
 
 An execution of this code is as follows.
 Results are written to the terminal screen.
 
-~~~
+~~~output
 ## This is the code invocation.
 sh mySearchCode01.sh
 
@@ -115,7 +109,6 @@ exxon       oil           energy         international   10000000
 chevron     oil           energy         international    5200000
 
 ~~~
-{:  .output}
 
 
 Now we look at virtually the same problem, but we want to
@@ -124,19 +117,13 @@ screen.
 To do this, we prompt the user for the output filename.
 And we redirect output, with the `grep` command,
 from the terminal to the output file.
-(This output redirection is getting a bit ahead of ourselves,
-but it is natural to look at it here.)
+
 
 This code is file _mySearchCode02.sh_
 
-Assuming you are in the same directory with the code, it is invoked using:
-
-- _bash mySearchCode02.sh_
-- _sh mySearchCode02.sh_
-- if the permissions on the file make it executable, then _./mySearchCode02.sh_
 
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -155,13 +142,20 @@ grep $searchString $infile  > $outfile
 echo " "
 echo "done "
 ~~~
-{: .language-bash}
+
+
+Assuming you are in the same directory with the code, it is invoked using one of:
+
+- _bash mySearchCode02.sh_
+- _sh mySearchCode02.sh_
+- if the permissions on the file make it executable, then _./mySearchCode02.sh_
+
 
 
 An execution of this code is as follows.
 Results are written to the output file.
 
-~~~
+~~~output
 ## This is the code invocation.
 sh mySearchCode02.sh
 
@@ -179,24 +173,22 @@ Searching for string 'oil' in file company.data.
 
 done
 ~~~
-{:  .output}
+
 
 
 The output is stored in the file _company.out_ so let
 us list it.
 
-~~~
+~~~bash
 cat company.out
 ~~~
-{: .language-bash}
 
 And the contents of the file are:
 
-~~~
+~~~output
 exxon       oil           energy         international   10000000
 chevron     oil           energy         international    5200000
 ~~~
-{:  .output}
 
 
 Both of these examples are correct.
@@ -204,12 +196,13 @@ They work.
 But almost no one does things this way:  too tedious.
 One solution to this tediousness is to use command line arguments (CLAs).
 
-# Inputs:  Providing Command Line Arguments
+#### Inputs:  Providing Command Line Arguments
 
 Now suppose we want to specify all of the inputs
 (input filename, output filename, search string)
 when we invoke the program so that the program is
-not interactive:  it is batch mode.
+not prompting us for individual inputs.
+That is, we are using command line inputs.
 That is, all of the information is provided to the code
 when it is invoked.
 
@@ -223,7 +216,7 @@ The code listing is as follows.
 Notice how the code becomes more compact.
 
 Command line arguments are specified in bash script
-source files with format `$q` where _g_ goes from 1 to _n_,
+source files with format `$i` where _i_ goes from 1 to _n_,
 where _n_ is the number of CLAs.
 
 In the code below, _n=3_ so we have `$1`, `$2`, and `$3`.
@@ -241,13 +234,8 @@ down is not helpful.
 
 This code is file _mySearchCode03.sh_
 
-Assuming you are in the same directory with the code, it is invoked using:
 
-- _bash mySearchCode03.sh_
-- _sh mySearchCode03.sh_
-- if the permissions on the file make it executable, then _./mySearchCode03.sh_
-
-~~~
+~~~bash
 #!/bin/bash
 
 # The command line arguments are entered in this
@@ -274,38 +262,44 @@ grep $searchString $infile  > $outfile
 echo " "
 echo "done "
 ~~~
-{: .language-bash}
+
+
+
+Assuming you are in the same directory with the code, it is invoked using one of:
+
+- _bash mySearchCode03.sh_
+- _sh mySearchCode03.sh_
+- if the permissions on the file make it executable, then _./mySearchCode03.sh_
+
 
 We invoke the command by using another bash script,
 which is a file called _run.03_:
 
+~~~bash
+sh mySearchCode03.sh  company.data  company.03.out  oil
 ~~~
-### sh mySearchCode03.sh  company.data  company.03.out  oil
+
+... or ...
+
+~~~bash
+chmod u+x mySearchCode03.sh
 ./mySearchCode03.sh  "company.data"  "company.03.out"  "oil"
 ~~~
-{: .language-bash}
-
-By invoking _run.03_, we invoke _mySearchCode03.sh_.
-
-Here is how to invoke run.03:
-_./run.03_
 
 
 The output is stored in the file _company.03.out_ so let
 us list it.
 
-~~~
+~~~bash
 cat company.03.out
 ~~~
-{: .language-bash}
 
 And the contents of the file are:
 
-~~~
+~~~output
 exxon       oil           energy         international   10000000
 chevron     oil           energy         international    5200000
 ~~~
-{:  .output}
 
 
 
@@ -320,25 +314,24 @@ This is what we did with the first couple of examples in this section.
 
 What we do instead is use the ideas of the last example:
 use command line arguments.
-And we use a file that is similar in spirit to _run.03_ to launch the
+And we use a file _run.04_ to launch the
 code _mySearchCode03.sh_.
 
-The new version of _run.03_ is _run.04_, below.
+File _run.04_ is below:
 
-~~~
+~~~bash
 ./mySearchCode03.sh  company.data  company.oil.04.out  oil
 ./mySearchCode03.sh  company.data  company.copying.04.out  copying
 ./mySearchCode03.sh  company.data  company.fast_food.04.out  fast_food
 ./mySearchCode03.sh  company.data  company.ice_cream.04.out  ice_cream
 ~~~
-{: .language-bash}
 
 
-We invoke _run.04_ by typing _./run.04_.
+We invoke _run.04_ by typing _sh run.04_.
 
 The screen looks like this:
 
-~~~
+~~~output
  Echo Inputs
 input file: company.data
 output file: company.oil.04.out
@@ -368,27 +361,26 @@ search string: 'ice_cream'
 
 done
 ~~~
-{:  .output}
+
 
 The code was run four times.  Even four is not a lot of times,
 but it is a start.
 
 Now, list the contents of the four output files.
 
-~~~
+~~~bash
 cat   company.*.04.out
 ~~~
-{: .language-bash}
 
+The output is:
 
-~~~
+~~~output
 xerox       copying       business       international    6000000
 mcdonalds   fast_food     restaurant     international   11000000
 dq          ice_cream     restaurant     national            3560
 exxon       oil           energy         international   10000000
 chevron     oil           energy         international    5200000
 ~~~
-{: .output}
 
 This is not too useful.
 
@@ -396,15 +388,15 @@ We have lines of data, but which data go with which output file?
 
 A better command is:
 
-~~~
+~~~bash
 awk '(FNR==1){print ">> " FILENAME " <<"}1'   company.*.04.out
 ~~~
-{: .language-bash}
 
 
-And now the output is:
 
-~~~
+And now the output is much clearer:
+
+~~~output
 >> company.copying.04.out <<
 xerox       copying       business       international    6000000
 >> company.fast_food.04.out <<
@@ -415,7 +407,7 @@ dq          ice_cream     restaurant     national            3560
 exxon       oil           energy         international   10000000
 chevron     oil           energy         international    5200000
 ~~~
-{: .output}
+
 
 
 We were going along with a simple `cat` solution and then
@@ -432,12 +424,12 @@ using and it will give you the added features.
 But sometimes not.)
 
 
-We will do things with four loops to make this more extensible
+We will do things with FOR loops to make this more extensible
 later, to thousands of executions.
 
+# LEFT OFF
 
-
-# Inputs:  Reading Information From a JSON File Using `jq`
+#### Inputs:  Reading Information From a JSON File Using `jq`
 
 JSON stands for _JavaScript Object Notation_ and is widely used as an
 ASCII (data) file format.
@@ -1086,12 +1078,4 @@ module load silly
 
 
 
-
-
-
-
-
-
-
-{% include links.md %}
 
