@@ -14,7 +14,7 @@ Bash scripting.
 ## Outline
 
 1. [Control Structures:  IF Blocks](./control-structures-if.md)
-2. [Control Structures:  FOR Blocks](./control-structures-case.md)
-2. [Control Structures:  WHILE Blocks](./control-structures-for.md)
-2. [Control Structures:  Case Blocks](./control-structures-while.md)
+2. [Control Structures:  CASE Blocks](./control-structures-case.md)
+2. [Control Structures:  FOR Blocks](./control-structures-for.md)
+2. [Control Structures:  WHILE Blocks](./control-structures-while.md)
 2. 
