@@ -103,7 +103,7 @@ You are a cornhusker.
 A different kind of example,
 where multiple entries, separated by `|`, can give the same result.
 
-~~~
+~~~bash
 month="January"
 case $month in
 
@@ -120,11 +120,10 @@ case $month in
       echo "Unknown month. Please check whether you entered the correct month name: $month";;
 esac
 ~~~
-{:  .language-bash}
 
 
-~~~
+
+~~~output
 There are 31 days in January.
 ~~~
-{:  .output}
 

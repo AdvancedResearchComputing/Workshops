@@ -8,6 +8,8 @@
 
 ## `for` Loops
 
+#### Sequences
+
 FOR loops iterate through a block of code a user-specified (maximum) number of times.
 Typically, the number of iterations is the maximum specified,
 but your inner block of code may have "checks" in it that might
@@ -40,12 +42,12 @@ the last value.
 So `seq 4` means the code block inside the FOR loop will be executed four
 times:  1, 2, 3, and 4.
 
-#### sequences
+#### Practice
 
 Please create a sequence of every 4th number between 3 and 37. Then create a sequence
 of these same numbers in reverse.
 
-## Solution
+#### Solution
 
 Given `seq 3 4 37`
 
@@ -61,7 +63,7 @@ first sequence.
 
 
 
-#### real number maths
+#### Real Number Maths
 
 Although we are not interested in this feature for the purposes of indexing arrays, it
 should be noted that `seq` uses real numbers, not integers, and so more complex sequences
@@ -116,6 +118,15 @@ do
   echo $i
 done
 ~~~
+
+#### Array (Reminder)
+
+An _array_ is a collection of values denoted by `(  )`.
+Examples:
+- `(16 47  3  -4  dog)`
+- `( this is an array of values separated by blanks)`
+
+Examples below show how to access elements of arrays.
 
 
 These integer values can be used for referencing items within an array---but do remember
@@ -249,3 +260,27 @@ Note: the lines creating variables `len` and `endvalue` could be incorporated di
 the FOR loop statements, but they are explicitly stated here to make the solutions more
 readable.
 
+
+#### Lists
+
+A _list_ is a collection of values set apart by blanks.
+
+Examples
+- " this is a list of tokens separated by blanks "
+- "  42 -18  63      72 9        "
+
+You can iterate through list contents akin to the way that
+a python list is traversed, where you do not need indexes.
+
+~~~bash
+my_list="  42 -18  63      72 9        "
+
+echo " here come the elements: "
+echo " "
+for item in ${my_list}
+do
+    echo "${item}"
+
+done
+echo " " 
+~~~

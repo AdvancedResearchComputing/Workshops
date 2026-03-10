@@ -582,10 +582,9 @@ covered here - more information on the differences between these can be found he
 
 
 
-# LEFT OFF
 
 
-## Logical _and_ and _or_
+#### Logical _and_ and _or_
 
 Operators within a conditional statement permit
 more complicated expressions.
@@ -598,7 +597,7 @@ Logical _or_ is `||`.
 
 __Logical AND__
 
-~~~
+~~~bash
 age=60
 wrinkles=1
 if [[ $age -gt 50 ]] && [[ $wrinkles -eq 1 ]]
@@ -608,20 +607,20 @@ else
    echo "You are unusual."
 fi
 ~~~
-{: .language-bash}
+
 
 
 And the output is:
 
-~~~
+~~~output
 You are consistent.
 ~~~
-{: .output}
+
 
 
 __Logical OR__
 
-~~~
+~~~bash
 age=1
 if [[ $age -lt 2 ]] || [[ $age -gt 70 ]]
 then
@@ -630,14 +629,13 @@ else
    echo "You are in between."
 fi
 ~~~
-{: .language-bash}
+
 
 And the output is:
 
-~~~
+~~~output
 You are extreme.
 ~~~
-{: .output}
 
 
 
@@ -649,7 +647,7 @@ into the mix.
 
 __Logical AND__
 
-~~~
+~~~bash
 age_category="baby"
 wrinkles="yes"
 if [[ "$age_category" = "baby" ]] && [[ "$wrinkles" = "no" ]]
@@ -662,17 +660,16 @@ else
     echo "I don't know what you are."
 fi
 ~~~
-{: .language-bash}
 
-~~~
+
+~~~output
 You are normal.
 ~~~
-{:  .output}
 
 
 __Logical OR__
 
-~~~
+~~~bash
 color="yellow"
 if [[ $color = "yellow" ]] ||  [[ $color = "orange" ]]
 then
@@ -681,15 +678,13 @@ else
    echo "You are subdued."
 fi
 ~~~
-{: .language-bash}
 
 
-~~~
+~~~output
 You are bright and shiny.
 ~~~
-{:  .output}
 
-## Operator Summary
+#### Operator Summary
 
 There are three types of operators for these conditional expressions:
 file, numeric, and non-numeric. Each will return true (0) if the condition is met,
@@ -729,7 +724,7 @@ or false (1) if the condition is not met. These operators are slightly different
 | \|\| | logical OR |
 
 
-## Strings and Regular Expressions
+####  Strings and Regular Expressions
 
 Strings can be evaluated using regular expressions.
 
@@ -741,7 +736,7 @@ You can put these commands inside a file or, easier,
 just copy and paste this right into the terminal window
 at the command prompt.
 
-~~~
+~~~bash
 mylist="    here4weGo     4692     herewe"
 
 for a in $mylist
@@ -762,7 +757,7 @@ done
 echo " "
 echo "done"
 ~~~
-{: .language-bash}
+
 
 The `^` symbol means start matching at the beginning of the string.
 The `[0-9]` means match any number digit.
@@ -774,7 +769,7 @@ can occur in the totality of the string.
 
 
 
-~~~
+~~~output
  ------ 
 here4weGo
  The string contains numbers and letters.
@@ -789,4 +784,3 @@ herewe
  
 done
 ~~~
-{:  .output}
