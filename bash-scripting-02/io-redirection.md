@@ -11,9 +11,9 @@ See [https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents]
 
 See [https://www.gnu.org/software/bash/manual/html_node/Redirections.html](https://www.gnu.org/software/bash/manual/html_node/Redirections.html)
 
-# Background
+#### Background
 
-### Motivation
+#### Motivation
 
 A computer program can be written to take inputs
 from the computer screen (terminal window) and to write outputs to the
@@ -34,60 +34,87 @@ changing references.
 - Standard input (stdin) is file descriptor 0.
 - Standard output (stdout) is file descriptor 1.
 - Standard error (stderr) is file descriptor 2.
-- The symbol "<" refers to the stdin file descriptor.
-- The symbol ">" refers to the stdout file descriptor.
-- The symbols "2>" refers to the stderr file descriptor.
-- The symbols ">>" mean to append to file descriptor that is stdout.
-- The symbol "|" means piping, i.e., send the output of the previous command as
+- The symbol `<` refers to the stdin file descriptor.
+- The symbol `>` refers to the stdout file descriptor.
+- The symbols `2>` refers to the stderr file descriptor.
+- The symbols `>>` mean to append to file descriptor that is stdout.
+- The symbol `|` means piping, i.e., send the output of the current command as
 input to the next command.
 
-# Examples
+### Examples
 
 
-### Redirect output
+#### Redirect Output
 
 The command
 
-~~~
+~~~bash
 ls
 ~~~
-{:  .language-bash}
 
 will write results to the terminal window
 
 
 The command
 
-~~~
+~~~bash
 ls > mydircontent
 ~~~
-{:  .language-bash}
 
-will write results to the _file_ mydircontent.
+will write results to the _file_ **mydircontent*.
 
 
-### A more detailed example
+#### Redirect Output From Codes
+
+Create the file _my_python.py_ with the one line below:
+
+~~~python
+print("  Hello ARC")
+print("  Hey Abigail")
+~~~
+
+Run this code as follows:
+
+~~~python
+python my_python.py
+~~~
+
+When this code is run, the output appears in the terminal window.
+
+Now, run the code again, but redirect the output to file _output.out_,
+like so:
+
+~~~python
+python my_python.py >  output.out  
+~~~
+
+Note that the one redirect causes ALL output to be redirected to the 
+specified output file _output.out_.
+
+
+
+#### More Esoteric Examples
 
 
 The command.
 
-~~~
+~~~bash
 ls > dirlist 2>&1
 ~~~
 {: .language-bash}
 
 This command generates the output from `ls` and redirects it from
 the terminal window, where it would normally be displayed,
-to file dirlist.
-This is because ">" means write to stdout.
+to file _dirlist_.
+This is because ">" means redirect the output.
 Then, "2>&1" is parsed like this:  "2>" meaning for stderr,
 assign stderr to the same handle (file descriptor) as "&1,"
 where "&1" means a reference to stdout.
 
-Our second command.
+A second command.
 
 
-~~~
+~~~bash
 ls 2>&1 > dirlist
 ~~~
 {: .language-bash}
@@ -102,12 +129,12 @@ terminal window to a file called dirlist.
 
 
 
-### Redirect input
+#### Redirect Input
 
 Let company.data contain
 
 
-~~~
+~~~output
 xerox       copying       business       international    6000000
 exxon       oil           energy         international   10000000
 mcdonalds   fast_food     restaurant     international   11000000
@@ -116,76 +143,80 @@ dq          ice_cream     restaurant     national            3560
 pge         natural_gas   energy         national           35640
 hp          printers      business       international     456340
 ~~~
-{:  .output}
+
 
 Then
 
-~~~
+~~~bash
 head -n 4 < company.data
 ~~~
-{:  .language-bash}
 
-produces
+produces the first four lines of the file, thusly:
 
-~~~
+~~~output
 xerox       copying       business       international    6000000
 exxon       oil           energy         international   10000000
 mcdonalds   fast_food     restaurant     international   11000000
 chevron     oil           energy         international    5200000
 ~~~
-{:  .output}
 
 
-### Repeatedly redirect output (append)
+#### Repeatedly Redirect Output (Append)
 
 The operator `>>` means append.
 
 `$RANDOM` generates a random number (integer) between 0 and 32768 (=2**15).
 
+We are implicitly assuming that the file "myRandomNumbers does not exist.
 
+In the example below, which is a very common pattern,
+the file myRandomNumbers is instantiated with the `touch`
+command, and the file is empty.
+Subsequent "writes" to the files take the form of appends (`>>`)
+so we are consistently updating the file with more information.
+
+~~~bash
+touch myRandomNumbers
+echo "Random number:  ${RANDOM}"  >> myRandomNumbers
+echo "Random number:  ${RANDOM}"  >> myRandomNumbers
+echo "Random number:  ${RANDOM}"  >> myRandomNumbers
+echo "Random number:  ${RANDOM}"  >> myRandomNumbers
 ~~~
-echo "Random number:  ${RANDOM}"  >> myRandomNumbers
-echo "Random number:  ${RANDOM}"  >> myRandomNumbers
-echo "Random number:  ${RANDOM}"  >> myRandomNumbers
-echo "Random number:  ${RANDOM}"  >> myRandomNumbers
-~~~
-{:  .language-bash}
 
 
-The output (for the executions on my cluster) consists
+
+The output (for the executions on a cluster) consists
 of four lines in file myRandomNumbers
 To list the four lines,
 
-~~~
+~~~bash
 cat myRandomNumbers
 ~~~
-{:  .language-bash}
+
 
 and it should show something similar to this (the actual numbers
 will vary):
 
-~~~
+~~~output
 Random number:  31804
 Random number:  2584
 Random number:  4114
 Random number:  13550
 ~~~
-{:  .output}
 
 
-### Redirecting standard output and standard error at one time.
+#### Redirecting Standard Output and Standard Error At One Time.
 
 We use the `&>` operator.
 
 For a cluster that has a module system installed,
 and it is active when logging on to the machine,
-then a very common action is
+then a common action is
 
 
-~~~
+~~~bash
 module avail &> all.modules.<date>
 ~~~
-{:  .language-bash}
 
 In file _all.modules.<date>_, all of the available modules
 on the system will listed.
@@ -199,7 +230,7 @@ The output can look something (crudely) like this, listing only
 the first 20 lines using `head -n 20 all.modules.owl.head.17.jun.2024`:
 
 
-~~~
+~~~output
 
 ------------------------------------------------- /cm/local/modulefiles --------------------------------------------------
    apps              (L)    cmd               gcc/11.2.0         mariadb-libs    openldap        slurm/slurm/23.02.7 (L)
@@ -221,63 +252,62 @@ the first 20 lines using `head -n 20 all.modules.owl.head.17.jun.2024`:
    gdb/10.2                           intel-tbb-oss/intel64/2021.4.0              ucx/1.10.1
    globalarrays/openmpi/gcc/64/5.8    iozone/3_492
 ~~~
-{:  .output}
 
 
-### Appending to standard output and standard error at one time.
+
+### Appending Used To Redirect Standard Output and Standard Error at One Time.
 
 We use the `&>>` operator, which is akin to the `&>` operator discussed
 above.
 
 
-~~~
+~~~bash
+touch myRandomNumbers02
 echo "Random number:  ${RANDOM}"  &>> myRandomNumbers02
 echo "Random number:  ${RANDOM}"  &>> myRandomNumbers02
 echo "Random number:  ${RANDOM}"  &>> myRandomNumbers02
 echo "Random number:  ${RANDOM}"  &>> myRandomNumbers02
 ~~~
-{:  .language-bash}
 
 
 The output (for the executions on my cluster) consists
 of four lines in file myRandomNumbers
 To list the four lines,
 
-~~~
+~~~bash
 cat myRandomNumbers02
 ~~~
-{:  .language-bash}
 
 and it should show something similar to this (the actual numbers
 will vary):
 
-~~~
+~~~output
 Random number:  22161
 Random number:  23270
 Random number:  31012
 Random number:  13850
 ~~~
-{:  .output}
 
+
+# LEFT OFF
 
 ### Here strings and use of `<<<` operator.
 
-The command inputs the string on the right of the command,
+The command inputs the string on the right of the operator `<<<`,
 and substitutes in a tab for each whitespace character:
 
-~~~
+~~~bash
 tr [:space:] "\t" <<< "Virginia Tech Go Hokies"
 ~~~
-{:  .language-bash}
+
 
 and it should show something similar to this
 (variable spacing between words, based on tabs):
 
 
-~~~
+~~~output
 Virginia	Tech	Go	Hokies
 ~~~
-{:  .output}
 
 ### Piping
 
@@ -293,6 +323,4 @@ the next.
 But we presented it earlier because it is so useful.
 
 
-
-{% include links.md %}
 
