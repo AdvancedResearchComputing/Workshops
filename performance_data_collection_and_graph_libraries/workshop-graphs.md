@@ -427,6 +427,7 @@ echo " -------------------"
 echo " "
 
 # Load modules.
+module reset
 module load Miniforge3/25.11.0-1
 
 
@@ -746,6 +747,7 @@ The slurm script, named _run.01.slurm_, is:
 ## Wall time.
 #SBATCH --time=00:30:00 # 1 hour
 
+## Account.
 ## #SBATCH --account=personal
 #SBATCH --account=arcadm
 
@@ -764,8 +766,8 @@ The slurm script, named _run.01.slurm_, is:
 ## #SBATCH --mem=10G
 
 ## Slurm output and error files.
-#SBATCH -o slurm.snappy.01.code.job.%j.out
-#SBATCH -e slurm.snappy.01.code.job.%j.err
+#SBATCH --output slurm.snappy.01.code.job.%j.out
+#SBATCH --error slurm.snappy.01.code.job.%j.err
 
 ## #SBATCH --mail-type=BEGIN,END
 ## #SBATCH --mail-user=ckuhlman@vt.edu
@@ -784,16 +786,11 @@ echo " "
 
 
 # Load modules.
-# module load Anaconda3/2020.11
-# module load Python/3.11.5-GCCcore-13.2.0
+module reset
 module load Miniforge3/25.11.0-1
 
 
 # Activate a python env.
-## source activate ~/env/tc/cpu/py39_base
-## source /home/ckuhlman/env/tc/cpu/py39_na_basic/bin/activate
-## source /home/ckuhlman/env/tc/cpu/py311_pv_basic/bin/activate
-# source activate ~/env/owl/normal_q/py37_mf_snappy
 source activate ~/env-python/owl/normal_q/genoa/py37_mf_snappy
 
 
@@ -1575,6 +1572,7 @@ echo " -------------------"
 echo " "
 
 # Load modules.
+module reset
 module load Miniforge3/25.11.0-1
 
 # Activate a python env.
@@ -1872,7 +1870,7 @@ And you have the four performance-based output files:
             - So you may not explicitly load a package with `conda install <package-name>` but it is there because it resides within another package.           
 3. In your sbatch slurm script, consider:
    - Printing out the hardware that you are running on.
-       - Use `scontrol show job $SLURM_JOB_ID`
+       - Use `scontrol show job --details $SLURM_JOB_ID`
    - Printing out performance data.
        - For CPU and node-based memory data, use the commands
          `mpstat`, `vmstat`, and `iostat` to generate performance
