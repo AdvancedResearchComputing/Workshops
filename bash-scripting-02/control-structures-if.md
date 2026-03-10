@@ -2,7 +2,7 @@
 
 #### Link Back To Main
 
-[Back to Main Page](../aa-bash-02-main.md)
+[Back to Main Page](./aa-bash-02-main.md)
 
 
 
