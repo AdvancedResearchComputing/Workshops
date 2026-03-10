@@ -9,8 +9,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 Bash scripting.
 
-[!NOTE]
-**Note**.
+> [!NOTE]
 Most/many/all of the commands and examples given can be execute 
 at the command line.
 Even on the head nodes.
