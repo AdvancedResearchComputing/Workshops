@@ -408,7 +408,9 @@ exxon       oil           energy         international   10000000
 chevron     oil           energy         international    5200000
 ~~~
 
-
+In the above, `FNR` is File Record Number, which is typically
+the file line number.
+So for the first line of each file, the filename is printed.
 
 We were going along with a simple `cat` solution and then
 we go to `awk`.
@@ -427,7 +429,6 @@ But sometimes not.)
 We will do things with FOR loops to make this more extensible
 later, to thousands of executions.
 
-# LEFT OFF
 
 #### Inputs:  Reading Information From a JSON File Using `jq`
 
@@ -452,6 +453,8 @@ the `jq` utility, that works by applying filters on a stream of json data.
 1. file structure.
 2. names of all keys.
 
+Usually this information is readily available.
+
 Finally, we can use `jq` right "out of the box."
 Type `jq --version` and you should see the response `jq-1.6`.
 Note:  another, probably later, version is perfectly fine.
@@ -459,7 +462,7 @@ Note:  another, probably later, version is perfectly fine.
 
 Consider this JSON formatted file called _characters.json_:
 
-~~~
+~~~json
 {
   "characters": [
     {
@@ -480,32 +483,35 @@ Consider this JSON formatted file called _characters.json_:
   ]
 }
 ~~~
-{:  .data}
+
 
 Look at the command below. `jq` is the program name.
 `.character` has these semantics.
 First, jq commands make ample use of periods (.).
 They denote that the concatenated string next to it is
-a _key_ in a _<key : value>_ pair.
+a _key_ in a _< key : value >_ pair.
 In this case, the key is _characters_.
 The file name in which the _characters_ key is to be
 found is in _characters.json_.
 This command returns the _value_ of the _<key : value>_
 pair corresponding to key _characters_.
 
+(The fact that the file has the same name as the key is a 
+coincidence and it not necessary; perhaps a poor choice of
+the same word.)
+
 Issuing this command:
 
-~~~
+~~~bash
 jq .characters characters.json
 ~~~
-{: .language-bash}
 
 will produce this result, which is the _value_ of the
-_<key : value>_ pair where the key in the file is
+_< key : value >_ pair where the key in the file is
 _characters_.
 
 
-~~~
+~~~json
   [
     {
       "movie": "Cars",
@@ -524,7 +530,6 @@ _characters_.
     }
   ]
 ~~~
-{:  .data}
 
 
 First, note that arrays and lists are zero-indexed,
@@ -532,40 +537,37 @@ as in Python, C, C++, and Java, among other languages.
 
 To get the first element of the _characters_ array,
 
-~~~
+~~~bash
 jq .characters[0] characters.json
 ~~~
-{: .language-bash}
+
 
 It will produce this result
 
 
-~~~
+~~~json
     {
       "movie": "Cars",
       "name": "Guido",
       "type": "fork lift"
     }
 ~~~
-{:  .data}
 
 
 
 To get the name of the character in the second
 element, do
 
-~~~
+~~~bash
 jq .characters[1].name characters.json
 ~~~
-{: .language-bash}
 
 It will produce this result
 
 
-~~~
+~~~bash
 "Kowolski"
 ~~~
-{:  .data}
 
 
 Note the two things that we said above that one has
@@ -575,18 +577,19 @@ to know about a _json_ file to use _jq_:
 
 We have to know the file structure so that we know how to bore
 down into successive levels of keys (using the period `.` operator),
-and we have to know what the key names are.
+and we have to know what the key names are to retrieve the 
+corresponding _values_.
 Knowing these items enables us to write the following in the `jq`
 command above:  `.characters[1].name`.
 That is, we want the value corresponding to the key "name"
 in the second element of "characters".
 
-# Using `jq` With JSON Files in Bash Scripts
+#### Using `jq` With JSON Files in Bash Scripts
 
 
 Let us look at an even simpler data file _site.json_:
 
-~~~
+~~~json
 {
   "SITE_DATA": {
     "URL": "example.com",
@@ -595,7 +598,6 @@ Let us look at an even simpler data file _site.json_:
   }
 }
 ~~~
-{:  .data}
 
 
 We want a bash script that will read this file and assign the values
