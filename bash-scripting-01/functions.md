@@ -56,11 +56,11 @@ bash test.sh
 
 `export` turns a shell variable into an environment variable, making it visible to child processes.
 
-> **Exploring Environment Variables**  
-> List all exported variables with:  
-> ```bash
-> declare -px
-> ```  
+**Exploring Environment Variables**  
+List all exported variables with:  
+```bash
+declare -px
+```  
 
 
 Environment variables are also accessible from other languages, e.g.:
@@ -68,6 +68,8 @@ Environment variables are also accessible from other languages, e.g.:
 ```bash
 python -c "import os; print(os.environ['var2'])"
 ```
+
+Similar mechanisms are available in R, Matlab, and many other environments.
 
 ## Subshells
 
@@ -289,15 +291,14 @@ echo "$arg1"
 echo "$arg2"
 ```
 
-> **Solution**  
-> The first word goes to `arg1`; the remainder (including spaces) goes to `arg2`.  
-> ```
-> start
-> here end
-> ```  
-> Be careful: any whitespace inside a returned field will be split, and extra fields are appended to the last variable.  
-> {: .solution}
-> {: .challenge}
+<details><summary> **Solution**  </summary>
+The first word goes to `arg1`; the remainder (including spaces) goes to `arg2`.  
+```
+start
+here end
+```  
+Be careful: any whitespace inside a returned field will be split, and extra fields are appended to the last variable.  
+</details>
 
 ### Return status
 
