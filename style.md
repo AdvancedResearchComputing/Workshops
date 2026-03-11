@@ -1,9 +1,9 @@
 # Style reference
 
-## Block quotes and admonitions
+#### Block quotes and admonitions
 `command`
 
-Use language specifiers where they're useful:
+#### Use language specifiers where they're useful:
 
 "bash"
 ```bash
@@ -67,7 +67,20 @@ print(fmt_str)
 > Thus, if you inherit a file that uses ` ~~~ ` at the start and end of code/text
 > blocks, it will work here. (See the "C++" block above.)
 
+#### Use data specifiers where they're useful:
 
+"JSON"
+~~~json
+{
+  "SITE_DATA": {
+    "URL": "example.com",
+    "AUTHOR": "John Doe",
+    "CREATED": "10/22/2017"
+  }
+}
+~~~
+
+#### Signals for types of information:
 
 Tip:
 > [!TIP]
