@@ -30,15 +30,17 @@ For example, the last example would be `"s/[HW]/J/g"` instead of `'s/[HW]/J/g'`.
 #### Basic Syntax
 
 ~~~bash
-sed s/<existing string>/<replacement string>/[g|c]
+sed s/<existing string>/<replacement string>/[g| |c]   input_file    [ > output_file ]
 ~~~
 
 where:
 - "g" means replace globally throughout document.
 - "c" means replace one instance at a time, and get confirmation from user on each
   such instance.
+- "empty string" means replace first occurrence.
 
-#### Examples
+
+#### Example:  Basic
 
 
 To demonstrate the basic usage of sed, we will create a text file (`input.txt`)
@@ -58,7 +60,7 @@ line 2.
 
 ~~~bash
 echo hello > input.txt
-sed -e "s/hello/world/" input.txt
+sed "s/hello/world/" input.txt
 ~~~
 
 
@@ -66,11 +68,28 @@ sed -e "s/hello/world/" input.txt
 world
 ~~~
 
+#### Example:  Redirect Output
+
+~~~bash
+sed "s/hello/world/" input.txt > output.txt
+~~~
+
+~~~bash
+cat output.txt
+~~~
+
+~~~output
+world
+~~~
+
+#### Example:  Substitution In Place
+
 
 The `-e` flag indicates that the first parameter (`s/hello/world/`) is a script to be
 applied to the stream, while the following non-option parameters (`input.txt`) are input
 files.
-The `-e` flag also tells `sed` to make the changes _in place_ so that if there are multiple substitutions
+The `-e` flag also tells `sed` to make the changes _in place_ (and RIGHT NOW)
+so that if there are multiple substitutions
 (see below, where we'll do this),
 then all of the substitutions are made in composing the output string/stream.
 Sed will, by default, print all the processed input, so that it can be saved for later use,
@@ -78,9 +97,28 @@ if you redirect the output into a file.
 Below, we do this with the redirection operator `>` again, as we did above,
 but now we are writing the output of the `sed` command to file "output.txt".
 
-~~~bash
-sed -e "s/hello/world/" input.txt > output.txt
+Contents of input.03.txt
+
+~~~output
+hi   hello   goodbye
 ~~~
+
+We do the following, with the power of `-e`:
+1. change all instances of "hi" to "hello".
+2. change all instances of "hello" to "hey there".
+3. change all instances of goodbye to "later gator".
+
+~~~bash
+sed  -e   "s/hi/hello/g"  -e  "s/hello/hey there/g"  -e  "s/goodbye/later gator/g"  input.03.txt  >output.03.out 
+~~~
+
+Contents of the output file output.03.out
+
+~~~output
+hey there   hey there   later gator
+~~~
+
+
 
 
 
@@ -136,6 +174,7 @@ heaao
 worad
 ~~~
 
+#### Example:  Opeating on Particular Lines of a File
 
 Rather than search the whole input for match you can, if you know the exact line you wish
 to process, specify a line number (in this case, line 2):
@@ -156,7 +195,7 @@ world
 Note that sed starts indexes from 1, not 0.
 
 
-#### Providing Scripts Via a File
+#### Example:  Providing Scripts Via a File
 
 Sed allows the use of a file for providing the scripts for processing your files. This
 file should contain one script per line, and passed using `-f` instead of `-e`, e.g.:
