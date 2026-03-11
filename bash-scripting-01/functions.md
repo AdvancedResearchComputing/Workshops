@@ -338,7 +338,9 @@ Instead of invoking a script as a separate process, you can **source** it so tha
 source script.sh
 ```
 
-Sourcing is ideal for loading configuration variables or functions (e.g., `.bashrc`, `.bash_profile`).
+Sourcing is ideal for loading configuration variables or functions (e.g., `.bashrc`, `.bash_profile`) because it works in your current shell.
+
+It can be problematic though, if the script being executed has any "early exit" functionality because the `exit` command will end the calling shell.
 
 **Task** – Move `determine_next_date` to a separate file (`function_date_math.sh`), source it, and verify it still works.  
 
