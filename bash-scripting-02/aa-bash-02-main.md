@@ -71,4 +71,5 @@ take if I had to write a code in Python or C to do the same work?
 11. [Find Text in a File:  Grep Utility](./grep.md)
 12. ["Daisy Chain" Commands Together:  Piping Utility](./piping.md)
 13. [Sorting Data:  Sort Utility](./sort.md)
-14. [App:  Check Number of Jobs Completed](check-num-jobs-completed.md)
+14. [App:  Check Number of Jobs Completed](./check-num-jobs-completed.md)
+15. [App:  Many Jobs Template](./many-jobs-template.md)
