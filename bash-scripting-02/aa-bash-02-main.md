@@ -67,3 +67,5 @@ take if I had to write a code in Python or C to do the same work?
 7. [Program Input-Output](./program-io.md)
 8. [awk utility](./awk.md)
 9. [sed utility](./sed.md)
+10. [See portions of file contents:  head and tail](./head-tail.md)
+11. [Find text in a file:  grep](./grep.md)
