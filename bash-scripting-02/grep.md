@@ -4,7 +4,7 @@
 
 [Back to Main Page](./aa-bash-02-main.md)
 
-#### Base Data File that will be Manipulated
+#### Base Data Files That Will Be Manipulated
 
 We will use the following data, in file _company.data_ for a few companies in several examples.
 
