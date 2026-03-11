@@ -27,6 +27,16 @@ I use double quotes so that variables and their values will be
 interpreted correctly.
 For example, the last example would be `"s/[HW]/J/g"` instead of `'s/[HW]/J/g'`.
 
+#### Basic Syntax
+
+~~~bash
+sed s/<existing string>/<replacement string>/[g|c]
+~~~
+
+where:
+- "g" means replace globally throughout document.
+- "c" means replace one instance at a time, and get confirmation from user on each
+  such instance.
 
 #### Examples
 
@@ -146,145 +156,123 @@ world
 Note that sed starts indexes from 1, not 0.
 
 
-> ## Providing scripts via a file.
->
-> Sed allows the use of a file for providing the scripts for processing your files. This
-> file should contain one script per line, and passed using `-f` instead of `-e`, e.g.:
-> ~~~
-> echo "s/goodbye/world/" > myscript.sed
-> sed -f myscript.sed input.txt input_pt2.txt
-> ~~~
-> {: .language-bash}
-> ~~~
-> hello
-> world
-> ~~~
-> {: .output}
-{: .callout}
+#### Providing Scripts Via a File
+
+Sed allows the use of a file for providing the scripts for processing your files. This
+file should contain one script per line, and passed using `-f` instead of `-e`, e.g.:
+
+
+~~~bash
+echo "s/goodbye/world/" > myscript.sed
+sed -f myscript.sed input.txt input_pt2.txt
+~~~
+
+
+~~~output
+hello
+world
+~~~
 
 
 
 
-> ## Editing dates for a complex configuration file
->
-> Jon has a configuration file (`namelist.input` in the `wrf_configuration` directory)
-> that he uses for running the Weather Research and Forecast
-> (WRF)  model. He wants to run this daily, keeping all of
-> the configuration the same except for the start and end dates. These will need to be
-> changed each day that the model is run, so that the start date is today, and the end
-> date is today + 3 days. Can you automate this using `sed`? The template configuration
-> file itself does not need to be useable, so can be modified if that would help you.
->
-> > ## Solution
-> >
-> > There are two ways to do this. The first is to specify the lines you want to change,
-> > and change only those lines. However this is a fragile solution, as any changes to the
-> > template configuration file could change the line numbering, breaking your script.
-> >
-> > A more robust solution is to replace the dates in the template file with clear
-> > identifier strings. These should be something you would not normally see in a script
-> > (e.g. I tend to use a string such as `%%DAY%%` or `%%MONTH%%`). Then you can carry out
-> > a global sed action for each string requiring changing, without worrying that you
-> > might make any unwanted changes.
-> {: .solution}
-{: .challenge}
 
 
-
-
-## Regular Expressions
+#### Regular Expressions
 
 Grep uses regular expressions (often abbreviated to _regex_),
 sequences of characters which define the string(s) to be searched for. Sed uses the same
 regex patterns for it's searches, and we will cover some basic principles of using these
 here.
 
-> ## Regex syntax and interoperability
->
-> Regular expressions are implemented in a number of different programming languages.
-> These all follow similar rules, but there will be differences, often subtle, between
-> each of these implementations.
->
-> Many implementations follow the feature-rich regex syntax that was developed first for
-> the Perl language.
-> However UNIX command line programs tend to use the older 'POSIX' regex
-> standards. These are further split into the POSIX Basic (BRE) and POSIX Extended Regular
-> Expression (ERE) standards. Below we will teach you the ERE standard, because this has
-> a more readable syntax which is closer to that of the more modern regex implementations.
-> More information on the difference between the two POSIX standards can be found
-> [here](http://www.regular-expressions.info/posix.html).
->
-> To use ERE in sed the `-E` flag must be used. We will do this below, even in situations
-> where it is not necessary, to get you in the habit of using it in your own code.
-{: .callout}
+#### Regex Syntax and Interoperability
+
+Regular expressions are implemented in a number of different programming languages.
+These all follow similar rules, but there will be differences, often subtle, between
+each of these implementations.
+
+Many implementations follow the feature-rich regex syntax that was developed first for
+the Perl language.
+However UNIX command line programs tend to use the older 'POSIX' regex
+standards. These are further split into the POSIX Basic (BRE) and POSIX Extended Regular
+Expression (ERE) standards. Below we will teach you the ERE standard, because this has
+a more readable syntax which is closer to that of the more modern regex implementations.
+More information on the difference between the two POSIX standards can be found
+[here](http://www.regular-expressions.info/posix.html).
+
+To use ERE in sed the `-E` flag must be used.
+
+
+#### When sed Characters are Needed in Text
+
+There are characters that are used by sed to perform operations.
+Two of them are `.` and `/`.
+To use them for text needs, i.e., you need to print a forward slash (/), 
+you need to "escape them" using the `\` (backslash) key.
+
 
 Regular expressions rely on the use of literal characters and metacharacters to construct
 the search term. Metacharacters are characters which have a special meaning (such as `.`
 represents any single character). If you wish to search for a literal character which
 happens to be a regex metacharacter, then it will need to be "escaped," that is, preceded
-by a `\` character. For example:
-~~~
+by a `\` character. For example to change a period to an ellipsis:
+
+~~~bash
 echo "Hello. World" > input.txt
 sed -E -e 's/\./.../' input.txt
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 Hello... World
 ~~~
-{: .output}
-Note that the string which is being used as a replacement is not a regex pattern, so the
-periods in this did not need escaping.
 
-> ## Forgetting to escape a metacharacter
->
-> What string would sed return if the `\` character was not used in the above regex?
->
-> > ## Solution
-> >
-> > The first character found will be replaced, giving an output:
-> > ~~~
-> > ...ello. World
-> > ~~~
-> > {: .output}
-> >
-> > The search was not global though, so the rest of the string remains unchanged. Only if
-> > a `g` were added to the end of the script then it will replace all characters in the
-> > string with `...`.
-> {: .solution}
-{: .challenge}
+Another example:  say you want to replace in text every occurrence of three consecutive
+forward slashs (/) with three dashes (---), and write the resulting text
+to an output file named my_output.  Then
 
-### Matching Ranges of Characters
+~~~bash
+sed "s/\/\/\//---/g" input.file  > my_output
+~~~
+
 
 One of the most common patterns used in regex is the definition of a list or range of
 characters, which can be denoted using square brackets. E.g.:
-~~~
+
+~~~bash
 sed -E -e "s/[HW]/J/g" input.txt
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 Jello. Jorld
 ~~~
-{: .output}
+
+
+#### Using Multiple Characters in Substitutions
+
 This list of upper case characters to replace is very focused, but if you did not know in
 advance what the upper case characters would be you can use the list `[A-Z]`. Similarly,
 to replace all lower case letters use the list `[a-z]`, and to replace any digit us
 `[0-9]`. These can be combined as you require, for example, to match all characters (of
 any case) between B and H you would use `[B-Hb-h]`.
 
-> ## Creating new strings
->
-> What regex expressions would you use to create the following strings from the
-> `Hello. World` string in the `input.txt` file?
-> 1. `Halla. Warld`
-> 2. `Heno. Worn`
->
-> > ## Solution
-> > 1. `sed -E -e "s/[eo]/a/g"`
-> > 2. `sed -E -e "s/l[ld]/n/g"`
-> {: .solution}
-{: .challenge}
+Examples.  The original string is `Hello. World` in file _input.txt_.
 
-### Matching Repeated Instances
+To produce this output `Halla. Warld`, you would use the command
+
+~~~bash
+sed "s/[eo]/a/g"  input.txt
+~~~
+
+To produce this output `Heno. Worn`, you would use the command
+
+~~~bash
+sed "s/l[ld]/n/g"  input.txt
+~~~
+
+
+#### Matching Repeated Instances
 
 It can be useful to match more, or less, than a single instance of a particular element in
 the search string. This can be done by adding one of these special characters:
@@ -296,47 +284,54 @@ ranges can be defined by `{VALUE,VALUE}`
 
 The elements that these can be used on can be either single characters, or sets of
 characters. E.g.:
-~~~
+
+~~~bash
 sed -E -e "s/l{2}o/n/g" input.txt
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 Hen. World
 ~~~
-{: .output}
+
+
 This is particularly useful for changing date strings, e.g.:
-~~~
+
+~~~bash
 YEAR=2021
 sed -E -e "s/[0-9]{4}/${YEAR}/g" <(echo 'the date is: 23-04-2020')
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 the date is: 23-04-2021
 ~~~
-{: .output}
+
+
 Here we change the date to that set in a previously set variable (note the use of double
 quotation marks, so that the shell will interpret the string and replace the variable name
 with the required value).
 
 
-### Matching Line Endings
+#### Matching Line Endings
 
 The `^` and `$` metacharacters can be used to respectively assert the position of the
 start or end of a line. This allows you to "anchor" your search at either end of a line.
 For example, if we are provided with a YEAR variable which only contains the last two
 digits, but we know that the year digits will always be at the end of the line, we can
 search for `[0-9]{2}` without risking changing the day or month:
-~~~
+
+~~~bash
 YEAR=21
 sed -E -e "s/[0-9]{2}$/${YEAR}/g" <(echo 'the date is: 23-04-2020')
 ~~~
-{: .language-bash}
-~~~
+
+~~~output
 the date is: 23-04-2021
 ~~~
-{: .output}
 
-### Back References and Subexpressions
+
+#### Back References and Subexpressions
 
 We will skip this.
 
@@ -348,25 +343,26 @@ in a single regex), while the subexpression is indicated using `()` brackets.
 
 A common use of these is pulling out a single element of the search, e.g. the year from a
 date string:
-~~~
+
+~~~bash
 date | sed -E -e "s/^.*([0-9]{4}).*$/\1/g"
 ~~~
-{: .language-bash}
-~~~
+
+~~~output
 2021
 ~~~
-{: .output}
+
 Note how the 4-digit year is stored in a subexpression, while the strings before and after it are included in the match using `^.*` and `.*$`.
 
 
-## BASH logic and regex
+#### BASH Logic and Regex
 
 In the logic and maths lesson you were introduced to the `[[ ]]` command, which is used
 for logical control structures. This command also allows regex patterns to be used,
 checking to see if a given string matches the regex or not. This comparison is performed
 using the `=~` operator. For example:
 
-~~~
+~~~bash
 YEAR=1999
 if [[ $YEAR =~ ^[0-9]{2}$ ]]; then
   echo "year is in 2 digit format"
@@ -376,20 +372,24 @@ else
   echo "year is in unrecognized format"
 fi
 ~~~
-{: .language-bash}
-~~~
+
+~~~output
 year is in 4 digit format
 ~~~
-{: .output}
+
 
 
 Note that the `^` and `$` metacharacters have been used to ensure the pattern matches the
 whole string, and that no partial matches are made by mistake.
 
+- `^` matches from the beginning of the string.
+- `$` matches from the end of the string.
+- if you use both, you are stating what has to be the entire string.
+
 
 We can also print the year, with a small addition to the previous example.
 
-~~~
+~~~bash
 YEAR=1999
 if [[ $YEAR =~ ^[0-9]{2}$ ]]; then
   echo "year ${YEAR} is in 2 digit format"
@@ -399,17 +399,17 @@ else
   echo "year ${YEAR} is in unrecognized format"
 fi
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 year 1999 is in 4 digit format
 ~~~
-{: .output}
 
 It is a small addition, but useful in that it may make it
 easier to observe errors (by printing the year being evaluated).
 
 
-### Further Learning
+#### Further Learning
 
 Library Carpentry have a longer [introduction to regex](https://librarycarpentry.org/lc-data-intro/)
 course (from which some of this material has been taken). If you will be working with, and
@@ -418,5 +418,5 @@ it is written with the more advanced regex implementations in mind, so some feat
 mentioned in that course will not be available for shell programming.
 
 
-{% include links.md %}
+
 
