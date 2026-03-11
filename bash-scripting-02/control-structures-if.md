@@ -62,6 +62,18 @@ Common operators for numbers are:
 - `-lt` for _less than_
 - `-le` for _less than or equal to_
 
+#### Note About Examples
+
+You should try every example if this material is of use.
+The are incredibly fast to execute.
+You copy ALL of the contents of each example and paste ALL
+of it into the terminal screen at once.
+That is, for a 6-line example, you do not copy and paste
+each individual line.
+Rather, you copy it all, at once.
+Then hit return, and all of it will execute.
+The examples are that simple to execute:  copy and paste.
+
 #### Some Basic Structures of `if` blocks.
 
 In the examples below, `<< statement(s) >>` means one or more bash statements
