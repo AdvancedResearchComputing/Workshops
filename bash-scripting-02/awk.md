@@ -360,7 +360,7 @@ consecutive entries on a line (instead of commas).
 ~~~bash
 awk -v OFS=',' '{$1=$1; print}' company.data  | awk -F',' -v OFS=' ' '{$1=$1; print}'
 ~~~
-{: .bash}
+
 
 We are using piping again with the`|` symbol.
 The first `awk` creates the CSV file.  That result gets inputted to the second 
