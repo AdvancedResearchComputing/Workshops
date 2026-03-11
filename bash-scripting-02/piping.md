@@ -178,10 +178,8 @@ The output is
 
 
 
-This is another example illustrating the usefulness of piping `|`.
 
-
-## Piping with `grep`
+#### Example:  Piping with `grep`
 
 Suppose you want to know the types of restaurants in the company.data file.
 
@@ -191,19 +189,19 @@ You can:
 
 The command is:
 
-~~~
+~~~bash
 grep "restaurant" company.data | awk '{print $2}' 
 ~~~
-{:  .language-bash}
 
 
 This gives us:
 
-~~~
+~~~output
 fast_food
 ice_cream
 ~~~
-{:  .output}
+
+#### Example:  Piping with `ls` to Count Occurrences
 
 
 If you want to know how many files and directories and symbolic links are in the current directory, one can issue:
@@ -220,16 +218,12 @@ The output of a successful command will be an integer.
 
 The files sought can be specialized or tailored, for example, in finding the files with extension “txt.”
 
-~~~
+~~~bash
 ls *.txt | wc -l
 ~~~
-{:  .language-bash}
-
-Several piping examples have been given in previous episodes.
 
 
-
-#### Example
+#### Example:  Piping to Determine Number of Occurrences in a File
 
 We might want to know how many lines have _international_
 in them at least once.
