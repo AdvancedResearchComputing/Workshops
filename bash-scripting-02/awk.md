@@ -358,9 +358,20 @@ Second example:  we want precisely one blank space between
 consecutive entries on a line (instead of commas).
 
 ~~~bash
-awk -v OFS=',' '{$1=$1; print}' company.data  | awk -F',' -v OFS=' ' '{$1=$1; print}'
+awk -v OFS=',' '{$1=$1; print}' company.data  | awk -F',' -v OFS=' ' '{$1=$1; print}' > company.one.data
 ~~~
 
+The file _company.one.data_ contains:
+
+~~~output
+xerox copying business international 6000000
+exxon oil energy international 10000000
+mcdonalds fast_food restaurant international 11000000
+chevron oil energy international 5200000
+dq ice_cream restaurant national 3560
+pge natural_gas energy national 35640
+hp printers business international 456340
+~~~
 
 We are using piping again with the`|` symbol.
 The first `awk` creates the CSV file.  That result gets inputted to the second 
