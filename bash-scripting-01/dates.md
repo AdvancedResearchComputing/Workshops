@@ -95,6 +95,27 @@ Sun Mar  2 00:00:00 EST 2003
 
 The advantage of using `date` for this calculation is that it automatically handles month‑ and year‑boundary transitions—something that would require a lot of manual checks for month lengths, leap years, etc.
 
+You can pass the `--debug` flag to `date` if you would like an explanation of how it is parsing the date:
+
+```bash
+> date -d "this monday + 1 month" --debug
+date: parsed day part: this Mon (day ordinal=0 number=1)
+date: parsed relative part: +1 month(s)
+date: input timezone: system default
+date: warning: using midnight as starting time: 00:00:00
+date: new start date: 'this Mon' is '(Y-M-D) 2026-03-16 00:00:00'
+date: starting date/time: '(Y-M-D) 2026-03-16 00:00:00'
+date: warning: when adding relative months/years, it is recommended to specify the 15th of the months
+date: after date adjustment (+0 years, +1 months, +0 days),
+date:     new date/time = '(Y-M-D) 2026-04-16 00:00:00'
+date: '(Y-M-D) 2026-04-16 00:00:00' = 1776312000 epoch-seconds
+date: timezone: system default
+date: final: 1776312000.000000000 (epoch-seconds)
+date: final: (Y-M-D) 2026-04-16 04:00:00 (UTC)
+date: final: (Y-M-D) 2026-04-16 00:00:00 (UTC-04)
+Thu Apr 16 12:00:00 AM EDT 2026
+```
+
 > **Offset calculation order**  
 > The calculation proceeds from the largest incremental unit downward. This is most important when the offset crosses month boundaries, but it can be relevant in other scenarios as well.
 
@@ -103,5 +124,6 @@ The advantage of using `date` for this calculation is that it automatically hand
 > ```bash
 > date -j -v "-18y" -v "+1m" -v "+3d" -f "%Y%m%d" "20210127"
 > ```
+
 ---
 [Next Section > cron and wget](./cron-wget.md)
