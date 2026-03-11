@@ -46,15 +46,15 @@ The "output" below is written to screen, which is also the default for `sed`.
 Note that the content of the file "input.txt" remains unchanged from
 line 2.
 
-~~~
+~~~bash
 echo hello > input.txt
 sed -e "s/hello/world/" input.txt
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 world
 ~~~
-{: .output}
 
 
 The `-e` flag indicates that the first parameter (`s/hello/world/`) is a script to be
@@ -68,37 +68,40 @@ if you redirect the output into a file.
 Below, we do this with the redirection operator `>` again, as we did above,
 but now we are writing the output of the `sed` command to file "output.txt".
 
-~~~
+~~~bash
 sed -e "s/hello/world/" input.txt > output.txt
 ~~~
-{: .language-bash}
+
+
+
 The script we are using here is a substitution (indicated by the `s` at the start of the
 script). The first string (`hello`) is what is being searched for, while the second string
 (`world`) is the string that will be used as a replacement.
 
 Sed can be passed multiple inputs, it will treat these as a single stream:
 
-~~~
+~~~bash
 echo goodbye > input_pt2.txt
 sed -e "s/goodbye/world/" input.txt input_pt2.txt
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 hello
 world
 ~~~
-{: .output}
+
 
 It can also be passed multiple scripts, which will be run in sequential order:
-~~~
+~~~bash
 sed -e "s/goodbye/world/" -e "s/l/a/" input.txt input_pt2.txt
 ~~~
-{: .language-bash}
-~~~
+
+~~~output
 healo
 worad
 ~~~
-{: .output}
+
 
 You will note that the second (and first) substitution strings
 have been applied to both of the input
@@ -113,32 +116,31 @@ If you want to replace *all* matching strings, then you need to specify that a s
 should be applied globally, by appending a `g` at the end of
 the substitution string that begins with `s/`, e.g.:
 
-~~~
+~~~bash
 sed -e "s/goodbye/world/" -e "s/l/a/g" input.txt input_pt2.txt
 ~~~
-{: .language-bash}
-~~~
+
+
+~~~output
 heaao
 worad
 ~~~
-{: .output}
 
 
 Rather than search the whole input for match you can, if you know the exact line you wish
 to process, specify a line number (in this case, line 2):
 
-~~~
+~~~bash
 echo 'hello' > input_lines.txt
 echo 'hello' >> input_lines.txt
 sed "2 s/hello/world/" input_lines.txt
 ~~~
-{: .language-bash}
 
-~~~
+
+~~~output
 hello
 world
 ~~~
-{: .output}
 
 
 Note that sed starts indexes from 1, not 0.
