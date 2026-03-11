@@ -1,13 +1,12 @@
----
-title: "Motivation for Bash Scripting and Learning Objectives"
-teaching: 20
-exercises: 0
-questions:
+# "Motivation for Bash Scripting and Learning Objectives"
+#### teaching: 20
+#### exercises: 0
+#### questions:
   - "Why should I spend my time learning bash scripting?"
-objectives:
+#### objectives:
   - "What are the advantages of bash scripting."
   - "What are the disadvantages of bash scripting."
-keypoints:
+#### keypoints:
   - "Bash is a programming language, i.e., it has all of the control structures of a modern PL."
   - "It also has supporting methods that are powerful, analogous to packages and libraries in Python."
   - "But it does not have the IDE support and environments that most modern PLs have."
@@ -85,6 +84,9 @@ A working knowledge of:
 7. Functions  
 8. Sourcing (`source`) scripts  
 9. Math operations (mostly integers)  
+---
+Second session - this afternoon:
+---
 10. Control structures: `if`, `for`, `while`, `case`  
 11. `sed`  
 12. `awk`  
@@ -132,7 +134,7 @@ There are trade‑offs.  I think of bash vs. Python.
 Carpentries workshops are presented by VT University Libraries.  
 They teach an introductory UNIX course.  
 
-**Next course offering:** 2025‑08‑13, 9 am – 12:30 pm.  See the TLOS website to register.
+**Next course offering:**  See the TLOS website to register.
 
 # Additional Documentation  
 
