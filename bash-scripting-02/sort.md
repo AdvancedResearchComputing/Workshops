@@ -1,7 +1,14 @@
+# Sorting Data:  Sort
+
+#### Link Back To Main
+
+[Back to Main Page](./aa-bash-02-main.md)
 
 
 
-# Sort command
+
+
+#### Overview
 
 SORT command is used to sort a file, arranging the records in a particular order. By default, the sort command sorts file assuming the contents are ASCII. Using options in the sort command can also be used to sort numerically.
 
