@@ -600,12 +600,13 @@ Let us look at an even simpler data file _site.json_:
 ~~~
 
 
-We want a bash script that will read this file and assign the values
+We want a bash script that will read this file---the ENTIRE file---and
+assign the values
 in <key, value> pairs to bash script variables.
 
-Here is such a code called _jqCode02.sh_.
+Here is such a bash code called _jqCode02.sh_.
 
-~~~
+~~~bash
 #!/bin/bash
 
 # The command line arguments are entered in this
@@ -649,15 +650,14 @@ echo "CREATED = ${myCreated}"
 echo "AUTHOR = ${myAuthor}"
 
 ~~~
-{: .language-bash}
 
 
 The command line invocation to run the code is:
 
-~~~
+~~~bash
 sh jqCode02.sh site.json
 ~~~
-{: .language-bash}
+
 
 Notice that the command line argument `site.json` is the input file name.
 
@@ -667,22 +667,22 @@ The second set is the array elements.
 The third set is the values of bash variables.
 
 
-~~~
+~~~bash
 input file: site.json
  
 declare -A myarray=([CREATED]="10/22/2017" [URL]="example.com" [AUTHOR]="John Doe" )
   
- Print array elements directly.
+Print array elements directly.
 URL = 'example.com'
 CREATED = '10/22/2017'
 AUTHOR = 'John Doe'
   
- Assign values to variables, then print variables.
+Assign values to variables, then print variables.
 URL = example.com
 CREATED = 10/22/2017
 AUTHOR = John Doe
 ~~~
-{:   .output}
+
 
 
 An input file could be huge and you may not want to
@@ -699,7 +699,7 @@ will produce nulls).
 
 
 
-~~~
+~~~json
 {
   "height": "68",
   "weight": "210",
@@ -711,7 +711,7 @@ will produce nulls).
   "age": "19"
 }
 ~~~
-{:  .data}
+
 
 The code to extract variables from the JSON file is below.
 
@@ -721,7 +721,7 @@ Note that some of the assignment statements use _//  empty_
 and others user _--exit-status_, depending on how you
 want to handle variables that are specified, but not in the file.
 
-~~~
+~~~bash
 #!/bin/bash
 
 # The command line arguments are entered in this
@@ -760,20 +760,19 @@ echo "    v_num_toes: ${v_num_toes}"
 echo "    v_wears_glasses: ${v_wears_glasses}"
 echo "    v_age: ${v_age}"
 ~~~
-{: .language-bash}
+
 
 
 The invocation is (note the command line argument):
 
-~~~
+~~~bash
 sh jqCode03.sh human.json
 ~~~
-{:  .language-bash}
 
 
 The output follows
 
-~~~
+~~~output
 input file: human.json
  
     v_height: 68
@@ -785,16 +784,16 @@ input file: human.json
     v_wears_glasses: true
     v_age: 19
 ~~~
-{:  .output}
 
 
-This last example demonstrates that the nesting of json file
+This last example suggests that the nesting of json file
 content can be arbitrarily deep and the ideas above still hold.
+This is the case.
 
 Here is a JSON file called _family.json_.
 It has people's parents over a few generations.
 
-~~~
+~~~json
 {
   "mom": {
       "name": "Carole",
@@ -836,11 +835,11 @@ It has people's parents over a few generations.
   }
 }
 ~~~
-{:  .data}
+
 
 This URL is very useful to ensure that your JSON file's contents
 conform to the JSON standard:
-_https://jsonlint.com/_
+[https://jsonlint.com/](https://jsonlint.com/)
 
 The code to extract variables from the JSON file is below.
 
@@ -849,7 +848,7 @@ Notice variable paths like `.mom.parents.mom.parents.dad`.
 This file is _jqCode04.sh_.
 
 
-~~~
+~~~bash
 #!/bin/bash
 
 # The command line arguments are entered in this
@@ -881,20 +880,19 @@ mms_name=$(jq --exit-status --raw-output '.mom.parents.mom.name' "${infile}")
 echo "    My Dad's Dad's name is : ${dds_name}"
 echo "    My Mom's Mom's name is : ${mms_name}"
 ~~~
-{: .language-bash}
+
 
 
 The invocation is (note the command line argument):
 
-~~~
+~~~bash
 sh jqCode04.sh family.json
 ~~~
-{:  .language-bash}
 
 
 The output follows.
 
-~~~
+~~~output
 input file: family.json
 
     My Mom's name is: Carole
@@ -903,15 +901,15 @@ input file: family.json
     My Dad's Dad's name is : Mike
     My Mom's Mom's name is : Bernadine
 ~~~
-{:  .output}
 
-# `zd` as an Alternative to `jq`
+
+#### `zd` as an Alternative to `jq`
 
 An alternative to `jq` is `zd`.
-I am told it is very good; _https://zed.brimdata.io/docs/commands/zq_.
+I am told it is very good; [https://zed.brimdata.io/docs/commands/zq](https://zed.brimdata.io/docs/commands/zq).
 
 
-# Writing Output
+#### Writing Output
 
 We see in some of the above examples how output is written:
 we use the `>` redirection operator that sends all of
@@ -954,7 +952,7 @@ this example.)
 The below file is _mySearchCode05.sh_.
 
 
-~~~
+~~~bash
 #!/bin/bash
 
 # Generate a slurm sbatch script.
@@ -1032,26 +1030,28 @@ echo " "  >>  ${outfile}
 echo "## Invoke code."  >> ${outfile}
 echo "${jobInvoke}"  >> ${outfile}
 ~~~
-{:    .language-bash}
+
 
 
 Note that the first redirect of output to ${outfile} is `>`, not
 the append `>>` operator, because we want to overwrite the file,
 starting fresh.
 The remaining writes to ${outfile} are appends, i.e., `>>`.
+If the first write used the `>>` operator, then all of the writes
+would merely append to the existing contents of the `${outfile}`.
 
 We can invoke this file by putting the output file on the command line thusly.
 
-~~~
+~~~bash
 ./mySearchCode05.sh  sbatch.01.slurm
 ~~~
-{:    .language-bash}
+
 
 
 With suitable interactive inputs from the code execution,
 we can generate a file that looks like this:
 
-~~~
+~~~bash
 #!/bin/bash
 
 ## SBATCH directives.
@@ -1074,7 +1074,7 @@ module load silly
 ## Invoke code.
 ./run.go
 ~~~
-{:    .output}
+
 
 
 
