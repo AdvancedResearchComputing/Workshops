@@ -76,14 +76,14 @@ things
 this
 ```
 
-> **Exploring Shell Variables**  
-> Use `declare -p` to see a variable’s definition. Pipe the output to `grep` or `less` to find what you need.  
-> ```bash
-> declare -a arrayName   # declares arrayName as an array
-> declare -r var01       # makes var01 read‑only
-> declare -g myGlobalVar="I am a global."  # global variable
-> ```  
-> {: .callout}
+**Exploring Shell Variables**  
+Use `declare -p` to see a variable’s definition. Pipe the output to `grep` or `less` to find what you need.  
+```bash
+declare -a arrayName   # declares arrayName as an array
+declare -r var01       # makes var01 read‑only
+declare -g myGlobalVar="I am a global."  # global variable
+```  
+
 
 To delete a variable, use `unset` **without** the `$` prefix:
 
@@ -92,13 +92,13 @@ thing=stuff
 unset thing
 ```
 
-> **Referencing a non‑existent variable**  
-> What happens if you reference a variable that doesn’t exist?  
-> ```bash
-> thing=stuff
-> unset thing
-> echo ${thing}
-> ```  
+**Referencing a non‑existent variable**  
+What happens if you reference a variable that doesn’t exist?  
+```bash
+thing=stuff
+unset thing
+echo ${thing}
+```  
 <details><summary>**Solution**</summary> – it expands to an empty string (no error).
 </details>  
 
@@ -110,12 +110,11 @@ BASH arrays store an indexed list of values.
 listthings=( these are my things )
 ```
 
-> **Whitespace warning**  
-> Spaces separate array elements. To keep spaces inside an element, quote it:  
-> ```bash
-> listthings=( these "are my" things )
-> ```  
-> {: .callout}
+**Whitespace warning**  
+Spaces separate array elements. To keep spaces inside an element, quote it:  
+```bash
+listthings=( these "are my" things )
+```  
 
 Show the array definition with `declare -p`:
 
@@ -146,7 +145,7 @@ declare -a listthings='([0]="these" [1]="are my" [2]="things")'
 </details>
 
 
-Looping over an array:
+### Looping over an array:
 
 ```bash
 for thing in ${listthings[@]}
