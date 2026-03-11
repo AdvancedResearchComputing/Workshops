@@ -25,3 +25,4 @@ on the system.
 5. [Iterating Over Collections](./iterating-over-collections.md)
 6. [Input-Output Redirection](./io-redirection.md)
 7. [Program Input-Output](./program-io.md)
+8. [awk utility](./awk.md)
