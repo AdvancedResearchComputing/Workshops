@@ -6,7 +6,7 @@
 
 
 
-## Motivation:  Setup and Problem
+#### Motivation:  Setup and Problem
 
 We motivate the use of the codes in this episode by setting up
 an example problem, but it is a real-world problem, too.
@@ -36,7 +36,7 @@ Each job has its own slurm script, so each job has its own slurm output file.
 So there will be 15625 slurm output files of the form "slurm.mifs.danville.06.job.JOBID.out''.
 
 
-~~~
+~~~bash
 #!/bin/bash
 
 
@@ -128,7 +128,7 @@ module load gmvapich2/7.1.0_2.3
 ./run.gen.mifs.blocking.danville.v06.sh
 
 ~~~
-{: .language-bash}
+
 
 We submit all of the 15625 jobs at one time, using a bash script.
 So every job can be in one of three major states within slurm:
@@ -156,12 +156,12 @@ The bash script below resides in some directory, and the slurm-generated
 output files reside in a subdirectory named runs.
 
 
-> ## Solution
+#### Solution
 
 This bash script will tell us what we need to know.
 The script name is _run.check_.
 
-~~~
+~~~bash
 # Number successful jobs.
 echo " number of jobs with good termination"
 tail -n 1 runs/*.out | grep "good termination" | wc -l
@@ -173,29 +173,43 @@ ls runs/*.out | wc -l
 
 echo " << end >> "
 ~~~
-{: .language-bash}
+
 
 
 An invocation is:
 
-~~~
+~~~bash
 sh run.check
 ~~~
-{:  .language-bash}
+
 
 
 A sample execution follows.
 
-~~~
+~~~output
  number of jobs with good termination
  13963
 
  number of jobs total
  14217
 ~~~
-{: .output}
 
-> ## Explanation
+#### Example:  Check on Number of Running and Queued Slurm Jobs on Cluster
+
+Issue this command to determine number of queued jobs.
+
+~~~bash
+squeue -u $USER | grep " Q "  | wc -l
+~~~
+
+
+Issue this command to determine number of running jobs.
+
+~~~bash
+squeue -u $USER | grep " R "  | wc -l
+~~~
+
+#### Explanation
 
 The log files are in subdirectory `run`.
 If it exists, the text "good termination" will be in the last line of our
@@ -245,5 +259,4 @@ Am sure such solutions have been used a very long time.
 
 
 
-{% include links.md %}
 
