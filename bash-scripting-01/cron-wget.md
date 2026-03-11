@@ -49,8 +49,7 @@ This notation can be a little confusing, but online tools such as [crontab.guru]
 > **Solution**  
 > - `45 2 * * 1` – 2:45 am on every Monday  
 > - `00 14 1,15 * *` – 2 pm on the 1st and 15th of the month  
-> {: .solution}
-> {: .challenge}
+
 
 > **OS‑X and cron**  
 > macOS does include cron, but it is difficult to use because of the security settings. If you wish to use cron on macOS you will need to enable Full Disk Access within the *Security & Privacy* settings menu for the program `/usr/sbin/cron`.  
@@ -134,13 +133,13 @@ Download **all** `.txt` files in that directory:
 wget -r -np -A txt http://manunicast.seaes.manchester.ac.uk/charts/manunicast/20200105/d02/meteograms/
 ```
 
-> **Restricting web crawling to a single domain**  
-> To prevent `wget` from following links off‑site, use the `-D [domain]` flag (e.g., `-D manchester.ac.uk` or `-D manunicast.seaes.manchester.ac.uk`).  
-> {: .callout}
+**Restricting web crawling to a single domain**  
+To prevent `wget` from following links off‑site, use the `-D [domain]` flag (e.g., `-D manchester.ac.uk` or `-D manunicast.seaes.manchester.ac.uk`).  
 
-> **Using wildcards in file names**  
-> The HTTP protocol does not support wildcards, but the FTP protocol does. If the server provides FTP access, you can use wildcards with `wget`.  
-> {: .callout}
+
+**Using wildcards in file names**  
+The HTTP protocol does not support wildcards, but the FTP protocol does. If the server provides FTP access, you can use wildcards with `wget`.  
+
 
 ## Scheduling the download job
 
