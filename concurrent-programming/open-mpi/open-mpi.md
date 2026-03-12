@@ -93,18 +93,20 @@ When finished compiling:
 
 ## Comments on Structure of All Examples
 
-There are three files associated with each example:
+There are three provided files associated with each example below (the file contents are below):
 1. sbatch slurm script.
 2. C++ code.
 3. makefile to compile the C++ code.
 
-The most efficient way to run these examples is as follows.
+The most efficient way to set up these examples, so that they
+are then ready to run, is as follows.
 
 1. Use the `interact` command to request compute node resources from slurm.
    - This command is given above.
    - When the command executes, you will be put on a compute node.
-   - The `interact` command is issued one time on an Owl head.
-   - Reset and load module:
+   - The `interact` command is issued one time on an Owl head node.
+   - You will now be on a compute node.
+   - On the compute node, reset and load module:
       - `module reset`
       - `module load foss/2023b` 
    - Then execute the following compile steps
