@@ -161,7 +161,7 @@ do
                 do
                     for f in $kvalues
                     do
-                        sed -e "s/AAAA/$a/g"   -e "s/BBBB/$b/g"  -e  "s/CCCC/$c/g"   -e  "s/DDDD/$d/g"    -e  "s/EEEE/$e/g"    -e  "s/FFFF/$f/g"   ${template_file}    >    "$a"/"$a".t."$b".ms."$c".ti."$d".p."$e".k."$f".inp
+                        sed -e "s/AAAA/$a/g"   -e "s/BBBB/$b/g"  -e  "s/CCCC/$c/g"   -e  "s/DDDD/$d/g"    -e  "s/EEEE/$e/g"    -e  "s/FFFF/$f/g"   ${template_file}    >    "$a".t."$b".ms."$c".ti."$d".p."$e".k."$f".inp
                     done
                 done
             done
