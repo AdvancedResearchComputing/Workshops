@@ -99,7 +99,8 @@ ssh owlXXX
 module reset
 
 ## Load module for conda.
-module load Miniforge3
+## Best practice is to fully specify the module.
+module load Miniforge3/25.11.0-1
 
 ## Load module for Open MPI.
 module load foss/2023b
