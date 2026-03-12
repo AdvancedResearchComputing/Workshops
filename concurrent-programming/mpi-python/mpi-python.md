@@ -197,7 +197,7 @@ UCX. Please consult UCX documentation for further details.
 
 We need to create these files in one directory.
 
-The sbatch slurm script for running job in batch mode is _job.01.slurm_:
+The sbatch slurm script for running job in batch mode is _run.01.slurm_:
 
 ~~~bash
 #!/bin/bash
@@ -302,6 +302,7 @@ echo " "
 ## Exports and variable assignments.
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export MV2_ENABLE_AFFINITY=0
+export OMPI_MCA_btl=^openib
 
 echo " "
 echo "   SLURM_CPUS_PER_TASK: " $SLURM_CPUS_PER_TASK
@@ -316,9 +317,13 @@ data_collection_period_s=1
 echo " " 
 echo " ------------"
 echo "Running IOSTAT, MPSTAT, VMSTAT"
-iostat ${data_collection_period_s} >iostat.%j.out 2>iostat.%j.err &
-mpstat -P ALL ${data_collection_period_s} >mpstat.%j.out 2>mpstat.%j.err &
-vmstat -t ${data_collection_period_s} >vmstat.%j.out 2>vmstat.%j.err &
+iostat ${data_collection_period_s} >iostat.$SLURM_JOB_ID.out 2>iostat.$SLURM_JOB_ID.err &
+mpstat -P ALL ${data_collection_period_s} >mpstat.$SLURM_JOB_ID.out 2>mpstat.$SLURM_JOB_ID.err &
+vmstat -t ${data_collection_period_s} >vmstat.$SLURM_JOB_ID.out 2>vmstat.$SLURM_JOB_ID.err &
+
+# srun --nodes=$SLURM_NNODES --ntasks-per-node=1 ./monitor_iostat.sh ${data_collection_period_s}  $SLURM_JOB_ID  &
+# srun --nodes=$SLURM_NNODES --ntasks-per-node=1 ./monitor_mpstat.sh ${data_collection_period_s}  $SLURM_JOB_ID  &
+# srun --nodes=$SLURM_NNODES --ntasks-per-node=1 ./monitor_vmstat.sh ${data_collection_period_s}  $SLURM_JOB_ID  &
 
 
 ## -----------------------
@@ -358,16 +363,16 @@ def doWork():
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
 
-    num_times=10
+    num_times=6
 
     ## Precisely two MPI processes.
     if rank == 0:
         for itime in range(0,num_times):
-            sleep(2)
+            time.sleep(2)
             print(" -------------------------")
             print("  master sending message: ", itime)
-            data01=7+itime
-            data02=3.14+itime
+            data01=0+itime
+            data02=0.999+itime
             data = {'a': data01, 'b': data02}
             print("Master--Rank : ",rank," ; action:  about to send message")
             comm.send(data, dest=1, tag=11)
@@ -375,7 +380,7 @@ def doWork():
             print("Master:     data sent: ",data)
     elif rank == 1:
         for itime in range(0,num_times):
-            sleep(2)
+            time.sleep(2)
             print(" -------------------------")
             print("  worker receiving message: ", itime)
             print("Worker--Rank : ",rank," ; action:  set up to receive message.")
@@ -412,7 +417,7 @@ From a head node, enter:
 
 
 ~~~bash
-sbatch job.01.slurm
+sbatch run.01.slurm
 ~~~
 
 #### Job Output/Results
@@ -421,20 +426,74 @@ Results will be in the file _slurm.mpi4py.SLURM-JOB-ID.out_ file
 because this is the slurm output file specified by the
 `#SBATCH --output` command.
 
-~~~output
- execution output
+The actual listing may be different for you.
 
-Rank :  1  ; action:  set up to receive message.
-Rank :  1  ; action:  received message.
-     message contents received:  {'a': 7, 'b': 3.14}
-execution time (s):  0.028662919998168945
-execution time (hr):  7.961922221713596e-06
+~~~output
+ -------------------------
+  master sending message:  0
+Master--Rank :  0  ; action:  about to send message
+Master--Rank :  0  ; action:  sent message
+Master:     data sent:  {'a': 0, 'b': 0.999}
+ -------------------------
+  master sending message:  1
+Master--Rank :  0  ; action:  about to send message
+Master--Rank :  0  ; action:  sent message
+Master:     data sent:  {'a': 1, 'b': 1.999}
+ -------------------------
+  master sending message:  2
+Master--Rank :  0  ; action:  about to send message
+Master--Rank :  0  ; action:  sent message
+Master:     data sent:  {'a': 2, 'b': 2.999}
+ -------------------------
+  master sending message:  3
+Master--Rank :  0  ; action:  about to send message
+Master--Rank :  0  ; action:  sent message
+Master:     data sent:  {'a': 3, 'b': 3.999}
+ -------------------------
+  master sending message:  4
+Master--Rank :  0  ; action:  about to send message
+Master--Rank :  0  ; action:  sent message
+Master:     data sent:  {'a': 4, 'b': 4.999}
+ -------------------------
+ -------------------------
+  worker receiving message:  0
+Worker--Rank :  1  ; action:  set up to receive message.
+Worker--Rank :  1  ; action:  received message.
+Worker:     message contents received:  {'a': 0, 'b': 0.999}
+ -------------------------
+  worker receiving message:  1
+Worker--Rank :  1  ; action:  set up to receive message.
+Worker--Rank :  1  ; action:  received message.
+Worker:     message contents received:  {'a': 1, 'b': 1.999}
+ -------------------------
+  worker receiving message:  2
+Worker--Rank :  1  ; action:  set up to receive message.
+Worker--Rank :  1  ; action:  received message.
+Worker:     message contents received:  {'a': 2, 'b': 2.999}
+ -------------------------
+  worker receiving message:  3
+Worker--Rank :  1  ; action:  set up to receive message.
+Worker--Rank :  1  ; action:  received message.
+Worker:     message contents received:  {'a': 3, 'b': 3.999}
+ -------------------------
+  worker receiving message:  4
+Worker--Rank :  1  ; action:  set up to receive message.
+  master sending message:  5
+Master--Rank :  0  ; action:  about to send message
+Master--Rank :  0  ; action:  sent message
+Master:     data sent:  {'a': 5, 'b': 5.999}
+execution time (s):  12.024969577789307
+execution time (hr):  0.003340269327163696
   ---- good termination ---
-Rank :  0  ; action:  about to send message
-Rank :  0  ; action:  sent message
-     data sent:  {'a': 7, 'b': 3.14}
-execution time (s):  0.03054952621459961
-execution time (hr):  8.485979504055447e-06
+Worker--Rank :  1  ; action:  received message.
+Worker:     message contents received:  {'a': 4, 'b': 4.999}
+ -------------------------
+  worker receiving message:  5
+Worker--Rank :  1  ; action:  set up to receive message.
+Worker--Rank :  1  ; action:  received message.
+Worker:     message contents received:  {'a': 5, 'b': 5.999}
+execution time (s):  12.001396179199219
+execution time (hr):  0.0033337211608886717
   ---- good termination ---
 ~~~
 
@@ -445,7 +504,7 @@ Especially with MPI and more complicated executions than serial code,
 it is useful to print these results.
 
 
-### `seff` Command
+#### `seff` Command
 
 To build intuition, always try to do:
 
@@ -459,11 +518,13 @@ after a job completes to see memory usage and cpu usage.
 
 -------------------------
 
-## Example 2
+#### Example 2
+
+# Example 2 does not now work.  It is being worked on.
 
 This is to run MPI on a GPU.
 
-###  Creating a Virtual Environment on Falcon
+####  Creating a Virtual Environment on Falcon
 
 The process for creating a VE for other clusters and compute node types 
 is very similar.
@@ -492,7 +553,7 @@ ssh falXXX
 module reset
 
 ## Load module for conda.
-module load Miniforge3
+module load Miniforge3/25.11.0-1
 
 ## Load module for Open MPI.
 module load foss/2023b
@@ -501,10 +562,10 @@ module load foss/2023b
 module load CUDA/12.6.0
 
 ## Create the VE.
-conda create -p ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+conda create -p ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda_mpi4py
 
 ## Activate the VE.
-source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda_mpi4py
 
 ## Install python.
 conda install python=3.12
@@ -571,7 +632,7 @@ scancel JOBID
 
 __NOTE:__ After the command `conda install nccl`, you might receive a message (it is ok):
 
-~~~
+~~~output
 On Linux, Open MPI is built with CUDA awareness but it is disabled by default.
 To enable it, please set the environment variable
 OMPI_MCA_opal_cuda_support=true
@@ -581,7 +642,7 @@ mpiexec --mca opal_cuda_support 1 ...
 Note that you might also need to set UCX_MEMTYPE_CACHE=n for CUDA awareness via
 UCX. Please consult UCX documentation for further details.
 ~~~
-{:  .language-bash}
+
 
 
 
@@ -667,7 +728,8 @@ module load CUDA/12.6.0
 
 ## -----------------------
 ## VE (virtual environment).
-source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+# source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda
+source activate ~/env-python/falcon/l40s_normal_q/py312_mf_openmpi_cuda_mpi4py
 
 
 ## -----------------------
@@ -699,6 +761,7 @@ echo " "
 ## Exports and variable assignments.
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export MV2_ENABLE_AFFINITY=0
+export OMPI_MCA_btl=^openib
 
 echo " "
 echo "   SLURM_CPUS_PER_TASK: " $SLURM_CPUS_PER_TASK
@@ -780,6 +843,25 @@ if __name__ == "__main__":
     print("  ---- good termination ---")
 ~~~
 
+
+The python source code file _src.03.py_ is:
+
+~~~python
+## Obtained from:  https://mpi4py.readthedocs.io/en/4.0.3/tutorial.html
+from mpi4py import MPI
+import cupy as cp
+
+comm = MPI.COMM_WORLD
+size = comm.Get_size()
+rank = comm.Get_rank()
+
+sendbuf = cp.arange(10, dtype='i')
+recvbuf = cp.empty_like(sendbuf)
+cp.cuda.get_current_stream().synchronize()
+comm.Allreduce(sendbuf, recvbuf)
+
+assert cp.allclose(recvbuf, sendbuf*size)
+~~~
 
 
 #### Job Submission
