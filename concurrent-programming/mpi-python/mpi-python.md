@@ -6,18 +6,24 @@
 
 
 
-## Useful links
+### Useful links
 
-### Use
+#### Use
+
+Just note this page exists:  we are not using it right now.
 
 [https://mpi4py.readthedocs.io/en/stable/tutorial.html#running-python-scripts-with-mpi](https://mpi4py.readthedocs.io/en/stable/tutorial.html#running-python-scripts-with-mpi)
 
-### Install
+#### Install
+
+Just note this page exists:  we are not using it right now.
+That is, do not install anything right now.
+We are going to use virtual environments instead.
 
 [https://mpi4py.readthedocs.io/en/4.0.3/install.html](https://mpi4py.readthedocs.io/en/4.0.3/install.html)
 
 
-## Installation and Use of Mpi4Py Via Virtual Environments
+### Installation and Use of Mpi4Py Via Virtual Environments
 
 To use Mpi4Py, you need to create a virtual environment (VE) that contains
 Mpi4Py.
@@ -55,6 +61,11 @@ using the a30_normal_q partition.
 (even across clusters) to give you more flexibility where you run your code.
 4. The good thing is, the steps to create a VE on these different partitions
 are almost identical.
+5. Currently, the partitions on Tinkercliffs (TC) and Owl that 
+   contain only CPU multicore compute nodes have MULTIPLE types of 
+   compute nodes.  In this case, you also have to use `--constraint=`
+   to uniquely specify a compute node.
+   -  See the videos in this section for more details [https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software](https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software).
 
 
 ## Example 1
