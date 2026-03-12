@@ -91,6 +91,69 @@ When finished compiling:
 1. `exit` off of the compute node.
 2. If you use Option 2 (which is not recommended), use `scancel` to cancel this interactive job.
 
+## Comments on Structure of All Examples
+
+There are three files associated with each example:
+1. sbatch slurm script.
+2. C++ code.
+3. makefile to compile the C++ code.
+
+The most efficient way to run these examples is as follows.
+
+1. Use the `interact` command to request compute node resources from slurm.
+   - This command is given above.
+   - When the command executes, you will be put on a compute node.
+   - The `interact` command is issued one time on an Owl head.
+   - Reset and load module:
+      - `module reset`
+      - `module load foss/2023b` 
+   - Then execute the following compile steps
+      for each example separately.
+2. Compile each of the three codes on the computer node.
+   - Go to a clean directory.
+   - Make subdirectories `ex-01`, `ex-02`, and `ex-03` (one for each example).
+   - Go to subdirectory `ex-01`.
+     - Copy the text for file _main.C_ below and paste it into a file called _main.C_.
+     - Copy the text for the file _makefile.owl.open.mpi_ below and
+       paste it into file _makefile.owl.open.mpi_.
+     - Make the changes in converting spaces to a tab, as described by file
+       _makefile.owl.open.mpi_.
+     - Issue command `make -f makefile.owl.open.mpi` to compile the code.
+     - You should now see an executable code called _mpi-simple01_.     
+   - Go to subdirectory `ex-02`.
+     - Copy the text for file _main02.C_ below and paste it into a file called _main02.C_.
+     - Copy the text for the file _makefile.owl.02.open.mpi_ below and
+       paste it into file _makefile.owl.02.open.mpi_.
+     - Make the changes in converting spaces to a tab, as described by file
+       _makefile.owl.02.open.mpi_.
+     - Issue command `make -f makefile.owl.02.open.mpi` to compile the code.
+     - You should now see an executable code called _mpi-simple02_.     
+   - Go to subdirectory `ex-03`.
+     - Copy the text for file _main08.C_ below and paste it into a file called _main08.C_.
+     - Copy the text for the file _makefile.owl.08.open.mpi_ below and
+       paste it into file _makefile.owl.08.open.mpi_.
+     - Make the changes in converting spaces to a tab, as described by file
+       _makefile.owl.08.open.mpi_.
+     - Issue command `make -f makefile.owl.08.open.mpi` to compile the code.
+     - You should now see an executable code called _mpi-simple08_.  
+3. Now that you have the three executable codes, compiled on the type of compute
+   node that you will run on, you are done with the compute node.
+     - You can exit off of the compute node by typing `exit`.
+4. Now that you are on a head node, go to each example's directory and copy the contents of 
+   the sbatch slurm script for that example and paste it into a file with the
+   same name in the corresponding directory.
+     - For example 1, make a file in _job.01.slurm_ (see below) in directory ex-01.   
+     - For example 2, make a file in _job.02.slurm_ (see below) in directory ex-01.   
+     - For example 1, make a file in _job.05.np.100.slurm_ (see below) in directory ex-01.   
+5. Now you can go to each example below, change to that directory,
+   recognizing that the only thing left to do for each example is submit the 
+   sbatch slurm script and examine results.
+
+
+We offer the above steps because if you do each example individually, then you will
+have to execute the `interact` command three separate times and it is more efficient
+to set up all three examples with one `interact` command.
+
 
 ## Example 1
 
@@ -1357,7 +1420,7 @@ You see the overhead in comparing times #1 and #2.
 
 
 
-[!NOTE]
+> [!NOTE]
 1. Putting the following command in your sbatch slurm script, after all of the `#SBATCH` directives have
 been specified, will print out the hardware that is being used:
 `scontrol show job --details <SLURM JOB ID>`.
