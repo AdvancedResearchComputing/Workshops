@@ -103,7 +103,8 @@ module reset
 module load Miniforge3/25.11.0-1
 
 ## Load module for Open MPI.
-module load foss/2023b
+# module load foss/2023b
+module load foss/2025b
 
 ## Load CUDA.  <--- Optional, not done here.
 ## module load CUDA/12.6.0
@@ -133,7 +134,7 @@ conda install -c conda-forge mpi4py openmpi
 ## Install numpy.  Use of numpy arrays with python faster.  Evidently.
 conda install numpy
 
-## Install any more packages you desire.
+## Install here any more packages you desire.
 
 
 ## List packages
@@ -272,7 +273,8 @@ The sbatch slurm script for running job in batch mode is _job.01.slurm_:
 ## MODULES.
 module reset
 module load Miniforge3
-module load foss/2023b
+# module load foss/2023b
+module load foss/2025b
 
 
 ## -----------------------
@@ -356,20 +358,30 @@ def doWork():
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
 
+    num_times=10
+
     ## Precisely two MPI processes.
     if rank == 0:
-        sleep(5)
-        data = {'a': 7, 'b': 3.14}
-        print("Rank : ",rank," ; action:  about to send message")
-        comm.send(data, dest=1, tag=11)
-        print("Rank : ",rank," ; action:  sent message")
-        print("     data sent: ",data)
+        for itime in range(0,num_times):
+            sleep(2)
+            print(" -------------------------")
+            print("  master sending message: ", itime)
+            data01=7+itime
+            data02=3.14+itime
+            data = {'a': data01, 'b': data02}
+            print("Master--Rank : ",rank," ; action:  about to send message")
+            comm.send(data, dest=1, tag=11)
+            print("Master--Rank : ",rank," ; action:  sent message")
+            print("Master:     data sent: ",data)
     elif rank == 1:
-        sleep(5)
-        print("Rank : ",rank," ; action:  set up to receive message.")
-        data = comm.recv(source=0, tag=11)
-        print("Rank : ",rank," ; action:  received message.")
-        print("     message contents received: ",data)
+        for itime in range(0,num_times):
+            sleep(2)
+            print(" -------------------------")
+            print("  worker receiving message: ", itime)
+            print("Worker--Rank : ",rank," ; action:  set up to receive message.")
+            data = comm.recv(source=0, tag=11)
+            print("Worker--Rank : ",rank," ; action:  received message.")
+            print("Worker:     message contents received: ",data)
 
     return
 
