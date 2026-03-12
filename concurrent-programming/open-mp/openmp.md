@@ -113,18 +113,34 @@ binary executables for the various examples.
 
 So the commands to get us onto a compute node (and then relinquish resources at the end), from a head node, are:
 
+
+_**Option 1:  The preferred option**_:
+
+Option 1 is preferred because the interactive job will be cleaned up automatically.
+
+~~~bash
+## From the owl head node, issues this command to start your interactive job:
+interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+--nodes=1  --tasks-per-node=1  --cpus-per-task=2  
+~~~
+
+
+_**Option 2:  The not-preferred option**_:
+
+
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
 salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
---nodes=1  --tasks-per-node=1  --cpus-per-task=2
+--nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 
 ## The results returned by slurm for the above command will include an owl compute node id, <cnode-id>
 ssh <cnode-id>
 ~~~
 
-
 where you have to supply your own account.
-Now you can enter the module and compile commands specified for each example.
+
+
+Now you can enter the module(s) and compile commands specified for each example below
 
 When finished compiling:
 
@@ -422,12 +438,15 @@ int main(int argc, char** argv)
 
 #### C++ Code Compilation
 
-Remember:  you first have to go onto a compute node and compile
+Remember:  you first have to go onto a compute node and compile the C++ code
 from there.
-See instructions above for how to perform this interactive job.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
 
 
-The module must be loaded at the command line before compiling,
+Once on a compute node, the module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
 
 
@@ -600,6 +619,16 @@ int main(int argc, char** argv)
 }
 ~~~
 
+Remember:  you first have to go onto a compute node and compile the C++ code
+from there.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
+
+
+Once on a compute node, the module must be loaded at the command line before compiling,
+and must be the same as that used in the sbatch script above.
 
 The other two files---the sbatch slurm script and the run script---now named
 _job.02.slurm_ and _run.02.sh_, respectively---are essentially the same, with
@@ -1031,9 +1060,12 @@ int main(int argc, char** argv){
 
 #### C++ Code Compilation
 
-Remember:  you first have to go onto a compute node and compile
+Remember:  you first have to go onto a compute node and compile the C++ code
 from there.
-See instructions above for how to perform this interactive job.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
 
 
 The module must be loaded at the command line before compiling,
@@ -1231,8 +1263,6 @@ We are reusing the compiled version of _main.C_,
 which is _main.exe_.
 
 
-The module must be loaded at the command line before compiling,
-and must be the same as that used in the sbatch script above.
 
 
 #### Slurm Sbatch Job Submission
@@ -1241,10 +1271,9 @@ Now we are back on the head node.
 
 Submit the job with
 
-~~~
+~~~bash
 sbatch job.04.slurm
 ~~~
-{:  .language-bash}
 
 
 #### Output
@@ -1520,9 +1549,12 @@ int main(int argc, char** argv)
 
 #### C++ Code Compilation
 
-Remember:  you first have to go onto a compute node and compile
+Remember:  you first have to go onto a compute node and compile the C++ code
 from there.
-See instructions above for how to perform this interactive job.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
 
 
 The module must be loaded at the command line before compiling,
@@ -1831,13 +1863,17 @@ int main(int argc, char** argv)
 
 #### C++ Code Compilation
 
-Remember:  you first have to go onto a compute node and compile
+Remember:  you first have to go onto a compute node and compile the C++ code
 from there.
-See instructions above for how to perform this interactive job.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
 
 
 The module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
+
 
 
 ~~~bash
@@ -2134,9 +2170,12 @@ int main(int argc, char** argv)
 
 #### C++ Code Compilation
 
-Remember:  you first have to go onto a compute node and compile
+Remember:  you first have to go onto a compute node and compile the C++ code
 from there.
-See instructions above for how to perform this interactive job.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
 
 
 The module must be loaded at the command line before compiling,
@@ -2423,13 +2462,17 @@ int main(int argc, char** argv)
 
 #### C++ Code Compilation
 
-Remember:  you first have to go onto a compute node and compile
+Remember:  you first have to go onto a compute node and compile the C++ code
 from there.
-See instructions above for how to perform this interactive job.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
 
 
 The module must be loaded at the command line before compiling,
 and must be the same as that used in the sbatch script above.
+
 
 
 ~~~bash
@@ -2727,6 +2770,17 @@ OpenMP execution during debugging.
 
 #### Fortran Code Compilation
 
+Remember:  you first have to go onto a compute node and compile the C++ code
+from there.
+See instructions above for how to access a compute node using an interactive job.
+(It is the `interact` command.)
+Then, from a compute node, issue the module commands below, to set up for compiling, and
+issue the compile command below.
+
+
+The module must be loaded at the command line before compiling,
+and must be the same as that used in the sbatch script above.
+
 So the compilation is:
 
 ~~~bash
@@ -2775,7 +2829,7 @@ specified in the sbatch slurm script (sbatch.fortran.slurm) above.:
  Total Sum:       500500 .
  Elapsed CPU time:    1.11159999E-02  seconds
 ~~~
-{:  .output}
+
 
 where the execution time will of course be different for you.
 The ordering of the partial sums will probably be different,
