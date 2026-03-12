@@ -160,7 +160,7 @@ This section is getting fairly big.  Lets map out the examples.  Most examples u
 2.  [Example 2](#example-2--get-rid-of-the-total_sum-variable):  how to do #1, but badly.  Emphasizes the disaster of critical sections.
 3.  [Example 3](#example-3--compile-code-without-the-openmp-library):  illustrates that you can compile code with OpenMP pragmas (i.e., directives)
     in it and it will compile fine WITHOUT using the OpenMP library and in this case,
-    the code will just run in searial mode.
+    the code will just run in serial mode.
     - Note that only OpenMP directives are ignored; if you have particular OpenMP commands
       in the code, then you must comment them out for successful compile.
 4.  [Example 4](#example-4-run-first-code-with-one-thread):  runs the code of Example 1, but whereas Example 1 used 20 cores, this 
