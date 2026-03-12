@@ -68,9 +68,11 @@ are almost identical.
    -  See the videos in this section for more details [https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software](https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software).
 
 
-## Example 1
+### Examples
 
-### Creating a Virtual Environment on Owl
+#### Example 1:  MPI4Py on CPU compute nodes.
+
+#### Creating a Virtual Environment on Owl
 
 The process for creating a VE for other clusters and compute node types 
 is very similar.
@@ -85,7 +87,7 @@ you must run your code on the type of node used to
 create the VE.
 This is a universal constraint.
 
-~~~
+~~~bash
 ## Obtain resources from slurm.
 ## On the genoa nodes (because there are more of them than milan: 84 vs. 4).
 salloc --account=<account>  --partition=normal_q    --constraint=genoa      --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
@@ -106,18 +108,24 @@ module load foss/2023b
 ## module load CUDA/12.6.0
 
 ## Create the VE.
-conda create -p ~/env/owl/normal_q_genoa/py312_mf_openmpi
+## conda create -p ~/env/owl/normal_q_genoa/py312_mf_openmpi
+conda create -p ~/env-python/owl/normal_q/genoa/py34_mf_openmpi_mpi4py
+
 
 ## Activate the VE.
-source activate ~/env/owl/normal_q_genoa/py312_mf_openmpi
+## source activate ~/env/owl/normal_q_genoa/py312_mf_openmpi
+source activate ~/env-python/owl/normal_q/genoa/py34_mf_openmpi_mpi4py
+
 
 ## Install python.
-conda install python=3.12
+conda install python=3.14
 
 ## Check:  should show correct version
 python --version
 
 ## Install Mpi4Py, for OpenMPI
+## This is the statement that varies, per the table at the top of this section,
+## based on the version of MPI that you are using.
 conda install -c conda-forge mpi4py openmpi
 
 
@@ -138,11 +146,12 @@ exit
 
 
 ## Return unused resources to slurm.
-## squeue command shows the JOBID.
+## squeue command shows the SLURM_JOB_ID.
+## Look for the SLURM_JOB_ID corresponding to your interactive job.
 squeue -u $USER
-scancel JOBID
+scancel SLURM_JOB_ID
 ~~~
-{:   .language-bash}
+
 
 
 __NOTE:__  You might get a warning message from the command `conda install -c conda-forge mpi4py openmpi`
@@ -226,8 +235,8 @@ The sbatch slurm script for running job in batch mode is _job.01.slurm_:
 
 ## -----------------------
 ## SLURM OUTPUT AND ERROR FILES.
-#SBATCH --output slurm.mpi4py.%j.out
-#SBATCH --error slurm.mpi4py.%j.err
+#SBATCH --output slurm.openmpi4py.%j.out
+#SBATCH --error slurm.openmpi4py.%j.err
 
 
 ## -----------------------
@@ -242,7 +251,7 @@ The sbatch slurm script for running job in batch mode is _job.01.slurm_:
 ## But then you'd need a VE specifically
 ## for TC.  Our VE is specifically for 
 ## Owl and genoa nodes.  See below for the VE.
-#SBATCH --constraint=genoa
+#SBATCH --constraint=genoa&avx512
 
 
 ## -----------------------
@@ -267,7 +276,8 @@ module load foss/2023b
 
 ## -----------------------
 ## VE (virtual environment).
-source activate ~/env/owl/normal_q_genoa/py312_mf_openmpi
+## source activate ~/env/owl/normal_q_genoa/py312_mf_openmpi
+source activate ~/env-python/owl/normal_q/genoa/py34_mf_openmpi_mpi4py
 
 
 
@@ -298,15 +308,32 @@ echo "   SLURM_NTASKS: "  $SLURM_NTASKS
 echo " "
 echo " "
 
+# Data collection interval in seconds.
+data_collection_period_s=1
+echo " " 
+echo " ------------"
+echo "Running IOSTAT, MPSTAT, VMSTAT"
+iostat ${data_collection_period_s} >iostat.%j.out 2>iostat.%j.err &
+mpstat -P ALL ${data_collection_period_s} >mpstat.%j.out 2>mpstat.%j.err &
+vmstat -t ${data_collection_period_s} >vmstat.%j.out 2>vmstat.%j.err &
+
 
 ## -----------------------
-## JOB.
+# Code to execute.
 echo " "
-echo " execution output"
+echo " ------------"
+echo "Running executable"
 echo " "
 THE_EXEC="./src.01.py"
 THE_INPUT=""
 srun --mpi=pmix  python $THE_EXEC  $THE_INPUT
+
+
+echo " ------------"
+echo "Executable done:  stop IOSTAT, MPSTAT, VMSTAT"
+kill %1
+kill %2
+kill %3
 ~~~
 
 
@@ -330,12 +357,14 @@ def doWork():
 
     ## Precisely two MPI processes.
     if rank == 0:
+        sleep(5)
         data = {'a': 7, 'b': 3.14}
         print("Rank : ",rank," ; action:  about to send message")
         comm.send(data, dest=1, tag=11)
         print("Rank : ",rank," ; action:  sent message")
         print("     data sent: ",data)
     elif rank == 1:
+        sleep(5)
         print("Rank : ",rank," ; action:  set up to receive message.")
         data = comm.recv(source=0, tag=11)
         print("Rank : ",rank," ; action:  received message.")
@@ -379,7 +408,7 @@ Results will be in the file _slurm.mpi4py.SLURM-JOB-ID.out_ file
 because this is the slurm output file specified by the
 `#SBATCH --output` command.
 
-~~~
+~~~output
  execution output
 
 Rank :  1  ; action:  set up to receive message.
@@ -395,7 +424,7 @@ execution time (s):  0.03054952621459961
 execution time (hr):  8.485979504055447e-06
   ---- good termination ---
 ~~~
-{:  .language-bash}
+
 
 There is additional output in this file, occurring above these results,
 and these primarily give the slurm job specifications.
