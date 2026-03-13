@@ -26,12 +26,12 @@ To run the exact same codes on Tinkercliffs (TC), then in the **sbatch slurm scr
 
 For Example 1:
 
-1. Delete the line: `#SBATCH --constraint=genoa&avx512`.
+1. Delete the line: `#SBATCH --constraint="genoa&avx512"`.
 2. Insert the line: `#SBATCH --constraint=amd`.
 
 For Example 2:
 
-1. Delete the line: `#SBATCH --constraint=genoa&avx512`.
+1. Delete the line: `#SBATCH --constraint="genoa&avx512"`.
 2. Insert the line: `#SBATCH --constraint=amd`.
 
 For Example 3:
@@ -40,7 +40,7 @@ The directions below may not run.  This is because these runs use a lot more
 memory and there may be insufficient memory on TC, or it may require further alternations
 of the sbatch slurm script.
 
-1. Delete the line: `#SBATCH --constraint=genoa&avx512`.
+1. Delete the line: `#SBATCH --constraint="genoa&avx512"`.
 2. Insert the line: `#SBATCH --constraint=amd`.
 
 
@@ -95,7 +95,7 @@ Option 1 is preferred because the interactive job will be cleaned up automatical
 
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint="genoa&avx512"
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 ~~~
 
@@ -105,7 +105,7 @@ _**Option 2:  The not-preferred option**_:
 
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint="genoa&avx512"
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 
 ## The results returned by slurm for the above command will include an owl compute node id, <cnode-id>
@@ -196,7 +196,7 @@ The sbatch slurm script is _job.01.slurm_.
 ## Number of cores (total) per compute node (e.g., for hybrid threading).
 #SBATCH --cpus-per-task=1
 
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint="genoa&avx512"
 
 
 ## -----------------------
@@ -512,7 +512,7 @@ This is the sbatch slurm job submission script _job.02.slurm_.
 
 ## -----------------------
 ## CONSTRAINTS
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint="genoa&avx512"
 
 
 
@@ -1176,7 +1176,7 @@ Here, "np" means number of processes, i.e., number of MPI processes, which for t
 
 ## -----------------------
 ## CONSTRAINTS.
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint="genoa&avx512"
 
 
 ## -----------------------

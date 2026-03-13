@@ -264,8 +264,7 @@ match up with how you want GNU parallel to perform.
 
 ## Use the genoa nodes of the normal_q partition.
 #SBATCH --partition=normal_q
-#SBATCH --constraint=genoa
-#SBATCH --constraint=avx512
+#SBATCH --constraint="genoa&avx512"
 
 ## This specifies the number of CPUs.
 #SBATCH --nodes=1

@@ -32,7 +32,7 @@ Option 1 is preferred because the interactive job will be cleaned up automatical
 
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+interact --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint="genoa&avx512"
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 ~~~
 
@@ -42,7 +42,7 @@ _**Option 2:  The not-preferred option**_:
 
 ~~~bash
 ## From the owl head node, issues this command to start your interactive job:
-salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint=genoa&avx512
+salloc --time=2:00:00  --account=<your-account-name-here>  --partition=normal_q  --constraint="genoa&avx512"
 --nodes=1  --tasks-per-node=1  --cpus-per-task=2  
 
 ## The results returned by slurm for the above command will include an owl compute node id, <cnode-id>
@@ -141,7 +141,7 @@ The sbatch slurm script, to run the job on TC or Owl in batch mode, is:
 ##  Set the partition to submit to (a partition is equivalent to a queue)
 ## #SBATCH --partition=parallel
 #SBATCH --partition=normal_q
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint="genoa&avx512"
 
 
 ## -----------------------

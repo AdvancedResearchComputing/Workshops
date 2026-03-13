@@ -90,7 +90,7 @@ This is a universal constraint.
 ~~~bash
 ## Obtain resources from slurm.
 ## On the genoa nodes (because there are more of them than milan: 84 vs. 4).
-salloc --account=<account>  --partition=normal_q    --constraint=genoa      --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
+salloc --account=<account>  --partition=normal_q    --constraint="genoa&avx512"      --nodes=1 --ntasks-per-node=1 --cpus-per-task=2 --time=2:00:00
 
 ## ssh to the compute node.
 ssh owlXXX
@@ -251,7 +251,7 @@ The sbatch slurm script for running job in batch mode is _run.01.slurm_:
 ## But then you'd need a VE specifically
 ## for TC.  Our VE is specifically for 
 ## Owl and genoa nodes.  See below for the VE.
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint="genoa&avx512"
 
 
 ## -----------------------
