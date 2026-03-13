@@ -111,4 +111,4 @@ These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
 
 
 ---
-[Next: Srun ➡️](scalable_job_submission/srun.md)
+[Next: Srun ➡️](srun.md)
