@@ -107,8 +107,22 @@ Submit this job:
 sbatch sbatch.short.slurm
 ```
 
-The output from the job is below:
-
+parallel runs:
+```
+sleep 5; echo 5 done
+sleep 4; echo 4 done
+sleep 3; echo 3 done
+sleep 1; echo 1 done
+sleep 2; echo 2 done
+```
+The second output from the job is:
+```
+1 done
+2 done
+3 done
+4 done
+5 done
+```
 The output is below.  The execution time is 7 seconds.
 
 ```
@@ -130,8 +144,11 @@ Here, we ran five executions with one slurm script.
 
 Copy the file _sbatch.short.slurm_ and call the copy _sbatch.long.slurm_.
 
-In file _sbatch.long.slurm_, delete this line `#SBATCH --cpus-per-task=5` and insert this
-line `#SBATCH --cpus-per-task=1`.
+```bash 
+cp sbatch.short.slurm sbatch.long.slurm
+```
+
+In file _sbatch.long.slurm_, change this line `#SBATCH --cpus-per-task=5` to `#SBATCH --cpus-per-task=1`.
 
 You may also want to change the names of the output and error files
 in:
@@ -144,9 +161,7 @@ Submit this job:
 sbatch sbatch.long.slurm
 ```
 
-The output from the job is below:
-
-The output is below.  The execution time is 7 seconds.
+The second output from this job is the same as the previous one, but let's check the execution time:
 
 ```
 [ckuhlman@owl1 gnu-parallel]$ sacct -j 104978 --format=jobid,jobname,elapsed,ncpus,ntasks,state
