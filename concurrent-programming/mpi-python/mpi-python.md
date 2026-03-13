@@ -110,13 +110,11 @@ module load foss/2025b
 ## module load CUDA/12.6.0
 
 ## Create the VE.
-## conda create -p ~/env/owl/normal_q_genoa/py312_mf_openmpi
-conda create -p ~/env-python/owl/normal_q/genoa/py34_mf_openmpi_mpi4py
+conda create -p ~/env-python/owl/normal_q/genoa/py314_mf_openmpi_mpi4py
 
 
 ## Activate the VE.
-## source activate ~/env/owl/normal_q_genoa/py312_mf_openmpi
-source activate ~/env-python/owl/normal_q/genoa/py34_mf_openmpi_mpi4py
+source activate ~/env-python/owl/normal_q/genoa/py314_mf_openmpi_mpi4py
 
 
 ## Install python.
@@ -279,8 +277,7 @@ module load foss/2025b
 
 ## -----------------------
 ## VE (virtual environment).
-## source activate ~/env/owl/normal_q_genoa/py312_mf_openmpi
-source activate ~/env-python/owl/normal_q/genoa/py34_mf_openmpi_mpi4py
+source activate ~/env-python/owl/normal_q/genoa/py314_mf_openmpi_mpi4py
 
 
 
