@@ -108,6 +108,9 @@ But this would be highly uncommon/nonstandard.
 
 These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
 
+### Acknowledgment
+
+Several of the examples were provided by Sofia Lima.  We appreciate her help.
 
 
 ---
