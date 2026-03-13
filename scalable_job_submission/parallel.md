@@ -224,8 +224,7 @@ match up with how you want GNU parallel to perform.
 
 ## Use the genoa nodes of the normal_q partition.
 #SBATCH --partition=normal_q
-#SBATCH --constraint=genoa
-#SBATCH --constraint=avx512
+#SBATCH --constraint=genoa&avx512
 
 ## This specifies the number of CPUs.
 #SBATCH --nodes=1
@@ -527,8 +526,10 @@ Note how much more cumbersome it is.
 Make another example from Example 3 above:
 
 1. Copy the file _sbatch.fast.03.slurm_ and call it _sbatch.slow.03.slurm_
-2. Delete the line `#SBATCH --cpus-per-task=12` and in its place insert
-   `#SBATCH --cpus-per-task=1`.
+```bash
+cp sbatch.fast.03.slurm sbatch.slow.03.slurm
+```
+2. Change the line `#SBATCH --cpus-per-task=12` to `#SBATCH --cpus-per-task=1`.
 3. You may also want to change the names of the output and error files
 in:
    - `#SBATCH --output`
