@@ -7,9 +7,6 @@
 
 ## Logistics
 
-Please sign in: [Sign-in sheet](https://docs.google.com/)
-
-Feedback form: [Feedback](https://forms.gle/)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
