@@ -141,11 +141,8 @@ ___
 ## Step 2: Launch Jupyter Notebook on Open OnDemand
 
 1. Open [https://ood.arc.vt.edu](https://ood.arc.vt.edu) in your browser
-2. Go to **Interactive Apps** > **Jupyter Notebook**
+2. Go to **Interactive Apps** > **LLMs on ARC Systems Workshop**
 3. Configure your session:
-   - Partition: `normal_q` (a GPU is not needed for API access)
-   - Number of cores: 1
-   - Memory (GB): 4
    - Wall time: 2 hours
    - Account: your allocation account
 4. Click **Launch** and wait for the session to start
