@@ -118,7 +118,6 @@ Launch your own private LLM instance on a GPU via Open OnDemand.
 
 - URL: [https://ood.arc.vt.edu](https://ood.arc.vt.edu) > Interactive Apps > LLMs
 - Backend: llama.cpp
-- Models: 40+ from Hugging Face (pre-downloaded at `/common/data/models/`)
 - API: OpenAI-compatible (unique API key generated per session)
 - Rate limits: None (you have exclusive access to the GPU)
 - Session limit: Max 5 days; auto-terminates after 1 hour of inactivity
