@@ -273,7 +273,7 @@ You can use this terminal to show how much of your requested time has been
 used, using `squeue -u $USER`.
 
 
-### Starting VS Code From Your Laptop
+### Starting VS Code From Your Laptop to Run on a Compute Node
 
 This is a two-step process.
 
