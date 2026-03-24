@@ -189,7 +189,9 @@ Requesting an interactive job, can be performed using any of the following:
 1. A terminal window on your laptop.
 2. A terminal window obtained through [ARC's Open OnDemand](https://ood.arc.vt.edu) (OOD).
 
-Execute the commands in one of the two following subsections, to
+
+Execute the commands in one of the two following subsections
+(per the listing immediately above), to
 log into a head node using a terminal window.
 
 #### Using a Terminal Window on Your Laptop to Log Into an ARC Cluster Head Node
@@ -202,12 +204,13 @@ log into a head node using a terminal window.
 
 #### Terminal Window Through Open OnDemand (OOD)
 
-1. Go to the [ARC OOD landing page](ood.arc.vt.edu).
+1. Go to the [ARC OOD landing page](https://ood.arc.vt.edu).
 2. At the command bar at the top of the page (currently in maroon),
    click the `Clusters` drop down and select one of the Falcon, Owl,
    or Tinkercliffs shell access for a head node corresponding to the
-   cluster on which you want to use a compute node.
-3. You are now logged into a head node.
+   cluster on which you want to use a compute node for VSC.
+3. You will be placed on a terminal window.
+4. You are now logged into a head node.
 
 ### Request Compute Node Resources From a Cluster Head Node
 
