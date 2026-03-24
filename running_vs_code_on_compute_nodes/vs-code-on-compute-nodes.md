@@ -43,11 +43,13 @@
 
 ### Prerequisites
 
-1.  ssh installed on your local machine (comes with most laptops). [SSH keys](sshkeys)
+1.  Have SSH installed on your local machine (comes with most laptops). [SSH keys](sshkeys) is a great way to configure ssh and the clusters so that 
+    login is fast.
 2.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html) installed on your laptop (local machine).
-3.  ARC [account](https://arc.vt.edu/account).
-4.  Project for file storage.  Not absolutely critical for this workshop, but critical for your work.
-5.  [allocation](allocations) to charge "jobs" to.
+3.  Have anb ARC [account](https://arc.vt.edu/account).
+4.  Have an ARC Project for file storage.  Not absolutely critical for this
+    workshop, because you can here use `/home/<username>` for this workshop, but critical for your work long-term.
+5.  Have an [allocation](allocations) to charge "jobs" to.
 
 
 ### Major Activities
