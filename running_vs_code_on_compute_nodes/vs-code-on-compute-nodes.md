@@ -21,7 +21,7 @@
          can work efficiently and get their work done.
 4. To summarize the purpose of this workshop:
    I want to use VS Code to do my work and
-   1. I want to debug and run my code from within VSC, and or
+   1. I want to debug and run my code from within VSC, and/or
    2. I want to use AI or other plugins with VSC.
 5. How do I do this?
 6. By running your instance of VS Code on a _**compute**_ node.
