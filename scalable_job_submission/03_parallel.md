@@ -540,4 +540,4 @@ in:
 
 ---
 
-⬅️ [Previous: Srun](srun.md) | [Next: Srun and GNU pararllel ➡️](srun_parallel.md)
+⬅️ [Previous: Srun](02_srun.md) | [Next: Srun and GNU pararllel ➡️](04_srun_parallel.md)
