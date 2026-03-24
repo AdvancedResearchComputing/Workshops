@@ -35,9 +35,9 @@
 ### Applicability
 
 1. These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
-2. If your code uses CPUs only, then you should run VSC on clusters and 
+2. If your code uses CPUs only, then you should run VSC on clusters 
    and partitions on them that are CPU-only.
-3. If your code uses GPUs, then you should run VSC on clusters and 
+3. If your code uses GPUs, then you should run VSC on clusters 
    and partitions on them that have GPUs.
 
 
