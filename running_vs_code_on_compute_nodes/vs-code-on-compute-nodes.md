@@ -46,7 +46,7 @@
 1.  Have SSH installed on your local machine (comes with most laptops). [SSH keys](sshkeys) is a great way to configure ssh and the clusters so that 
     login is fast.
 2.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html) installed on your laptop (local machine).
-3.  Have anb ARC [account](https://arc.vt.edu/account).
+3.  Have an ARC [account](https://arc.vt.edu/account).
 4.  Have an ARC Project for file storage.  Not absolutely critical for this
     workshop, because you can here use `/home/<username>` for this workshop, but critical for your work long-term.
 5.  Have an [allocation](allocations) to charge "jobs" to.
@@ -58,7 +58,7 @@ We order the activities into setup steps that you execute
 one time and steps that you repeat every time you use 
 VSC on a compute node.
 
-1. One-Time Setup
+1. One-Time Setup Steps
    1. Laptop (or local machine)
       1. Alter the `config` file under directory `~/.ssh` as below.
    (meaning that the directory `.ssh` is located right below
@@ -67,23 +67,20 @@ VSC on a compute node.
       1. Install VS Code (VSC) on your laptop.
       2. Install the `Remote-ssh` plugin in your VSC app.
 
-
-2. Request an interactive job on the ARC clusters.
-   1. Make a request of slurm to provide you with your specified
-      resources (on a compute node).
-
-
-
-
-The order of activities above is so that we can do the one-time 
-setup of the `config` file and then focus on VSC.
+2. Steps To Use for Every VS Code Session on Compute Nodes
+   1. Request an interactive job on the ARC clusters.
+      1. Make a request of slurm, via the `interact` command,
+      to provide you with your specified resources (on a compute node).
+   2. From your laptop connect to the compute node directly.
+      1. Connect using `ssh`.
+      2. Connect using VS Code.
 
 
 
 
 ## One-Time Setup
 
-### Altering Your ssh `config` File for Wildcard ProxyJump
+### Altering Your SSH `config` File for Wildcard ProxyJump
 
 We want to set up our ssh configuration on our local computer so that 
 VSC can be run directory on a compute node of the ARC clusters.
