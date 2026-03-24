@@ -24,7 +24,8 @@
    1. I want to debug and run my code from within VSC, and/or
    2. I want to use AI or other plugins with VSC.
 5. How do I do this?
-6. By running your instance of VS Code on a _**compute**_ node.
+6. By running your instance of VS Code on a _**compute**_ node 
+   (and not a _**head**_ node).
 7. This workshop focuses on how to run VSC on ARC compute nodes.
 
 
