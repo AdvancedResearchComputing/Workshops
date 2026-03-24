@@ -202,7 +202,7 @@ log into a head node using a terminal window.
       1. `ssh <user_name>@owl2.arc.vt.edu`
 3. Now you are logged into a head node.
 
-#### Terminal Window Through Open OnDemand (OOD)
+#### Using a Terminal Window Through Open OnDemand (OOD) to Log Into an ARC Cluster Head Node
 
 1. Go to the [ARC OOD landing page](https://ood.arc.vt.edu).
 2. At the command bar at the top of the page (currently in maroon),
