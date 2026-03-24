@@ -146,6 +146,7 @@ Always use a login node for the **same cluster** where you plan to run jobs (e.g
 
 If you do not have VSC installed on your laptop or tower, 
 search for VSC online and download and install the app.
+One download site is [here](https://code.visualstudio.com/download).
 
 ###  Launch the VSC App and install the Remote - ssh Package
 
