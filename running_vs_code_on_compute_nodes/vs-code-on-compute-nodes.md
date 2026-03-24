@@ -219,7 +219,7 @@ Use the `interact` command to request compute node resources.
 Note that these are the resources that you will have access to
 while using VSC, so this should guide your specification of resources.
 
-A common command structure for a CPU-based job is:
+A common command structure for a **CPU-based** job is:
 
 ```
 interact --account=<account> --partition=<partition> --nodes=<num compute nodes> --ntasks-per-node=<num tasks per compute node> --cpus-per-task=<num cpus per task>  --constraint=<constraints>  --mem=<memory amount>   --time=02:00:00
@@ -231,7 +231,7 @@ Example for Tinkercliffs:
 interact --account=<account> --partition=normal_q --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 --constraint=amd  --mem=4GB  --time=04:00:00
 ```
 
-A common command structure for a GPU-based job is:
+A common command structure for a **GPU-based** job is:
 
 ```
 interact --account=<account> --partition=<partition> --nodes=<num compute nodes> --ntasks-per-node=<num tasks per compute node> --cpus-per-task=<num cpus per task>  --mem=<memory amount>   --time=02:00:00
@@ -244,7 +244,7 @@ interact --account=<account> --partition=l40s_normal_q --nodes=1 --ntasks-per-no
 ```
 
 Since all GPU-based partitions have only a single node type, 
-the `--constraint` switch is not used.
+the `--constraint` switch is not used when requesting GPU resources.
 See [constraints](https://docs.arc.vt.edu/usage/job_scheduling/01_slurm_overview.html#slurm-constraints) for more details.
 
 Since these are the resources that you will use with VSC,
