@@ -332,6 +332,8 @@ Your working session will end in one of two ways:
    2. In the terminal screen where you issued the `interact` command, type `exit`.
       1. This will log you off of the compute node and put you back on the head node.
       2. This will end your interactive job and hence will make impossible any further action on the compute node with VSC.
+      3. This should also end the `ssh` session that you created directly from
+         your laptop.
 
 
 
@@ -341,4 +343,4 @@ Your working session will end in one of two ways:
 
 1. Eslam Huessein for developing the [document in
    the ARC DOCS](https://docs.arc.vt.edu/usage/vscode_remote_ssh.html).
-   This workshop is very much largely based on his information and document.
+   This workshop is largely based on his information and document.
