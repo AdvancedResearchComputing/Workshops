@@ -246,11 +246,11 @@ interact --account=<account> --partition=l40s_normal_q --nodes=1 --ntasks-per-no
 Since all GPU-based partitions have only a single node type, 
 the `--constraint` switch is not used when requesting GPU resources.
 See [constraints](https://docs.arc.vt.edu/usage/job_scheduling/01_slurm_overview.html#slurm-constraints) for more details.
-But a GPU-based interactive job needs `--gres=` to specify the 
+But a GPU-based interactive job needs `--gres` to specify the 
 number of GPUs needed.
 
 Since these are the resources that you will use with VSC,
-the time allotment you specify (via `--time=`) should be the amount of
+the time allotment you specify (via `--time`) should be the amount of
 time that you will be using VSC.
 
 The `interact` command will "return" when Slurm has the resources to 
@@ -269,6 +269,8 @@ window or log off of the compute node.
 Each of these undesirable actions will cause you to lose your resources
 on the compute node and you will not be able to use VSC on the compute
 node.
+You can use this terminal to show how much of your requested time has been
+used, using `squeue -u $USER`.
 
 
 ### Starting VS Code From Your Laptop
