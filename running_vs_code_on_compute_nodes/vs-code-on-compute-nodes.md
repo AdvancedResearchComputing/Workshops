@@ -187,7 +187,7 @@ Save our work frequently in VSC.  When the interactive job ends, your VSC connec
 Requesting an interactive job, can be performed using any of the following:
 
 1. A terminal window on your laptop.
-2. A terminal window obtained through [ARC's Open OnDemand](ood.arc.vt.edu) (OOD).
+2. A terminal window obtained through [ARC's Open OnDemand](https://ood.arc.vt.edu) (OOD).
 
 Execute the commands in one of the two following subsections, to
 log into a head node using a terminal window.
