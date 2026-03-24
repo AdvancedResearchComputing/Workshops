@@ -177,6 +177,7 @@ The major steps to execute, which we describe in more detail below, are:
 4. Be careful to relinquish the interactive job resources when you are finished.
 
 > [!NOTE]
+
 ```{note}
 Save our work frequently in VSC.  When the interactive job ends, your VSC connection to the compute node WILL end and you will lose any work that you have not saved.
 ```
