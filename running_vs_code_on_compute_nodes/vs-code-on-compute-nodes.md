@@ -303,7 +303,12 @@ workshop works for us.
 The steps are:
 
 1. In VSC on your laptop, open **Remote-SSH → Connect to Host…**.
-2. Select the compute node name directly (this is the output from the `hostname` command above).
+   1. In detail:
+      1. Click `View` in the command bar.
+      2. Then choose `Command Palette`.
+      3. In the text box that now appears at the top middle of your
+         VSC IDE, type `Remote-SSH → Connect to Host…`. 
+2. Select the compute node name directly (this is the output from the `hostname` command above), if it is in the list.  If the `hostname` is not in the list, then add it by pressing the `+` button.
 3. When prompted, choose `Linux` as the remote platform.
 4. VS Code’s remote server now runs on the compute node instead of the login node.
 5. Start your work by opening your working directory (e.g. `/home/<username>` or `/projects/...`).
