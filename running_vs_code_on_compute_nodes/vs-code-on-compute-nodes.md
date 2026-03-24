@@ -49,6 +49,8 @@
 3.  Have an ARC [account](https://arc.vt.edu/account).
 4.  Have an ARC Project for file storage.  Not absolutely critical for this
     workshop, because you can here use `/home/<username>` for this workshop, but critical for your work long-term.
+      1. If you are a professor (i.e., PI), then create a project [here](https://docs.arc.vt.edu/pi_info/allocations.html).
+      2. If you are a student, find a professor to work with.
 5.  Have an [allocation](https://docs.arc.vt.edu/pi_info/allocations.html) to charge "jobs" to.
 
 
