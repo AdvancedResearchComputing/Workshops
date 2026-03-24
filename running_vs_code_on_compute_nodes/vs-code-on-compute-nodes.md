@@ -3,8 +3,9 @@
 
 ## Ideas Behind This Workshop
 
-1. VS Code (VSC) is a popular IDE for developing code and other files.
-2. Running VS Code is allowable on head nodes IF
+1. VS Code (VSC) is a popular IDE for developing code and content
+   for other files.
+2. Running VS Code is allowable on head nodes _**IF**_:
    1. You do not run with plugins, e.g., do not run with AI plugins.
    2. You do not run code:  no code execution, no major code debugging.
 3. Why these restrictions?
