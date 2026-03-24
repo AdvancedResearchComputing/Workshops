@@ -292,6 +292,7 @@ We take each step in turn now.
 2. Establish an `ssh` connection to the compute node
    1. Enter `ssh <compute node host name>`
       1. where `<compute node host name>` is the output from the `hostname` command above.
+3. Just leave this terminal window as is, e.g., do not close it.
    
 
 #### Connect to the Compute Node Using VS Code And Do Your Work
