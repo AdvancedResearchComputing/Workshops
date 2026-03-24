@@ -153,8 +153,8 @@ search for VSC online and download and install the app.
 2. Go to the far left command bar and click the `Extensions` button.
 3. In the Extensions search bar, type `Remote - SSH`.
 4. Find the `Remote - SSH` package in the list of choices provided
-   (there should be a blue `Install` button associated with the package).
-   1. Click that `Install` button and the package will be installed into VSC.
+   (there should be a blue `Install` button associated with each package).
+   1. Click the `Install` button corresponding to `Remote - SSH` and the package will be installed into VSC.
 
 ## Using VS Code on an ARC Compute Node
 
