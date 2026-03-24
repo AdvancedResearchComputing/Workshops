@@ -311,4 +311,4 @@ sbatch sbatch.three.nodes.slurm
 ```
 ---
 
-⬅️ [Previous: GNU pararllel](parallel.md) | [Next: Job Arrays ➡️](job_arrays.md)
+⬅️ [Previous: GNU pararllel](03_parallel.md) | [Next: Job Arrays ➡️](05_job_arrays.md)

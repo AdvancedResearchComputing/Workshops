@@ -185,4 +185,4 @@ to see the use of CPUs and memory.
 
 ---
 
-⬅️ [Previous: Introduction](introduction.md) | [Next: GNU pararllel ➡️](parallel.md)
+⬅️ [Previous: Introduction](01_introduction.md) | [Next: GNU pararllel ➡️](03_parallel.md)
