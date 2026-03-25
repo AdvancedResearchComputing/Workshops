@@ -325,6 +325,11 @@ The steps are:
 4. IF/When prompted, choose `Linux` as the remote platform.
 5. VS Code’s remote server now runs on the compute node instead of the login node.
 6. You should see a blue box at the lower left stating `SSH: <hostname>`, indicating that you are connected to the ARC compute node `<hostname>`.
+7. Another way to verify that you are on a compute node is to select
+   `Terminal` from the VSC main menu and then select `New Terminal`.
+   Your VSC diplay should show you a terminal at the bottom and the 
+   command prompt should include the `<hostname>`, indicating that
+   you are on that compute node.
 
 #### Do Your Work and Then End Your Session
 
