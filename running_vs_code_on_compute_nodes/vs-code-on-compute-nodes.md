@@ -78,11 +78,16 @@ VSC on a compute node.
       2. Install the `Remote-ssh` plugin in your VSC app.
 2. Steps To Use for Every VS Code Session on Compute Node
    1. Request an interactive job on the ARC clusters.
-      1. Make a request of slurm, via the `interact` command,
+      1. From a terminal window on your local machine, make an `ssh`
+         connection to a head node whose compute nodes you want to
+         run VSC on.
+      2. From this head node, make a request of slurm, via the `interact` command,
       to provide you with your specified resources (on a compute node).
-   2. From your laptop connect to the compute node directly.
-      1. Connect using `ssh`.
-      2. Connect using VS Code.
+      3. Note `hostname` of the _**compute**_ node you are given.
+   2. From your laptop, using VSC, connect to the compute node directly.
+      1. You will need that hostname of the compute node.
+3. Actions to take for authenticity problem, if you get the message
+   in VSC:  "the authenticity of host cannot be established"
 
 
 ---------------------------------------
@@ -193,12 +198,11 @@ The major steps to execute, which we describe in more detail below, are:
 1. From a cluster head node, request an interactive Slurm job
    through a terminal window.
    1. You will be provided a compute node (name).
-2. From your laptop, open a terminal window and connect _**DIRECTLY**_ to the compute node.
-3. Use VSC, running on your laptop, to connect to the compute node
+2. Use VSC, running on your laptop, to connect to the compute node
    provided in the previous step.
-4. Do your work through VSC on the compute node, which may entail 
+3. Do your work through VSC on the compute node, which may entail 
    using (AI) packages, debugging code, and running code.
-5. Be careful to relinquish the interactive job resources when you are finished.
+4. Be careful to relinquish the interactive job resources when you are finished.
 
 > [!NOTE]
 
@@ -332,10 +336,29 @@ The steps are:
       2. Then choose `Command Palette`.
       3. In the text box that now appears at the top middle of your
          VSC IDE, type `Remote-SSH → Connect to Host…`. 
-2. Select the compute node name directly (this is the output from the `hostname` command above), if it is in the list.  If the `hostname` is not in the list, then add it by pressing the `+` button.
-3. When prompted, choose `Linux` as the remote platform.
-4. VS Code’s remote server now runs on the compute node instead of the login node.
-5. Start your work by opening your working directory (e.g. `/home/<username>` or `/projects/...`).
+2. Enter the compute node name directly (this is the output from the `hostname` command above) and hit "return."
+3. You should see at lower right of the new VSCode window, something like
+   "Downloading VS Code Server".  This is good.
+4. IF/When prompted, choose `Linux` as the remote platform.
+5. VS Code’s remote server now runs on the compute node instead of the login node.
+6. You should see a blue box at the lower left stating `SSH: <hostname>`, indicating that you are connected to the ARC compute node `<hostname>`.
+
+#### Do Your Work
+
+If familiar with VS Code, at this point, begin your work.
+If this is new to you, you might consider the following steps.
+
+1. Start your work by opening your working directory (e.g. `/home/<username>` or `/projects/...`).
+   1. You can do this by clicking on the Explorer icon at the far left of the VS Code screen.
+   2. In the entry field at the top center, you can enter your path `/projects/...` as stated above.
+   3. You will get an explorer window on the far left in which you can
+      navigate files and directories.
+2. To end your VS Code session:
+   1. lick the aforementioned blue box at
+      lower left `SSH: <hostname>`
+   2. A dropdown list will appear at the top center.
+   3. From this list, select `Close Remote Connection`.
+
 
 > [!NOTE]
 As mentioned earlier, save your work regularly and be cognizant of your
@@ -350,7 +373,7 @@ how much time you have left.
 
 Your working session will end in one of two ways:
 
-1. Your time will expire and your interactive job will end, and all resources will be revoked.
+1. Your interactive job's time will expire and your interactive job will end, and all resources will be revoked (including your connection through VSC).
 2. You finish your work and end your session.
    1. In VSC, ****************
    2. In the terminal screen where you issued the `interact` command, type `exit`.
@@ -359,8 +382,21 @@ Your working session will end in one of two ways:
       3. This should also end the `ssh` session that you created directly from
          your laptop.
 
+---------------------------------------
+
+---------------------------------------
 
 
+## Actions to Take if You Receive an Authenticity Problem Within VS Code While Connecting to the ARC Compute Node.
+
+---------------------------------------
+
+---------------------------------------
+
+
+the authenticity of host cannot be established
+
+From your laptop, open a terminal window and connect _**DIRECTLY**_ to the compute node.
 
 
 ## Acknowledgment
