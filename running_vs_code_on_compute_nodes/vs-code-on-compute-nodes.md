@@ -210,19 +210,22 @@ The major steps to execute, which we describe in more detail below, are:
 Save our work frequently in VSC.  When the interactive job ends, your VSC connection to the compute node WILL end and you will lose any work that you have not saved.
 ```
 
-### Request an Interactive Job
+### Log Into an ARC Cluster Head Node
 
-Requesting an interactive job, can be performed using any of the following:
+We need to log into an ARC cluster head node so that
+we can request resources on a compute node.
+
+Logging onto a head node, can be performed using any of the following:
 
 1. A terminal window on your laptop.
 2. A terminal window obtained through [ARC's Open OnDemand](https://ood.arc.vt.edu) (OOD).
 
 
-Execute the commands in one of the two following subsections
+Execute the commands in _**ONE**_ of the two following subsections
 (per the listing immediately above), to
 log into a head node using a terminal window.
 
-#### Using a Terminal Window on Your Laptop to Log Into an ARC Cluster Head Node
+#### Recommended Way:  Using a Terminal Window on Your Laptop to Log Into an ARC Cluster Head Node
 
 1. Open a terminal window on your laptop.
 2. ssh into a cluster head node for the cluster where you want to do VSC work.
@@ -230,7 +233,7 @@ log into a head node using a terminal window.
       1. `ssh <user_name>@owl2.arc.vt.edu`
 3. Now you are logged into a head node.
 
-#### Using a Terminal Window Through Open OnDemand (OOD) to Log Into an ARC Cluster Head Node
+#### Alternative Way:  Using a Terminal Window Through Open OnDemand (OOD) to Log Into an ARC Cluster Head Node
 
 1. Go to the [ARC OOD landing page](https://ood.arc.vt.edu).
 2. At the command bar at the top of the page (currently in maroon),
@@ -303,27 +306,6 @@ used, using `squeue -u $USER`.
 
 ### Starting VS Code From Your Laptop to Run on a Compute Node
 
-This is a two-step process.
-
-1. Establish an `ssh` connection _**DIRECTLY**_ to the compute node
-   provided by the `interact` command above.
-2. Log into VSC.
-
-We take each step in turn now.
-
-#### Establish an `ssh` connection _**DIRECTLY**_ to the Compute Node
-
-1. Open a terminal window on your laptop.
-   1. If you used a laptop terminal window above to log into the head 
-      node, then open a second terminal window now.  You need a separate
-      terminal window for this.
-2. Establish an `ssh` connection to the compute node
-   1. Enter `ssh <compute node host name>`
-      1. where `<compute node host name>` is the output from the `hostname` command above.
-3. Just leave this terminal window as is, e.g., do not close it. 
-   
-
-#### Connect to the Compute Node Using VS Code And Do Your Work
 
 This is where the `ProxyJump` work done in the setup portion of this
 workshop works for us.
@@ -333,9 +315,10 @@ The steps are:
 1. In VSC on your laptop, open **Remote-SSH → Connect to Host…**.
    1. In detail:
       1. Click `View` in the command bar.
-      2. Then choose `Command Palette`.
+      2. Then choose `Command Palette...`.
       3. In the text box that now appears at the top middle of your
-         VSC IDE, type `Remote-SSH → Connect to Host…`. 
+         VSC IDE, type `Remote-SSH → Connect to Host…` and select
+         that option from the dropdown list.
 2. Enter the compute node name directly (this is the output from the `hostname` command above) and hit "return."
 3. You should see at lower right of the new VSCode window, something like
    "Downloading VS Code Server".  This is good.
@@ -343,7 +326,7 @@ The steps are:
 5. VS Code’s remote server now runs on the compute node instead of the login node.
 6. You should see a blue box at the lower left stating `SSH: <hostname>`, indicating that you are connected to the ARC compute node `<hostname>`.
 
-#### Do Your Work
+#### Do Your Work and Then End Your Session
 
 If familiar with VS Code, at this point, begin your work.
 If this is new to you, you might consider the following steps.
@@ -374,13 +357,13 @@ how much time you have left.
 Your working session will end in one of two ways:
 
 1. Your interactive job's time will expire and your interactive job will end, and all resources will be revoked (including your connection through VSC).
+So you do not need to close anything---everything will be closed for you.
 2. You finish your work and end your session.
-   1. In VSC, ****************
+   1. In VSC, follow the last major bullet in the section above, "Do Your Work and Then End Your Session."
    2. In the terminal screen where you issued the `interact` command, type `exit`.
       1. This will log you off of the compute node and put you back on the head node.
       2. This will end your interactive job and hence will make impossible any further action on the compute node with VSC.
-      3. This should also end the `ssh` session that you created directly from
-         your laptop.
+      3. If you have to deal with the "authenticity problem" in the major section below, this should also end the `ssh` session that you created directly from your laptop.
 
 ---------------------------------------
 
@@ -393,11 +376,28 @@ Your working session will end in one of two ways:
 
 ---------------------------------------
 
+In the section above where you are using VSC to connect
+to the cluster compute node, by selecting 
+`Remote-SSH → Connect to Host…`
+and then entering the `<hostname>`, you could get a message
+in the same box where you entered `<hostname>` the faint
+message in gray:  "_the authenticity of host cannot be established_."
 
-the authenticity of host cannot be established
+This is what you do to re-establish authenticity.
 
 From your laptop, open a terminal window and connect _**DIRECTLY**_ to the compute node.
+The steps are:
 
+1. Open a terminal window on your laptop.
+   1. If you used a laptop terminal window above to log into the head 
+      node and request compute node resources, then open a second terminal window now.  (You need a separate
+      terminal window for this.)
+2. Establish an `ssh` connection _**DIRECTLY**_ to the compute node
+   1. Enter `ssh <compute node host name>`
+      1. where `<compute node host name>` is the output from the `hostname` command above.
+   2. You will be asked some question to establish authenticity; enter `yes`.
+3. Just leave this terminal window as is, e.g., do not close it. 
+   
 
 ## Acknowledgment
 
