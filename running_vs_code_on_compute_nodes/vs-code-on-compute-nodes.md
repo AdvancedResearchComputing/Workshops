@@ -60,8 +60,7 @@ We order the activities into setup steps that you execute
 one time and steps that you repeat every time you use 
 VSC on a compute node.
 
-1. One-Time Setup Steps. Go to [Section 1](#major-section-1-one-time-setup)
-1. One-Time Setup Steps. Go to [Section 1](#major-section-1)
+1. [One-Time Setup Steps](#major-section-1)
    1. Laptop (or local machine)
       1. Alter the `config` file under directory `~/.ssh` as below.
    (meaning that the directory `.ssh` is located right below
@@ -70,8 +69,7 @@ VSC on a compute node.
       1. Install VS Code (VSC) on your laptop.
       2. Install the `Remote-ssh` plugin in your VSC app.
 
-2. Steps To Use for Every VS Code Session on Compute Node.   Go to [Section 2](#major-section-2-using-vs-code-on-an-arc-compute-node).
-2. Steps To Use for Every VS Code Session on Compute Node.   Go to [Section 2](#major-section-2).
+2. [Steps To Use for Every VS Code Session on Compute Node](#major-section-2).
    1. Request an interactive job on the ARC clusters.
       1. Make a request of slurm, via the `interact` command,
       to provide you with your specified resources (on a compute node).
@@ -85,8 +83,6 @@ VSC on a compute node.
 ---------------------------------------
 
 
-
-## major-section-1-one-time-setup
 
 Major Section 1 :  One-Time Setup{#major-section-1}
 
@@ -173,9 +169,7 @@ One download site is [here](https://code.visualstudio.com/download).
 
 ---------------------------------------
 
-## major-section-2-using-vs-code-on-an-arc-compute-node
-
-## Major Section 2 :  Using VS Code on an ARC Compute Node{#major-section-2}
+## Major Section 2 :  Using VS Code on an ARC Compute Node
 
 ---------------------------------------
 
