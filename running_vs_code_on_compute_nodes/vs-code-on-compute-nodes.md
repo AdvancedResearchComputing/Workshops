@@ -309,7 +309,7 @@ You can use this terminal to show how much of your requested time has been
 used, using `squeue -u $USER`.
 
 
-### Starting VS Code From Your Laptop to Run on a Compute Node
+### Using VS Code From Your Laptop to Run on a Compute Node
 
 
 This is where the `ProxyJump` work done in the setup portion of this
@@ -434,7 +434,8 @@ The steps are:
    2. You will be asked some question to establish authenticity; enter `yes`.
 3. Just leave this terminal window as is, e.g., do not close it. 
 
-Now, you should be able to return to the [steps for connecting VS Code](#starting-vs-code) to connect to the cluster compute node.
+Now, you should be able to return to the Section above
+"_Using VS Code From Your Laptop to Run on a Compute Node_" to connect to the cluster compute node.
 
 ## Acknowledgment
 
