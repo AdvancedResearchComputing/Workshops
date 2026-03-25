@@ -168,7 +168,7 @@ One download site is [here](https://code.visualstudio.com/download).
 1. Open VSC on your local machine.
 2. Go to the far left command bar and click the `Extensions` button.
 3. In the Extensions search bar, type `Remote - SSH`.
-4. Find the `Remote - SSH` package in the list of choices provided
+4. Find the `Remote - SSH` package in the list of choices provided from the search
    (there should be a blue `Install` button associated with each package).
    1. Click the `Install` button corresponding to `Remote - SSH` and the package will be installed into VSC.
 
