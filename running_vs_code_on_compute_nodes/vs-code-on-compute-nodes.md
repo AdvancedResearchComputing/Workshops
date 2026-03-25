@@ -433,7 +433,8 @@ The steps are:
       1. where `<compute node host name>` is the output from the `hostname` command above.
    2. You will be asked some question to establish authenticity; enter `yes`.
 3. Just leave this terminal window as is, e.g., do not close it. 
-   
+
+Now, you should be able to return to the [steps for connecting VS Code](#steps-for-connecting) to connect to the cluster compute node.
 
 ## Acknowledgment
 
