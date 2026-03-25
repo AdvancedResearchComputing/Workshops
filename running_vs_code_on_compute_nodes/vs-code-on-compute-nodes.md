@@ -1,6 +1,11 @@
 # Operating Visual Studio (VS) Code On Compute Nodes
 
 
+## ARC Resources and Mechanisms for Assistance
+
+A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help and access to information, and links to those resources, are provided.
+
+
 ## Ideas Behind This Workshop
 
 1. VS Code (VSC) is a popular IDE for developing code and content
@@ -320,18 +325,21 @@ The steps are:
          VSC IDE, type `Remote-SSH → Connect to Host…` and select
          that option from the dropdown list.
 2. Enter the compute node name directly (this is the output from the `hostname` command above) and hit "return."
-3. You should see at lower right of the new VSCode window, something like
+3. This is where you might encounter the _**Authentication Problem**_ referred to in the major section 3 below.  That section describes how to solve this
+problem.
+4. If all is going well,
+   you should see at lower right of the new VSCode window, something like
    "Downloading VS Code Server".  This is good.
-4. IF/When prompted, choose `Linux` as the remote platform.
-5. VS Code’s remote server now runs on the compute node instead of the login node.
-6. You should see a blue box at the lower left stating `SSH: <hostname>`, indicating that you are connected to the ARC compute node `<hostname>`.
-7. Another way to verify that you are on a compute node is to select
+5. IF/When prompted, choose `Linux` as the remote platform.
+6. VS Code’s remote server now runs on the compute node instead of the login node.
+7. You should see a blue box at the lower left stating `SSH: <hostname>`, indicating that you are connected to the ARC compute node `<hostname>`.
+8. Another way to verify that you are on a compute node is to select
    `Terminal` from the VSC main menu and then select `New Terminal`.
    Your VSC diplay should show you a terminal at the bottom and the 
    command prompt should include the `<hostname>`, indicating that
    you are on that compute node.
 
-#### Do Your Work and Then End Your Session
+#### Do Your Work
 
 If familiar with VS Code, at this point, begin your work.
 If this is new to you, you might consider the following steps.
@@ -341,8 +349,11 @@ If this is new to you, you might consider the following steps.
    2. In the entry field at the top center, you can enter your path `/projects/...` as stated above.
    3. You will get an explorer window on the far left in which you can
       navigate files and directories.
-2. To end your VS Code session:
-   1. lick the aforementioned blue box at
+
+#### End Your VS Code Session      
+
+1. To end your VS Code session:
+   1. Click the aforementioned blue box at
       lower left `SSH: <hostname>`
    2. A dropdown list will appear at the top center.
    3. From this list, select `Close Remote Connection`.
@@ -357,7 +368,7 @@ how much time of your interactive time has _EXPIRED_ and therefore infer
 how much time you have left.
 
 
-### End Your Working Session
+### End Your Entire Working Session
 
 Your working session will end in one of two ways:
 
@@ -370,16 +381,36 @@ So you do not need to close anything---everything will be closed for you.
       2. This will end your interactive job and hence will make impossible any further action on the compute node with VSC.
       3. If you have to deal with the "authenticity problem" in the major section below, this should also end the `ssh` session that you created directly from your laptop.
 
+> [!NOTE]
+> Please remember, when you are finished,
+> to `exit` at the command prompt in the terminal where
+> you have entered the `interact` command.
+> This is one of the dominant ways---across all clusters and all activity
+> types---that resources are wasted.
+> If you do not `exit` off of the compute node, and you are not using
+> the provided resources, then you tie up those
+> resources for others who could otherwise use them.
+
+---------------------------------------
+
+---------------------------------------
+
+
+## Actions to Take if You Receive an Authentication Problem Within VS Code While Connecting to the ARC Compute Node.
+
 ---------------------------------------
 
 ---------------------------------------
 
+It is highly likely that at some point, you will run into this situation/problem.
 
-## Actions to Take if You Receive an Authenticity Problem Within VS Code While Connecting to the ARC Compute Node.
+This is because:
+1. one authentication is used for all (compute) nodes of a cluster.
+   1. So when you log into one compute node, the system may recognize that this is the same authentication that is used for other compute nodes.
+2. each user must be authenticated.
+   1. So when you log in, you must be recognized.
 
----------------------------------------
-
----------------------------------------
+In both cases, the clusters will want you to reauthenticate.
 
 In the section above where you are using VSC to connect
 to the cluster compute node, by selecting 
