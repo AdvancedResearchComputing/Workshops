@@ -434,7 +434,7 @@ The steps are:
    2. You will be asked some question to establish authenticity; enter `yes`.
 3. Just leave this terminal window as is, e.g., do not close it. 
 
-Now, you should be able to return to the [steps for connecting VS Code](#steps-for-connecting) to connect to the cluster compute node.
+Now, you should be able to return to the [steps for connecting VS Code](#starting-vs-code) to connect to the cluster compute node.
 
 ## Acknowledgment
 
