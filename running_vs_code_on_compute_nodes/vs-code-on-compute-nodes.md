@@ -1,4 +1,4 @@
-# Operating VS Code On Compute Nodes
+# Operating Visual Studio (VS) Code On Compute Nodes
 
 
 ## Ideas Behind This Workshop
@@ -60,7 +60,7 @@ We order the activities into setup steps that you execute
 one time and steps that you repeat every time you use 
 VSC on a compute node.
 
-1. One-Time Setup Steps
+1. One-Time Setup Steps. Go to [Section 1](major-section-1)
    1. Laptop (or local machine)
       1. Alter the `config` file under directory `~/.ssh` as below.
    (meaning that the directory `.ssh` is located right below
@@ -69,7 +69,7 @@ VSC on a compute node.
       1. Install VS Code (VSC) on your laptop.
       2. Install the `Remote-ssh` plugin in your VSC app.
 
-2. Steps To Use for Every VS Code Session on Compute Nodes
+2. Steps To Use for Every VS Code Session on Compute Node.   Go to [Section 2](major-section-2).
    1. Request an interactive job on the ARC clusters.
       1. Make a request of slurm, via the `interact` command,
       to provide you with your specified resources (on a compute node).
@@ -78,9 +78,17 @@ VSC on a compute node.
       2. Connect using VS Code.
 
 
+---------------------------------------
+
+---------------------------------------
 
 
-## One-Time Setup
+
+## Major Section 1:  One-Time Setup
+
+---------------------------------------
+
+---------------------------------------
 
 ### Altering Your SSH `config` File for Wildcard ProxyJump
 
@@ -157,7 +165,15 @@ One download site is [here](https://code.visualstudio.com/download).
    (there should be a blue `Install` button associated with each package).
    1. Click the `Install` button corresponding to `Remote - SSH` and the package will be installed into VSC.
 
-## Using VS Code on an ARC Compute Node
+---------------------------------------
+
+---------------------------------------
+
+## Major Section 2:  Using VS Code on an ARC Compute Node
+
+---------------------------------------
+
+---------------------------------------
 
 By "session" we mean make a connection through VSC on your laptop
 to an ARC cluster compute node and do your work.
