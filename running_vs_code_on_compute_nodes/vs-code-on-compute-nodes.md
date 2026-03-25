@@ -84,7 +84,7 @@ VSC on a compute node.
 
 
 
-## Major Section 1:  One-Time Setup
+## Major Section 1 :  One-Time Setup
 
 ---------------------------------------
 
@@ -169,7 +169,7 @@ One download site is [here](https://code.visualstudio.com/download).
 
 ---------------------------------------
 
-## Major Section 2:  Using VS Code on an ARC Compute Node
+## Major Section 2 :  Using VS Code on an ARC Compute Node
 
 ---------------------------------------
 
