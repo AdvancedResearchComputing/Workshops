@@ -193,11 +193,12 @@ The major steps to execute, which we describe in more detail below, are:
 1. From a cluster head node, request an interactive Slurm job
    through a terminal window.
    1. You will be provided a compute node (name).
-2. Use VSC, running on your laptop, to connect to the compute node
+2. From your laptop, open a terminal window and connect _**DIRECTLY**_ to the compute node.
+3. Use VSC, running on your laptop, to connect to the compute node
    provided in the previous step.
-3. Do your work through VSC on the compute node, which may entail 
+4. Do your work through VSC on the compute node, which may entail 
    using (AI) packages, debugging code, and running code.
-4. Be careful to relinquish the interactive job resources when you are finished.
+5. Be careful to relinquish the interactive job resources when you are finished.
 
 > [!NOTE]
 
