@@ -127,7 +127,7 @@ VSC can be run directory on a compute node of the ARC clusters.
 
 1. On your laptop, go to the `~/.ssh` directory.
 2. Make a copy of your config file so you can return to that state if need be.
-   Example:  `cp -p config config.backup.<date>`
+   Example:  `cp config config.backup.<date>`
 3. Alter your `config` file by opening it with an editor.
    1. Example editor, `vi`.
    2. Go to end of file.
