@@ -33,6 +33,8 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
    (and not a _**head**_ node).
 7. This workshop focuses on how to run VSC on ARC compute nodes.
 
+![VS Code Use](figures/vs-code-in-ways.png)
+![VS Code Use](figures/vs-code-in-ways.png)
 
 ---------------------------------------
 
@@ -76,6 +78,7 @@ VSC on a compute node.
 1. One-Time Setup Steps
    1. Laptop (or local machine)
       1. Alter the `config` file under directory `~/.ssh` as below.
+      2. This will enable ProxyJump.
    (meaning that the directory `.ssh` is located right below
    your $HOME directory).
    2. VS Code
@@ -89,11 +92,13 @@ VSC on a compute node.
       2. From this head node, make a request of slurm, via the `interact` command,
       to provide you with your specified resources (on a compute node).
       3. Note `hostname` of the _**compute**_ node you are given.
-   2. From your laptop, using VSC, connect to the compute node directly.
+   2. From your laptop, using VSC, connect to the compute node via ProxyJump.
       1. You will need that hostname of the compute node.
 3. Actions to take for authenticity problem, if you get the message
    in VSC:  "the authenticity of host cannot be established"
 
+[ProxyJump on ARC Clusters](figures/proxy-jump.png)
+![ProxyJump on ARC Clusters](figures/proxy-jump.png)
 
 ---------------------------------------
 
