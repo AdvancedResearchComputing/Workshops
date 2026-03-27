@@ -75,14 +75,13 @@ Case 1 slurm script, named _sbatch.short.slurm_:
 #SBATCH --partition normal_q
 
 ## Num compute nodes, executing tasks, compute cores.
-## The first three lines are applied per job array task (jat).
-## These resources are NOT cumulative over all of the jats.
+
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=5
 
 ## Slurm output and error files.
-## For job arrays.
+
 #SBATCH --output  gp.short.%j.out
 #SBATCH --error  gp.short.%j.err
 
@@ -538,6 +537,67 @@ in:
 5. When it completes, you can see the execution time by 
    typing `sh run.timing.sh <SLURM_JOB_ID>`.
 
+
+### Example 5:  Runing the test_args.R with GNU Parallel
+
+Note the change of number of nodes, --nodes=1 and --cpus-per-task=4 which we used as -j $SLURM_CPUS_PER_TASK. It denotes the maximum number of jobs that can run at the same time and if the number of the input parameters is more than $SLURM_CPUS_PER_TASK then the rest of tasks will be queued. GNU parallel only repeat the task for different inputs.
+
+Here is r_GNUP.sh:
+
+```bash
+#!/bin/bash
+#SBATCH -J rGNUParallel
+
+## Account.
+## Enter your own account.
+#SBATCH --account arcadm
+
+## Time.
+#SBATCH --time 01:00:00
+
+## Partition.
+#SBATCH --partition normal_q
+
+## Num compute nodes, executing tasks, compute cores.
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=16 
+#SBATCH --cpus-per-task=4 #maximum number of jobs that can run at the same time
+
+## Slurm output and error files.
+#SBATCH -o r.para.GP.%j.out
+#SBATCH -e r.para.GP.%j.err
+
+
+echo "date: `date`"
+echo "hostname: $HOSTNAME"; echo
+echo -e "\nChecking job details for CPU_IDs..."
+scontrol show job --details $SLURM_JOB_ID
+
+
+# R module.
+module load R/4.4.2-gfbf-2024a
+
+echo "Running on $(hostname)"
+echo "CPUs: $SLURM_CPUS_PER_TASK"
+
+parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 #because 7>4, only 4 tasks at a time (queued)
+```
+
+Here is the last part of the output:
+```
+slurm_ntasks (total number of tasks across all nodes):  16
+slurm_job_num_nodes: 1
+Running on tc017
+CPUs: 1
+[1] "Tag, from  tc017 ...   Arguments:    1"
+[1] "Tag, from  tc017 ...   Arguments:    2"
+[1] "Tag, from  tc017 ...   Arguments:    3"
+[1] "Tag, from  tc017 ...   Arguments:    4"
+[1] "Tag, from  tc017 ...   Arguments:    5"
+[1] "Tag, from  tc017 ...   Arguments:    6"
+[1] "Tag, from  tc017 ...   Arguments:    7"
+
+```
 ---
 
 ⬅️ [Previous: Srun](02_srun.md) | [Next: Srun and GNU pararllel ➡️](04_srun_parallel.md)

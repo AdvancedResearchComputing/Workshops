@@ -247,4 +247,4 @@ slurm-generated output file---the *.out files.
 
 ---
 
-⬅️ [Previous: Srun and GNU pararllel](srun_parallel.md)
+⬅️ [Previous: Srun and GNU pararllel](04_srun_parallel.md)
