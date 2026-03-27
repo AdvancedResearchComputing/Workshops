@@ -33,7 +33,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
    (and not a _**head**_ node).
 7. This workshop focuses on how to run VSC on ARC compute nodes.
 
-![VS Code Use](figures/vs-code-in-ways.png)
+[VS Code Use](figures/vs-code-in-ways.png)
 ![VS Code Use](figures/vs-code-in-ways.png)
 
 ---------------------------------------
