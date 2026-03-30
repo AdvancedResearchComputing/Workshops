@@ -561,7 +561,7 @@ Here is r_GNUP.sh:
 ## Num compute nodes, executing tasks, compute cores.
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16 
-#SBATCH --cpus-per-task=4 #maximum number of jobs that can run at the same time
+#SBATCH --cpus-per-task=4 
 
 ## Slurm output and error files.
 #SBATCH -o r.para.GP.%j.out
@@ -581,6 +581,7 @@ echo "Running on $(hostname)"
 echo "CPUs: $SLURM_CPUS_PER_TASK"
 
 parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 #because 7>4, only 4 tasks at a time (queued)
+# -j specify the maximum number of jobs that can run at the same time
 ```
 
 Here is the last part of the output:
