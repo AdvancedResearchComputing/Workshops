@@ -1,5 +1,5 @@
 # Workshops
-This repo holds the updated markdown versions of the workshop material that is given by ARC. There should only be a single presentation per workshop.  
+This repo holds the updated markdown versions of the workshop material that is given by ARC.
 
 # Spring 2026 Schedule
 Fridays Zoom: 12:00pm-1:00PM ET
