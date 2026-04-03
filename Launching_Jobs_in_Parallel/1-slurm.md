@@ -22,8 +22,9 @@ This option provides explicit control over the job environment. With `N>1`, the 
 The range provides Slurm with more flexibility and possibly faster job starting, but resource allocation is likely to be unbalanced and asymmetric. 
 
 ### How many concurrent tasks to launch
+
 >[!INFO]
-> We use the terms "task", "process", and "rank" almost interchangably.
+>We use the terms "task", "process", and "rank" almost interchangably.
 
 `--ntasks-per-node=N`: allocate resources expecting that there will be `N` concurrent tasks launched on each allocated node. 
  - most often used with `--nodes=` for explicit and balanced process launching across nodes
@@ -43,32 +44,33 @@ Providing both node-level and task-level requests for memory, cpu-cores, and GPU
 |cpu-cores|n/a|`--cpus-per-task`|
 |gpus|`--gres=gpu:X`|`--gpus-per-task=X`|
 
-`SLURM_CPUS_PER_TASK`
-`SLURM_CPUS_ON_NODE`
-`SLURM_GPUS`
-`SLURM_GPUS_ON_NODE`
-`SLURM_GPUS_PER_NODE`
-`SLURM_JOB_CPUS_PER_NODE`
-`SLURM_JOB_GPUS`
-`SLURM_JOB_NODELIST`
-`SLURM_JOBID`
-`SLURM_MEM_PER_CPU`
+- `SLURM_CPUS_PER_TASK`
+- `SLURM_CPUS_ON_NODE`
+- `SLURM_GPUS`
+- `SLURM_GPUS_ON_NODE`
+- `SLURM_GPUS_PER_NODE`
+- `SLURM_JOB_CPUS_PER_NODE`
+- `SLURM_JOB_GPUS`
+- `SLURM_JOB_NODELIST`
+- `SLURM_JOBID`
+- `SLURM_MEM_PER_CPU`
+
 and many more (see `man sbatch` section "OUTPUT ENVIRONMENT VARIABLES")
 
 ### Job Arrary
 `--array=<spec>`
 
 Examples:
-`--array=0-15` 
-`--array=0,6,16-32`
-`--array=0-15:4` equivalent to `--array=0,4,8,12`
-`--array=0-15%4` limit to 4 running jobs at a time
+- `--array=0-15` 
+- `--array=0,6,16-32`
+- `--array=0-15:4` equivalent to `--array=0,4,8,12`
+- `--array=0-15%4` limit to 4 running jobs at a time
 
 Output environment variables available in the job
-`SLURM_ARRAY_TASK_ID`
-`SLURM_ARRAY_TASK_MAX`
-`SLURM_ARRAY_TASK_MIN`
-`SLURM_ARRAY_TASK_STEP`
+- `SLURM_ARRAY_TASK_ID`
+- `SLURM_ARRAY_TASK_MAX`
+- `SLURM_ARRAY_TASK_MIN`
+- `SLURM_ARRAY_TASK_STEP`
 
 ## Outline
 0. [Welcome](./0-intro.md)
