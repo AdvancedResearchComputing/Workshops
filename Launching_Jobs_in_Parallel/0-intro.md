@@ -12,3 +12,5 @@ Presented by: Matthew Brown
 4. (10 min) [GNU `parallel` overview](./4-parallel.md)
 5. (10 min) [`srun` + `parallel` ](./5-srun_parallel.md)
 
+## Acknowledgement
+I have pulled some content developed by others, particularly Chris Kuhlman.
