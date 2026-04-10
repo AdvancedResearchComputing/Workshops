@@ -447,3 +447,5 @@ Now, you should be able to return to the Section above
 1. Eslam Huessein for developing the [document in
    the ARC DOCS](https://docs.arc.vt.edu/usage/vscode_remote_ssh.html).
    This workshop is largely based on his information and document.
+2. Matthew Brown and Ayat Mohammed are thanked for
+   interpreting the authentication problem.
