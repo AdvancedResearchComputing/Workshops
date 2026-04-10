@@ -66,6 +66,23 @@ Hence, Singlularity was born.
 Singularity is now **Apptainer**.
 
 
+## Structure and Anatomy of a Container
+
+
+
+## Docker as a Starting Point for Apptainer
+
+
+
+## Examples
+
+
+#### Acknowledgments
+
+Alberto Cano and Saikat Dey are gratefully acknowledged for
+constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/apptainer.html#singularity), on which
+this workshop is largely based.
+
 -------------------------------------
 
 -------------------------------------
