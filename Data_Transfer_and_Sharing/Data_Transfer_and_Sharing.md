@@ -61,7 +61,7 @@ cp <original_file> <new_name_of_file>
 ```
 
 ### Move or `mv`
-If you don't want a copy of that file, you can use the move `mv` command. This works in a similar way as `cp` but will move that file to the location you request:
+If you don't want a copy of that file, you can use the move `mv` command. `mv` is actually just doing a `cp` + `rm` or delete. This works in a similar way as `cp` but will move that file to the location you request:
 
 ```
 mv <original_file> <new_file_location>
@@ -76,7 +76,7 @@ The move `mv` command is not recommended for the following case:
 - transferring data to /scratch (mv preserves timestamps!)
 - transferring data to /projects (mv preserves group ID and permissions modes)
 
-## File transfers between internal and remote
+## File transfers between local and remote
 You will use the following file transfer tools when you want to transfer files between your local computer and our remote ARC computers.
 
 ### Secure Copy or `scp`
@@ -254,6 +254,23 @@ To share data with other institutions and people outside of VT, you will use Glo
 Everyone at VT has a globus account, https://globus.org that you can login to.
 Search for Guest Collections (might have to unclick "Recent Tasks") and you should see "Virginia Tech ARC Globus Projects Directories".
 
+# Data Transfer Node
+Analaogus to ARC's login nodes (e.g. `tinkercliffs1`, `owl2`, or `falcon1`), we have a data transfer node named `datatransfer.arc.vt.edu`. 
+We recommend to use this host `datatransfer.arc.vt.edu` to improve the performance of the data transfer.
+
+To connect to this data transfer node, you would make a similar ssh connection like you would to make a connection to one of our clusters:
+```
+ssh VTPID@datatransfer.arc.vt.edu
+```
+You know you have made a successful connection when you see the following as your terminal prompt:
+```
+VTPID@globus:~$
+```
+
+This host was created to move large data file transfer off of the login nodes. Be aware though, that you will not be able to access any data in `/scratch` file systems as these are cluster specific. 
+
+Additionally, there are limited modules on this host as no computations should be done on this node. Modules that are file transfer specific are still provided like `rclone`. 
+
 # Tar and Compression Tools
 It is often best, when transfering a large number of files to first tar or compress the files and then transfer.
 
@@ -283,28 +300,55 @@ Compression and Zip work to minimize the size of the tar directory. Compression 
 
 `gzip` is popular and widely supported and is natively supported by many analysis tools. The following examples are using DNA sequencing files that are in a FASTQ format (“Q” stands for quality score). This format is necessary for bioinformatics software.
 
-Compress with `gzip`:
+#### Compress
+With `gzip`:
 ```
 gzip archive_filename.fastq
 ```
-Compress with `gzip` “levels” (levels range from 1 to 9, 1 being the fastest and 9 being the best or most optimial compression)
+
+With `xz`:
+```
+xz archive_filename.fastq
+```
+In parallel threads with `xz`:
+```
+xz -T 24 archive_filename.fastq
+```
+`xz -T` or `zstd` are faster because they can be parallelized and have better compression, but have more limited support on other systems. Note: `zstd` does not support parallel decompression.
+
+Various compression levels:
+
+- `gzip` has 1-9 levels
+- `xz` has 0-9 levels 
+
+With 0 or 1 being the fastest and 9 being the best or most optimial compression.
+
 ```
 gzip -9 archive_filename.fastq
 ```
 
-`xz -T` or `zstd` are faster because they can be parallelized and have better compression, but have more limited support on other systems.
-
-Compress with `xz`:
-```
-xz archive_filename.fastq
-```
-Compress in parallel threads with `xz`:
-```
-xz -T 24 archive_filename.fastq
-```
-
 Note: Binary data formats are often incompressible (already compressed)
 - Matlab .mat, BAM files, netCDF, HDF5, etc. 
+
+
+#### Decompress 
+
+With `gunzip`:
+```
+gunzip archive_filename.gz
+```
+With `unxz` or `xz -d`
+```
+unxz archive_filename.xz
+```
+or for scripts use the `-d` flag for decompression
+```
+xz -d archive_filenmae.xz
+```
+
+
+
+
 
 # File Management via IDE
 If you want to avoid the terminal, you can use an Integrated Development Environment (IDE) to manage files on ARC.
