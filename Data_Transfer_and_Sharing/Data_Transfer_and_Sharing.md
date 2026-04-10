@@ -1,17 +1,17 @@
 # Data Transfer and Sharing on ARC
 
-March 9, 2026
+April 10, 2026
 
 Nicole Braunscheidel\
 Computational Scientist (ARC)\
 Email: nbraunsc@vt.edu
 
 ## Logistics
-Feedback form: [https://forms.gle/NK3AiVxMLbintCJT8](https://forms.gle/NK3AiVxMLbintCJT8)
+Feedback form: [https://forms.gle/vR9FyfrZm8Hb6F7k7](https://forms.gle/vR9FyfrZm8Hb6F7k7)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- You can also access the material here: [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Data_Transfer_and_Sharing.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Data_Transfer_and_Sharing.md)
+- You can also access the material here: [https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing)
 - We have a lot of short video tutorials (I will eventually record this workshop without attendees): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
@@ -117,7 +117,7 @@ Flags:
 - `-v` or `--verbose`: Increases verbosity, showing more detail about the files being transferred.
 - `-z` or `--compress`: Compresses file data during the transfer, useful for slower network connections.
 - `-h` or `--human-readable`: Outputs numbers in a human-readable format (e.g., KB, MB).
-- `-P`: A combination of `--partial` (allows resuming interrupted transfers) and --progress (displays a progress bar for each file)
+- `-P`: A combination of `--partial` (allows resuming interrupted transfers) and `--progress` (displays a progress bar for each file)
 
 Note: Avoid “-a” option when copying data to /scratch or /projects (”-a” preserves timestamps, GIDs, and modes)
 
@@ -314,4 +314,4 @@ A common one is Visual Studio Code (VS Code).
 We also offer file management in Open OnDemand [https://ood.arc.vt.edu/](https://ood.arc.vt.edu/).
 
 # Wrap-up
-Feedback form: [https://forms.gle/NK3AiVxMLbintCJT8](https://forms.gle/NK3AiVxMLbintCJT8)
+Feedback form: [https://forms.gle/vR9FyfrZm8Hb6F7k7](https://forms.gle/vR9FyfrZm8Hb6F7k7)
