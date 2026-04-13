@@ -52,6 +52,10 @@ major strengths of containers include:
    yourself and colleagues
 3. unified work environment:  in sharing with colleagues
    be assured that everyone has the exact same setup.
+
+We will use `source` to denote the system on which the
+container is built and `target` to denote a system on
+which the container runs.
  
 ## ARC Docs Page On Containers (Apptainer)
 
@@ -62,17 +66,33 @@ that contains a lot of information.
 
 - We will use the example from that page.
 
-### Approaches to creating containers
+### Approaches to Creating Containers
 
-There are two industry and academic defacto standard ways to construct containers:
+Two of industry and academic defacto standard ways to construct containers:
 - using Docker
 - using Apptainer (formerly Singularity)
 
-Docker requires a person to have root access for its use on a computer (system).
+Docker requires a person to have root access for its use on a target computer (system).
 For cluster use, one does not have root privileges
 because there are many users and hence security issues that preclude root privileges.
 Hence, Singlularity was born.
-Singularity is now **Apptainer**.
+Singularity is now **Apptainer**.  (Is it?  No.)
+
+There are many ways to build Apptainers.
+Some of the starting points are listed [here](https://apptainer.org/docs/user/main/build_a_container.html#overview).
+These "starting points" for building a container are 
+called "targets."
+
+The "build" command is the dominant command within
+Apptainer to produce containers.
+Containers are produced in two different formats:
+- a compressed read-only Singularity Image File (SIF) format, suitable for production (default)
+- a writable (ch)root directory called a sandbox, for interactive development ( --sandbox option)
+
+
+
+
+
 
 
 ## Structure and Anatomy of a Container
@@ -87,6 +107,9 @@ then automatically converted to an Apptainer instance.
 
 ## Examples
 
+- [Build Container From Definition File](./build-container-from-def-file.md)
+- [Build Container From Docker]]
+
 
 ## Acknowledgments
 
@@ -97,6 +120,16 @@ this workshop is largely based.
 
 Sofia Lima has provided another example at
 [VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
+
+
+## References
+
+- [VT ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#singularity)
+- [Apptainer Page]() 
+- [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
+- [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
+
+
 
 -------------------------------------
 
