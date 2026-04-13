@@ -1,23 +1,24 @@
 # Containers on ARC Clusters
 
-# IN PROGRESS
+# ---- IN PROGRESS ----
 
 ## ARC Resources and Mechanisms for Assistance
 
-A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help and access to information, and links to those resources, are provided.
-- attend office hours
-- help tickets (for errors, problems, or request a consultation)
-- listing of workshops (and video recordings and notes files)
-- video tutorials
-- example codes
-- dashboards for cluster execution insights
+A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help from VT ARC and access to information, and links to those resources, are provided.  Examples:
+- determine and attend office hours
+- submit help tickets (for errors, problems, or request a consultation)
+- obtain listings of workshops (and video recordings and notes files)
+- view video tutorials
+- run example codes
+- understand overall cluster status and performance, as well as those of your jobs, via dashboards
 - more
 
 ## Container Overview
 
 ### Definition
 
-- A **container** is software file that contains
+- A **container** is a software file
+  that houses
 applications and
 all supporting software needed to run those applications.
 - Often a container will have one major application,
@@ -38,7 +39,8 @@ within the container will still run.
 
 Example:  You can create a container on a Linux OS machine
 and move it to a Windows machine, and the applications
-within the container will run on the Windows machine.
+within the container will run on the Windows machine inside
+the container.
 
 Since a container houses a complete environment,
 a container file can be huge:  TBs in some/many cases.
@@ -51,7 +53,14 @@ major strengths of containers include:
 3. unified work environment:  in sharing with colleagues
    be assured that everyone has the exact same setup.
  
+## ARC Docs Page On Containers (Apptainer)
 
+- There is an [ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#container-runtimes-may-not-be-available-on-login-nodes)
+that contains a lot of information.
+
+- We will often refer to that page, but will refrain from repeating content to the maximum extent possible (for maintainability).
+
+- We will use the example from that page.
 
 ### Approaches to creating containers
 
@@ -68,20 +77,26 @@ Singularity is now **Apptainer**.
 
 ## Structure and Anatomy of a Container
 
-
+---- TODO ----
 
 ## Docker as a Starting Point for Apptainer
 
-
+Often is it efficient and convenient to start an
+Apptainer container using a Docker image that is
+then automatically converted to an Apptainer instance.
 
 ## Examples
 
 
-#### Acknowledgments
+## Acknowledgments
 
 Alberto Cano and Saikat Dey are gratefully acknowledged for
 constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/apptainer.html#singularity), on which
 this workshop is largely based.
+
+
+Sofia Lima has provided another example at
+[VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
 
 -------------------------------------
 
