@@ -25,17 +25,31 @@ all supporting software needed to run those applications.
 but could have multiple applications.
 - Because a container also houses all supporting
 software needed
-to run the application, including an operating
+to run the application, including the **user space** of
+an operating
 system (OS), a container is
 self-contained and stand-alone.
 - The applications within the container are
-called from outside the container,
-but they run inside the container.
+in many cases called from outside the container,
+but they run inside the container (you can invoke
+a command from inside the container).
 - So a major feature of containers is that they can
   reside
 on computer systems that are completely unrelated to
 the environment within the container, and the applications
 within the container will still run.
+
+More detail.
+
+- User Space (included in a container):
+The container contains the file system, libraries, binaries, and
+environment variables of a specific Linux distribution
+(e.g., Ubuntu, CentOS, Alpine).
+This allows you to run applications that require an OS environment
+that is different from your host machine.
+- Kernel (excluded): The container does not include the kernel.
+  It uses the host's kernel to manage hardware, memory, and process scheduling.
+
 
 Example:  You can create a container on a Linux OS machine
 and move it to a Windows machine, and the applications
