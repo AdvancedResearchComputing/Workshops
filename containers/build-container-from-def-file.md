@@ -7,6 +7,9 @@
 
 #### Construct the Definition file:  moo-me.def.
 
+Create this file in a clean directory on an ARC cluster.
+Call it "moo-me.def."
+
 
 ```
 Bootstrap: docker
@@ -80,7 +83,7 @@ exit
 ```
 
 Option 2 (Not Preferred---Because when done, **YOU** 
-have to remember to relinquish resources with **exit** command.)
+have to remember to relinquish resources with **scancel** command.)
 
 ```
 salloc --partition=normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
@@ -98,9 +101,18 @@ Then when done with work:
    1. (to give back the resources that you have been granted by slurm that you used to do your work).
 
 
+#### Build the Apptain On a Compute Node
 
+Reissue the command:
+
+```
+# Build the .sif image from the definition file
+apptainer build --fakeroot moo-me.sif moo-me.def
+```
 
 #### Run the Image As-Is
+
+On the compute node:
 
 ```
 ./moo-me.sif
@@ -108,10 +120,18 @@ Then when done with work:
 
 #### Run the Image With Tailored Input
 
+On the compute node, overwrite the text to 
+print out:
+
 ```
 apptainer exec moo-me.sif cowsay "Moooo to youuuuuu"
 ```
 
+##### Finished
+
+We are finished, so you can
+1. exit (off the compute node).
+2. scancel (if you use the `salloc` command).
 
 ---------------------------------
 

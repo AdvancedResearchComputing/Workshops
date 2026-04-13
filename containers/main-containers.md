@@ -108,7 +108,7 @@ then automatically converted to an Apptainer instance.
 ## Examples
 
 - [Build Container From Definition File](./build-container-from-def-file.md)
-- [Build Container From Docker]]
+- [Build Container From Docker]
 
 
 ## Acknowledgments
@@ -118,7 +118,8 @@ constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/
 this workshop is largely based.
 
 
-Sofia Lima has provided another example at
+Sofia Lima is gratefully acknowledged for
+providing another example at
 [VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
 
 
