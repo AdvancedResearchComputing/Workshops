@@ -107,7 +107,17 @@ Then when done with work:
    1. (to give back the resources that you have been granted by slurm that you used to do your work).
 
 
-#### Build the Apptain On a Compute Node
+#### Load Module on the Compute Node
+
+```
+module reset
+```
+
+```
+module load apptainer
+```
+
+#### Build the Apptainer *.sif On a Compute Node
 
 Reissue the command:
 
@@ -116,21 +126,89 @@ Reissue the command:
 apptainer build --fakeroot moo-me.sif moo-me.def
 ```
 
+### Three Ways to Run Within an Apptainer Image (*.sif File)
+
+You can run a container in one of three ways:
+
+1. Run the default command (the one under `%runscript`) with
+   the `run` command.
+2. Run a customized command with `exec` (overriding the 
+   command under `%runscript`)
+3. Enter the container interactively for manual execution
+   using the `shell` command.
+
 #### Run the Image As-Is
 
 On the compute node, run the predefined command within the image:
 
 ```
+apptainer run moo-me.sif
+```
+or
+
+```
 ./moo-me.sif
 ```
 
+
 #### Run the Image With Tailored Input
 
-On the compute node, run a custom command within the container:
+On the compute node, run a custom command within the container (here, overriding the input to script cowsay):
 
 ```
 apptainer exec moo-me.sif cowsay "Moooo to youuuuuu"
 ```
+
+Another alterative is to use a completely different 
+valid command, such as `ls`:
+
+```
+apptainer exec moo-me.sif ls
+```
+
+The following command is an illustration of 
+the difference between the contents of the
+container and the host machine on which the
+container is running:
+
+```
+apptainer exec moo-me.sif ls ../..
+```
+
+The output from this command, on my machine is
+
+```
+simple-from-def-file
+```
+
+This directory is the name of the second parent directory
+from the current directory where the container
+resides.
+
+If we issue this almost-identical command (but now
+with `*`):
+
+```
+apptainer exec moo-me.sif ls ../../*
+```
+
+we get:
+
+```
+/usr/bin/ls: cannot access '../../README.txt': No such file or directory
+/usr/bin/ls: cannot access '../../simple-from-apptainer-library': No such file or directory
+/usr/bin/ls: cannot access '../../simple-from-docker-hub': No such file or directory
+../../simple-from-def-file:
+try01
+```
+
+In fact, at two parent directories up, there are a total of
+three directories and one file (README.txt).
+But the only directories and files that the container
+can access are those in the container, it only
+knows about the single directory that is part of the path
+to this container.
+
 
 ##### Finished
 

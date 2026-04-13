@@ -130,6 +130,7 @@ providing another example at
 - [Apptainer Page]() 
 - [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
 - [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
+- [Apptainer and Additional Applications](https://collab.dvb.bayern/spaces/UniARZHPCKB/pages/1014857861/Container+with+Apptainer)
 
 
 
