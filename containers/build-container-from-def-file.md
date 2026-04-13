@@ -77,7 +77,7 @@ Run on a compute node.
 Option 1 (Preferred)
 
 ```
-salloc --partition=normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+interact --partition=normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
 ```
 
 << Do Work >>
@@ -137,7 +137,7 @@ You can run a container in one of three ways:
 3. Enter the container interactively for manual execution
    using the `shell` command.
 
-#### Run the Image As-Is
+#### Method 1:  Run the Image As-Is (i.e., With the Default Command)
 
 On the compute node, run the predefined command within the image:
 
@@ -151,7 +151,7 @@ or
 ```
 
 
-#### Run the Image With Tailored Input
+#### Method 2:  Run the Image With Tailored Input
 
 On the compute node, run a custom command within the container (here, overriding the input to script cowsay):
 
@@ -182,7 +182,7 @@ simple-from-def-file
 ```
 
 This directory is the name of the second parent directory
-from the current directory where the container
+up from the current directory where the container
 resides.
 
 If we issue this almost-identical command (but now
@@ -203,12 +203,22 @@ try01
 ```
 
 In fact, at two parent directories up, there are a total of
-three directories and one file (README.txt).
+three directories and one file (README.txt) **ON THE HOST MACHINE.
 But the only directories and files that the container
-can access are those in the container, it only
+can access (i.e., knows about) are those in the container.
+It only
 knows about the single directory that is part of the path
 to this container.
 
+#### Method 3:  Run Within The Container
+
+Issuing the command 
+
+```
+apptainer shell moo-me.sif
+```
+
+will give you a shell inside the container, as noted by the "**Apptainer>**" prompt.
 
 ##### Finished
 
