@@ -118,7 +118,7 @@ apptainer build --fakeroot moo-me.sif moo-me.def
 
 #### Run the Image As-Is
 
-On the compute node:
+On the compute node, run the predefined command within the image:
 
 ```
 ./moo-me.sif
@@ -126,8 +126,7 @@ On the compute node:
 
 #### Run the Image With Tailored Input
 
-On the compute node, overwrite the text to 
-print out:
+On the compute node, run a custom command within the container:
 
 ```
 apptainer exec moo-me.sif cowsay "Moooo to youuuuuu"

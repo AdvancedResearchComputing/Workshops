@@ -107,9 +107,10 @@ then automatically converted to an Apptainer instance.
 
 ## Examples
 
-- [Build Container From Definition File](./build-container-from-def-file.md)
-- [Build Container From Docker]
-
+- [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
+- [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
+- [Build Using a Sandbox]()
+- [Run Apptainer Using Sbatch Slurm Script]()
 
 ## Acknowledgments
 
