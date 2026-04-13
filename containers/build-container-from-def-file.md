@@ -220,6 +220,16 @@ apptainer shell moo-me.sif
 
 will give you a shell inside the container, as noted by the "**Apptainer>**" prompt.
 
+Issue this command:
+
+```
+cowsay "I'm inside; let me out."
+```
+
+and it will be printed to screen.
+
+when finished, type "exit" to exit the container.
+
 ##### Finished
 
 We are finished, so you can

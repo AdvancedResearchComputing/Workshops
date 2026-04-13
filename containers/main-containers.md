@@ -122,8 +122,14 @@ then automatically converted to an Apptainer instance.
 ## Examples
 
 - [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
+- More on using `exec`, with `bind` and without bind.
+- `writeable`
 - [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
+- 
 - [Build Using a Sandbox]()
+- [Convert Sandbox to a *.sif]()
+- [Use of multiple %runscript and what it means]()
+- [Use of %apprun and what it means for separate entrypoints]()
 - [Run Apptainer Using Sbatch Slurm Script]()
 
 ## Acknowledgments
