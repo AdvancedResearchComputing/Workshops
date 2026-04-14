@@ -91,6 +91,3 @@ The learning objectives are:
 Essentially, there is one episode in these web pages (i.e., one lesson)
 for each of these objectives.
 
-
-{% include links.md %}
-
