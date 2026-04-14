@@ -57,6 +57,7 @@ layer (i.e., OOD) into the process of executing commands.
 - [Running Jupyter notebooks](./jupyter.md)
 - [Running Remote Desktop](./remote-desktop.md)
 - [Running LLM Chatbot](./llm-chatgpt.md)
+- [Running VS Code](./vs-code.md)
 
 
 
