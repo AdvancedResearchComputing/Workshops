@@ -56,10 +56,15 @@ layer (i.e., OOD) into the process of executing commands.
 - [Running Matlab](./matlab.md)
 - [Running Jupyter notebooks](./jupyter.md)
 - [Running Remote Desktop](./remote-desktop.md)
+- [Running LLM Chatbot](./llm-chatgpt.md)
 
 
 
 ## Relinquishing Resources When Done With an OOD Job
+
+This will be mentioned in different individual lessons, 
+but because it is such a major issue---wasting ARC resources---we
+also present it here.
 
 > [!NOTE]
 > Over all ARC systems, not `Cancel`ing (i.e., giving back) OOD resources when you

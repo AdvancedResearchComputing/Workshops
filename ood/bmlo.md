@@ -33,13 +33,13 @@ There are postives and negatives in using OOD.
 ### Limitations
 
 - Most users who do significant computing on ARC clusters will still 
-need to learn how to use the clusters from the command line.
+need to (and want to) learn how to use the clusters from the command line.
 - This is because the command line offers scalability that OOD does not;
 scalability in terms of numbers of operations that a user can perform in a given amount of time.
 - For example, using OOD, a user often submits one job at a time.
 - However, if you need to run 100, 1000, 10000, or more jobs, 
 then this OOD approach is impractical and one often writes scripts to automate job creation and submission.
-In this case, many users ssh into a cluster using terminal windows.
+In this case, many users `ssh` into a cluster using terminal windows.
 
 
 ## Categories of Work on OOD 
