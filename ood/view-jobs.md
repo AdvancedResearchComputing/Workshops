@@ -18,6 +18,7 @@ You will see a screen like the one below.
 
 Then, at the top right, select from the `All Jobs` list whether you
 want to view all jobs or just your jobs.
+(Users can only view their own jobs.)
 Then, at the top right, select from the `All Clusters` list whether
 you want all clusters or a particular one.
 
