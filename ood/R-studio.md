@@ -122,11 +122,11 @@ click that to end the session.**
       BECAUSE NO ONE CAN USE THEM.**_
 
 
-> ![NOTE]
-> Over all ARC systems, not `Delete`ing (i.e., giving back) resources when you
+> [!NOTE]
+> Over all ARC systems, not `Delete`ing (i.e., giving back) OOD resources when you
 > are done with them is a HUGE source of wasted resources.
 
-> ![NOTE]
+> [!NOTE]
 > This is a waste of resources for you and for all users.
 
 

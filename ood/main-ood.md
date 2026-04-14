@@ -54,7 +54,14 @@ layer (i.e., OOD) into the process of executing commands.
 - [Obtaining a Cluster Shell (Terminal)](./cluster-shell.md)
 - [Running R-studio](./R-studio.md)
 
+## Relinquishing Resources When Done With an OOD Job
 
+> [!NOTE]
+> Over all ARC systems, not `Delete`ing (i.e., giving back) OOD resources when you
+> are done with them is a HUGE source of wasted resources.
+
+> [!NOTE]
+> This is a waste of resources for you and for all users.
 
 ## Acknowledgments
 
