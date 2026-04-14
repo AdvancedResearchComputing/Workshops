@@ -58,23 +58,8 @@ layer (i.e., OOD) into the process of executing commands.
 
 ## Acknowledgments
 
-Alberto Cano and Saikat Dey are gratefully acknowledged for
-constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/apptainer.html#singularity), on which
-this workshop is largely based.
-
-
-Sofia Lima is gratefully acknowledged for
-providing another example at
-[VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
 
 
 ## References
-
-- [VT ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#singularity)
-- [Apptainer Page]() 
-- [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
-- [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
-- [Apptainer and Additional Applications](https://collab.dvb.bayern/spaces/UniARZHPCKB/pages/1014857861/Container+with+Apptainer)
-
 
 
