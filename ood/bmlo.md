@@ -15,6 +15,8 @@ text on the right.
 [ood conceptual view](./figures/ood-files-n-jobs/ood-vs-cl-conceptual.pdf)
 ![ood conceptual view](./figures/ood-files-n-jobs/ood-vs-cl-conceptual.png)
 
+![ood conceptual view](figures/ood-files-n-jobs/ood-vs-cl-conceptual.png)
+
 There are postives and negatives in using OOD.
 
 ### Positives
