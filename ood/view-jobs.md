@@ -12,8 +12,8 @@ On command bar at top of the landing page, click `Jobs` and
 then click `Active Jobs`.
 You will see a screen like the one below.
 
-[Active Jobs](../../figures/ood-files-n-jobs/ood-active-jobs.pdf)
-![Active Jobs](../../figures/ood-files-n-jobs/ood-active-jobs.png)
+[Active Jobs](./figures/ood-files-n-jobs/ood-active-jobs.pdf)
+![Active Jobs](./figures/ood-files-n-jobs/ood-active-jobs.png)
 
 
 Then, at the top right, select from the `All Jobs` list whether you
