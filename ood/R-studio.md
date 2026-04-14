@@ -113,9 +113,21 @@ You can continue at will with other analyses.
 - Click `File` and `Quit Session`.
 - You will get notice that the Rstudio session has ended.
 - Close the browser tab containing R studio.
-- Go back to the browser tab above that has the red `Delete` button and
-click that to end the session.
+- **Go back to the browser tab above that has the red `Delete` button and
+click that to end the session.**
+    - It is imperative that you click the `Delete` button when you are finished.
+    - _**If you do not click the `Delete` button, then the resources allocated to you
+      by Slurm to run your R task will remain with you, and since you are done,
+      those RESOURCES WILL SIT IDLE UNTIL YOUR SELECTED TIME HAS EXPIRED 
+      BECAUSE NO ONE CAN USE THEM.**_
 
+
+> ![NOTE]
+> Over all ARC systems, not `Delete`ing (i.e., giving back) resources when you
+> are done with them is a HUGE source of wasted resources.
+
+> ![NOTE]
+> This is a waste of resources for you and for all users.
 
 
 
