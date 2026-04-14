@@ -5,6 +5,10 @@
 
 [Back to Main Page](./main-ood.md)
 
+## Note
+
+You should use the features here to move individual files.
+Bulk movement of files is covered [elsewhere](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing).
 
 ## Directories
 

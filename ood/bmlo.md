@@ -84,8 +84,9 @@ The learning objectives are:
 8. Running Matlab.
 9. Running Jupyter notebooks.
 10. Creating a conda virtual environment to run with Jupyter notebooks.
-11. Running a desktop (currently limited to Owl).
+11. Running a remote desktop.
 12. Running LLMs (large language models).
+13. Running VS Code.
 
 Essentially, there is one episode in these web pages (i.e., one lesson)
 for each of these objectives.
