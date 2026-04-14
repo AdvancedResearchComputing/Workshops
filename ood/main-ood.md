@@ -50,6 +50,7 @@ layer (i.e., OOD) into the process of executing commands.
 - [Background, Motivation, and Learning Objectives](./bmlo.md)
 - [Accessing OOD](./access-ood.md)
 - [Navigating Directories and Files](./directories-files.md)
+- [Viewing Jobs](./viewing-jobs.md)
 
 
 

@@ -12,7 +12,7 @@ On command bar at top of the landing page, click `Files` and click `Projects`.
 
 You will be presented with a list of directories under `Projects`.
 
-Find your project (can it `cntrl-F` to search for it in the browser).
+Find your project (can hit `cntrl-F` to search for it in the browser).
 
 You can click on the name of the directory to go to it, 
 or in the drop-down list to the right of the filename,
