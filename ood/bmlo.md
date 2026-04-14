@@ -12,8 +12,8 @@
 This 30000-ft conceptual view is intended to convey the basic idea in the
 text on the right.
 
-[ood conceptual view](../../figures/ood-files-n-jobs/ood-vs-cl-conceptual.pdf)
-![ood conceptual view](../../figures/ood-files-n-jobs/ood-vs-cl-conceptual.png)
+[ood conceptual view](figures/ood-files-n-jobs/ood-vs-cl-conceptual.pdf)
+![ood conceptual view](figures/ood-files-n-jobs/ood-vs-cl-conceptual.png)
 
 There are postives and negatives in using OOD.
 
@@ -59,8 +59,8 @@ In the figure below we contrast running (slurm) jobs using sbatch scripts with s
 - manual generation of an sbatch script
 - automatic generation an sbatch script through OOD.
 
-[Operational Model:  OOD vs. CL for Slurm Jobs](../../figures/operational-model-ood-vs-cl-slurm.pdf)
-![Operational Model:  OOD vs. CL for Slurm Jobs](../../figures/operational-model-ood-vs-cl-slurm.png)
+[Operational Model:  OOD vs. CL for Slurm Jobs](figures/operational-model-ood-vs-cl-slurm.pdf)
+![Operational Model:  OOD vs. CL for Slurm Jobs](figures/operational-model-ood-vs-cl-slurm.png)
 
 This is an example where you can do the same thing---submit a slurm job---with both
 (1) the terminal window and ssh'ing into a cluster, and
