@@ -61,8 +61,8 @@ In the figure below we contrast running (slurm) jobs using sbatch scripts with s
 - manual generation of an sbatch script
 - automatic generation an sbatch script through OOD.
 
-[Operational Model:  OOD vs. CL for Slurm Jobs](./figures/operational-model-ood-vs-cl-slurm.pdf)
-![Operational Model:  OOD vs. CL for Slurm Jobs](./figures/operational-model-ood-vs-cl-slurm.png)
+[Operational Model:  OOD vs. CL for Slurm Jobs](./figures/ood-vs-cl/operational-model-ood-vs-cl-slurm.pdf)
+![Operational Model:  OOD vs. CL for Slurm Jobs](./figures/ood-vs-cl/operational-model-ood-vs-cl-slurm.png)
 
 This is an example where you can do the same thing---submit a slurm job---with both
 (1) the terminal window and ssh'ing into a cluster, and
