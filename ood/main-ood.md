@@ -48,16 +48,7 @@ layer (i.e., OOD) into the process of executing commands.
 ## Outline
 
 - [Background, Motivation, and Learning Objectives](./bmlo.md)
-- More on using `exec`, with `bind` and without bind.
-- `writeable`
-- [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
-- 
-- [Build Using a Sandbox]()
-- [Convert Sandbox to a *.sif]()
-- [Use of multiple %runscript and what it means]()
-- [Use of %apprun and what it means for separate entrypoints]()
-- [Run Apptainer Using Sbatch Slurm Script]()
-- [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
+- [Accessing OOD](./access-ood.md)
 
 ## Acknowledgments
 
