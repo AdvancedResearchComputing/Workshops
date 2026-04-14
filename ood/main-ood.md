@@ -57,7 +57,7 @@ layer (i.e., OOD) into the process of executing commands.
 ## Relinquishing Resources When Done With an OOD Job
 
 > [!NOTE]
-> Over all ARC systems, not `Delete`ing (i.e., giving back) OOD resources when you
+> Over all ARC systems, not `Cancel`ing (i.e., giving back) OOD resources when you
 > are done with them is a HUGE source of wasted resources.
 
 > [!NOTE]
