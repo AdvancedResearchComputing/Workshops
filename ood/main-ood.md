@@ -53,6 +53,9 @@ layer (i.e., OOD) into the process of executing commands.
 - [Viewing Jobs](./view-jobs.md)
 - [Obtaining a Cluster Shell (Terminal)](./cluster-shell.md)
 - [Running R-studio](./R-studio.md)
+- [Running Matlab](./matlab.md)
+
+
 
 ## Relinquishing Resources When Done With an OOD Job
 
