@@ -5,7 +5,14 @@
 
 [Back to Main Page](./main-ood.md)
 
+## Copying and Pasting with noVNC
 
+In the instructions for this example, a lot of detail is shown
+as to how to copy commands from terminal windows on ARC clusters
+(including those within OOD) into the Matlab windows.
+
+This more elaborate procedure is not an ARC issue:  it is a 
+windowing issue over which VT ARC has no control.
 
 ## Launching Matlab
 
@@ -19,6 +26,8 @@ is an administrator account.
 Matlab is a taxing application, so consider specifying four cores per node.
 
 [Matlab Launch](./figures/matlab/matlab-launch.pdf)
+![Matlab Launch](./figures/matlab/matlab-launch.png)
+
 ![Matlab Launch](./figures/matlab/matlab-launch.png)
 
 After clicking the `Launch` button,
@@ -221,7 +230,7 @@ You can also use the shortcut `cntrl-v`.
 ![Matlab Approach 01-05](./figures/matlab/matlab-approach-01-05.png)
 
 The `cd` command now appears in the Matlab Command Window below.
-Hit return to execute.
+Hit the `Return` key to execute.
 Then type `pwd` to confirm the directory is as you specified
 with the `cd` command.
 
