@@ -16,8 +16,8 @@ Fill out the form in an analogous fashion to that shown below.
 Note:  you will need a different account from `arcadm` which
 is an administrator account.
 
-[Rstudio](../../figures/rstudio/ood-r-studio.pdf)
-![Rstudio](../../figures/rstudio/ood-r-studio.png)
+[Rstudio](./figures/rstudio/ood-r-studio.pdf)
+![Rstudio](./figures/rstudio/ood-r-studio.png)
 
 After clicking the `Launch` button,
 you will see an information screen.
@@ -28,8 +28,8 @@ the compute node on which you are running (see `Host`).
 You will also see a `Connect to RStudio Server` button.
 Click that.
 
-[Rstudio To Connect](../../figures/rstudio/r-studio-delete-at-end.pdf)
-![Rstudio To Connect](../../figures/rstudio/r-studio-delete-at-end.png)
+[Rstudio To Connect](./figures/rstudio/r-studio-delete-at-end.pdf)
+![Rstudio To Connect](./figures/rstudio/r-studio-delete-at-end.png)
 
 
 Give it some time to pull up the app.
@@ -40,8 +40,8 @@ Then you will see the familiar R studio UI.
 
 This is where you will be directed, the landing page.
 
-[Rstudio UI](../../figures/rstudio/r-studio-ui.pdf)
-![Rstudio UI](../../figures/rstudio/r-studio-ui.png)
+[Rstudio UI](./figures/rstudio/r-studio-ui.pdf)
+![Rstudio UI](./figures/rstudio/r-studio-ui.png)
 
 As an aside, note that if you `ssh` into the cluster and issue
 `squeue -u <username>` then you will get a response similar to the
@@ -49,8 +49,8 @@ one below.
 That is, it will not say R studio as the app, but rather `sys/dash`.
 
 
-[Rstudio Squeue](../../figures/rstudio/r-studio-squeue.pdf)
-![Rstudio Squeue](../../figures/rstudio/r-studio-squeue.png)
+[Rstudio Squeue](./figures/rstudio/r-studio-squeue.pdf)
+![Rstudio Squeue](./figures/rstudio/r-studio-squeue.png)
 
 
 In the R studio console, you can specify `getwd()` to see your
@@ -61,15 +61,16 @@ On the lower right pane, you can click the ellipsis (...) on the far right
 and specify a directory to change to, such as `/projects`.
 Then you can navigate to a working directory, like this one:
 
-~~~
+
+~~~bash
 /projects/kuhlman-project-storage/workshops/y2025/2025-03-xx/ood/on-owl/rstudio
 ~~~
-{:  .input}
+
 
 where there is a file called _data-for-mean.csv_ with ten values in one
 column whose mean we wish to computer.
 
-~~~
+~~~bash
 col1
 1
 2
@@ -82,12 +83,11 @@ col1
 9
 10
 ~~~
-{:  .input}
 
 
 In the console of R studio we enter each of these commands in turn:
 
-~~~
+~~~R
 ## Set/change the working directory.
 setwd("/projects/kuhlman-project-storage/workshops/y2025/2025-03-xx/ood/on-owl/rstudio")
 
@@ -100,7 +100,7 @@ result <- mean(dfm$col1)
 ## Print the mean.
 print(result) 
 ~~~
-{:   .language-r}
+
 
 
 And the result of 5.5 should be printed.
