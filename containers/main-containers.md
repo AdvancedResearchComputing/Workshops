@@ -105,9 +105,25 @@ Containers are produced in two different formats:
 
 
 
+## Terms
+
+SIF (Singularity Image File):  Apptainer builds containers that conform to
+the SIF format, for compatibility.  The container's extension **is** `*.sif`.
 
 
+## Lessons
 
+I typically put commands inside files, and in particular (bash) scripts,
+and I prefix them with `run.`.
+I do this so that if I go back to a directory later, I have all of the 
+commands in files, and I know scripts are in all files prefixed with
+`run.`.
+So a file that starts `run.build.` builds some other file(s).
+And a file that starts `run.app.` runs an app in a container
+(i.e., it does not run a script).
+This, to me, makes the directory self-contained.
+If you choose not to do this, that is fine:  you can simply
+paste the command on the command line.
 
 ## Structure and Anatomy of a Container
 
@@ -131,6 +147,7 @@ then automatically converted to an Apptainer instance.
 - [Use of multiple %runscript and what it means]()
 - [Use of %apprun and what it means for separate entrypoints]()
 - [Run Apptainer Using Sbatch Slurm Script]()
+- [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
 ## Acknowledgments
 
