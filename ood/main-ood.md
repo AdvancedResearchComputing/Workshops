@@ -52,6 +52,7 @@ layer (i.e., OOD) into the process of executing commands.
 - [Navigating Directories and Files](./directories-files.md)
 - [Viewing Jobs](./view-jobs.md)
 - [Obtaining a Cluster Shell (Terminal)](./cluster-shell.md)
+- [Running R-studio](./R-studio.md)
 
 
 
