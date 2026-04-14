@@ -140,7 +140,7 @@ Then I can repeat more iterations.
 ## Cooperative Work on Multiple OOD Windows
 
 Say you have created a notebook, but you want to move it to a 
-different directory to preserve you intended structure.
+different directory to preserve your intended structure.
 The jupyter windows are not really well-suited for this operation.
 But we can easily do it in a terminal window.
 
