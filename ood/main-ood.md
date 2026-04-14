@@ -1,7 +1,5 @@
 # Using Open OnDemand (OOD) on ARC Clusters
 
-# ---- IN PROGRESS ----
-
 ## ARC Resources and Mechanisms for Assistance
 
 A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help from VT ARC and access to information, and links to those resources, are provided.  Examples:
