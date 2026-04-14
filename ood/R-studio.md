@@ -113,8 +113,8 @@ You can continue at will with other analyses.
 - Click `File` and `Quit Session`.
 - You will get notice that the Rstudio session has ended.
 - Close the browser tab containing R studio.
-- **Go back to the browser tab above that has the red `Cancel` button and
-click that to end the session.**
+- **Go back to the browser tab above, look for the R-studio card that has the red `Cancel` button, and
+  click that to end the session.**
     - It is imperative that you click the `Cancel` button when you are finished.
     - _**If you do not click the `Cancel` button, then the resources allocated to you
       by Slurm to run your R task will remain with you, and since you are done,

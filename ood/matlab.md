@@ -319,13 +319,14 @@ Thus, you have options on how to work with Matlab, based on
 your inclinations.
 
 
-## Ending an Matlab Session
+## Ending a Matlab Session
 
 
 - Go to the browser window running Matlab.
 - Close/delete the browser window (tab) containing Matlab.
-- **Go back to the browser tab above that has the red `Cancel` button and
-click that to end the session.**
+- **Go back to the browser tab above, look for the Matlab card
+  that has the red `Cancel` button, and
+  click that to end the session.**
     - It is imperative that you click the `Cancel` button when you are finished.
     - _**If you do not click the `Cancel` button, then the resources allocated to you
       by Slurm to run your R task will remain with you, and since you are done,

@@ -54,6 +54,7 @@ layer (i.e., OOD) into the process of executing commands.
 - [Obtaining a Cluster Shell (Terminal)](./cluster-shell.md)
 - [Running R-studio](./R-studio.md)
 - [Running Matlab](./matlab.md)
+- [Running Remote Desktop](./remote-desktop.md)
 
 
 
