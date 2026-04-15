@@ -9,9 +9,11 @@
 
 ## Summary of this Lesson
 
-1. We introduce an apptainer definition file
-   and how to use it to build a simple container.
-2. We use this container as a vehicle to emphasize the 
+1. We introduce an apptainer definition file.
+2. We show how to build the container.
+   - Use of `fakeroot` utility to "obtain" the permissions
+     to build the container.
+3. We use this container as a vehicle to emphasize the 
    three main ways to execute a container (or execute code
    or an environment inside the container):
    - `run`:  runs the "default" code (i.e., the code that
