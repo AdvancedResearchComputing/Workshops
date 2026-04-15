@@ -38,6 +38,8 @@ a command from inside the container).
 on computer systems that are completely unrelated to
 the environment within the container, and the applications
 within the container will still run.
+- The default container construction process results in a
+  read-only container, so it cannot be modified.
 
 More detail.
 
@@ -143,7 +145,7 @@ then automatically converted to an Apptainer instance.
 - Done [Preliminaries](./work-on-a-compute-node.md)
 - Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
 - `writeable`
-- [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
+- Not Now.  [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
 - [Build Using a Sandbox]()
 - [Convert Sandbox to a *.sif]()
 - [Use of multiple %runscript and what it means]()

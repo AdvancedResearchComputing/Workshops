@@ -25,6 +25,8 @@
      it (very crudely, it is like invoking the python interpreter,
      via `python`, on the command line, so that you can enter
      individual python commands and they will be executed).
+4. There are other ways to execute/use a container, including `test` and
+   `instance start` but these are not covered here.
 
 
 ## Build Container From a Definition File

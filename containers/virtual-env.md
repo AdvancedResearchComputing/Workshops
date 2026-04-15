@@ -88,14 +88,15 @@ print("  From inside a VE inside a container:  hi")
 
 A key consideration in these examples is that _main.py_ is NOT in the container.
 
-If the _main.py_ code resides in the same directory as the container was
-built, this works:
+If the _main.py_ code resides in the same directory as the container, this works:
 
 ```
 apptainer exec python.ve.container.02.sif python ./main.py
 ```
 
 And it works, too, if _main.py_ is in your $HOME directory.
+The final case where the above command will work is if _main.py_ is in the `tmp`
+directory.
 
 But these examples are limiting.
 
