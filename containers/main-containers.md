@@ -145,12 +145,11 @@ then automatically converted to an Apptainer instance.
 - More on using `exec`, with `bind` and without bind.
 - `writeable`
 - [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
-- 
 - [Build Using a Sandbox]()
 - [Convert Sandbox to a *.sif]()
 - [Use of multiple %runscript and what it means]()
-- Done  [Use of %apprun and what it means for separate entrypoints]()
-- [Use of virtual environments inside of a container]()
+- Done [Use of %apprun and what it means for separate entrypoints]()
+- [Use of virtual environments inside of a container](./virtual-env.md)
 - [Run Apptainer Using Sbatch Slurm Script]()
 - [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
