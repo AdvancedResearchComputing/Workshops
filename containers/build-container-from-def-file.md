@@ -9,7 +9,7 @@
 
 ## Summary of this Lesson
 
-1. We get introduced to an apptainer definition file
+1. We introduce an apptainer definition file
    and how to use it to build a simple container.
 2. We use this container as a vehicle to emphasize the 
    three main ways to execute a container (or execute code
