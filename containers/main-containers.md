@@ -61,10 +61,10 @@ a container file can be huge:  TBs in some/many cases.
 
 Based on this information, you can readily see that
 major strengths of containers include:
-1. portability:  a container will run anywhere.
-2. customized:  you can tailor an environment for
+1. **portability**:  a container will run anywhere.
+2. **customizability**:  you can tailor an environment for
    yourself and colleagues
-3. unified work environment:  in sharing with colleagues
+3. **unified work environment**:  in sharing with colleagues
    be assured that everyone has the exact same setup.
 
 We will use `source` to denote the system on which the
