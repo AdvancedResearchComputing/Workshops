@@ -142,14 +142,14 @@ then automatically converted to an Apptainer instance.
 
 - Done [Preliminaries](./work-on-a-compute-node.md)
 - Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
-- More on using `exec`, with `bind` and without bind.
 - `writeable`
 - [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
 - [Build Using a Sandbox]()
 - [Convert Sandbox to a *.sif]()
 - [Use of multiple %runscript and what it means]()
 - Done [Use of %apprun and what it means for separate entrypoints]()
-- [Use of virtual environments inside of a container](./virtual-env.md)
+- Done [Use of virtual environments inside of a container](./virtual-env.md)
+  - This also uses `bind`.
 - [Run Apptainer Using Sbatch Slurm Script]()
 - [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
@@ -165,7 +165,7 @@ providing another example at
 
 Adeyemi Aina is gratefully acknowledged for
 providing more examples of contain construction 
-in [VT ARC github]().
+in [VT ARC github](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
 
 
 ## References
