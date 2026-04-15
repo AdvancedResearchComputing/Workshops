@@ -144,10 +144,9 @@ then automatically converted to an Apptainer instance.
 
 - Done [Preliminaries](./work-on-a-compute-node.md)
 - Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
-- `writeable`
 - Not Now.  [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
-- [Build Using a Sandbox]()
-- [Convert Sandbox to a *.sif]()
+- [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
+  - Will use `fakeroot`, `writable`, `bind`
 - [Use of multiple %runscript and what it means]()
 - Done [Use of %apprun and what it means for separate entrypoints]()
 - Done [Use of virtual environments inside of a container](./virtual-env.md)
