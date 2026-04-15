@@ -10,9 +10,9 @@
    to customize it, using a definition file.
 2. Illustrating how to run codes outside of the container.
    1. Use the `exec` and `bind` commands.
-3. Demonstrate how to extend a container with a VE
-   by adding applications.
-   1. Demonstrate how the application can be overridden with `exec`.
+3. Demonstrate how to extend a container with a VE:
+   1. By adding applications.
+   2. Demonstrate how the application can be overridden with `exec`.
 
 ## Preconditions
 
