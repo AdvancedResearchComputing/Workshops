@@ -118,6 +118,9 @@ This is what is needed:
 apptainer exec --bind /scratch/ckuhlman python.ve.container.02.sif python /scratch/ckuhlman/main.py
 ```
 
+> [!NOTE]
+> If you need multiple bind directories, simply separate them with commas.
+> Example  `--bind  ${first_dir},${second_dir}`.
 
 ### Case 2:  A Container Housing a Python Virtual Environment and a Python Code
 
