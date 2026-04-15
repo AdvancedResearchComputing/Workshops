@@ -7,6 +7,23 @@
 [Back to Main Page](./main-containers.md)
 
 
+## Summary of this Lesson
+
+1. We get introduced to an apptainer definition file
+   and how to use it to build a simple container.
+2. We use this container as a vehicle to emphasize the 
+   three main ways to execute a container (or execute code
+   or an environment inside the container):
+   - `run`:  runs the "default" code (i.e., the code that
+     is in the container).
+   - `exec`:  to use the container environment to run
+     codes specifically not in the container (but it uses
+     the container's environment).
+   - `shell`:  to get into the container and execute within
+     it (very crudely, it is like invoking the python interpreter,
+     via `python`, on the command line, so that you can enter
+     individual python commands and they will be executed).
+
 
 ## Build Container From a Definition File
 

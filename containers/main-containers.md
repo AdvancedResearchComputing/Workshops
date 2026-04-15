@@ -57,15 +57,18 @@ within the container will run on the Windows machine inside
 the container.
 
 Since a container houses a complete environment,
-a container file can be huge:  TBs in some/many cases.
+a container file can be huge:  GBs is common.
 
 Based on this information, you can readily see that
 major strengths of containers include:
 1. **portability**:  a container will run anywhere.
 2. **customizability**:  you can tailor an environment for
    yourself and colleagues
-3. **unified work environment**:  in sharing with colleagues
+3. **unified work environment**:  in sharing the
+   container with colleagues
    be assured that everyone has the exact same setup.
+4. **permanence**:  because the environment (and apps)
+   are inside the container, it will work into the future.
 
 We will use `source` to denote the system on which the
 container is built and `target` to denote a system on
@@ -173,6 +176,8 @@ in [VT ARC github]().
 - [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
 - [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
 - [Apptainer and Additional Applications](https://collab.dvb.bayern/spaces/UniARZHPCKB/pages/1014857861/Container+with+Apptainer)
+- [Apptainer and virtual environments](https://res-wiki.appstate.edu/books/environments-on-hpc/page/building-conda-environments-in-apptainer)
+- [Apptainer and virtual environments, 2](https://info.gwdg.de/news/using-apptainer-containers-to-manage-your-python-environments/)
 
 
 
