@@ -88,7 +88,7 @@ We are finished your container work, so you can:
 
 
 > [!NOTE]
-> Over all ARC systems, not `Cancel`ing (i.e., giving back) 
+> Over all ARC systems, not `scancel`ing (i.e., giving back) 
 > resources from interactive jobs when you
 > are done with them is a HUGE source of wasted resources.
 

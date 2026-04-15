@@ -137,7 +137,8 @@ then automatically converted to an Apptainer instance.
 
 ## Examples
 
-- [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
+- Done [Preliminaries](./work-on-a-compute-node.md)
+- Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
 - More on using `exec`, with `bind` and without bind.
 - `writeable`
 - [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
@@ -145,7 +146,8 @@ then automatically converted to an Apptainer instance.
 - [Build Using a Sandbox]()
 - [Convert Sandbox to a *.sif]()
 - [Use of multiple %runscript and what it means]()
-- [Use of %apprun and what it means for separate entrypoints]()
+- Done  [Use of %apprun and what it means for separate entrypoints]()
+- [Use of virtual environments inside of a container]()
 - [Run Apptainer Using Sbatch Slurm Script]()
 - [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
@@ -155,10 +157,13 @@ Alberto Cano and Saikat Dey are gratefully acknowledged for
 constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/apptainer.html#singularity), on which
 this workshop is largely based.
 
-
 Sofia Lima is gratefully acknowledged for
 providing another example at
 [VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
+
+Adeyemi Aina is gratefully acknowledged for
+providing more examples of contain construction 
+in [VT ARC github]().
 
 
 ## References
