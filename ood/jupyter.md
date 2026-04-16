@@ -105,7 +105,7 @@ See two figures down.
 1. close out jupyter notebooks:
     A. Click `File`->`Shutdown`
     B. Go to the screen that is the second one from the top on this 
-episode and click the red `Delete` button for `Jupyter for Python and Julia`.
+episode and click the red `Cancel` button for `Jupyter for Python and Julia`.
 
 
 A notebook with two markdown lines and four python statements is given below:
