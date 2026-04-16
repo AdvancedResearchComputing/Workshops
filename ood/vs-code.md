@@ -6,14 +6,37 @@
 [Back to Main Page](./main-ood.md)
 
 
+## Launching VS Code on OOD
 
-Sarah, I only had this stubbed out.
+On command bar at top of the landing page, click `Interactive Apps` and 
+then select `VS Code`.
 
-You can go through this yourself, obviously, and build it out.
+Fill out the form in an analogous fashion to that shown below.
+Note:  you will need a different account from `arcadm` which
+is an administrator account.
 
 
-An alternative, or maybe an addition, is the following.
-(Below here is new.)
+![VS Code Launch](figures/vscode/vscode-launch.png)
+
+Clicking on _Launch_ in above screen will start the request for system resources on Tinkercliffs.
+You will be given this screen.
+
+
+
+
+When resources have been provided, the screen below will show the compute node you are running on.
+In this case, one is running on compute node tc147.
+
+
+![Resources Obtains](figures/vscode/vscode-resource-alloc.png)
+
+
+Click "Connect to VS Code" to go to the Remote Desktop, which will take you 
+to the screen below.
+
+
+![VS Code](figures/vscode/vscode-connect.png)
+
 
 
 ## Using VS Code Outside of OOD
