@@ -37,8 +37,8 @@ You will also see a `Connect to Matlab` button.
 Click that.
 
 
-[Matlab To Connect](./figures/matlab/matlab-delete-at-end.pdf)
-![Matlab To Connect](./figures/matlab/matlab-delete-at-end.png)
+
+![Matlab To Connect](figures/matlab/matlab-delete-at-end.png)
 
 
 Give it some time to pull up the app.
