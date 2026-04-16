@@ -29,7 +29,7 @@ You will also see a `Connect to RStudio Server` button.
 Click that.
 
 
-![Rstudio To Connect](./figures/rstudio/r-studio-delete-at-end.png)
+![Rstudio To Connect](figures/rstudio/r-studio-delete-at-end.png)
 
 
 Give it some time to pull up the app.
