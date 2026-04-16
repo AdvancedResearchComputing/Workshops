@@ -18,8 +18,8 @@ is an administrator account.
 Also, the figure immediately below does not show the entire screen.
 All fields below those shown here on the form are to be empty/blank.
 
-[Jupyter Launch](./figures/jupyter/jupyter-launch.pdf)
-![Jupyter Launch](./figures/jupyter/jupyter-launch.png)
+
+![Jupyter Launch](figures/jupyter/jupyter-launch.png)
 
 
 When resources are allocated, you will get a screen like this:
