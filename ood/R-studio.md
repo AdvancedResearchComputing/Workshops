@@ -16,8 +16,8 @@ Fill out the form in an analogous fashion to that shown below.
 Note:  you will need a different account from `arcadm` which
 is an administrator account.
 
-[Rstudio](./figures/rstudio/ood-r-studio.pdf)
-![Rstudio](./figures/rstudio/ood-r-studio.png)
+
+![Rstudio](figures/rstudio/ood-r-studio.png)
 
 After clicking the `Launch` button,
 you will see an information screen.
