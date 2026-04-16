@@ -35,7 +35,7 @@ In the drop-down list to the right of the filename, you can:
 4. download
 5. delete
 
-
+[Example Directory Structure](figures/ood-files-n-jobs/ood-directory.pdf)
 [Example Directory Structure](figures/ood-files-n-jobs/ood-directory.png)
 
 To go into a directory, double-click the directory name.
