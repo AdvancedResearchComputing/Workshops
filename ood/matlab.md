@@ -25,10 +25,10 @@ is an administrator account.
 
 Matlab is a taxing application, so consider specifying four cores per node.
 
-[Matlab Launch](./figures/matlab/matlab-launch.pdf)
-![Matlab Launch](./figures/matlab/matlab-launch.png)
 
-![Matlab Launch](./figures/matlab/matlab-launch.png)
+![Matlab Launch](figures/matlab/matlab-launch.png)
+
+
 
 After clicking the `Launch` button,
 you will see an information screen.
