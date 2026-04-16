@@ -15,9 +15,7 @@ Note:  you will need a different account from `arcadm` which
 is an administrator account.
 
 
-
 ![Remote Desktop Launch](figures/remote-desktop/remote-desktop-launch.png)
-
 
 Clicking on _Launch_ in above screen will start the request for system resources on Owl.
 You will be given this screen.
