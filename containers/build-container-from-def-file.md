@@ -1,6 +1,4 @@
-# Containers on ARC Clusters
-
-# ---- IN PROGRESS ----
+# A Basic And Often-Used Use Case (Using a Definition File) in Building and Executing a Container
 
 ##### Navigate
 

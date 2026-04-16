@@ -112,8 +112,45 @@ Containers are produced in two different formats:
 
 ## Terms
 
-SIF (Singularity Image File):  Apptainer builds containers that conform to
+These are informal term descriptions intended to be a summary of 
+some of the most common commands and switches used in building
+and executing containers.
+
+**app**:  switch to run an app (as opposed to a runscript) that is inside a 
+container.  Used in with **run** and **exec**.
+
+**apptainer**:  the single command that is used in the context of containers.
+Switches (several of which are given below) are used in conjuction with
+**apptainer** to complete some work.
+
+**bind**:  switch to associate directories and files with an already-made container.
+
+**build**:  switch to construct a container (e.g., from a definition file or sandbox).
+
+**definition file**:  A specification (receipe) ASCII text file for building a container.
+
+**exec**:  one way to use the contents (e.g., environment) of a container to 
+run commands (e.g., codes) that are outside the container.  One often uses **bind**
+in these invocations.
+
+**fakeroot**:  switch (and a utility) that is used by Apptainer to provide a 
+user with sufficient privileges to build and execute containers.
+
+**run**:  switch that is one way to execute the contents of a container,
+usually assocated with
+running codes as specified in the container.
+
+**sandbox**:  switch to specify that a sandbox is being built (versus, say a
+container).  Used with switch **build**.
+
+**SIF (Singularity Image File)**:  An Apptainer or Singularity container.
+Apptainer builds containers that conform to
 the SIF format, for compatibility.  The container's extension **is** `*.sif`.
+
+**writable**:  switch that enables adding to (changing) the contents of a sandbox,
+that is subsequently transformed into a container.
+
+
 
 
 ## Lessons
@@ -132,13 +169,15 @@ paste the command on the command line.
 
 ## Structure and Anatomy of a Container
 
----- TODO ----
+See a definition file.  There are some in these notes.
 
 ## Docker as a Starting Point for Apptainer
 
 Often is it efficient and convenient to start an
 Apptainer container using a Docker image that is
 then automatically converted to an Apptainer instance.
+
+But there are other ways:  [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
 ## Examples
 
@@ -148,11 +187,29 @@ then automatically converted to an Apptainer instance.
 - Done [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
   - Will use `fakeroot`, `writable`, `bind`
 - [Use of multiple %runscript and what it means]()
-- Done [Use of %apprun and what it means for separate entrypoints](./running-multiple-apps.md)
+- Done [Build a Container With Multiple Apps](./running-multiple-apps.md)
+  - Uses `%apprun`.
 - Done [Use of virtual environments inside of a container](./virtual-env.md)
   - This also uses `bind`.
-- [Run Apptainer Using Sbatch Slurm Script]()
-- [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
+- Done [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
+
+## Other Topics Coming
+
+- How to build a VE within a sandbox.
+
+## Warning About Web Pages on Containers
+
+Like a lot of different software categories, different institutions set up
+their cluster environment differently for the use of containers.
+So it is pretty easy, for example, to lock on to another university's web
+pages for how to build and use containers, and find that none of their
+approaches to containers works
+on VT ARC clusters.
+So the advice is that if you are working away and not making much progress,
+you might consider reading different pages.
+
+That said, there was a lot of useful information on the web that informed these pages.
+But then, there were a lot of "rabbit holes" ...
 
 ## Acknowledgments
 
@@ -165,19 +222,28 @@ providing another example at
 [VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
 
 Adeyemi Aina is gratefully acknowledged for
-providing more examples of contain construction 
+providing more examples of contain construction and use
 in [VT ARC github](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
+These pages also have notes, similar to this set of notes.
+One perspective is that Yemi's pages are more complex, with realworld examples.
+In contrast, this workshop is designed to introduce major issues (features, commands, approaches)
+and working examples that can be extended.
+
+So all of these resources should be viewed as complementary.
 
 
 ## References
 
 - [VT ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#singularity)
-- [Apptainer Page]() 
+- [VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
+- [Apptainer Root Page](https://apptainer.org/docs/user/main/introduction.html) 
 - [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
 - [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
 - [Apptainer and Additional Applications](https://collab.dvb.bayern/spaces/UniARZHPCKB/pages/1014857861/Container+with+Apptainer)
-- [Apptainer and virtual environments](https://res-wiki.appstate.edu/books/environments-on-hpc/page/building-conda-environments-in-apptainer)
-- [Apptainer and virtual environments, 2](https://info.gwdg.de/news/using-apptainer-containers-to-manage-your-python-environments/)
+- [Apptainer and Virtual Environments](https://res-wiki.appstate.edu/books/environments-on-hpc/page/building-conda-environments-in-apptainer)
+- [Apptainer and virtual Environments, 2](https://info.gwdg.de/news/using-apptainer-containers-to-manage-your-python-environments/)
+- [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
+
 
 
 

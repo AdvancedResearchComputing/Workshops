@@ -50,11 +50,11 @@ echo " "
 echo " "
 
 
-# 1. Load the Apptainer module (if required by your cluster)
+# 1. Load the Apptainer module.
 module reset
 module load apptainer
 
-# 2. Run your command inside the container
+# 2. Run your command inside the container; we have three commands on two containers.
 
 # Two variables that specify the directories where the two containers reside.
 

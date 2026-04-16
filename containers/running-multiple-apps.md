@@ -1,6 +1,5 @@
-# Containers on ARC Clusters
+# Constructing and Running a Container With Multiple Apps
 
-# ---- IN PROGRESS ----
 
 ##### Navigate
 
