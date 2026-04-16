@@ -15,22 +15,22 @@ Note:  you will need a different account from `arcadm` which
 is an administrator account.
 
 
-[Remote Desktop Launch](./figures/remote-desktop/remote-desktop-launch.pdf)
-![Remote Desktop Launch](./figures/remote-desktop/remote-desktop-launch.png)
+
+![Remote Desktop Launch](figures/remote-desktop/remote-desktop-launch.png)
 
 
 Clicking on _Launch_ in above screen will start the request for system resources on Owl.
 You will be given this screen.
 
 
-![Waiting for Resources to be Given](./figures/remote-desktop/requesting-resources-salloc.png)
+![Waiting for Resources to be Given](figures/remote-desktop/requesting-resources-salloc.png)
 
 
 When resources have been provided, the screen below will show the compute node you are running on.
 In this case, one is running on compute node owl035.
 
 
-![Resources Obtains](./figures/remote-desktop/obtained-resources.png)
+![Resources Obtains](figures/remote-desktop/obtained-resources.png)
 
 
 Click "Connect to Desktop" to go to the Remote Desktop, which will take you 
