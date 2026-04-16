@@ -25,7 +25,7 @@ All fields below those shown here on the form are to be empty/blank.
 When resources are allocated, you will get a screen like this:
 
 
-![Jupyter Entry](./figures/jupyter/jupyter-entry.png)
+![Jupyter Entry](figures/jupyter/jupyter-entry.png)
 
 ## Running Jupyter Notebooks
 
