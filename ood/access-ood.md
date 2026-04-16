@@ -26,9 +26,9 @@ This is the landing page for OOD.
 When we give directions for how to start an application or feature, we do it from
 this page.
 
-###[VT OOD Landing Page](./figures/ood-files-n-jobs/ood-landing-page.pdf)
+
 ![VT OOD Landing Page](figures/ood-files-n-jobs/ood-landing-page.png)
-!###[A100 GPU Architecture](images/a100-layout.jpg)
+
 We will focus on main tabs:
 
 1. Files
