@@ -56,7 +56,7 @@ Specifics for this use case are:
 3. YOU _**CANNOT**_ debug your code.
 4. You _**CANNOT**_ run your code.
 
-An entire workshop on how to do this is [here](https://drive.google.com/file/d/1MNW_qvnOkavxhtZLvNzP6bqYbdfgdgJf/view?usp=sharing).  **Sarah, please provide a link to your notes.** 
+An entire workshop on how to do this is [here](https://drive.google.com/file/d/1MNW_qvnOkavxhtZLvNzP6bqYbdfgdgJf/view?usp=sharing).  
 
 #### Option 2:  Running VS Code on COMPUTE Nodes of Clusters
 
