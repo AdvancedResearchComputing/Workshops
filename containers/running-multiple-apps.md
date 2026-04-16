@@ -8,7 +8,7 @@
 
 
 
-## More on Exec
+## `%apprun` versus `%runscript`
 
 
 If one has multiple applications, and therefore multiple entry points
@@ -20,14 +20,14 @@ them specifically using `apptainer run --app foo <container>`
 or `apptainer run --app bar <container>`.
 
 
-```
-https://www.google.com/search?q=can+there+be+multiple+entries+under+%25runscript+in+an+apptainer+definition+file%3F&rlz=1C5GCEM_enUS1148US1149&oq=can+there+be+multiple+entries+under+%25runscript+in+an+apptainer+definition+file%3F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTE3MzcxajBqN6gCCLACAfEFK3-ZZ7yR63k&sourceid=chrome&ie=UTF-8
-```
 
+## Preconditions
 
-#### Request An Interactive Session on the Cluster
+1. You are on a compute node.
+2. You have loaded the apptainer module:
+   1. `module reset`
+   2. `module load apptainer`.
 
-See *******
 
 
 #### Construct the Definition File
@@ -117,11 +117,5 @@ But they are all put in a sequence and they are ALL run with the
 
 
 
-
-
-
-##### Navigate
-
-[Back to Main Page](./main-containers.md)
 
 
