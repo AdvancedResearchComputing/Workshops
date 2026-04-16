@@ -22,17 +22,13 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 applications and
 all supporting software needed to run those applications.
 - Often a container will have one major application,
-but could have multiple applications.
+but could have multiple/many applications.
 - Because a container also houses all supporting
 software needed
 to run the application, including the **user space** of
 an operating
 system (OS), a container is
 self-contained and stand-alone.
-- The applications within the container are
-in many cases called from outside the container,
-but they run inside the container (you can invoke
-a command from inside the container).
 - So a major feature of containers is that they can
   reside
 on computer systems that are completely unrelated to
@@ -40,8 +36,12 @@ the environment within the container, and the applications
 within the container will still run.
 - The default container construction process results in a
   read-only container, so it cannot be modified.
+- A container---even ones where codes are inside---sometimes/often is
+  used to run codes that are outside of the container.
+  In these cases, the environment inside the container is used,
+  so the "external" code is run within the container environment.
 
-More detail.
+### Additional Detail
 
 - User Space (included in a container):
 The container contains the file system, libraries, binaries, and
@@ -85,7 +85,7 @@ that contains a lot of information.
 
 - We will use the example from that page.
 
-### Approaches to Creating Containers
+## Approaches to Creating Containers
 
 Two of industry and academic defacto standard ways to construct containers:
 - using Docker
@@ -179,7 +179,7 @@ then automatically converted to an Apptainer instance.
 
 But there are other ways:  [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
-## Examples
+## Outline/Examples
 
 - Done [Preliminaries](./work-on-a-compute-node.md)
 - Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
