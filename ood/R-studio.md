@@ -28,7 +28,7 @@ the compute node on which you are running (see `Host`).
 You will also see a `Connect to RStudio Server` button.
 Click that.
 
-[Rstudio To Connect](./figures/rstudio/r-studio-delete-at-end.pdf)
+
 ![Rstudio To Connect](./figures/rstudio/r-studio-delete-at-end.png)
 
 
