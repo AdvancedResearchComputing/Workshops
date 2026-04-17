@@ -48,7 +48,6 @@ layer (i.e., OOD) into the process of executing commands.
 - [Background, Motivation, and Learning Objectives](./bmlo.md)
 - [Accessing OOD](./access-ood.md)
 - [Navigating Directories and Files](./directories-files.md)
-- [Viewing Slurm Jobs](./view-jobs.md)
 - [Obtaining a Cluster Shell (Terminal)](./cluster-shell.md)
 - [Running R-studio](./R-studio.md)
 - [Running Matlab](./matlab.md)
