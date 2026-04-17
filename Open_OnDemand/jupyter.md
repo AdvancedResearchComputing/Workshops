@@ -9,7 +9,7 @@
 ## Launching Jupyter
 
 On command bar at top of the landing page, click `Interactive Apps` and 
-then select `Jupyter for Python and Julia`.
+then select `Jupyter`.
 
 Fill out the form in an analogous fashion to that shown below.
 Note:  you will need a different account from `arcadm` which
