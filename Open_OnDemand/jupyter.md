@@ -105,7 +105,7 @@ See two figures down.
 1. close out jupyter notebooks:
     A. Click `File`->`Shutdown`
     B. Go to the screen that is the second one from the top on this 
-episode and click the red `Cancel` button for `Jupyter for Python and Julia`.
+episode and click the red `Cancel` button for `Jupyter`.
 
 
 A notebook with two markdown lines and four python statements is given below:
@@ -267,7 +267,7 @@ scancel <job ID of the salloc command>
 
 
 Now we go back to OOD.
-Click `Interactive Apps` and `Jupyter for Python and Julia`.
+Click `Interactive Apps` and `Jupyter`.
 Fill out the screen below (split into two here because
 we could not get the entire screen in one capture; there
 is some overlap in the screens).
