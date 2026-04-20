@@ -175,71 +175,7 @@ then automatically converted to an Apptainer instance.
 
 But there are other ways:  [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
-## Outline/Examples
 
-- Done [Preliminaries](./work-on-a-compute-node.md)
-- Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
-- Not Now.  [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
-- Done [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
-  - Will use `fakeroot`, `writable`, `bind`
-- [Use of multiple %runscript and what it means]()
-- Done [Build a Container With Multiple Apps](./running-multiple-apps.md)
-  - Uses `%apprun`.
-- Done [Use of virtual environments inside of a container](./virtual-env.md)
-  - This also uses `bind`.
-- Done [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
-
-## Other Topics Coming
-
-- How to build a VE within a sandbox.
-
-## Warning About Web Pages on Containers
-
-Like a lot of different software categories, different institutions set up
-their cluster environment differently for the use of containers.
-So it is pretty easy, for example, to lock on to another university's web
-pages for how to build and use containers, and find that none of their
-approaches to containers works
-on VT ARC clusters.
-So the advice is that if you are working away and not making much progress,
-you might consider reading different pages.
-
-That said, there was a lot of useful information on the web that informed these pages.
-But then, there were a lot of "rabbit holes" ...
-
-## Acknowledgments
-
-Alberto Cano and Saikat Dey are gratefully acknowledged for
-constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/apptainer.html#singularity), on which
-this workshop is largely based.
-
-Sofia Lima is gratefully acknowledged for
-providing another example at
-[VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
-
-Adeyemi Aina is gratefully acknowledged for
-providing more examples of contain construction and use
-in [VT ARC github](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
-These pages also have notes, similar to this set of notes.
-One perspective is that Yemi's pages are more complex, with realworld examples.
-In contrast, this workshop is designed to introduce major issues (features, commands, approaches)
-and working examples that can be extended.
-
-So all of these resources should be viewed as complementary.
-
-
-## References
-
-- [VT ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#singularity)
-- [VT ARC Github Container Example Codes](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
-- [Apptainer Root Page](https://apptainer.org/docs/user/main/introduction.html) 
-- [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
-- [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
-- [Apptainer and Additional Applications](https://collab.dvb.bayern/spaces/UniARZHPCKB/pages/1014857861/Container+with+Apptainer)
-- [Apptainer and Virtual Environments](https://res-wiki.appstate.edu/books/environments-on-hpc/page/building-conda-environments-in-apptainer)
-- [Apptainer and virtual Environments, 2](https://info.gwdg.de/news/using-apptainer-containers-to-manage-your-python-environments/)
-- [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
-- [Gentle Intro](https://medium.com/@alex-ignatov/gentle-introduction-to-apptainer-90ec65ce01b3)
 
 
 
