@@ -102,7 +102,7 @@ The "build" command is the dominant command within
 Apptainer to produce containers.
 Containers are produced in two different formats:
 - a compressed read-only Singularity Image File (SIF) format, suitable for production (default)
-- a writable (ch)root directory called a sandbox, for interactive development ( --sandbox option)
+- a writable root directory called a sandbox, for interactive development ( --sandbox option)
 
 
 
