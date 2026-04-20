@@ -1,17 +1,14 @@
-# Containers on ARC Clusters
+# Container Concepts (Informal)
 
-# ---- IN PROGRESS ----
 
-## ARC Resources and Mechanisms for Assistance
+## Motivating Example
 
-A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help from VT ARC and access to information, and links to those resources, are provided.  Examples:
-- determine and attend office hours
-- submit help tickets (for errors, problems, or request a consultation)
-- obtain listings of workshops (and video recordings and notes files)
-- view video tutorials
-- run example codes
-- understand overall cluster status and performance, as well as those of your jobs, via dashboards
-- more
+
+![Conventional Situation](./figures/problem-setup-1.png)
+
+![Conainter](./figures/problem-setup-2.png)
+
+![Revised Conventional Situation](./figures/problem-setup-3.png)
 
 ## Container Overview
 
@@ -66,9 +63,8 @@ major strengths of containers include:
 1. **portability**:  a container will run anywhere.
 2. **customizability**:  you can tailor an environment for
    yourself and colleagues
-3. **unified work environment**:  in sharing the
-   container with colleagues
-   be assured that everyone has the exact same setup.
+3. **sameness**:  you and your colleagues are running the 
+   _**exact**_ same code.
 4. **permanence**:  because the environment (and apps)
    are inside the container, it will work into the future.
 
