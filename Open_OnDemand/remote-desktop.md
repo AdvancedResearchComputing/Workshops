@@ -143,7 +143,7 @@ After entering the `vmd` command, the GUI window will appear on your Remote Desk
 
 **Notes on Modules**
 
-- Most GUI applications on the cluster require you to `load a module` before running them.
+- Most GUI applications on the cluster require you to `module load` before running them.
 - Modules set up the environment variables, libraries, and paths needed for the software to run correctly.
 
 **Using Mesa for Graphics Support**
@@ -163,8 +163,8 @@ Mesa is an open-source software implementation of OpenGL. It provides software-b
 **General Tips**
 - Always use the Node Terminal for running applications.
 - If an application fails to launch, check:
--- That the correct module is loaded
--- Whether additional dependencies (like mesa) are required
+  - That the correct module is loaded
+  - Whether additional dependencies (like mesa) are required
 -Some applications may take a few seconds to display their GUI after launching.
 
 ## Ending a Remote Desktop Session
