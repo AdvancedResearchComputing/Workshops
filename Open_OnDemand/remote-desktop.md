@@ -162,7 +162,7 @@ Mesa is an open-source software implementation of OpenGL. It provides software-b
 
 **General Tips**
 - Always use the Node Terminal for running applications.
--Some applications may take a few seconds to display their GUI after launching.
+- Some applications may take a few seconds to display their GUI after launching.
 - If an application fails to launch, check:
   - That the correct module is loaded
   - Whether additional dependencies (like mesa) are required
