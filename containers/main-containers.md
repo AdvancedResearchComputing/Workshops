@@ -15,7 +15,11 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 ## Container 
 
+(Loosely): A _**container**_ is a file that houses a computing environment and, most often,
+scripts and/or applications that run in this environment.
 
+Container have the following, and other, features:  portability, customizability,
+sameness, pseudo-permanence.
 
 ## Outline/Examples
 
