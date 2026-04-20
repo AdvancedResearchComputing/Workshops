@@ -165,7 +165,7 @@ Mesa is an open-source software implementation of OpenGL. It provides software-b
 - Some applications may take a few seconds to display their GUI after launching.
 - If an application fails to launch, check:
   - That the correct module is loaded
-  - Whether additional dependencies (like mesa) are required
+  - Whether additional dependencies (like Mesa) are required
 
 
 ## Ending a Remote Desktop Session
