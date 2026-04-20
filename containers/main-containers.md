@@ -181,21 +181,23 @@ But there are other ways:  [Bootstrap Agents](https://apptainer.org/docs/user/ma
 
 ## Outline/Examples
 
-- Done [Preliminaries](./work-on-a-compute-node.md)
-- Done [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
-- Not Now.  [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
-- Done [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
+- [Concepts](./concepts.md)
+- [Preliminaries](./work-on-a-compute-node.md)
+- [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
+- Not finished [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
+- [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
   - Will use `fakeroot`, `writable`, `bind`
-- [Use of multiple %runscript and what it means]()
-- Done [Build a Container With Multiple Apps](./running-multiple-apps.md)
+- Not done [Use of multiple %runscript and what it means]()
+- [Build a Container With Multiple Apps](./running-multiple-apps.md)
   - Uses `%apprun`.
-- Done [Use of virtual environments inside of a container](./virtual-env.md)
+- [Use of virtual environments inside of a container](./virtual-env.md)
   - This also uses `bind`.
-- Done [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
+- [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
 
 ## Other Topics Coming
 
 - How to build a VE within a sandbox.
+- How to build from Apptainer library.
 
 ## Warning About Web Pages on Containers
 
@@ -243,6 +245,7 @@ So all of these resources should be viewed as complementary.
 - [Apptainer and Virtual Environments](https://res-wiki.appstate.edu/books/environments-on-hpc/page/building-conda-environments-in-apptainer)
 - [Apptainer and virtual Environments, 2](https://info.gwdg.de/news/using-apptainer-containers-to-manage-your-python-environments/)
 - [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
+- [Gentle Intro](https://medium.com/@alex-ignatov/gentle-introduction-to-apptainer-90ec65ce01b3)
 
 
 
