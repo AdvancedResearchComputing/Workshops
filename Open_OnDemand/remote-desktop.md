@@ -122,6 +122,52 @@ You can find applications in two places:
 1. The "Applications" tab at the top left, above the desktop pane.
 2. In the icons at the bottom center of the desktop, "Application Finder". 
 
+## Launching GUI-Based Applications on Remote Desktop
+
+Once you are connected to the Remote Desktop session, you can launch applications that have graphical user interfaces (GUIs) directly from a terminal window.
+
+To do this:
+
+1) Open a Node Terminal (Applications → Other → Node Terminal).
+2) Load the required module(s) for the application.
+3) Run the application command.
+
+For example, to launch VMD (Visual Molecular Dynamics):
+```
+module load VMD
+vmd
+```
+![Remote Desktop](figures/remote-desktop/remote-desktop-vmd.png)
+
+After entering the `vmd` command, the GUI window will appear on your Remote Desktop.
+
+**Notes on Modules**
+
+- Most GUI applications on the cluster require you to `module load` before running them.
+- Modules set up the environment variables, libraries, and paths needed for the software to run correctly.
+
+**Using Mesa for Graphics Support**
+
+In some cases, GUI applications may not launch correctly or may display rendering issues. When this happens, you may need to load the `Mesa` module:
+```
+module load Mesa
+```
+Then load and run your application again:
+```
+module load VMD
+vmd
+```
+**What is Mesa?**
+Mesa is an open-source software implementation of OpenGL. It provides software-based rendering, which is useful when hardware graphics acceleration (GPU) is unavailable or not properly configured on the compute node. This ensures that GUI applications can still display properly in the Remote Desktop environment.
+
+**General Tips**
+- Always use the Node Terminal for running applications.
+- Some applications may take a few seconds to display their GUI after launching.
+- If an application fails to launch, check:
+  - That the correct module is loaded
+  - Whether additional dependencies (like Mesa) are required
+
+
 ## Ending a Remote Desktop Session
 
 - Go to the browser window running Remote Desktop.
