@@ -44,13 +44,6 @@
   that houses
 applications and
 all supporting software needed to run those applications.
-- Frequently, containers are used to provide:
-    - One major application.
-    - A collection of distinct stand-alone, but related, applications.
-    - A series of commands/applications that essentially form a pipeline.
-    - An environment (think modules, virtual environments, etc.) with
-      no applications nor scripts.  In this case, codes are `bind`ed
-      (bound) to the container.
 - Because a container also houses all supporting
 software needed
 to run the application, including the **user space** related to
@@ -68,6 +61,29 @@ within the container will still run.
   used to run codes that are outside of the container.
   In these cases, the environment inside the container is used,
   so the "external" code is run within the container environment.
+
+### Container Use
+
+Among the many uses (and content) of containers,
+here are some of the dominant ones:
+
+  - One major application.
+  - A collection of distinct stand-alone, but related, applications.
+  - A series of commands/applications that essentially form a pipeline.
+  - An environment (think modules, virtual environments, etc.) with
+      no applications nor scripts.  In this case, codes are `bind`ed
+      (bound) to the container.
+
+### Container Invocation
+
+You can run a container in at least these three ways:
+
+1. Run the default command (the one under `%runscript`) with
+   the `run` command.
+2. Run a customized command with `exec` (overriding the 
+   command(s) under `%runscript`)
+3. Enter the container interactively for manual execution
+   using the `shell` command.
 
 ### Additional Detail
 
