@@ -42,6 +42,7 @@ Notes:
    This is a pipeline.
 6. We can also run python in a "script" (`%runscript`) section.
 7. The `"$@"` illustrates how a container can take in inputs.
+   
 
 ```
 Bootstrap: docker
@@ -145,66 +146,47 @@ works
 On the compute node, run a custom command within the container (here, overriding the input to script cowsay):
 
 ```
-apptainer exec moo-me.sif cowsay "Moooo to youuuuuu"
+apptainer exec  pipeline.sif  cowsay   "Did you see the size of that moose?"
 ```
+
+Note that the `exec` command overrides _all_ of the pipeline:
+not only the `cowsay` command, but also the `echo` and `python` commands.
+So the pipeline, in this sense, is atomic.
+
+The output is:
+
+```
+ _____________________________________
+< Did you see the size of that moose? >
+ -------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
 
 Another alterative is to use a completely different 
 valid command, such as `ls`:
 
 ```
-apptainer exec moo-me.sif ls
+apptainer exec pipeline.sif ls
 ```
 
-The following command is an illustration of 
-the difference between the contents of the
-container and the host machine on which the
-container is running:
+The output for me is:
 
 ```
-apptainer exec moo-me.sif ls ../..
+__pycache__  multi_runscript.def  pipeline.sif	run.base.pipeline  run.build.sif  run.container.itself	run.sif.directly  tokenize.py
 ```
 
-The output from this command, on my machine is
-
-```
-simple-from-def-file
-```
-
-This directory is the name of the second parent directory
-up from the current directory where the container
-resides.
-
-If we issue this almost-identical command (but now
-with `*`):
-
-```
-apptainer exec moo-me.sif ls ../../*
-```
-
-we get:
-
-```
-/usr/bin/ls: cannot access '../../README.txt': No such file or directory
-/usr/bin/ls: cannot access '../../simple-from-apptainer-library': No such file or directory
-/usr/bin/ls: cannot access '../../simple-from-docker-hub': No such file or directory
-../../simple-from-def-file:
-try01
-```
-
-In fact, at two parent directories up, there are a total of
-three directories and one file (README.txt) **ON THE HOST MACHINE.
-But the only directories and files that the container
-can access (i.e., knows about) are those in the container.
-It only
-knows about the single directory that is part of the path
-to this container.
 
 #### Method 3:  Run Within The Container
 
-Issuing the command 
+Issuing the command `shell` command to go inside the container:
 
 ```
-apptainer shell moo-me.sif
+apptainer shell pipeline.sif
 ```
 
 will give you a shell inside the container, as noted by the "**Apptainer>**" prompt.
@@ -212,12 +194,44 @@ will give you a shell inside the container, as noted by the "**Apptainer>**" pro
 Issue this command:
 
 ```
-cowsay "I'm inside; let me out."
+Apptainer> cowsay "hi"
 ```
 
-and it will be printed to screen.
+... and the response is:
 
-when finished, type "exit" to exit the container.
+```
+ ____
+< hi >
+ ----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+Now enter:
+
+```
+python tokenize.py  "Man, it sure is dark in this container."
+```
+... and the output will be:
+
+```
+  The inputted string :  Man, it sure is dark in this container.
+  The tokens in the inputted string are:
+Man,
+it
+sure
+is
+dark
+in
+this
+container.
+```
+
+
+when finished, type `exit` to exit the container.
 
 ##### Finished
 
