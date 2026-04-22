@@ -56,6 +56,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - How to build from Apptainer library.
 - How to construct a container where each app requires a
   different environment.
+- How to construct a container for use across compute nodes.
 
 ## Warning About Web Pages on Containers
 
@@ -73,20 +74,22 @@ But then, there were a lot of "rabbit holes" ...
 
 ## Acknowledgments
 
-Alberto Cano and Saikat Dey are gratefully acknowledged for
+Alberto Cano and Saikat Dey for
 constructing the [ARC Docs page on Containers](https://docs.arc.vt.edu/software/apptainer.html#singularity).
 
-Sofia Lima is gratefully acknowledged for
+Sofia Lima for
 providing another example at
 [VT ARC git container example](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer/1.4.0).
 
-Adeyemi Aina is gratefully acknowledged for
+Adeyemi Aina for
 providing more examples of contain construction and use
 in [VT ARC github](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
 These pages also have notes, similar to this set of notes.
 One perspective is that Yemi's pages are more complex, with realworld examples.
 In contrast, this workshop is designed to introduce major issues (features, commands, approaches)
 and working examples that can be extended.
+
+Nicole Braunscheidel for composing an [MPI containerized example](https://github.com/AdvancedResearchComputing/examples/tree/master/cp2k).
 
 Thanks to Ben Sandbrook for reviewing this workshop and making improvements
 to it.
@@ -104,6 +107,8 @@ VT-Generated Resources
 
 - [VT ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#singularity)
 - [VT ARC Github Container Example Codes](https://github.com/AdvancedResearchComputing/examples/tree/master/apptainer).
+- [VT ARC Github MPI-Based CP2K Container Example](https://github.com/AdvancedResearchComputing/examples/tree/master/cp2k).
+  
 
 ----------------------------------------------
 Apptainer Resources
