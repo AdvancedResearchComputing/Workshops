@@ -55,7 +55,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - How to build from Apptainer library (started).
 - How to construct a container where each app requires a
   different environment.
-- How to construct a container for use across compute nodes.
+- How to construct a container for MPI use across compute nodes.
 
 ## Warning About Web Pages on Containers
 
