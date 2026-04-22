@@ -43,7 +43,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - [Preliminaries](./preliminaries.md)
 - [Build Container From a Definition File Using a Docker Image](./def-file-container.md)
 - Not finished [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
-- [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
+- [Build a Sandbox and Convert to a Container](./sandbox-and-sif.md)
   - Will use `fakeroot`, `writable`, `bind`
 - Not done [Use of multiple %runscript and what it means]()
 - [Build a Container With Multiple Apps](./running-multiple-apps.md)
