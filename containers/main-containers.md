@@ -43,7 +43,6 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - [Preliminaries](./preliminaries.md)
 - [Build Container From a Definition File Using a Docker Image](./def-file-container.md)
 - [Build Container With Multiple `%runscript`s](./multiple-runscripts.md)
-- Not finished [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
 - [Build a Sandbox and Convert to a Container](./sandbox-and-sif.md)
 - [Build a Container With Multiple Apps](./running-multiple-apps.md)
 - [Build a Container With Multiple Python Apps](./multiple-python-apps.md)
@@ -53,7 +52,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 ## Other Topics Coming
 
 - How to build a VE within a sandbox.
-- How to build from Apptainer library.
+- How to build from Apptainer library (started).
 - How to construct a container where each app requires a
   different environment.
 - How to construct a container for use across compute nodes.
