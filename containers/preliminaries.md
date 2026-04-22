@@ -57,6 +57,9 @@ The constraint values specified below for each of Owl and TC
 are designed to give you access to the greatest pool of 
 compute nodes.
 
+Currently, Falcon only has homogeneous partitions, so no `--constraint` is
+needed.
+
 Also, the difference between Option 1 and Option 2 is `interact` 
 versus `alloc`.
 ARC prefers you to use `interact`.
