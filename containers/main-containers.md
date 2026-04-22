@@ -46,7 +46,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - [Build a Sandbox and Convert to a Container](./sandbox-and-sif.md)
 - [Build a Container With Multiple Apps](./running-multiple-apps.md)
 - [Build a Container With Multiple Python Apps](./multiple-python-apps.md)
-- [Use of virtual environments inside of a container](./virtual-env.md)
+- [Use of Virtual Environments Inside a Container](./virtual-env.md)
 - [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
 
 ## Other Topics Coming
