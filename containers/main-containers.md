@@ -44,13 +44,10 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - [Build Container From a Definition File Using a Docker Image](./def-file-container.md)
 - Not finished [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
 - [Build a Sandbox and Convert to a Container](./sandbox-and-sif.md)
-  - Will use `fakeroot`, `writable`, `bind`
 - Not done [Use of multiple %runscript and what it means]()
 - [Build a Container With Multiple Apps](./running-multiple-apps.md)
-  - Uses `%apprun`.
 - [Build a Container With Multiple Python Apps](./multiple-python-apps.md)
 - [Use of virtual environments inside of a container](./virtual-env.md)
-  - This also uses `bind`.
 - [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
 
 ## Other Topics Coming
