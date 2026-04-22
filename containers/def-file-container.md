@@ -71,7 +71,7 @@ Issue the command, which builds the container
 based on the above defintion file:
 
 ```
-# Build the .sif image from the definition file
+# Build the container (.sif) image from the definition file
 apptainer build --fakeroot moo-me.sif moo-me.def
 ```
 

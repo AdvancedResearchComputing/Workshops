@@ -39,7 +39,9 @@ Notes:
 5. Lastly, under `%runscript` we give not just one command,
    but several (three of the commands are `echo`s).
    These are executed in the order that they appear.
-6. Note we can also run python in a "script" (`%runscript`) section.
+   This is a pipeline.
+6. We can also run python in a "script" (`%runscript`) section.
+7. The `"$@"` illustrates how a container can take in inputs.
 
 ```
 Bootstrap: docker
@@ -88,7 +90,7 @@ prescribe the build:
 
 ```
 # Build the .sif image from the definition file
-apptainer build --fakeroot moo-me.sif moo-me.def
+apptainer   build   --fakeroot   pipeline.sif    multi_runscript.def
 ```
 
 ### Three Ways to Run Within an Apptainer Image (*.sif File)
@@ -107,14 +109,36 @@ You can run a container in one of three ways:
 On the compute node, run the predefined command within the image:
 
 ```
-apptainer run moo-me.sif
+apptainer run  pipeline.sif    "I'm hoping this works ..."
 ```
 or
 
 ```
-./moo-me.sif
+./pipeline.sif   "I'm hoping this works ..."
 ```
 
+The output should be:
+
+```
+ ______________________________
+< Hello from inside Apptainer! >
+ ------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+ 
+The inputted argument(s) are  I'm hoping this works ...
+ 
+  The inputted string :  I'm hoping this works ...
+  The tokens in the inputted string are:
+I'm
+hoping
+this
+works
+...
+```
 
 #### Method 2:  Run the Image With Tailored Input
 
