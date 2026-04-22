@@ -28,17 +28,17 @@ We have two main goals:
 1. Convey some of the dominant ideas about containers.
 2. Provide simple examples that illustrate these ideas via:
    1. building containers
-   2. using containers
+   2. using/executing containers.
 
 So, for example, what is NOT covered here are more sophisticated
 container examples.
-These are covered in the links within 
+These are covered in the links in Section "VT-Generated Resources" below.
 
 ## Outline/Examples
 
 - [Concepts](./concepts.md)
 - [Preliminaries](./preliminaries.md)
-- [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
+- [Build Container From a Definition File Using a Docker Image](./def-file-container.md)
 - Not finished [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
 - [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
   - Will use `fakeroot`, `writable`, `bind`
@@ -54,6 +54,8 @@ These are covered in the links within
 
 - How to build a VE within a sandbox.
 - How to build from Apptainer library.
+- How to construct a container where each app requires a
+  different environment.
 
 ## Warning About Web Pages on Containers
 
@@ -111,6 +113,7 @@ Apptainer Resources
 - [Apptainer Root Page](https://apptainer.org/docs/user/main/introduction.html) 
 - [Apptainer:  Build an Apptainer from Docker Image](https://apptainer.org/docs/user/main/build_a_container.html#:~:text=sif%20lolcow.def-,Building%20containers%20from%20Dockerfile%20with%20BuildKit,PATH%20CMD%20date%20%7C%20cowsay%20%7C%20lolcat)
 - [Apptainer and Singularity](https://apptainer.org/docs/user/main/singularity_compatibility.html)
+- [Apptainer and Apps](https://apptainer.org/docs/user/main/definition_files.html#scif-apps)
 
 ----------------------------------------------
 Other Resources
