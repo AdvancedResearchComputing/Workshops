@@ -19,25 +19,53 @@
 Preconditions:  You are on a compute node.
 
 
-#### Construct the Definition file:  moo-me.def.
+#### Construct the Definition file:  multi_runscript.def.
 
 Create this file in a clean directory on an ARC cluster.
-Call it "moo-me.def."
+Call it _multi_runscript.def_.
 
+Notes:
+
+1. We bootstrap from continuumio/miniconda3, instead
+   of ubuntu:22.04, because we now have python code in the
+   container.
+2. We copy the _local_ file _tokenize.py_ into the container,
+   keeping the same name.
+3. In addition to updating apptainer get and installing
+   cowsay as before, we now also update conda and change
+   the version of python to 3.13 (I think the default
+   version is 3.10).
+4. We export an updated path for the sake of cowsay.
+5. Lastly, under `%runscript` we give not just one command,
+   but several (three of the commands are `echo`s).
+   These are executed in the order that they appear.
+6. Note we can also run python in a "script" (`%runscript`) section.
 
 ```
 Bootstrap: docker
-From: ubuntu:22.04
+# From: ubuntu:22.04
+From: continuumio/miniconda3
+
+%files
+    # Copy files into container.
+    tokenize.py   tokenize.py
 
 %post
     apt-get update
     apt-get install -y cowsay
+    conda update -y conda
+    conda install -y python=3.13
 
 %environment
     export PATH=$PATH:/usr/games
 
 %runscript
     cowsay "Hello from inside Apptainer!"
+    echo " "
+    echo "The inputted argument(s) are  $@"
+    echo " "
+    python tokenize.py    "$@"
+
 ```
 
 Key Components of a `.def` File:
@@ -52,19 +80,11 @@ Key Components of a `.def` File:
 
 
 
-#### Load Module on the Compute Node
-
-```
-module reset
-```
-
-```
-module load apptainer
-```
 
 #### Build the Apptainer *.sif On a Compute Node
 
-Issue the command:
+Issue the command, which uses the above *.def file to
+prescribe the build:
 
 ```
 # Build the .sif image from the definition file

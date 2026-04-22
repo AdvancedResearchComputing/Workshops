@@ -65,19 +65,10 @@ Key Components of a `.def` File:
 
 
 
-#### Load Module on the Compute Node
-
-```
-module reset
-```
-
-```
-module load apptainer
-```
-
 #### Build the Apptainer *.sif On a Compute Node
 
-Issue the command:
+Issue the command, which builds the container 
+based on the above defintion file:
 
 ```
 # Build the .sif image from the definition file
