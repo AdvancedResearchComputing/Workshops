@@ -37,7 +37,7 @@ Both use `--constraint` but the value assigned to constraint is
 different.
 
 You can see here for more details:
-[working with constraints](),
+[working with constraints](https://docs.arc.vt.edu/usage/job_scheduling/01_slurm_overview.html#slurm-constraints),
 but the bottom line is this.
 The `normal_q` partition on each of the Owl and Tinkercliffs clusters
 has more than one type of compute node.
