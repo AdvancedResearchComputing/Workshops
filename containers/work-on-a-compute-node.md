@@ -28,11 +28,45 @@ to build a container on a head node.
 
 #### Request Resources On A Compute Node:
 
+In this sections, there are two cases:
+- working on Owl cluster.
+- working on TC cluster.
+
+The issue that varies is the use of `--constraint`.
+Both use `--constraint` but the value assigned to constraint is
+different.
+
+You can see here for more details:
+[working with constraints](),
+but the bottom line is this.
+The `normal_q` partition on each of the Owl and Tinkercliffs clusters
+has more than one type of compute node.
+`--constraint` enables you to specify which type of 
+compute node architecture you run on.
+If you do not care which one you run on, then you do
+not have to specify the `--constraint` switch.
+In many cases you do not have to care.
+But in this case---in building containers---you do have to 
+care
+(actually, there are cases when you do and do not have to 
+care when building containers, but instead of getting into all
+of that nuance, just "care" by using `--constraint` and you
+can avoid possibly very subtle, hard to find errors).
+
+The constraint values specified below for each of Owl and TC
+are designed to give you access to the greatest pool of 
+compute nodes.
+
+Also, the difference between Option 1 and Option 2 is `interact` 
+versus `alloc`.
+ARC prefers you to use `interact`.
+
+##### Working on Owl Cluster
 
 Option 1 (Preferred)
 
 ```
-interact --partition=normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+interact --partition=normal_q  --constraint=avx512 --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
 ```
 
 << Do Work >>
@@ -47,8 +81,32 @@ Option 2 (Not Preferred---Because when done, **YOU**
 have to remember to relinquish resources with **scancel** command.)
 
 ```
-salloc --partition=normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+salloc --partition=normal_q  --constraint=avx512 --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
 ```
+
+##### Working on Tinkercliffs Cluster
+
+Option 1 (Preferred)
+
+```
+interact --partition=normal_q  --constraint=amd --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+```
+
+<< Do Work >>
+
+When done with work, exit off the compute node.
+
+```
+exit
+```
+
+Option 2 (Not Preferred---Because when done, **YOU** 
+have to remember to relinquish resources with **scancel** command.)
+
+```
+salloc --partition=normal_q  --constraint=amd --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+```
+
 
 << Do Work >> 
 
