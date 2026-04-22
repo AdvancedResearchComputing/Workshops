@@ -44,18 +44,23 @@
   that houses
 applications and
 all supporting software needed to run those applications.
-- Often a container will have one major application,
-but could have multiple/many applications.
+- Frequently, containers are used to provide:
+    - One major application.
+    - A collection of distinct stand-alone, but related, applications.
+    - A series of commands/applications that essentially form a pipeline.
+    - An environment (think modules, virtual environments, etc.) with
+      no applications nor scripts.  In this case, codes are `bind`ed
+      (bound) to the container.
 - Because a container also houses all supporting
 software needed
-to run the application, including the **user space** of
+to run the application, including the **user space** related to
 an operating
 system (OS), a container is
 self-contained and stand-alone.
 - So a major feature of containers is that they can
-  reside
+  be used
 on computer systems that are completely unrelated to
-the environment within the container, and the applications
+the environment within the container, and the application(s)
 within the container will still run.
 - The default container construction process results in a
   read-only container, so it cannot be modified.
