@@ -22,10 +22,7 @@ or `apptainer run --app bar <container>`.
 
 ## Preconditions
 
-1. You are on a compute node.
-2. You have loaded the apptainer module:
-   1. `module reset`
-   2. `module load apptainer`.
+See the preconditions for this work [here](./preliminaries.md).
 
 
 
