@@ -48,6 +48,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - [Build a Container With Multiple Python Apps](./multiple-python-apps.md)
 - [Use of Virtual Environments Inside a Container](./virtual-env.md)
 - [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
+- [Useful Commands](./useful-commands.md)
 
 ## Other Topics Coming
 
