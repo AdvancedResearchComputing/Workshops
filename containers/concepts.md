@@ -1,14 +1,40 @@
 # Container Concepts (Informal)
 
+##### Navigate
+
+[Back to Main Page](./main-containers.md)
+
 
 ## Motivating Example
 
 
 ![Conventional Situation](./figures/problem-setup-1.png)
 
+-------------------------------------------
+
+-------------------------------------------
+
+-------------------------------------------
+
+
 ![Container](./figures/problem-setup-2.png)
 
+-------------------------------------------
+
+-------------------------------------------
+
+-------------------------------------------
+
+
 ![Revised Conventional Situation](./figures/problem-setup-3.png)
+
+-------------------------------------------
+
+-------------------------------------------
+
+-------------------------------------------
+
+
 
 ## Container Overview
 
