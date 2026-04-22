@@ -72,13 +72,6 @@ Option 1 (Preferred)
 interact --partition=normal_q  --constraint=avx512 --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
 ```
 
-<< Do Work >>
-
-When done with work, exit off the compute node.
-
-```
-exit
-```
 
 Option 2 (Not Preferred---Because when done, **YOU** 
 have to remember to relinquish resources with **scancel** command.)
@@ -95,13 +88,6 @@ Option 1 (Preferred)
 interact --partition=normal_q  --constraint=amd --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
 ```
 
-<< Do Work >>
-
-When done with work, exit off the compute node.
-
-```
-exit
-```
 
 Option 2 (Not Preferred---Because when done, **YOU** 
 have to remember to relinquish resources with **scancel** command.)
@@ -118,9 +104,9 @@ Then when done with work:
 1. exit
    1. (to get off of the compute node).
 2. squeue -u $USER
-   1. (to get the PID of the salloc job).
+   1. (to get the PID of the `salloc` job); this is why `interact` is preferred.
 3. scancel PID
-   1. (to give back the resources that you have been granted by slurm that you used to do your work).
+   1. (for `salloc` job, to give back the resources that you have been granted by slurm that you used to do your work).
 
 
 #### Load Module on the Compute Node
