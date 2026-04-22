@@ -45,6 +45,7 @@ These are covered in the links within
 - Not done [Use of multiple %runscript and what it means]()
 - [Build a Container With Multiple Apps](./running-multiple-apps.md)
   - Uses `%apprun`.
+- [Build a Container With Multiple Python Apps](./multiple-python-apps.md)
 - [Use of virtual environments inside of a container](./virtual-env.md)
   - This also uses `bind`.
 - [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
@@ -85,6 +86,9 @@ One perspective is that Yemi's pages are more complex, with realworld examples.
 In contrast, this workshop is designed to introduce major issues (features, commands, approaches)
 and working examples that can be extended.
 
+Thanks to Ben Sandbrook for reviewing this workshop and making improvements
+to it.
+
 So all of these resources should be viewed as complementary.
 
 
@@ -94,7 +98,6 @@ So all of these resources should be viewed as complementary.
 ----------------------------------------------
 VT-Generated Resources
 ----------------------------------------------
-
 
 
 - [VT ARC Docs page](https://docs.arc.vt.edu/software/apptainer.html#singularity)
@@ -112,6 +115,11 @@ Apptainer Resources
 ----------------------------------------------
 Other Resources
 ----------------------------------------------
+
+Recall comment about how a cluster is set up can make a (big)
+difference in the steps required to build a container.
+So some/a lot of this material for constructing containers
+is not like googling "Python How to convert a list to a string".
 
 
 - [Apptainer and Additional Applications](https://collab.dvb.bayern/spaces/UniARZHPCKB/pages/1014857861/Container+with+Apptainer)
