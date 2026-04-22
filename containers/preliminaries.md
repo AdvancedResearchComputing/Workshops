@@ -66,6 +66,9 @@ ARC prefers you to use `interact`.
 
 ##### Working on Owl Cluster
 
+In these options, you have to insert/override the values of `--account`
+with an account that you have.
+
 Option 1 (Preferred)
 
 ```
@@ -81,6 +84,9 @@ salloc --partition=normal_q  --constraint=avx512 --account=arcadm  --nodes=1  --
 ```
 
 ##### Working on Tinkercliffs Cluster
+
+In these options, you have to insert/override the values of `--account`
+with an account that you have.
 
 Option 1 (Preferred)
 
