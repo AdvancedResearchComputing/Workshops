@@ -37,7 +37,7 @@ These are covered in the links within
 ## Outline/Examples
 
 - [Concepts](./concepts.md)
-- [Preliminaries](./work-on-a-compute-node.md)
+- [Preliminaries](./preliminaries.md)
 - [Build Container From a Definition File Using a Docker Image](./build-container-from-def-file.md)
 - Not finished [Build Container From the Apptainer Library](./build-from-apptainer-library.md)
 - [Build a Sandbox and Convert to an SIF](./sandbox-and-sif.md)
