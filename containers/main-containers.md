@@ -119,6 +119,7 @@ Other Resources
 - [Apptainer and virtual Environments, 2](https://info.gwdg.de/news/using-apptainer-containers-to-manage-your-python-environments/)
 - [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 - [Gentle Intro](https://medium.com/@alex-ignatov/gentle-introduction-to-apptainer-90ec65ce01b3)
+- [Good overview](https://virgo-docs.hpc.gsi.de/blog/posts/2023-11-29-apptainer-containers/index.html)
 
 
 
