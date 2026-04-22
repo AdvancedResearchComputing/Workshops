@@ -1,6 +1,6 @@
 # Containers on ARC Clusters
 
-# ---- IN PROGRESS ----
+
 
 ## ARC Resources and Mechanisms for Assistance
 
