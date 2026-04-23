@@ -44,7 +44,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 - [Build Container From a Definition File Using a Docker Image](./def-file-container.md)
 - [Build Container With Multiple `%runscript`s](./multiple-runscripts.md)
 - [Build a Sandbox and Convert to a Container](./sandbox-and-sif.md)
-- [Build a Container With Multiple Apps](./running-multiple-apps.md)
+- [Build a Container With Multiple Apps](./multiple-apps.md)
 - [Build a Container With Multiple Python Apps](./multiple-python-apps.md)
 - [Use of Virtual Environments Inside a Container](./virtual-env.md)
 - [Run Apptainer Using Sbatch Slurm Script](./slurm-jobs.md)
