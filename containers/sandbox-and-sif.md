@@ -92,23 +92,6 @@ the sandbox.
 apptainer build   my_py310_container.sif    my_sandbox/
 ```
 
-#### Run a Python Code
-
-We have the file _main.02.py_ in _/scratch/ckuhlman_ from a previous lesson.
-This code just adds _c = 2 + 3 = 5_ and prints the result to screen.
-
-```
-apptainer exec --bind /scratch/ckuhlman my_py310_container.sif python3 /scratch/ckuhlman/main.02.py
-```
-
-Note that if we leave off the `bind` command and instead use
-
-```
-apptainer exec my_py310_container.sif python3 /scratch/ckuhlman/main.02.py
-```
-
-then an error will result because the container cannot see the _/scratch/ckuhlman_ directory.
-
 
 
 #### Finished
