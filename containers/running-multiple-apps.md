@@ -5,7 +5,12 @@
 
 [Back to Main Page](./main-containers.md)
 
+## Summary of this Lesson
 
+1. Illustrate how to build a single container
+   that houses multiple independent codes
+   that can be executed independently.
+    - Using `%apprun`
 
 ## `%apprun` versus `%runscript`
 

@@ -5,7 +5,15 @@
 
 [Back to Main Page](./main-containers.md)
 
+## Summary of this Lesson
 
+1. All examples so far have run fast and so we have
+   run interactive jobs on compute nodes.
+2. Generally, you do not want to run codes in containers
+   via interactive jobs.
+   You want to use **batch jobs**.
+3. Illustrate how to incorporate a container 
+   into an sbatch slurm script and run it.
 
 ## Sbatch Slurm Script
 
@@ -30,6 +38,7 @@ For definiteness below, call this file _sbatch.container.slurm_.
 ```
 #!/bin/bash
 #SBATCH --job-name=apptainer_job
+## You need your own account.
 #SBATCH --account=arcadm
 #SBATCH --partition=normal_q
 #SBATCH --output=result_%j.out

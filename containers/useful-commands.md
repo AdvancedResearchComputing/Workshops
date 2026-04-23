@@ -8,6 +8,11 @@ which are also useful.
 
 [Back to Main Page](./main-containers.md)
 
+## Summary of this Lesson
+
+1. We list here generic commands that can be used with
+   all/most containers.
+2. The list is small now, but we intend it to grow.
 
 
 ###### To see the directory structure within a container

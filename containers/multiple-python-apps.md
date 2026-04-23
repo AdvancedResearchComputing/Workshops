@@ -5,7 +5,15 @@
 
 [Back to Main Page](./main-containers.md)
 
+## Summary of this Lesson
 
+1. Motivate the usefulness of containers with
+   multiple individual stand-alone apps.
+2. Illustrate how to build a single container
+   that houses multiple independent codes
+   that can be executed independently.
+    - A more realistic scenario than previous example.
+    - Using `%apprun`
 
 ## `%apprun` versus `%runscript`
 
