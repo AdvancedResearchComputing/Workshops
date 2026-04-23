@@ -66,7 +66,13 @@ We are finished your container work, so you can:
 > This is a waste of resources for you and for all users.
 
 
-#### `main.02.py` Python Code
+#### Python Codes Used in this Lesson
+
+The lesson is more revealing if 
+you put these codes in your
+`/scratch/<user_name>` directory, or other appropriate directory.
+
+##### `main.02.py` Python Code
 
 
 ```
@@ -74,4 +80,17 @@ a=2
 b=3
 c=a+b
 print("  c : ",c)
+```
+
+##### `main.03.py` Python Code
+
+```
+val_a = (int)(sys.argv[1])
+val_b = (int)(sys.argv[2])
+output_file = (str)(sys.argv[3])
+
+c=val_a+val_b
+fh_out = open(output_file,"w")
+fh_out.write("  c = " + str(c) + "\n")
+fh_out.close()
 ```
