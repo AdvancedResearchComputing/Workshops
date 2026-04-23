@@ -34,9 +34,19 @@ It is handy because it resides in a location that is not on
 the path of this container.
 The code itself is below.
 
+This is the invocation:
+
 ```
 apptainer exec --bind /scratch/ckuhlman my_py310_container.sif python3 /scratch/ckuhlman/main.02.py
 ```
+
+... and these are the outputs:
+
+```
+  c :  5
+```
+
+
 
 Note that if we leave off the `bind` command and instead use
 
@@ -46,7 +56,29 @@ apptainer exec my_py310_container.sif python3 /scratch/ckuhlman/main.02.py
 
 then an error will result because the container cannot see the _/scratch/ckuhlman_ directory.
 
+An example where a user enters input on the command line invocation
+(CLI) is given next.
+In this example, a user enters two integers and an output file
+where the sum will be written.
+The _main.03.py_ code is given at the end of this page.
 
+The illustrative invocation is:
+
+```
+apptainer exec --bind /scratch/ckuhlman my_py310_container.sif python3 /scratch/ckuhlman/main.03.py  7   11  results.02.out
+```
+
+... and the output shown via:
+
+```
+cat results.02.out
+```
+
+... which should contain:
+
+```
+  c = 18
+```
 
 #### Finished
 
@@ -85,6 +117,8 @@ print("  c : ",c)
 ##### `main.03.py` Python Code
 
 ```
+import sys
+
 val_a = (int)(sys.argv[1])
 val_b = (int)(sys.argv[2])
 output_file = (str)(sys.argv[3])

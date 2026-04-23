@@ -54,6 +54,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 ## Other Topics Coming
 
 - How to build a VE within a sandbox.
+- How to include code in a sandbox.
 - How to build from Apptainer library (started).
 - How to construct a container where each app requires a
   different environment.
