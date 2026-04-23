@@ -98,9 +98,14 @@ that is different from your host machine.
 
 
 Example:  You can create a container on a Linux OS machine
-and move it to a Windows machine, and the applications
-within the container will run on the Windows machine inside
-the container.
+and move it to another Linux OS (including different flavor of
+Linux).
+ - Running apptainer on Windows does not work natively.
+   The user would need to install WSL2 or a Linux VM to get an environment that could run apptainer.
+ - Similarly for Macos, you need a Linux VM.
+ - These requirements for Windows and Macos are because
+   Apptainer requires a Linux kernel.
+
 
 Since a container houses a complete environment,
 a container file can be huge:  GBs is common.
@@ -137,7 +142,7 @@ Two of industry and academic defacto standard ways to construct containers:
 Docker requires a person to have root access for its use on a target computer (system).
 For cluster use, one does not have root privileges
 because there are many users and hence security issues that preclude root privileges.
-Hence, Singlularity was born.
+Hence, Singularity was born.
 Singularity is now **Apptainer**.  (Is it?  No.)
 
 There are many ways to build Apptainers.
