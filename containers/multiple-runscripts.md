@@ -10,7 +10,7 @@
 1. This lesson starts with the definition file
    from the previous example and simply adds more `%runscript`s
    to it.
-2. This demonstrates that a pipeline of commands can 
+2. This demonstrates that a _**pipeline**_ of commands can 
    reside in one container.
 
 ## Preconditions
