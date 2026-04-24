@@ -234,5 +234,5 @@ But there are other ways:  [Bootstrap Agents](https://apptainer.org/docs/user/ma
 
 [previous lesson:  main](./main-containers.md)
 
-[next lesson:  definition file container](./preliminaries.md)
+[next lesson:  preliminaries](./preliminaries.md)
 

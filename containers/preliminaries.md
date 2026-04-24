@@ -28,13 +28,15 @@ to build a container on a head node.
 
 #### Request Resources On A Compute Node:
 
-In this sections, there are two cases:
+In this sections, there are three cases:
 - working on Owl cluster.
 - working on TC cluster.
+- working on Falcon cluster.
 
-The issue that varies is the use of `--constraint`.
+The issue that varies for Owl and TC is the use of `--constraint`.
 Both use `--constraint` but the value assigned to constraint is
 different.
+the Falcon cluster does not use `--constrait`.
 
 You can see here for more details:
 [working with constraints](https://docs.arc.vt.edu/usage/job_scheduling/01_slurm_overview.html#slurm-constraints),
@@ -60,9 +62,29 @@ compute nodes.
 Currently, Falcon only has homogeneous partitions, so no `--constraint` is
 needed.
 
+> [!NOTE]
+> Best practice is to always use `--constraint` with `normal_q`
+> on TC and Owl.  While for many build processes `--constraint` 
+> is not expressly needed, using `--constraint` with
+> `normal_q` does no harm.
+> And, in the cases where it is needed, like when using
+> **sandboxes**, then you are automatically covered.
+
 Also, the difference between Option 1 and Option 2 is `interact` 
 versus `alloc`.
-ARC prefers you to use `interact`.
+ARC prefers you to use `interact` because `interact` automatically
+frees resources when you log off a compute node.
+
+> [!NOTE]
+> When you use `salloc`, _**YOU**_ have to remember to release those
+> resources using `scancel`---for if you do not, then those
+> resources sit idle and no one
+> else can use them until your reservation expires.
+
+> [!NOTE]
+> Resource wastage because of idle resources is one of the 
+> biggest sources of waste on the ARC clusters.
+
 
 ##### Working on Owl Cluster
 
@@ -102,6 +124,24 @@ have to remember to relinquish resources with **scancel** command.)
 salloc --partition=normal_q  --constraint=amd --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
 ```
 
+##### Working on Falcon Cluster
+
+In these options, you have to insert/override the values of `--account`
+with an account that you have.
+
+Option 1 (Preferred)
+
+```
+interact --partition=l40s_normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+```
+
+
+Option 2 (Not Preferred---Because when done, **YOU** 
+have to remember to relinquish resources with **scancel** command.)
+
+```
+salloc --partition=l40s_normal_q   --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+```
 
 << Do Work >> 
 
@@ -138,6 +178,8 @@ We are finished your container work, so you can:
 1. exit (off the compute node).
 2. scancel (if you use the `salloc` command; the `interact`
    command will release compute resources automatically).
+
+We repeat the above notes:
 
 
 > [!NOTE]
