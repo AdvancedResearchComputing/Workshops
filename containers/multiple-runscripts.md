@@ -210,10 +210,10 @@ Apptainer> cowsay "hi"
                 ||     ||
 ```
 
-Now enter:
+Now enter the python tokenize.py command below (we are still inside the container):
 
 ```
-python tokenize.py  "Man, it sure is dark in this container."
+Apptainer> python tokenize.py  "Man, it sure is dark in this container."
 ```
 ... and the output will be:
 
@@ -232,6 +232,8 @@ container.
 
 
 when finished, type `exit` to exit the container.
+The command prompt should go back to your normal 
+command prompt based on your shell.
 
 ##### Finished
 
@@ -247,6 +249,25 @@ We are finished, so you can
 > [!NOTE]
 > This is a waste of resources for you and for all users.
 
+
+
+#### Source Code Files
+
+File _tokenize.py_
+
+```
+import sys
+
+my_string=sys.argv[1]
+tokens = my_string.strip().split()
+num_tokens = len(tokens)
+
+print("  The inputted string : ",my_string)
+print("  The tokens in the inputted string are:")
+
+for itime in range(0, num_tokens):
+    print(tokens[itime])
+```
 
 ##### Navigate
 
