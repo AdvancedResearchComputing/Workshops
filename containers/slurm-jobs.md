@@ -29,9 +29,27 @@ my_apps.sif and python.ve.container.03.sif, you need this file:
 `/scratch/ckuhlman/main.02.py`
 
 All three of these files were built in previous lessons, so they should
-be available.
+be available (_main.02.py_ is given at the end of this file).
 You will have to change the paths to them in accordance with where
 they reside for you.
+
+So specifically in the sbatch slurm script below:
+
+1. There is a path variable _dir_my_apps_.
+2. The location of the container _my_apps.sif_, which 
+   is the path you need to assign to this variable, is wherever you
+   executed the steps in this lesson:  [multiple apps](./multiple-apps.md).
+3. There is a path variable _dir_my_ve.
+4. The location of the container _python.ve.container.03.sif_,
+   which is the path you need to assign to this variable,
+   is wherever you executed the steps in this lesson:
+   [virtual environments](./virtual-env.md).
+5. Alter the `bind` path in two places, which is currently specified as 
+   `/scratch/ckuhlman`, to wherever you put the file `main.02.py`.
+6. Once you set the two variables (i.e., the paths that are the
+   values of these variables) and you have put `main.02.py` in
+   an appropriate directory, you are ready to submit the
+   sbatch slurm script.
 
 For definiteness below, call this file _sbatch.container.slurm_.
 
@@ -79,12 +97,16 @@ echo " (this comes from the lesson on building containers with apps.)"
 apptainer run --app foo ${dir_my_apps}/my_apps.sif
 
 echo " " 
+echo " ================================== "
+echo " " 
 echo " run app bar within container my_apps."
 echo " (this comes from the lesson on building containers with apps.)"
 apptainer run --app bar ${dir_my_apps}/my_apps.sif
 
 
-echo " "
+echo " " 
+echo " ================================== "
+echo " " 
 echo " run an app that is outside of a container, using bind"
 echo " where the container has a virtual environment inside of it."
 echo " (this comes from the lesson on building containers with virtual environments.)"
@@ -161,10 +183,14 @@ Running App Foo
                 ||----w |
                 ||     ||
 
+==================================
+
  run app bar within container my_apps.
  (this comes from the lesson on building containers with apps.)
 Running App Bar
 72
+
+==================================
 
  run an app that is outside of a container, using bind
  where the container has a virtual environment inside of it.
@@ -183,6 +209,18 @@ Note that about all of the information will be different for your job.
       - Type `ls | wc -l` and the number you get should be the
         same as the second output above.
 - The third code (and output) will always give you a five. 
+
+
+#### Files
+
+File _main.02.py_ is as follows:
+
+```
+a=2
+b=3
+c=a+b
+print("  c : ",c)
+```
 
 
 ##### Navigate

@@ -41,7 +41,8 @@ These are covered in the links in Section "VT-Generated Resources" below.
 
 - [Concepts](./concepts.md)
 - [Preliminaries](./preliminaries.md)
-- [Build Container From a Definition File Using a Docker Image](./def-file-container.md)
+- [Build Minimal Container From a Definition File Using a Docker Image](./def-file-container.md)
+- [Run Container in Three Primary Ways](./ways-to-execute-containers.md)
 - [Build Container With Multiple `%runscript`s](./multiple-runscripts.md)
 - [Build a Sandbox and Convert to a Container](./sandbox-and-sif.md)
 - [Run Code Outside Container](./code-outside-container.md)

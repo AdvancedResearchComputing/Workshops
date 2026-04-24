@@ -75,7 +75,7 @@ From: ubuntu:22.04
 Create the bash script _run.build.sif_ as follows.
 
 ```
-apptainer   build   --fakeroot   my_apps.sif multi_app.def
+apptainer   build   --fakeroot   my_apps.sif     multi_app.def
 ```
 
 #### Run/Execution Scripts

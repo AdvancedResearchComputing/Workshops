@@ -1,4 +1,4 @@
-# Using Multiple `%runscript`s in a Container
+# Using Multiple `%runscript`s in a Container:  Creating a Pipeline
 
 ##### Navigate
 
@@ -12,6 +12,9 @@
    to it.
 2. This demonstrates that a _**pipeline**_ of commands can 
    reside in one container.
+3. This lesson combines the ideas from the last two lessons.  We:
+    - build a container.
+    - execute it.
 
 ## Preconditions
 

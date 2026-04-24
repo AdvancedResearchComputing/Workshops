@@ -49,10 +49,24 @@ Key Components of a `.def` File:
 - %app:  Defines the separate codes that you can run within
   a container.
 
+Note what is going on here in the definition file above.
+
+1. We are NOT starting with a blank sheet of paper.
+2. Instead, we are starting with a Docker image; specifically, a Docker image
+   that contains a basic ubuntu environment.
+3. This is important to appreciate:
+   - Docker images (containers) cannot be used on research computing
+     clusters because building and using Docker containers requires 
+     root access.
+   - No cluster administrator is going to give users root privileges.
+   - Nevertheless, Docker images are of paramount importance to the
+     building of Apptainer containers because Apptainer can use 
+     Docker images as a starting point in building the Apptainer 
+     container environment.
+   - So Docker is incredibly useful and important.
 
 
-
-#### Build the Apptainer *.sif On a Compute Node
+#### Build the Apptainer *.sif File (i.e., the Container) On a Compute Node
 
 Issue the command, which builds the container 
 based on the above defintion file.
