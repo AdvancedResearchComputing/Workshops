@@ -250,4 +250,13 @@ We are finished your container work, so you can:
 > This is a waste of resources for you and for all users.
 
 
+##### Navigate
+
+[Back to Main Page](./main-containers.md)
+
+[previous lesson:  container with multiple Python apps](./multiple-python-apps.md)
+
+[next lesson:  container and Slurm batch jobs](./slurm-jobs.md)
+
+
 

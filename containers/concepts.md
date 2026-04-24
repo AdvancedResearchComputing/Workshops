@@ -228,7 +228,11 @@ then automatically converted to an Apptainer instance.
 But there are other ways:  [Bootstrap Agents](https://apptainer.org/docs/user/main/definition_files.html#preferred-bootstrap-agents)
 
 
+##### Navigate
 
+[Back to Main Page](./main-containers.md)
 
+[previous lesson:  main](./main-containers.md)
 
+[next lesson:  definition file container](./preliminaries.md)
 

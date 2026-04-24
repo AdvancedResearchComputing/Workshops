@@ -183,3 +183,13 @@ Note that about all of the information will be different for your job.
       - Type `ls | wc -l` and the number you get should be the
         same as the second output above.
 - The third code (and output) will always give you a five. 
+
+
+##### Navigate
+
+[Back to Main Page](./main-containers.md)
+
+[previous lesson:  container and virtual environments](./virtual-env.md)
+
+[next lesson:  useful commands](./useful-commands.md)
+

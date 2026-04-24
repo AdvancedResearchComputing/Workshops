@@ -349,4 +349,12 @@ for ikey in d_letter_count:
     print("  letter :  ", ikey, "  count : ",d_letter_count[ikey])
 ```
 
+##### Navigate
+
+[Back to Main Page](./main-containers.md)
+
+[previous lesson:  container with multiple apps](./multiple-apps.md)
+
+[next lesson:  container and virtual environments](./virtual-env.md)
+
 

@@ -31,3 +31,9 @@ apptainer exec <container_name.sif> conda list
 ```
 
 
+##### Navigate
+
+[Back to Main Page](./main-containers.md)
+
+
+[previous lesson:  container and Slurm batch jobs](./slurm-jobs.md)

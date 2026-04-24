@@ -118,6 +118,14 @@ files in your home directory.
 Note that you can use `exec` as we did in an earlier lesson
 to override the operation for the application bar
 
+##### Navigate
+
+[Back to Main Page](./main-containers.md)
+
+[previous lesson:  code outside container](./code-outside-container.md)
+
+[next lesson:  container with multiple Python apps](./multiple-python-apps.md)
+
 
 
 
