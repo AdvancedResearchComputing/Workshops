@@ -21,7 +21,7 @@
 Do the preconditions in the [Preliminaries](./preliminaries.md) page.
 
 
-#### Using a Container built from a Sandbox
+## Using a Container built from a Sandbox
 
 We use the container that we built in the [previous lesson](./sandbox-and-sif.md).
 

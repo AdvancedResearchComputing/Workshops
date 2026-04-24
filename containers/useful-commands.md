@@ -22,6 +22,12 @@ apptainer exec <container_name.sif>  ls -l /
 ```
 
 
+###### For a container that houses a virtual environment
 
+To see the packages in a conda virtual environment
+
+```
+apptainer exec <container_name.sif> conda list
+```
 
 

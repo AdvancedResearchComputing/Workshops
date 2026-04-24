@@ -13,10 +13,14 @@
 2. This demonstrates that a pipeline of commands can 
    reside in one container.
 
+## Preconditions
+
+Do the preconditions in the [Preliminaries](./preliminaries.md) page.
+
+
 
 ## Build Container From a Definition File
 
-Preconditions:  You are on a compute node.
 
 
 #### Construct the Definition file:  multi_runscript.def.
