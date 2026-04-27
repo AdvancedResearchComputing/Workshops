@@ -56,6 +56,7 @@ These are covered in the links in Section "VT-Generated Resources" below.
 
 - How to build a VE within a sandbox.
 - How to include code in a sandbox.
+- How to deal with C, C++, Java.
 - How to build from Apptainer library (started).
 - How to construct a container where each app requires a
   different environment.
