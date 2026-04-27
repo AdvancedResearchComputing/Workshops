@@ -158,7 +158,8 @@ apptainer exec  pipeline.sif  cowsay   "Did you see the size of that moose?"
 
 Note that the `exec` command overrides _all_ of the pipeline:
 not only the `cowsay` command, but also the `echo` and `python` commands.
-So the pipeline, in this sense, is atomic.
+So the pipeline, in this sense, is atomic:  it is either all _in_,
+or it is all _out_.
 
 The output is:
 
