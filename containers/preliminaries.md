@@ -132,7 +132,7 @@ with an account that you have.
 Option 1 (Preferred)
 
 ```
-interact --partition=l40s_normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+interact --partition=l40s_normal_q  --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --gres=gpu:1  --time=2:00:00
 ```
 
 
@@ -140,7 +140,7 @@ Option 2 (Not Preferred---Because when done, **YOU**
 have to remember to relinquish resources with **scancel** command.)
 
 ```
-salloc --partition=l40s_normal_q   --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --time=2:00:00
+salloc --partition=l40s_normal_q   --account=arcadm  --nodes=1  --tasks-per-node=1  --cpus-per-task=1  --gres=gpu:1   --time=2:00:00
 ```
 
 << Do Work >> 
