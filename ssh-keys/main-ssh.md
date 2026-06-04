@@ -94,6 +94,86 @@ clusters.
 
 ![context](./figures/context-v01.png)
 
+Our goal is to streamline the process of establishing these "ssh connections"
+to a cluster, from your laptop.
+
+## Solution Approach
+
+1. We are going to set up some strings (or keys) using some tools.
+2. These keys will be generated on your laptop.
+3. You will copy one of the keys, the public key, to the destination
+   device on which you want to work; here, the ARC clusters.
+4. All of these keys will be placed in well-known directories on the
+   two machines so that the files containing the keys can be easily accessed.
+5. An ssh agent will do the work in using the keys to verify you, as a valid
+   user of ARC clusters, using a protocol that involves these keys.
+
+
+
+
+
+
+
+## Config
+
+
+[!NOTE]
+Backup (i.e., make a copy) of each file below before modifying it.
+This way, if you mess up, you can always go back to where
+you started.
+
+The `config` file, which on a Mac resides under `Users/my_user_name/.ssh`,
+can be altered to include the text below:
+
+```
+Host github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa
+# Add shortcut to log into tinkercliffs1
+Host tc1
+  HostName tinkercliffs1.arc.vt.edu
+  User vt_pid
+# Add shortcut to log into tinkercliffs2
+Host tc2
+  HostName tinkercliffs2.arc.vt.edu
+  User vt_pid
+# Add shortcut to log into owl1
+Host owl1
+  HostName owl1.arc.vt.edu
+  User vt_pid
+# Add shortcut to log into owl2
+Host owl2
+  HostName owl2.arc.vt.edu
+  User vt_pid
+# Add shortcut to log into owl3
+Host owl3
+  HostName owl3.arc.vt.edu
+  User vt_pid
+# Add shortcut to log into falcon1
+Host falcon1
+  HostName falcon1.arc.vt.edu
+  User vt_pid
+# Add shortcut to log into falcon2
+Host falcon2
+  HostName falcon2.arc.vt.edu
+  User vt_pid
+```
+
+Each set of three lines, starting with `Host` gives an alias for
+a longer string.
+
+For example, `falcon1` is textually the same as `vt_pid@falcon1.arc.vt.edu`
+in so far as ssh is concerned.
+
+Hence, `ssh user_name@falcon1.arc.vt.edu` can be replaced with `ssh falcon1`.
+And this is indeed how we use ssh to make connections to
+ARC clusters: in a terminal window, we type `ssh falcon1` or `ssh owl2` or
+`ssh tc1`, as needed.
+
+
+
+
+
 ## Outline
 
 - [Background, Motivation, and Learning Objectives](./bmlo.md)
