@@ -123,7 +123,9 @@ This way, if you mess up, you can always go back to where
 you started.
 
 The `config` file, which on a Mac resides under `Users/my_user_name/.ssh`,
-can be altered to include the text below:
+can be altered to include the text below.
+
+Note that one substitutes in their own VT PID for `vt_pid`.
 
 ```
 Host github.com
