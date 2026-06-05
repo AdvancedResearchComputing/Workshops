@@ -108,7 +108,7 @@ to a cluster, from your laptop.
 5. An ssh agent will do the work in using the keys to verify you, as a valid
    user of ARC clusters, using a protocol that involves these keys.
 
-
+![solution overview Task 1](./figures/solution-overview-v01.png)
 
 ## Task 1
 
