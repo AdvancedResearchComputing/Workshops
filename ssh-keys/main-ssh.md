@@ -42,8 +42,10 @@ It gets old/tedious really fast.
 
 There are two (possibly three) major tasks to complete.
 Two are one-time setups.  The third can be done periodically.
-Then you use the results to streamline logging into ARC clusters in quite significant ways.
-For example, you can log into, say, four different terminal screens in about 2-10 seconds.
+Then you use the results to streamline logging into ARC clusters
+in quite significant ways.
+It eliminates a LOT of hassle.
+
 
 ##### Task 1
 
@@ -162,7 +164,8 @@ These methods essentially work the same way.
         - id_rsa.pub (the public key)
 6. We are going to copy the contents of the public key.  One way to do that is:
     - Type `cat id_rsa`
-    - Highlight the resulting text and copy it.
+    - Highlight the resulting text and copy it
+      (using `control-c` or whatever on your machine).
 7. Log into the TC, Owl, or Falcon cluster, the old clunky way.
     - `ssh my_vt_pid@owl3.arc.vt.edu`
     - Go to directory .ssh by typing `cd ~/.ssh`.
@@ -270,10 +273,10 @@ you will periodically have to repeat Task 2.
 
 ## Acknowledgments
 
-Thanks to Nicole Braunscheidel for creating the ARC docs page referred to
-above.
+Thanks to Alberto Cano, Matt Brown, and the ARC staff for maintaining
+the ARC docs page referred to above.
 
-Thanks to Justin Krometis for constructing the video above.
+Thanks to Justin Krometis for constructing the video referred to above.
 
 ## References
 
