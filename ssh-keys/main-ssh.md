@@ -27,13 +27,14 @@ log in to the VT network---and ssh is the way to log in to the clusters.
 
 ssh includes the requirement for two-factor authentiation (2FA).  Hence, the two steps are:
 1. Use ssh to specify (i) your PID and (ii) the machine you wish to reach.
-   1. Example:  `ssh my_vt_pid@tinkercliffs2.arc.vt.edu`
-2. Complete 2FA, typically via the Duo app.
+    - Example:  `ssh my_vt_pid@tinkercliffs2.arc.vt.edu`
+2. Complete 2FA, typically via the Duo app on your cell phone.
 
 If one only had to do this one time, it would not be a big issue.
 But when working on ARC clusters, one may have more than a dozen terminals
 open at one time (each terminal login requires the two steps above).
-If you take your laptop home, and work from home in the morning/evening, and work at VT during the day,
+If you take your laptop home, and work from home in the morning/evening,
+and work at VT during the day,
 you may have multiple sets of logins (across all of your terminals each day).
 It gets old/tedious really fast.
 
@@ -49,10 +50,14 @@ It eliminates a LOT of hassle.
 
 ##### Task 1
 
-Using ssh keys and a setup procedure, you can set up your computer (e.g., laptop) so that
-logins to clusters are fast (essentially instantaneous) and easy (involves about six key strokes).
-From a practical perspective, this setup with ssh keys enables you to issue the `ssh` command and
-have it validate you, as a user, automatically, thereby bypassing the "manual" 2FA process.
+Using ssh keys and a setup procedure, you can set up your computer
+(e.g., laptop) so that
+logins to clusters are fast (essentially instantaneous) and easy
+(involves about six key strokes).
+From a practical perspective, this setup with ssh keys enables
+you to issue the `ssh` command and
+have it validate you, as a user, automatically, 
+thereby bypassing the "manual" 2FA process.
 
 ##### Task 2
 
@@ -80,19 +85,6 @@ If you use a password with ssh key generation, you will periodically
 have to start a new ssh agent to hold your password.
 
 
-## Other Resources
-
-### ARC Docs Page
-
-This page [https://docs.arc.vt.edu/usage/sshkeys.html](https://docs.arc.vt.edu/usage/sshkeys.html) contains details for constructing ssh keys
-on both Mac and Windows laptops.
-
-Here, we focus on Macs.
-
-### Video
-
-There are two excellent videos on ssh keys linked on the ARC Video page [https://docs.arc.vt.edu/usage/video.html#general-connections](https://docs.arc.vt.edu/usage/video.html#general-connections).
-
 
 ## Prerequisites
 
@@ -115,6 +107,8 @@ to a cluster, from your laptop.
 
 ## Solution Approach
 
+#### Task 1
+
 1. We are going to set up some strings (or keys) using some tools.
 2. These keys will be generated on your laptop.
 3. You will copy one of the keys, the public key, to the destination
@@ -123,10 +117,25 @@ to a cluster, from your laptop.
    two machines so that the files containing the keys can be easily accessed.
 5. ssh will do the work in using the keys to verify you, as a valid
    user of ARC clusters, using a protocol that involves these keys.
+6. Since your home area on the tinkercliffs, owl, and falcon clusters
+   is the same storage, you perform these operations once, and reap the
+   benefit on all three clusters.
 
-![solution overview Task 1](./figures/solution-overview-v01.png)
+#### Task 2
 
-## Task 1
+1. We will run an ssh agent to remember a password, if you choose to set it.
+
+#### Task 3
+
+1. We will add aliases to a config file to shorten the text to type,
+   for logging into a cluster login node.
+
+
+All three tasks are summarized here.
+
+![solution overview Task 1](./figures/solution-overview-v02.png)
+
+## Task 1:  Configuration
 
 We are going to use the RSA method for generating keys.
 Other methods include ed25519.
@@ -174,7 +183,17 @@ These methods essentially work the same way.
         - The above command appends your new public key to the end of file authorized_keys.
 8. Exit off of the cluster.
     - Types `exit`.
-9. Log into the cluster.
+
+The setup process is now done.
+You should now be ready to log into the cluster, to do work.
+The next step is repeated as often as you need to do
+work on the cluster, but there are still improvements
+in efficiency that can be reaped by combining this task
+with the other two.
+
+Regardless, we have:
+
+- Log into the cluster.
     - `ssh my_vt_pid@owl3.arc.vt.edu`
     - If you chose to specify a passphrase in the steps above, enter that now.
     - If you chose not to specify a passphrase in the steps above, you should be logged in to the cluster.
@@ -182,7 +201,7 @@ These methods essentially work the same way.
     - Note that there is no two factor authentication the "old way" (e.g., with Duo).
 
 
-## Task 2
+## Task 2:  Start ssh Agent
 
 This is only needed if you entered a passphrase when making the key pair
 (public key, private key) with the `ssh-keygen` command above.
@@ -200,7 +219,7 @@ For this duration of time, you will not have to enter the passphrase in
 Step 9 of Task 1 because the ssh agent will automatically supply it.
 
 
-## Task 3
+## Task 3:  Construct Aliases
 
 With Tasks 1 and 2 above, we have obviated the need for manually performing
 two factor authentication (2FA), thus streamlining login to the clusters.
@@ -271,6 +290,24 @@ using a terminal window.
 If you entered a passphrase as part of the `ssh-keygen` command sequence,
 you will periodically have to repeat Task 2.
 
+## References
+
+### ARC Docs Page
+
+This page [https://docs.arc.vt.edu/usage/sshkeys.html](https://docs.arc.vt.edu/usage/sshkeys.html) contains details for constructing ssh keys
+on both Mac and Windows laptops.
+
+Here, we focus on Macs.
+
+### Video
+
+There are two excellent videos on ssh keys linked on the ARC Video page [https://docs.arc.vt.edu/usage/video.html#general-connections](https://docs.arc.vt.edu/usage/video.html#general-connections).
+
+### Miscellaneous
+
+Descriptions of ssh keys and processes.
+[https://www.ssh.com/academy/ssh-keys](https://www.ssh.com/academy/ssh-keys)
+
 ## Acknowledgments
 
 Thanks to Alberto Cano, Matt Brown, and the ARC staff for maintaining
@@ -278,6 +315,29 @@ the ARC docs page referred to above.
 
 Thanks to Justin Krometis for constructing the video referred to above.
 
-## References
+
+## Appendix With ssh Login Details
+
+This is provided for people who want more detail as to what is going on
+with the login process.
+
+This information comes directly from [https://serverfault.com/questions/935666/ssh-authentication-sequence-and-key-files-explain](https://serverfault.com/questions/935666/ssh-authentication-sequence-and-key-files-explain).
+
+This is the best explanation I could find on the internet.
+There are probably others, but this is very good.
 
 
+#### Concepts
+
+![./figures/concepts](./figures/important-concepts.png)
+
+
+#### Configuration
+
+![./figures/configuration](./figures/configuration.png)
+
+
+
+#### Sequence of Events
+
+![./figures/sequence-diagram](./figures/sequence-diagram.png)
