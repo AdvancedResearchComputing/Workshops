@@ -342,10 +342,16 @@ The steps are:
          VSC IDE, type `Remote-SSH → Connect to Host…` and select
          that option from the dropdown list.
 2. Enter the compute node name directly (this is the output from the `hostname` command above) and hit "return."
-3. This is where you might encounter the _**Authentication Problem**_ referred to in the major section 3 below.  That section describes how to solve this
-problem.
-4. If all is going well,
-   you should see at lower right of the new VSCode window, something like
+3. VS Code will launch a new IDE instance.
+4. This is where you might encounter the _**Authentication Problem**_ referred to in the major section 3 below.
+   In the initial VS Code instance, you will see a message in very light gray---which is very difficult to 
+   see---that there is an authentication problem.
+   That section describes how to solve this problem.
+   A tip-off that there is a problem is that the new VS Code instance is trying to connect to the 
+   compute node named `hostname`, and in the lower left of this new window, in blue, it will just
+   keep "spinning."
+4. If all is going well, then in the new VS Code instance,
+   you should see at lower right something like
    "Downloading VS Code Server".  This is good.
 5. IF/When prompted, choose `Linux` as the remote platform.
 6. VS Code’s remote server now runs on the compute node instead of the login node.
@@ -453,6 +459,9 @@ The steps are:
 
 Now, you should be able to return to the Section above
 "_Using VS Code From Your Laptop to Run on a Compute Node_" to connect to the cluster compute node.
+When you go back to that section and those directions, (1) close the VS Code instance that was
+trying---unsuccessfully---to connect to the compute node and (2) start over at the beginning of
+those instructions.
 
 ## Acknowledgment
 
