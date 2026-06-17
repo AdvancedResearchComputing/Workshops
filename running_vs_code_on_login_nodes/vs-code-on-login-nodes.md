@@ -228,15 +228,108 @@ to the cluster login node will cease.
 ---------------------------------------
 
 
------------------------------------------------------
+### Navigating Directories
 
------------------------------------------------------
 
------------------------------------------------------
+1. Click on Explorer icon in left pane.
+2. Click on the blue box "Open..." or "Open Folder" hyperlink
+   in the middle of the IDE.
+3. Go to the top middle pop-up box and type the directory where you
+   want to go.
+   You can keep entering the path, or click your choice
+   of next subdirectory (the subdirectories pop up).
+   Files residing in that directory will appear on left.
+   (You might want to choose the highest-level directory that
+   you will access, as the directory chosen becomes the root
+   of the Explorer directory structure.)
+4. When done, click the blue box "OK."
+5. The navigation pane will show the directory content, like "explorer."
 
------------------------------------------------------
 
------------------------------------------------------
+### Creating a New Directory
+
+1. Start with the directions for "Navigating Directories" above.
+2. Either specify the entire path to the new directory,
+   or part of it.
+3. If you have specified only part of the path to the new 
+   directory, you can go to the immediate left in the IDE
+   and click directories from the Explorer view to reach the
+   directory below which you want to put the new directory.
+4. In the explorer pane, at the root directory of Explorer,
+   click the directory icon with the "+" on it.
+5. A new field will be shown in Explorer where you type the
+   name of the new directory.
+
+### Opening an Existing File
+
+1. In the main, center pane, click `Open ...`.
+2. This will open a pop-up at the top center and you can navigate
+   to a directory as they are shown down the left side.
+3. The explorer
+   is along the left (i.e., directories are along the left) and when you click on a file, its contents show in the main pane.
+4. Make changes to the file and save them.
+
+
+### Creating a New File
+
+Option 1
+
+1. Click on `Open` and navigate to the directory where
+   you want to place the new file by entering on the pop-up
+   in the center top of the screen. (See instructions above
+   for navigating directories.)
+2. Click `New File` and enter the name of the file.
+3. You will now be put inside a new file with the specified filename,
+   in the specified directory.
+ 
+Option 2
+
+1. Follow the instructions for "Navigating Directories" to
+   get to the directory where you want to create a new file.
+2. In the explorer pane, at the root directory of Explorer,
+   click the file icon with the "+" on it (hover over it for 
+   clarity).
+3. A new field will be shown in Explorer where you type the
+   name of the new file.   
+
+### Terminal pane within VS Code
+
+Terminal screens are useful for loading modules
+and
+navigating to files
+and directories, like virtual environments.
+
+
+To obtain a terminal screen:
+
+1. Click "Terminal" in the command bar.
+2. Click "New Terminal."
+3. The terminal pane will appear in the lower middle of the
+   VS Code IDE.
+4. You can now specify terminal commands.
+
+
+### Transfering Files To Cluster
+
+On a Mac.
+
+1. Open a Finder Window and navigate to the directory
+   containing the files that you want to move to the 
+   cluster.
+2. Have VS Code open on a compute node or login node.
+3. Use the procedures in "Navigating Directories" to 
+   move to the destination directory of the file
+   transfer on the ARC cluster.
+4. Simply highlight and move the file from Finder 
+   to the directory in the VS Code Explorer.
+
+On Windows
+
+Use the file Explorer rather than Finder in the directions
+above for a Mac.
+
+
+
 
 
 
