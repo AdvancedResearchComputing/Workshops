@@ -83,7 +83,8 @@ VSC on a compute node.
    your $HOME directory).
    2. VS Code
       1. Install VS Code (VSC) on your laptop.
-      2. Install the `Remote-ssh` plugin in your VSC app.
+      2. Install the `Remote-SSH` plugin in your VSC app.
+      3. NOTE:  you may already have VSC installed and the `Remote - SSH` plugin installed.
 2. Steps To Use for Every VS Code Session on Compute Node
    1. Request an interactive job on the ARC clusters.
       1. From a terminal window on your local machine, make an `ssh`
@@ -179,6 +180,17 @@ search for VSC online and download and install the app.
 One download site is [here](https://code.visualstudio.com/download).
 
 ###  Launch the VSC App and install the Remote - ssh Package
+
+You may already have the "Remote - SSH" package installed.
+If you are using VS Code on ARC cluster login nodes, then you have it installed.
+To determine whether you have it, start VS Code.
+Click on the Extensions icon in the left command bar of VS Code.
+In the pane to the right, you should see a subsection called "Installed," meaning
+this is a list of installed packages.
+If you see "Remote - SSH" in this section, then it is installed.
+
+These are the steps to install if you do not have the "Remote - SSH" package
+installed.
 
 1. Open VSC on your local machine.
 2. Go to the far left command bar and click the `Extensions` button.
