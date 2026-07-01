@@ -112,7 +112,8 @@ any compute cluster.
 
 ### Acknowledgment
 
-
+These notes were constructed largely from workshop materials
+initially prepared by Matt Brown and Sophia Lima.
 
 ---
 [Next: File systems ➡️](02_file_systems.md)
