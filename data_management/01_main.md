@@ -98,7 +98,7 @@ different storage devices.
 3. [umask](./04_umask.md)
 4. [File and directory ownership](./05_file_ownership.md)
 5. [Data recovery and LT storage](./06_data_recovery_and_long_term_storage.md)
-6. [Best practices](./07_best_practices)
+6. [Best practices](./07_best_practices.md)
 
 
 ### Prerequisites
