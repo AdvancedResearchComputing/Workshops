@@ -1,4 +1,4 @@
-## File Permissions
+## File and Directory Permissions
 
 ---
 
