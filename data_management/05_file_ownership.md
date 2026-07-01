@@ -254,5 +254,5 @@ slurm-generated output file---the *.out files.
 
 ---
 
-⬅️ [Previous: umask](04_umask.md) | [Next: Data recovery and long-term storage ➡️](06_data_recovery_and_long_term_storage.md)
+⬅️ [Previous: umask](04_umask.md) | [Next: Data recovery and long-term storage ➡️](06_data_recovery_long_term_storage.md)
 

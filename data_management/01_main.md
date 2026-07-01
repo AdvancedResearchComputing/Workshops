@@ -91,7 +91,7 @@ different storage devices.
 ## Detailed Topics
 
 1. [File systems](./02_file_systems.md)
-2. [File permissions](./03_file_permissions.md)
+2. [File and directory permissions](./03_file_permissions.md)
 3. [umask](./04_umask.md)
 4. [File and directory ownership](./05_file_ownership.md)
 5. [Data recovery and LT storage](06_data_recovery_and_long_term_storage.md)]

@@ -320,4 +320,4 @@ sbatch sbatch.three.nodes.slurm
 ```
 ---
 
-⬅️ [Previous: File permissions](03_file_permissions.md) | [Next: Job Arrays ➡️](05_file_ownership.md)
+⬅️ [Previous: File permissions](03_file_permissions.md) | [Next: File ownership ➡️](05_file_ownership.md)
