@@ -1,4 +1,8 @@
 
+---
+
+⬅️ [Previous: File and directory permissions](03_file_permissions.md) | [Next: File and directory ownership ➡️](05_file_ownership.md)
+
 
 ## umask
 
