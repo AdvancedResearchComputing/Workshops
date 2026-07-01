@@ -1,7 +1,7 @@
 
 ---
 
-⬅️ [Previous: File and directory ownership](05_file_ownership.md)
+⬅️ [Previous: File and directory ownership](05_file_ownership.md) | [Next: Best practices ➡️](07_best-practices.md)
 
 ## Data Recovery and Long-Term Storage
 
@@ -260,4 +260,4 @@ slurm-generated output file---the *.out files.
 
 ---
 
-⬅️ [Previous: File and directory ownership](05_file_ownership.md)
+⬅️ [Previous: File and directory ownership](05_file_ownership.md) | [Next: Best practices ➡️](07_best-practices.md)
