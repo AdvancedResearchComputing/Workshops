@@ -1,4 +1,9 @@
 
+---
+
+⬅️ [Previous: umask](04_umask.md) | [Next: Data recovery and long-term storage ➡️](06_data_recovery_long_term_storage.md)
+
+
 ## File and Directory Ownership
 
 

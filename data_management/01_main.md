@@ -1,5 +1,8 @@
 # Data Management
 
+---
+[Next: File systems ➡️](02_file_systems.md)
+
 ## Overview:  Background and Motivation
 
 ### File Systems
