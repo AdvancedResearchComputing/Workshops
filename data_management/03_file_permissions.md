@@ -3,6 +3,7 @@
 ## File Permissions
 
 
+
 1. You have control over who can access your files.
    - Access can mean any combination of:
      - see that the file exists.

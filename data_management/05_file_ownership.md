@@ -1,5 +1,14 @@
 
-## Job Arrays
+## File and Directory Ownership
+
+
+
+=====================
+
+OLD stuff
+
+=====================
+
 
 Job arrays in slurm enable multiple executions of a single code,
 with different input parameters---all in a single slurm job.
