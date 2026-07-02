@@ -46,15 +46,42 @@ criteria are important to you.
 #### Tools for Storage Usage
 
 1. quota
+   - ARC script (not shell command) to provide /home and /projects use.
+   - Shows your allocations for storage and how much of that storage that you have used.
+   - Shows your monthly job allocation and how much of that you have used.
 2. du
+   - “disk usage” 
+   - Typically used to display metadata (e.g., size of all files in a directory).
+   - Often used to identify “culprits”.
+   - Default units are KiB (units of 1024-byte blocks)
+   - Example:  du /home/ckuhlman/help-issues/
+      - “help-issues” could be a file or directory name.
+   - Example:  du
+      - Shows all subdirectories of current location.
 3. df
+   - “disk filesystem”
+   - Specifies how much storage has been used and is free on various file systems.
+   - Example:  df
+       - Shows all filesystems and their usage.
+       - You will see a lot of the names of the file systems that we’ve mentioned above.
+   
 
 
 #### Tools for Files and Directories
 
 1. stat
+   - Displays information about files and file systems.
+   - Example:  stat --file-system /projects
 2. ls
+   - List files, directories, and symlinks (symbolic links) in a directory.
+   - Example:  ls -lrt
+     - "long lists" the files, directories, and symlinks.
+     - We will use this a lot to see permissions, to help us change them.
 3. find
+   - Locates files (i.e., if files exist, then it will give their full paths).
+   - Example:  find .  -name “my_file.txt”
+     - Start in the current directory and look here and in subdirectories to find “my_file.txt”.
+   
 
 
 
