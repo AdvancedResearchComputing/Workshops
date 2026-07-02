@@ -4,6 +4,30 @@
 
 ⬅️ [Previous: Main](01_main.md) | [Next: File and directory permissions ➡️](03_file_permissions.md)
 
+#### Conceptual View of ARC Storage
+
+Graphic below shows schematically different storage devices
+(in green) and some important features.
+
+![conceptual view](./figures/file-system-basic.png)
+
+
+Illustration of how the Tinkercliffs (TC), Owl, and Falcon
+clusters share some storage devices (e.g. `/home` and `/projects`)
+but not others (e.g., `/scratch` and localscratch).
+
+![illustrative example](./figures/file-system-specific.png)
+
+#### Partial Summary of Storage Options on ARC Clusters
+
+|   Directory  |   File System  |  Size Limit   |  inode Limit   |   Permanence  | Accessibility  |  Qualitative Access Speed  |
+|   ----       |    ----------  |   ----------- |   ---------    |   --------    |  ---------     |   -----        |
+|    /home     | Qumulo         |    640 GB per user  |  1 M     |   permanent   |  Across all 3 clusters |  slow   |
+|   /projects  |  General Parallel File System (GPFS)  |  50 TB per PI  |   10 M  |  permanent |  Across all 3 clusters |  slow   |
+|  /scratch    |  VAST          |   "No limit"  |   "No limit"   |   90-day limit; then deleted | Individual, per cluster | fast | 
+| "localscratch"* |  NVMe drive or array | Generally smaller | NA  |  Only for life of job  |  Individual, per cluster  | faster  |
+
+\* The actual location is job dependent, under the /tmp directory.
 
 =====================
 
