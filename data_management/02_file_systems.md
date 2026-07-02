@@ -4,6 +4,9 @@
 
 ⬅️ [Previous: Main](01_main.md) | [Next: File and directory permissions ➡️](03_file_permissions.md)
 
+
+### File Systems Introduction 
+
 #### Conceptual View of ARC Storage
 
 Graphic below shows schematically different storage devices
@@ -25,9 +28,35 @@ but not others (e.g., `/scratch` and localscratch).
 |    /home     | Qumulo         |    640 GB per user  |  1 M     |   permanent   |  Across all 3 clusters |  slow   |
 |   /projects  |  General Parallel File System (GPFS)  |  50 TB per PI  |   10 M  |  permanent |  Across all 3 clusters |  slow   |
 |  /scratch    |  VAST          |   "No limit"  |   "No limit"   |   90-day limit; then deleted | Individual, per cluster | fast | 
-| "localscratch"* |  NVMe drive or array | Generally smaller | NA  |  Only for life of job  |  Individual, per cluster  | faster  |
+| "localscratch"*,$ |  NVMe drive or array | Generally smaller | NA  |  Only for life of job  |  Individual, per cluster  | faster  |
 
 \* The actual location is job dependent, under the /tmp directory.
+
+\$ NVMe (Non-Volatile Memory Express) is a high-performance storage protocol designed for solid state drives [that use flash memory] that uses the PCIe interface to provide high speed and low latency. It communicates directly with the CPU, etc.
+
+#### Ranking Storage Options on Different Criteria
+
+Different storage options have desirability based on what
+criteria are important to you.
+
+![storage-rankings](./figures/ranking-storage-options.png)
+
+### Tools for Exploring File Systems
+
+#### Tools for Storage Usage
+
+1. quota
+2. du
+3. df
+
+
+#### Tools for Files and Directories
+
+1. stat
+2. ls
+3. find
+
+
 
 =====================
 
