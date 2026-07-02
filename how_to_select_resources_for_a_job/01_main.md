@@ -6,12 +6,12 @@
 ## Topics
 
 1. Show a cononical sbatch slurm script so that the audience sees all of the
-   parameters to specify.
+   parameters to specify.  Provides context.
 2. Parameters that you can specify for a job
    - number nodes, cpus, num gpus, memory, etc.
 3. How these parameters vary across clusters
    - The ARC web pages:
-     - TC: [tc resources](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html)
+     - TC:  [tc resources](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html)
      - Owl:  [owl resources](https://docs.arc.vt.edu/resources/compute/01owl.html)
      - Falcon:  [falcon resources](https://docs.arc.vt.edu/resources/compute/02falcon.html)  
    - Examples
@@ -32,10 +32,10 @@
      - L40S (Falcon):  best for XXXXX.
      - H200 (TC):  best for XXXX.
      - B200 (Owl) [coming]:  best for XXXX.
-6. Attempting to minimize your job's wait time
+6. Attempting to minimize your job's wait time.
    - That is, the time from job submission until it begins to run.
-   - See the Grafana dashboards to see the most heavily used clusters/partitions.
-   - 
+   - See the Grafana dashboards to see the most heavily used clusters/partitions, and historical wait times.
+     - [time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
 7. Input/output (I/O) Speeds
    - If you have a lot of disk/storage access,
      read from and write to `/scratch`; much faster than `/projects`
@@ -53,12 +53,14 @@
          - Because after the job finishes, the localscratch memory disappears,
            so if you do not copy out your results files, they will be deleted.
 9.  Delays in obtaining a full node.  Can you go with fewer resources,
-   e.g., fewer CPUs?  Job may take longer, but it may start much sooner.
+    e.g., fewer CPUs?  Job may take longer, but it may start much sooner.
 10. User QoS
-   - Can run jobs up to 14 days with 
+   - There is a QoS table on each of the cluster's pages, given above.
+   - Can run jobs up to 14 days with "long" QoS.
    - If your group consistently does not use its monthly computing units budget,
-     you can increase your job priority by
-   - QoS pages in ARC docs:   
+     you can increase your job priority by using "short" QoS.
+      - But the billing rate is double the "normal" QoS, by design.
+      - But the maximum duration of a job is one day; for "normal" QoS, it is seven days, by design.  
 11. Choosing type of job:  interactive or batch
    - General guidelines
      - Interactive jobs 
@@ -93,11 +95,14 @@
 12. Caution about specifying whole nodes for jobs.
    - This can take time for slurm to achieve and provide to you.
    - Example alternative
-13. Post-job quick evaluation
-    1.  `seff <slurm job ID>`
-    2.  Will tell you what your utilization of CPU and memory are.
-    3.  If you are using GPUs, then:
-        1.  
+13. Post-job quick evaluation:  build your intuition about what resources you need
+   - Commands
+     - `seff <slurm job ID>`
+     - Will tell you what your utilization of CPU and memory are.
+     - If you are using GPUs, then:
+        - In your batch script, use the `nvidia-smi` command.
+        - An example is in the ARC docs:  [example batch script with nvidia-smi](https://docs.arc.vt.edu/resources/compute/02falcon.html)
+   - Example
 
 
 ## Learning Objectives
