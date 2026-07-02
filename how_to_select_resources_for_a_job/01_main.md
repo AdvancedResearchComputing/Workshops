@@ -95,7 +95,24 @@
 12. Caution about specifying whole nodes for jobs.
    - This can take time for slurm to achieve and provide to you.
    - Example alternative
-13. Post-job quick evaluation:  build your intuition about what resources you need
+14. If using GPUs in your job, use the grafana dashboards to ensure that your code is using the GPUs.
+   - These are a limited resources, so their efficient use if important to everyone.
+   - Procedure
+     - Go to a terminal for the cluster your jobs are on.
+     - Type `squeue`.
+     - Get the slurm job ID of the job of interest.  Call this `sjid`.
+     - On terminal type, `scontrol show job --details sjid`.
+       - Get the compute node IDs of the compute nodes that you are using.
+       - Get the GPU indexes of the GPUs you are using.
+     - You can also do:  on terminal type, `showjobusage sjid`.  Get the compute node IDs from the output.
+     - Go to the dashboards below (per cluster).
+        - Dashboards
+          - [TC dashboard](https://dashboard.arc.vt.edu/d/acfsdp9/arc-cluster-efficiency-tinkercliffs?orgId=1&from=now-12h&to=now&timezone=browser&var-datasource=prometheus-tc-oss&var-partition=$__all)
+          - [Owl dashboard](https://dashboard.arc.vt.edu/d/acgv4cq/arc-cluster-efficiency-owl?orgId=1&from=now-12h&to=now&timezone=browser&var-datasource=prometheus-owl-oss&var-partition=$__all)
+          - [Falcon dashboard](https://dashboard.arc.vt.edu/d/cej373w7tbmkgd/arc-cluster-efficiency-falcon?orgId=1&from=now-12h&to=now&timezone=browser&var-datasource=prometheus-falcon-oss&var-partition=$__all)
+     - Select your compute node ID (the one from the step above).
+     - Look at the GPU utilization plot and inspect the utilization of the GPU you are using.
+15. Post-job quick evaluation:  build your intuition about what resources you need
    - Commands
      - `seff <slurm job ID>`
      - Will tell you what your utilization of CPU and memory are.
