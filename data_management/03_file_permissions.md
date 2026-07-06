@@ -52,11 +52,11 @@ This account is under `/projects/<PIs-account>`.
             has any access to the file. 
 
 
-### Permissions Fundamentals
+## Permissions Fundamentals
 
-#### Actions You May Have Permissions For
+### Actions You May Have Permissions For
 
-There is one permission (i.e., yes, you have permission,
+There is one permission value (i.e., yes, you have permission,
 or no, you do not have permission) for each of the actions:
 1. read:  you can/cannot read the contents of a file.
 2. write:  you can/cannot modify the file by altering its content.
@@ -68,7 +68,15 @@ But for directories, it can cause confusion.
 It is best to think of directories as files;
 files that contain other files, directories, and symlinks.
 
-#### An Action's Permission
+With this in mind, the three actions for directories are:
+1. read:  you can/cannot read the contents (files, directories,
+   symlinks _names_) within a directory.
+2. write:  you can/cannot add and delete files.
+3. execute:  you can enter a directory and access metadata.  You can alter files per file permissions.  (If not x, then you cannot access the files in it, even if you have r + w permissions on files therein.)
+
+
+
+### An Action's Permission
 
 That action's permission can be observed (on files and
 directories that you have access to)
@@ -83,7 +91,7 @@ and are denoted by the following:
 So far in this section, we are explaining the permissions in terms
 of the text that you will see associated with files and 
 directories when you "long list" them, i.e., use the command:
-`ls -lrt <file-name>`
+`ls -l <file-name>`
 
 But there is another way to look at actions and their permissions---as a binary bit.
 If a bit for read, write, or execute is "set," then the 
@@ -93,7 +101,7 @@ then the bit has value 0.
 
 We will both structures for examining permissions below.
 
-#### Permission Classes
+### Permission Classes
 
 In the previous two sections, we spoke about actions and whether
 permission is granted to perform that action.
@@ -105,9 +113,9 @@ three permission classes:
    student is working.
 3. other:  everyone else (that is the user or in the group).
 
-#### Putting These Ideas Together
+## Putting These Ideas Together
 
-#### Permissions
+### Permissions
 
 Let us assume that you have a file _trial01.txt_ that you created
 under your advisor's project.
@@ -156,7 +164,7 @@ This description here corresponds exactly with the default
 permissions for a file that you create under your advisor's project,
 as described above.
 
-#### Everything Else on the Line
+### Everything Else on the Line
 
 Continuing on the line, the individual owner is mharvey and the
 group owner is genomics-01, the size of the file "trial-01.txt" is
@@ -165,7 +173,7 @@ group owner is genomics-01, the size of the file "trial-01.txt" is
 The name of the file (or directory or symbolic link) is the last
 entry on the line.
 
-#### Summary Integer of Permissions of Permission Class
+### Summary Integer of Permissions of Permission Class
 
 The combinations of read, write, and execute for one permission
 class (each value read, write, or execute being set or unset) give rise a unique mapping from the permission to an integer in [0, 7].
@@ -200,8 +208,59 @@ for the three permission classes are:
 2. group: 5
 3. other: 1
 
-The total specification of the permissions on this file are:  751.
+The complete specification of the permissions on this file are:  751.
 
+## Common Cases
+
+There are sets of permissions that most commonly arise
+when setting them for files and directories.
+
+### File Permissions
+
+|  Permissions  |  File |  Meaning    |
+| ---------  |   ------   |    --------   |
+|    660     |    F       |      User and group have access to read all file content and to modify the file.  Other has no accessibility. |
+|    664       |    F       |     The same as the previous example, but now others have the ability to read the contents of files.   |
+
+Question:  What are the permissions for user to read and write,
+and the group and other to each read a file?
+
+Answer:  644.
+
+
+
+##### Directory Permissions
+
+|  Permissions  |  Directory |  Meaning    |
+| ---------  |   ------   |    --------   |
+|    770     |    D       |      User and group have full access to all items (files, directories, symlinks) in the directory.  Other has no accessibility. |
+|    750       |    D       |     User has full access (i.e., can create, modify, and execute all items (files, directories, symlinks) in the directory.  Group members can read and execute files in the directory and can list contents of and enter subdirectories.  Other has no accessibility.   |
+
+
+## Changing Permissions
+
+
+The command is `chmod <permissions>   <file or directory name>`
+
+#### Example  Change the Permission on a Directory
+
+We want to change the permissions on a directory _reptiles_ to 750
+(see the most recent table for the meaning).
+The command is `chmod 750 reptiles`
+
+
+#### Example  Change the Permission on a File
+
+We want to change the permissions on a file _salamander_ to 644
+(see the most recent table for the meaning).
+The command is `chmod 644 salamader`
+
+
+#### Note
+
+After executing the `chmod` command, follow that up with the 
+command `ls -l <file or directory name>` to see the resulting
+permissions.
 
 
 ---
