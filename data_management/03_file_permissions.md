@@ -259,7 +259,7 @@ The command is `chmod 644 salamader`
 #### Note
 
 After executing the `chmod` command, follow that up with the 
-command `ls -l <file or directory name>` to see the resulting
+command `ls -l <file or directory name>` to see/confirm the resulting
 permissions.
 
 
