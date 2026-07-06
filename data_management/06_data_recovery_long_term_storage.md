@@ -56,4 +56,4 @@ Please enter a help ticket at [www.arc.vt.edu/help](www.arc.vt.edu/help ) and cl
 
 ---
 
-⬅️ [Previous: File and directory ownership](05_file_ownership.md) | [Next: Best practices ➡️](07_best-practices.md)
+⬅️ [Previous: File and directory ownership](05_file_ownership.md) | [Next: Best practices ➡️](07_best_practices.md)
