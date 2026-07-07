@@ -331,7 +331,7 @@ On a Mac.
    containing the files that you want to move to the 
    cluster.
 2. Have VS Code open on a compute node or login node.
-3. Use the procedures in "Navigating Directories" to 
+3. Within VS Code, use the procedures in "Navigating Directories" to 
    move to the destination directory of the file
    transfer on the ARC cluster.
 4. Simply highlight and move the file from Finder 
