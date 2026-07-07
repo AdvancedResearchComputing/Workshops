@@ -183,8 +183,8 @@ These methods essentially work the same way.
     - Add the public key to the file authorized_keys by doing:
         - `echo "<paste in here the public key contents that you copied in the previous step>" >> authorized_keys`
         - The above command appends your new public key to the end of file authorized_keys.
-8. Exit off of the cluster.
-    - Types `exit`.
+8. Exit off of the cluster, if you want; you are done here.
+    - Type `exit`.
 
 The setup process is now done.
 You should now be ready to log into the cluster, to do work.
@@ -195,12 +195,13 @@ with the other two.
 
 Regardless, we have:
 
-- Log into the cluster.
-    - `ssh my_vt_pid@owl3.arc.vt.edu`
-    - If you chose to specify a passphrase in the steps above, enter that now.
-    - If you chose not to specify a passphrase in the steps above, you should be logged in to the cluster.
-    - At this point, either way, you should be logged into the cluster.
-    - Note that there is no two factor authentication the "old way" (e.g., with Duo).
+Log into the cluster.
+    1. `ssh my_vt_pid@owl3.arc.vt.edu`
+    2. Deal with passphrase
+       a. If you chose to specify a passphrase in the steps above, enter that now.
+       b. If you chose not to specify a passphrase in the steps above, you should be logged in to the cluster.
+    3. At this point, either way, you should be logged into the cluster.
+    4. Note that there is no two factor authentication the "old way" (e.g., with Duo).
 
 
 ## Task 2:  Start ssh Agent
@@ -216,9 +217,9 @@ This agent will remember that passphrase for a specified length of time.
 The command is: `ssh-add  -t1h ~/.ssh/id_rsa`
 
 This command starts an ssh agent, uses the private key, and for this example,
-the passphrase held by the agent for 1 hour (the `-t1h` switch).
+the passphrase is held by the agent for 1 hour (the `-t1h` switch).
 For this duration of time, you will not have to enter the passphrase in 
-Step 9 of Task 1 because the ssh agent will automatically supply it.
+Step 2 of **Log into the cluster** in Task 1 because the ssh agent will automatically supply it.
 
 
 ## Task 3:  Construct Aliases
