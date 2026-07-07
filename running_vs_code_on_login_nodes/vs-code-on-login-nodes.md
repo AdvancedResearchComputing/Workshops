@@ -213,15 +213,19 @@ to access the content of a cluster login node.
 
 You can now do your work.
 
-When your is completed, make sure all of your files are saved,
-because this next step will NOT prompt you if your files are
-not saved---you will lose your work.
-Click that blue box in the lower
-left corner of the VS Code instance
-(the one that displays the ssh connection), and a pop-up box
-will appear at the top of the screen, with a drop-down list.
-Click `Close Remote Connection` and your ssh connection
-to the cluster login node will cease.
+### Disconnecting VS Code from ARC Cluster
+
+
+1. When your is completed, make sure all of your files are saved,
+   because this next step will NOT prompt you if your files are
+   not saved---you will lose your work.
+2. Click that blue box in the lower
+   left corner of the VS Code instance
+   (the one that displays the ssh connection).
+3. A pop-up box
+   will appear at the top of the screen, with a drop-down list.
+4. Click `Close Remote Connection` and your ssh connection
+   to the cluster login node will cease.
 
 
 
@@ -343,6 +347,9 @@ Use the file Explorer rather than Finder in the directions
 above for a Mac.
 
 
+### Disconnecting VS Code from ARC Cluster
+
+See the stepwise instructions at the end of the previous section.
 
 
 
