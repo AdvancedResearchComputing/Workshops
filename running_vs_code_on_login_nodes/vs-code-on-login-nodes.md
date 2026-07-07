@@ -317,7 +317,10 @@ To obtain a terminal screen:
 2. Click "New Terminal."
 3. The terminal pane will appear in the lower middle of the
    VS Code IDE.
-4. You can now specify terminal commands.
+4. Type `pwd` at the command prompt.
+   You should see the path to the root directory of the 
+   File Explorer that is in the left pane.
+5. You can now specify terminal commands.
 
 
 ### Transfering Files To Cluster
