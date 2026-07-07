@@ -32,7 +32,8 @@
     - You can move data between `/projects` and `/scratch` as needed.
       - `/projects` for long-term storage of data.
       - `/scratch` for use when running jobs.
-  - For even faster I/O, you can use TMPDIR storage ****
+  - For even faster I/O, you can use localscratch storage.
+  - Be familiar with the characteristics of each storage option in the main body of these pages.
 - _From workshop on data sharing and transfer_ ...
   - Archive data files that you are not using regularly but that you must preserve.
   - You can `tar` collections of files into one file (to save inode meta data per file)---this is archiving.
@@ -61,7 +62,7 @@
 - Contact ARC with questions:  [www.arc.vt.edu/help](www.arc.vt.edu/help ) and click on “Request this service” and specify your need.
 
 
-### File Ownership
+### File and Directory Ownership
 
 - The individual owning a file is set as the person
   creating the file.
@@ -69,7 +70,8 @@
   you are using.
   - This helps ensure that your advisor can access
     files and directories
-    for work done on their projects. 
+    for work done on their projects.
+- Have a compelling reason to change group ownership.
 
 ### Data Recovery
 
