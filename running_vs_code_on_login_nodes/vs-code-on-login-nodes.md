@@ -303,7 +303,7 @@ Option 2
 3. A new field will be shown in Explorer where you type the
    name of the new file.   
 
-### Terminal pane within VS Code
+### Activating a terminal pane within VS Code
 
 Terminal screens are useful for loading modules
 and
