@@ -254,7 +254,7 @@ to the cluster login node will cease.
    you will access, as the directory chosen becomes the root
    of the Explorer directory structure.)
 4. When done, click the blue box "OK."
-5. The navigation pane will show the directory content, like "explorer."
+5. The navigation pane (on the left) will show the directory content, like "explorer."
 
 
 ### Creating a New Directory
@@ -327,7 +327,7 @@ To obtain a terminal screen:
 
 On a Mac.
 
-1. Open a Finder Window and navigate to the directory
+1. Open a Finder Window on your Mac and navigate to the directory
    containing the files that you want to move to the 
    cluster.
 2. Have VS Code open on a compute node or login node.
@@ -337,7 +337,7 @@ On a Mac.
 4. Simply highlight and move the file from Finder 
    to the directory in the VS Code Explorer.
 
-On Windows
+On Windows.
 
 Use the file Explorer rather than Finder in the directions
 above for a Mac.
