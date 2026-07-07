@@ -28,7 +28,7 @@ log in to the VT network---and ssh is the way to log in to the clusters.
 ssh includes the requirement for two-factor authentiation (2FA).  Hence, the two steps are:
 1. Use ssh to specify (i) your PID and (ii) the machine you wish to reach.
     - Example:  `ssh my_vt_pid@tinkercliffs2.arc.vt.edu`
-2. Complete 2FA, typically via the Duo app on your cell phone.
+2. Complete 2FA, often via the Duo app on your cell phone.
 
 If one only had to do this one time, it would not be a big issue.
 But when working on ARC clusters, one may have more than a dozen terminals
