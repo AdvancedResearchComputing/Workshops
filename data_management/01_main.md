@@ -95,10 +95,13 @@ different storage devices.
 
 1. [File systems](./02_file_systems.md)
 2. [File and directory permissions](./03_file_permissions.md)
-3. [umask](./04_umask.md) (This material is more in-depth and should be skipped for one-hour workshop.)
+3. [umask](./04_umask.md) (*)
 4. [File and directory ownership](./05_file_ownership.md)
 5. [Data recovery and LT storage](./06_data_recovery_and_long_term_storage.md)
 6. [Best practices](./07_best_practices.md)
+
+* This material is more in-depth and should be skipped for one-hour workshop.
+   Subsequent sections are not dependent on this material.
 
 
 ### Prerequisites
