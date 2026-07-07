@@ -130,7 +130,7 @@ using VS Code on ARC cluster login nodes.
    2. You can thereby see all of the plugins you have.
 
 
-Some details ...
+Some details of the above ...
 
 Extensions icon is fifth one down on left side.
 
@@ -159,13 +159,16 @@ The highlighted one is the one we want.
 2. On the left command bar, click on the "Remote Explorer" icon.
 3. In the new view, you will see "Remotes (Tunnels/ssh)."
    Under this heading, click on the "SSH" heading.
-4. On the far right of this clicked heading, you will see a 
+4. Keeping your mouse/arrow hovering over the "SSH", on the far right of this
+   clicked heading, you will see a 
    gear and a "+" sign.
 5. Click the "+" sign.
-6. A pop-up box will appear and show the title
-   "Enter SSH Connection Command," and in that
+6. A pop-up box will appear in the middle of the IDE and show the title
+   "Enter SSH Connection Command."
+   In that
    field you will type any of these ssh connection commands,
-   depending on which login node you want to connect to:
+   depending on which login node you want to connect to
+   (substitute your actual VT PID for `my_pid`):
    1. `ssh my_pid@tinkercliffs1.arc.vt.edu`
    2. `ssh my_pid@tinkercliffs2.arc.vt.edu`
    3. `ssh my_pid@owl1.arc.vt.edu`
@@ -183,6 +186,10 @@ The highlighted one is the one we want.
    2. Other text might be:  "Source: Remote-SSH"
    3. There will be a button `connect`.  Click on it.
    4. A new instance of VS Code will appear. 
+
+
+Some details of the above steps ...
+
 
 Remote Explorer icon is the sixth one down on the left side.
 Highlight "SSH" as shown in this image and then click the
