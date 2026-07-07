@@ -243,6 +243,47 @@ resources; this might reduce the time your job remains queued
 
 #### Specifying Pieces of Many Nodes
 
+** << MATT, I DON'T KNOW IF I HAVE THIS RIGHT; IF I'VE UNDERSTOOD YOUR OBSERVATIONS>> **
+
+A significant fraction of jobs are scheduled by slurm
+using a technique called "backfill."
+Slurm essentially schedules jobs by a formula that 
+produces a priority ranking for each job.
+It then runs jobs in that order.
+
+But when this is done, as you might imagine, there are
+(small) "holes" left in the schedule where resources are
+idle.
+A simplified example:  in scheduling high priority jobs,
+there are three CPUs that are not being used for four
+hours each.
+
+Slurm will go back to the jobs submitted and waiting to be run
+and find (smaller) jobs that will fit into these vacant
+"resource slots."
+
+The upshot is that small jobs have a better chance of 
+being chose to fill these unused resources, i.e.,
+small jobs are often better candidates for backfill.
+
+As a result of this concept, consider the following.
+You have a distributed CPU job or a distributed GPU job.
+Rather than specify that all of the resources 
+you need be run on one compute node, specify that the
+resources can come from multiple compute nodes.
+In this way, you are telling slurm that it can run 
+your job using "small hunks of resources" from a
+combination of several compute nodes.
+
+Another example using the same setup.
+Suppose you have a parallel job, but it can be run
+in an embarrassingly parallel fashion.
+If you "carve up" the data so that each piece of data can
+be run (operated on) by a single CPU as an individual job, you may
+be able to get lots of individual CPU jobs done before
+many CPUs become available, at one time, to do all of your work as 
+one job.
+
 
 
 ================================================
