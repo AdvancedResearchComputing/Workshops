@@ -60,13 +60,14 @@ thereby bypassing the "manual" 2FA process.
 
 ##### Task 2
 
-Dpending on whether you specify a password when you generate keys, 
+Depending on whether you specify a password when you generate keys, 
 you may need to start an "ssh agent" to store your password for
 a prescribed length of time, after which you will have to start
 a new ssh agent.
 So:
 - If you specify a password with ssh key generation, you will need an ssh agent.
-- If you do not specify a password with ssh key generation, you will not need an ssh agent.
+- If you do not specify a password with ssh key generation, you will not need an ssh agent
+  (and this entire task goes away).
   
 
 ##### Task 3
