@@ -7,6 +7,34 @@
 
 1. Show a cononical sbatch slurm script so that the audience sees all of the
    parameters to specify.  Provides context.
+   - Illustrative resources for a GPU-based slurm job (Tinkercliffs)
+     ```
+#!/bin/bash
+#SBATCH --account=arcadm
+#SBATCH --job-name=mliap
+#SBATCH --time=2-1:00:00
+#SBATCH --partition=a100_normal_q
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#
+     ```
+   - Illustrative resources for a CPU-based slurm job (Tinkercliffs)
+     ```
+# Set the time, which is the maximum time your job can run in HH:MM:SS
+#SBATCH --account arcadm
+#SBATCH --job-name=MPI-job
+#SBATCH --time=14:00:00
+#SBATCH --partition=normal_q
+#SBATCH --constraint=amd
+#SBATCH --ntasks=10
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --output slurm.tc.amd.open.mpi.01.%j.out
+#SBATCH --error slurm.tc.amd.open.mpi.01.%j.err
+##SBATCH --mem=100GB
+     ``` 
 2. Parameters that you can specify for a job
    - number nodes, cpus, num gpus, memory, etc.
 3. How these parameters vary across clusters
