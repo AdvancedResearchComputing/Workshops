@@ -12,19 +12,19 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
    for other files.
 2. Running VS Code is allowable on login nodes _**IF**_:
    1. You do not run with plugins, e.g., do not run with AI plugins.
-   2. You do not run code, no (major) code execution.
-   3. Do not debug code.:  no (major) code debugging.
+   2. Do not debug code:  no (major) code debugging.
+   3. You do not run code:  no (major) code execution.
 3. Running VS Code on login nodes is for software/file construction.
 4. Why these restrictions?
    1. Because login nodes are communal resources that all users make use of _**simultaneously**_.
    2. Resources on compute nodes, on the other hand, are 
-      _**dedicated**_ to a particular user; slurm does the dedication.
+      _**dedicated**_ to a particular user for a specified time; slurm does the resource assignments.
 5. Hence, if you want to do all of the following, please see the
-   workshop materials on _running VS Code on compute nodes_. 
+   workshop materials on _**running VS Code on compute nodes**_. 
    1. Construct source code.
    2. Use any number of plugins to help you develop code.
-   3. Run/executing your code.
-   4. Debugging your code.
+   3. Debugging your code.
+   4. Run/executing your code.
 6.  This workshop focuses on how to run VSC on ARC _**login**_ nodes.
 
 [VS Code Use](figures/vs-code-in-ways.png)
@@ -69,7 +69,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 We order the activities into setup steps that you execute
 one time and steps that you repeat every time you use 
-VSC on a compute node.
+VSC on a login (head) node.
 The third section contains some illustrative examples for
 using VS Code on ARC cluster login nodes.
 
@@ -83,7 +83,7 @@ using VS Code on ARC cluster login nodes.
    2. Using an instance of VS Code on your laptop,
       make an ssh connection to a login node of an ARC cluster of your choice.
    3. A new VS Code instance will start, and this new instance is
-      connected to the cluster, as indicated in the blue box
+      connected to the cluster (i.e., is running on the cluster), as indicated in the blue box
       in the lower left of the 
       VS Code IDE.
    4. You can now work on the cluster using this VS Code IDE instance.
@@ -130,12 +130,16 @@ using VS Code on ARC cluster login nodes.
    2. You can thereby see all of the plugins you have.
 
 
+Some details ...
+
 Extensions icon is fifth one down on left side.
+
 ![extensions command](figures/extensions-icon.png)
 
 Typing "Remote - SSH" in the search field brings up
 multiple extensions that can be installed.
 The highlighted one is the one we want.
+
 ![choosing the Remote - SSH extension](figures/remote-ssh-extension.png)
 
 
