@@ -43,8 +43,7 @@ It gets old/tedious really fast.
 
 There are two (possibly three) major tasks to complete.
 Two are one-time setups.  The third can be done periodically.
-Then you use the results to streamline logging into ARC clusters
-in quite significant ways.
+Then you use the results to significantly streamline logging into ARC clusters.
 It eliminates a LOT of hassle.
 
 
