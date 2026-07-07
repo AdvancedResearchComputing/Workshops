@@ -196,12 +196,13 @@ with the other two.
 Regardless, we have:
 
 Log into the cluster.
-    1. `ssh my_vt_pid@owl3.arc.vt.edu`
-    2. Deal with passphrase
-       a. If you chose to specify a passphrase in the steps above, enter that now.
-       b. If you chose not to specify a passphrase in the steps above, you should be logged in to the cluster.
-    3. At this point, either way, you should be logged into the cluster.
-    4. Note that there is no two factor authentication the "old way" (e.g., with Duo).
+
+1. `ssh my_vt_pid@owl3.arc.vt.edu`
+2. Deal with passphrase
+   a. If you chose to specify a passphrase in the steps above, enter that now.
+   b. If you chose not to specify a passphrase in the steps above, you should be logged in to the cluster.
+3. At this point, either way, you should be logged into the cluster.
+4. Note that there is no two factor authentication the "old way" (e.g., with Duo).
 
 
 ## Task 2:  Start ssh Agent
