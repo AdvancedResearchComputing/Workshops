@@ -167,7 +167,9 @@ These methods essentially work the same way.
                - If you do not use a passphrase, then you will not need Task 2 below.
                - The choice is yours.
         - Note that `-b 4096` is required to make your key sufficiently complex/safe.
-        - Note that `-t rsa` specifies the method.
+          (The `-b 4096` means make your RSA keys 4096 bits in length; longer keys are
+          more secure but require more computation.)
+        - The `-t rsa` specifies the method.
     - This will create two new files, using the default names:
         - id_rsa (the private key)
         - id_rsa.pub (the public key)
