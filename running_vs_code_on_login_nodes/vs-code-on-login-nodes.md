@@ -208,7 +208,7 @@ Notice in the lower left, in blue, is confirmation
 that you have `ssh`ed into an ARC cluster login node;
 in the image above, it is the owl2 login node.
 
-You are now using your VS Code instance on your laptop
+You are now using your VS Code instance on the cluster
 to access the content of a cluster login node.
 
 You can now do your work.
