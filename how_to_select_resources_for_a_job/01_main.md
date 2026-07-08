@@ -57,7 +57,7 @@ Illustrative resources for a CPU-based slurm job
 
 Note that an sbatch slurm script is created for a particular cluster.
 Then the resources specified in the sbatch slurm script
-are used to identify particular resources to run your job.
+are used to identify particular resource needs to run your job.
 
 Some questions motivated by these data above.
 
@@ -243,7 +243,7 @@ resources; this might reduce the time your job remains queued
 
 #### Specifying Pieces of Many Nodes
 
-** << MATT, I DON'T KNOW IF I HAVE THIS RIGHT; IF I'VE UNDERSTOOD YOUR OBSERVATIONS>> **
+**<< MATT, I DON'T KNOW IF I HAVE THIS RIGHT; IF I'VE UNDERSTOOD YOUR OBSERVATIONS>>**
 
 A significant fraction of jobs are scheduled by slurm
 using a technique called "backfill."
@@ -284,7 +284,67 @@ be able to get lots of individual CPU jobs done before
 many CPUs become available, at one time, to do all of your work as 
 one job.
 
+## Partitions:  The Compute Nodes on Which Your Job Runs
 
+A partition is a collection of compute nodes.
+A partition must be specified in an sbatch slurm script
+(or interactive job from the command line).
+
+Often, this collection of compute nodes
+is of one type (i.e., one specific architecture),
+say a particular class of GPU nodes.
+But this is not always the case.
+Partitions may have more than one type of compute node, e.g.,
+to increase job throughput (which is a driver for ARC).
+
+The partitions of all one node type are given below.
+Specifying the partition completely specifies the type of 
+compute node.
+
+|  Cluster   | Partition |   Type of Compute Node  |
+|    ---     |    ---    |      ---                |
+|   TC       |    h200_normal_q   |  H200 GPUs     |
+|   Falcon   |    l40s_normal_q   |   L40S GPUs    |
+|   Falcon   |    a30_normal_q    |   A30 GPUs     |
+|   Falcon   |    v100_normal_q   |   V100 GPUs    |
+|   Falcon   |    t4_normal_q     |   T4 GPUs      |
+
+
+The partitions with more than one node type are given
+below.
+In these cases, if one wants to specify uniquely
+the type of compute node, then specifying only the
+partition is not sufficient.
+
+
+|  Cluster   | Partition |   Types of Compute Node  |
+|    ---     |    ---    |      ---                |
+|   TC       |    normal_q       |  CPUs:  AMD and Intel nodes.    |
+|   TC       |    a100_normal_q  |  GPUs:  Nvidia and HPE nodes.      |
+|   Owl      |    normal_q       |  CPUs: Genoa and Milan.     |
+
+We note that for many jobs, the type of compute node is
+not important.
+For example, one may want to run an app that will 
+execute on CPUs, and it may run fine on either of the
+two CPU types on the TC normal_q and on either of the
+two CPU types on the Owl normal_q.
+
+If the type of compute node is important, then in addition
+to a partition, one specifies a constraint as a slurm
+switch (see initial examples of sbatch slurm scripts).
+Expanding the previous table, the mapping is:
+
+|  Cluster   | Partition |   Compute Node Type; Constraint  | Compute Node Type; Constraint  |
+|    ---     |    ---    |      ---                |
+|   TC       |    normal_q       |  AMD; `--constraint=amd`.    | Intel; `constraint=avx512`.    |
+|   TC       |    a100_normal_q  |  Nvidia; `--constraint=a100-dgx`    |  HPE;  `constraint=a100-hpe`      |
+|   Owl      |    normal_q       |  Genoa; `--constraint=avx512`.     |    Milan; `--constraint=milan`. |
+
+
+================================================
+
+================================================
 
 ================================================
 
