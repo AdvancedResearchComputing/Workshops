@@ -336,10 +336,19 @@ switch (see initial examples of sbatch slurm scripts).
 Expanding the previous table, the mapping is:
 
 |  Cluster   | Partition |   Compute Node Type; Constraint  | Compute Node Type; Constraint  |
-|    ---     |    ---    |      ---                |
+|    ---     |    ---    |      ---                |    ---                |
 |   TC       |    normal_q       |  AMD; `--constraint=amd`.    | Intel; `constraint=avx512`.    |
 |   TC       |    a100_normal_q  |  Nvidia; `--constraint=a100-dgx`    |  HPE;  `constraint=a100-hpe`      |
 |   Owl      |    normal_q       |  Genoa; `--constraint=avx512`.     |    Milan; `--constraint=milan`. |
+
+As given in an earlier example, one situation in 
+which constraints are required is when your code
+uses a virtual environment.
+This is because the virtual environment must be built
+on the same type of compute node on which the 
+environment is used.
+So you must specify the same constraint in creating
+the VE and running your job.
 
 
 ================================================
