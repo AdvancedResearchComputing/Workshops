@@ -226,7 +226,17 @@ _Solution (Partial)_:
 This means that I have to create the VE that I will need on each
 of the four types of compute nodes of Falcon.
 
-## Using Full Nodes Versus Parts of Nodes
+## How to Get Your Jobs to Spend Less Time in Queued State
+
+There are multiple things to try:
+
+- Using partial nodes rather than full nodes.
+- Inspect partition wait times on Grafana.
+- Use short QoS.
+
+Each is presented below.
+
+###  Using Full Nodes Versus Parts of Nodes
 
 #### Backing Away From a Full Node
 
@@ -283,6 +293,27 @@ be run (operated on) by a single CPU as an individual job, you may
 be able to get lots of individual CPU jobs done before
 many CPUs become available, at one time, to do all of your work as 
 one job.
+
+### Use of Grafana Dashboards to Select Partitions
+
+ARC provides many different dashboards to obtain
+cluster information.
+
+See the [root page of the dashboards](https://dashboard.arc.vt.edu/)
+for a full listing.
+
+For our purposes here, we view the
+[time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
+that contains
+HISTORICAL wait times
+(versus predicted future wait times) for jobs in cluster partitions
+and the number of jobs currently waiting to run in each partition.
+
+
+
+ See the Grafana dashboards to see the most heavily used clusters/partitions, and historical wait times.
+     - [time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
+
 
 ## Partitions:  The Compute Nodes on Which Your Job Runs
 
@@ -352,6 +383,16 @@ the VE and running your job.
 
 Another situation is profiling your code for performance evaluation.
 
+There is one more issue worth addressing.
+This is the Owl cluster and its use of standard, large memory,
+and huge memory nodes.
+You can see on the [Owl resources page](https://docs.arc.vt.edu/resources/compute/01owl.html)
+that these are all "AMD EPYC 7000 series" nodes.
+There are not separate partitions for these nodes, nor
+are there constraints that separate them.
+Instead, the choice of compute node type is based
+on the memory specified in the sbatch slurm script
+with the `#SBATCH --mem` or similar switch.
 
 ## All GPU-Based Compute Nodes Are Not Created Equal
 
@@ -492,6 +533,15 @@ running out of local scratch:  [section of videos doc page](https://docs.arc.vt.
 and select the video "**Batch jobs using volatile resources**".
 
 
+It is recommended that you attempt to first run your job with
+files in scratch, because it can store larger files.
+Then, if you have heavy I/O needs, you can try localscratch
+and can determine whether the files will fit into localscratch
+(if not, you may get an OOM error [out of memory error]).
+That is, get your job to run successfully first and then
+focus on optimizations (in this case, by using localscratch).
+
+
 ## An Estimate of When Your Job Will Start
 
 
@@ -528,7 +578,7 @@ There are at least two ways to get an estimate.
          making the VE on an AMD node.
          This way, when you need to run your code---using the same type of compute node used
          to make the VE---you will have 19x the number of compute nodes to run your jobs.
-3. Unique features of clusters
+3. X Unique features of clusters
    - Owl has large (4 TB) and huge (8 TB) memory CPU-based nodes for "large memory" computing jobs.
    - OTHERS?????
 4. X Know the types of GPUs that are best suited for your jobs
@@ -541,12 +591,12 @@ There are at least two ways to get an estimate.
    - That is, the time from job submission until it begins to run.
    - See the Grafana dashboards to see the most heavily used clusters/partitions, and historical wait times.
      - [time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
-6. Input/output (I/O) Speeds
+6. X Input/output (I/O) Speeds
    - If you have a lot of disk/storage access,
      read from and write to `/scratch`; much faster than `/projects`
    - If your code is small enough, use "localscratch";
      faster than `/scratch`.
-7.  Using different storage, lifetime of data
+7. X Using different storage, lifetime of data
    - `/projects`:  permanent.
    - `/scratch`:  only 90 days.
    - "localscratch":  only for the life of slurm job.
