@@ -309,11 +309,39 @@ HISTORICAL wait times
 (versus predicted future wait times) for jobs in cluster partitions
 and the number of jobs currently waiting to run in each partition.
 
+#### Short QoS
+
+There is a normal QoS which is used to run jobs on each cluster
+and partition.
+However, there is also a "short QoS" which gives
+higher priority to jobs (so that they start sooner).
+The QoS options for each cluster are given below:
+- [TC QoS Table](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html#quality-of-service-qos)  
+- [Owl QoS Table](https://docs.arc.vt.edu/resources/compute/01owl.html#quality-of-service-qos)
+- [Falcon QoS Table](https://docs.arc.vt.edu/resources/compute/02falcon.html#quality-of-service-qos)  
+
+Note that jobs run with the short QoS have a greater billing factor
+(by a factor of two) than do jobs run with the normal QoS.
+But if you do not use all of your monthly compute units
+(or even if you do), then this may be a viable option.
+Also, the amount of resources (numbers of CPUs and GPUs,
+amount of memory) that you request must be below
+specified limits but these limits are _GREATER THAN_
+the "normal QoS" limits; see the links above.
+
+There are additional limitations on resources at the account
+level; again, see the links above.
 
 
- See the Grafana dashboards to see the most heavily used clusters/partitions, and historical wait times.
-     - [time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
+To run with the short QoS, your specified job duration
+(with `#SBATCH --time=1-00:00:00) must be no more
+than one day, which is less than the 7-day "normal QoS"
+time limit.
 
+Examples showing the syntax for QoS specification in an sbatch slurm script:
+- `#SBATCH --qos=tc_h200_normal_short`
+- `#SBATCH --qos=owl_normal_short`
+- `#SBATCH --qos=fal_a30_normal_short`
 
 ## Partitions:  The Compute Nodes on Which Your Job Runs
 
@@ -402,6 +430,10 @@ Some are particularly well-suited for particular types of jobs.
 
 It is important to know these mappings because GPU resources
 are scarce.
+(Note that compute resources are always scarce---there is never
+enough to do all work as quickly as users desire.
+Even at places like Amazon.
+So this is a universal problem, in no way specific to VT.)
 
 It is in everyone's interest to use resources in wise ways so
 that you as an individual and VT as a collective run as many
@@ -541,6 +573,105 @@ and can determine whether the files will fit into localscratch
 That is, get your job to run successfully first and then
 focus on optimizations (in this case, by using localscratch).
 
+## Longer-Running Jobs
+
+Key ideas:
+
+- "Normal" jobs on ARC clusters can run up to seven days.
+- There is a way to run longer jobs, up to 14 days.
+- This is through the use of the "long" QoS.
+
+There is a normal QoS which is used to run jobs on each cluster
+and partition.
+However, there is also a "long QoS" which enables
+jobs to run for longer durations, up to 14 days.
+
+The QoS options for each cluster are given below:
+- [TC QoS Table](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html#quality-of-service-qos)  
+- [Owl QoS Table](https://docs.arc.vt.edu/resources/compute/01owl.html#quality-of-service-qos)
+- [Falcon QoS Table](https://docs.arc.vt.edu/resources/compute/02falcon.html#quality-of-service-qos)  
+
+Note that jobs run with the long QoS have the same billing factor
+as do jobs run with the normal QoS, but the job priority is lesser.
+Also, the amount of resources (numbers of CPUs and GPUs,
+amount of memory) that you request must be below
+specified limits and these limits are _LESS THAN_
+those for the "normal QoS."
+Typically, the resource limits for long QoS are about
+1/4 those for the normal QoS.
+See the links above.
+
+There are additional limitations on resources at the account
+level; again, see the links above.
+
+To run with the long QoS, your specified job duration
+(with, e.g., `#SBATCH --time=14-00:00:00) must be no more
+than 14 days.
+
+Examples showing the syntax for QoS specification in an sbatch slurm script:
+- `#SBATCH --qos=tc_h200_normal_long`
+- `#SBATCH --qos=owl_normal_long`
+- `#SBATCH --qos=fal_a30_normal_long`
+  
+
+## Interactive Versus Batch Jobs
+
+### Loose Definitions
+
+**Interactive Job**:  Process by which:
+- You specify your resource needs.
+- You submit the resource needs to slurm.
+- You receive those resources and are notified.
+- You _manually_ use those resources to do work.
+- You have allocated to you those resources until one of these events:
+  - You exceed your allotted time for the resources.
+  - You finish your work early and relinquish the resources.
+
+
+**Interactive Job**:  Process by which:
+- You specify your resource needs _AND_ the work you want done with those resources.
+- You submit the resource needs _AND_ job definition to slurm.
+- You receive those resources _AND_ your job definition starts running on those resources.
+- You have allocated to you those resources until one of these events:
+  - You exceed your allotted time for the resources.
+  - Your work finishes and the resources are automatically relinquished.
+
+
+LEFT OFF.
+
+### Choosing the Type of Job:  Interactive or Batch
+
+   - General guidelines
+     - Interactive jobs 
+       - You are doing scoping studies and you want to:
+          - determine what the analysis steps are
+          - see intermediate results
+          - (e.g., you are exploring and uncertain.)
+       - You need visualization.
+       - You have very few jobs to run.
+     - Slurm batch jobs.
+       - You know your analysis steps, or you may have only one or two issues to resolve.
+       - You are doing scoping studies, but you do not need to see 
+         on-the-fly intermediate results; only the results are sufficient.
+       - You do not need visualization in the job.
+       - You have many, many jobs to run (say, 15 or more)
+   - Maximum-benefit choice for you and for everyone else.
+     - If you can run either way:  interactive or batch.
+       - Choose batch job.
+         - Why?
+           - The slurm scheduler can make far better use of resources.
+           - EVERYONE benefits when this happens.
+           - Specifics
+             - (1) Interactive jobs may not start when you are around.
+               - In this case, resources are assigned to you but you are not using them.
+               - So the resources sit idle waiting for you; others cannot use these resources.
+             - (2) When a person is done with an interactive job, they must explicitly give back the resources.
+               - If a user does not give the resources back, then until the job wall time 
+                 is reached.
+               - So the resources sit idle waiting for you; others cannot use these resources.
+           - Batch jobs, by their nature, do not suffer these inefficiencies.
+       - You should choose the job type that you need:  if you need interactive jobs, then use them.   
+     - 
 
 ## An Estimate of When Your Job Will Start
 
@@ -587,7 +718,7 @@ There are at least two ways to get an estimate.
      - L40S (Falcon):  best for XXXXX.
      - H200 (TC):  best for XXXX.
      - B200 (Owl) [coming]:  best for XXXX.
-5. Attempting to minimize your job's wait time.
+5. X Attempting to minimize your job's wait time.
    - That is, the time from job submission until it begins to run.
    - See the Grafana dashboards to see the most heavily used clusters/partitions, and historical wait times.
      - [time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
@@ -607,9 +738,9 @@ There are at least two ways to get an estimate.
            so you cannot bring data in ahead of time.
          - Because after the job finishes, the localscratch memory disappears,
            so if you do not copy out your results files, they will be deleted.
-8.  Delays in obtaining a full node.  Can you go with fewer resources,
+8.  X Delays in obtaining a full node.  Can you go with fewer resources,
     e.g., fewer CPUs?  Job may take longer, but it may start much sooner.
-9.  User QoS
+9.  X User QoS
    - There is a QoS table on each of the cluster's pages, given above.
    - Can run jobs up to 14 days with "long" QoS.
    - If your group consistently does not use its monthly computing units budget,
@@ -647,7 +778,7 @@ There are at least two ways to get an estimate.
                - So the resources sit idle waiting for you; others cannot use these resources.
            - Batch jobs, by their nature, do not suffer these inefficiencies.
        - You should choose the job type that you need:  if you need interactive jobs, then use them.   
-11. Caution about specifying whole nodes for jobs.
+11. X Caution about specifying whole nodes for jobs.
    - This can take time for slurm to achieve and provide to you.
    - Example alternative
 12. If using GPUs in your job, use the grafana dashboards to ensure that your code is using the GPUs.
