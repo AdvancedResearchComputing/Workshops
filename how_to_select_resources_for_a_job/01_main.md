@@ -370,16 +370,18 @@ jobs as possible in some unit of time.
 
 |     Use              | Cluster   | GPU Node Type   |
 |   ---                |     ---   |  ---            |
-|   LLM inference; AI training; data analytics; HPC/RC  |   TC   |    A100    |`&`
+|   `&` LLM inference; AI training; data analytics; HPC/RC  |   TC   |    A100    |
 |   memory-intensive, large-scale AI and HPC/RC           |    TC      |     H200     |
-|   AI workloads       |    Owl       |  B200 |`*`
+|   `*` AI workloads       |    Owl       |  B200 |
 |   AI inference; visualization; video and media processing         |    Falcon  |    L40S      |
 |   AI inference; data analytics; HPC/RC        |    Falcon  |    A30       |
 |   Deep learning (training and inference); data analytics; HPC/RC         |    Falcon  |    v100      |
-|   NLP; single precision computations        |    Falcon  |    T4        |`$`
+|   `$` NLP; single precision computations        |    Falcon  |    T4        |
 
 `&` HPC = high performance computing; RC = research computing.
+
 `*` coming in late summer/fall 2026.
+
 `$` NLP = natural language processing.
 
 ================================================
