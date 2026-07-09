@@ -5,7 +5,7 @@
 
 ## Topics
 
-## Resources That Can be Requested for a Job
+## Motivation:  Resources That Can be Requested for a Job
 
 Below are sections from two sbatch slurm scripts, which are used to 
 submit batch jobs on a cluster.
@@ -311,7 +311,7 @@ HISTORICAL wait times
 (versus predicted future wait times) for jobs in cluster partitions
 and the number of jobs currently waiting to run in each partition.
 
-#### Short QoS
+### Short QoS
 
 There is a normal QoS which is used to run jobs on each cluster
 and partition.
