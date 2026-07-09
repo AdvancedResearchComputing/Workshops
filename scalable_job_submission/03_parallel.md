@@ -245,7 +245,7 @@ match up with how you want GNU parallel to perform.
 
 ## Use the genoa nodes of the normal_q partition.
 #SBATCH --partition=normal_q
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint=avx512
 
 ## This specifies the number of CPUs.
 #SBATCH --nodes=1
@@ -559,6 +559,8 @@ in:
 5. When it completes, you can see the execution time by 
    typing `sh run.timing.sh <SLURM_JOB_ID>`.
 
+In one pair of runs of Example 3 and Example 4, Example 3 took 10 seconds
+to execute and Example 4 took 83 seconds.
 
 ### Example 5:  Runing the test_args.R with GNU Parallel
 
@@ -602,7 +604,8 @@ module load R/4.4.2-gfbf-2024a
 echo "Running on $(hostname)"
 echo "CPUs: $SLURM_CPUS_PER_TASK"
 
-parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 #because 7>4, only 4 tasks at a time (queued)
+parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 
+# because 7>4, only 4 tasks at a time (queued)
 # -j specify the maximum number of jobs that can run at the same time
 ```
 
