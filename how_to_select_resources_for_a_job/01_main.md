@@ -700,21 +700,21 @@ _**Procedure**_
 - Type `squeue`.
 - Get the slurm job ID of the job of interest.  Call this `sjid`.
 - On terminal type, `scontrol show job --details sjid`.
- - Get the compute node IDs of the compute nodes that you are using.
- - Get the GPU indexes of the GPUs you are using.
+   - Get the compute node IDs of the compute nodes that you are using.
+   - Get the GPU indexes of the GPUs you are using.
 - You can also do:  on terminal type, `showjobusage sjid`.
- - Get the compute node IDs of the compute nodes that you are using.
- - Get the GPU indexes of the GPUs you are using.
+   - Get the compute node IDs of the compute nodes that you are using.
+   - Get the GPU indexes of the GPUs you are using.
 - Go to the dashboards below (per cluster).
   - Dashboards
     - [TC dashboard](https://dashboard.arc.vt.edu/d/acfsdp9/arc-cluster-efficiency-tinkercliffs?orgId=1&from=now-12h&to=now&timezone=browser&var-datasource=prometheus-tc-oss&var-partition=$__all)
     - [Owl dashboard](https://dashboard.arc.vt.edu/d/acgv4cq/arc-cluster-efficiency-owl?orgId=1&from=now-12h&to=now&timezone=browser&var-datasource=prometheus-owl-oss&var-partition=$__all)
     - [Falcon dashboard](https://dashboard.arc.vt.edu/d/cej373w7tbmkgd/arc-cluster-efficiency-falcon?orgId=1&from=now-12h&to=now&timezone=browser&var-datasource=prometheus-falcon-oss&var-partition=$__all)
 - On the dashboard
- - Select your compute node ID (the one from the step above).
- - On that screen, look at the plot of GPU utilization and click on the GPU index (indexes)
-   for the GPUs that your job is using. 
- - Look at the GPU utilization plot and confirm that GPU usage is as you expect.
+    - Select your compute node ID (the one from the step above).
+    - On that screen, look at the plot of GPU utilization and click on the GPU index (indexes)
+      for the GPUs that your job is using. 
+    - Look at the GPU utilization plot and confirm that GPU usage is as you expect.
 
 ## Checking on Completed Jobs
 
