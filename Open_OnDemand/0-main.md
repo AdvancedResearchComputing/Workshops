@@ -50,12 +50,12 @@ layer (i.e., OOD) into the process of executing commands.
 - [Navigating Directories and Files](./3-directories-files.md)
 - [Viewing Active Jobs on Clusters](./4-active_job.md)
 - [Obtaining a Cluster Shell (Terminal)](./5-cluster-shell.md)
-- [Running R-studio](./R-studio.md)
-- [Running Matlab](./matlab.md)
 - [Running Jupyter notebooks](./jupyter.md)
+- [Running Visual Studio Code](./vs-code.md)
+- [Running Matlab](./matlab.md)
+- [Running RStudio](./R-studio.md)
 - [Running Remote Desktop](./remote-desktop.md)
 - [Running LLM Chatbot](./llm-chatgpt.md)
-- [Running VS Code](./vs-code.md)
 
 ## Relinquishing Resources When Done With an OOD Job
 
