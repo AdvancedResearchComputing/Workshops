@@ -171,7 +171,7 @@ In file _sbatch.long.slurm_, you have to make these changes.
 
 1. Change this line `#SBATCH --cpus-per-task=5` to `#SBATCH --cpus-per-task=1`.
 2. Change the line `parallel --jobs 5 sleep {}';' echo {} done ::: 5 4 3 1 2`
-   `parallel --jobs 1 sleep {}';' echo {} done ::: 5 4 3 1 2`.
+   to `parallel --jobs 1 sleep {}';' echo {} done ::: 5 4 3 1 2`.
 3. In the output (`#SBATCH --output`) 
    and error (`#SBATCH --error`) filenames, change the text
    "short" to "long".
