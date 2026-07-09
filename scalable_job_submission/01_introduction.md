@@ -7,12 +7,7 @@
      at one time.
 2. There are ways to "pack" multiple executions of a code into one sbatch script.
 3. Thus, you can stay under the limit.
-4. This is not trickery.
-5. There are times when you need to run a lot of jobs and they are small;
-   submitting each job individually actually generates more overhead for slurm.
-   So these small jobs can be packed.
-6. Even collections of larger jobs can be grouped together.
-7. The purpose of this workshop is to present and demonstrate tools to 
+4. The purpose of this workshop is to present and demonstrate tools to 
    enable job "packing."
 
 ## Motivation
