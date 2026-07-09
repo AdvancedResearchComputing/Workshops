@@ -19,7 +19,7 @@ to launch jobs.
 submission and pass to all child processes.
 - Slurmstepd will configure things such as C-groups or
 attaching to the correct GPU.
-- If you load a module, those applications & libs will be
+- If you load a module, those applications and libraries will be
 available to all processes.
 - You can safely use relative paths in your application.
 

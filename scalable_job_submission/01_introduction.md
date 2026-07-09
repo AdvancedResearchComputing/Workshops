@@ -22,7 +22,7 @@ roughly 10,000 quite large jobs can be submitted and run overnight
 if a cluster is not heavily used.
 
 
-Ideally one would submit all 10000 jobs
+From one perspective, one would submit all 10000 jobs
 (each slurm job is a separate slurm script and a single
 "sbatch" invocation) at one time and let
 slurm handle execution of these and other users' jobs.
@@ -45,9 +45,12 @@ appear in these notes.
 There is also an issue of wall-clock time.
 A standard job is allowed to run for a maximum of seven days.
 So it does not matter how many code executions that you pack into one
-sbatch slurm job submission, they will run for at most seven days
+sbatch slurm job submission.
+They will run for at most seven days
 (this time is an input field in a slurm sbatch script, but you
-cannot go over seven days, equals 168 hours).
+cannot go over seven days).
+There is an exception to this:  you can specify a "long" QoS
+(Quality of Service), but we ignore that case here.
 
 
 ## Learning Objectives
@@ -68,9 +71,6 @@ Also, all of these techniques essentially assume that each
 execution of your code (a collection is a group of such
 executions), are independent, so the order of execution of
 the elements of the collection is not important.
-
-One can say that within each slurm sbatch job submission,
-the executions are "embarrassingly parallel".
 
 **In most cases, you will want to use job arrays.**
 
