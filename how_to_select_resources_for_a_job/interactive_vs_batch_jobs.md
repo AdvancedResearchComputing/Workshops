@@ -50,7 +50,8 @@ This provides maximum benefit to you and everyone else.
 
 **Why choose batch job?**
 
- - The slurm scheduler can make far better use of resources.
+ - The slurm scheduler can make far better use of resources if left to itself.
+   - Human intervention (via interactive jobs) can only reduce the efficiency of slurm.
  - EVERYONE benefits when this happens.
  - Specifics:
    - Interactive jobs

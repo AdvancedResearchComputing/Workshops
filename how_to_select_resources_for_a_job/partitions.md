@@ -71,7 +71,7 @@ This is the Owl cluster and its use of standard, large memory,
 and huge memory nodes.
 You can see on the [Owl resources page](https://docs.arc.vt.edu/resources/compute/01owl.html)
 that these are all "AMD EPYC 7000 series" nodes.
-There are not separate partitions for these nodes, nor
+There are not distinct partitions for these nodes, nor
 are there constraints that separate them.
 Instead, the choice of compute node type is based
 on the memory specified in the sbatch slurm script
