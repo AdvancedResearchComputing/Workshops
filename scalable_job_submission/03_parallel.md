@@ -106,7 +106,18 @@ Submit this job:
 sbatch sbatch.short.slurm
 ```
 
-parallel runs:
+The `parallel` command in the slurm bash script is expanded,
+from the one-line compact notation, 
+
+```
+parallel --jobs 5 sleep {}';' echo {} done ::: 5 4 3 1 2
+```
+
+to execute the
+following five commands (because there are five numbers
+in the command after `:::`, those numbers being 5, 4, 3, 1, 2).
+
+
 ```
 sleep 5; echo 5 done
 sleep 4; echo 4 done
@@ -114,7 +125,9 @@ sleep 3; echo 3 done
 sleep 1; echo 1 done
 sleep 2; echo 2 done
 ```
-The second output from the job is:
+
+The output from the job is:
+
 ```
 1 done
 2 done
@@ -122,7 +135,14 @@ The second output from the job is:
 4 done
 5 done
 ```
-The output is below.  The execution time is 7 seconds.
+
+Note that the ordering in the output (1, 2, 3, 4, 5) is not the
+same as that in the input (5, 4, 3, 1, 2).
+Ordering is not guaranteed with GNU parallel.
+
+
+The execution time is 7 seconds, according to the data below for
+job 104976.
 
 ```
 [ckuhlman@owl1 gnu-parallel]$ sacct -j 104976 --format=jobid,jobname,elapsed,ncpus,ntasks,state
@@ -147,12 +167,14 @@ Copy the file _sbatch.short.slurm_ and call the copy _sbatch.long.slurm_.
 cp sbatch.short.slurm sbatch.long.slurm
 ```
 
-In file _sbatch.long.slurm_, change this line `#SBATCH --cpus-per-task=5` to `#SBATCH --cpus-per-task=1`.
+In file _sbatch.long.slurm_, you have to make these changes.
 
-You may also want to change the names of the output and error files
-in:
-1. `#SBATCH --output`
-2. `#SBATCH --error`
+1. Change this line `#SBATCH --cpus-per-task=5` to `#SBATCH --cpus-per-task=1`.
+2. Change the line `parallel --jobs 5 sleep {}';' echo {} done ::: 5 4 3 1 2`
+   to `parallel --jobs 1 sleep {}';' echo {} done ::: 5 4 3 1 2`.
+3. In the output (`#SBATCH --output`) 
+   and error (`#SBATCH --error`) filenames, change the text
+   "short" to "long".
 
 Submit this job:
 
@@ -223,7 +245,7 @@ match up with how you want GNU parallel to perform.
 
 ## Use the genoa nodes of the normal_q partition.
 #SBATCH --partition=normal_q
-#SBATCH --constraint=genoa&avx512
+#SBATCH --constraint=avx512
 
 ## This specifies the number of CPUs.
 #SBATCH --nodes=1
@@ -537,6 +559,8 @@ in:
 5. When it completes, you can see the execution time by 
    typing `sh run.timing.sh <SLURM_JOB_ID>`.
 
+In one pair of runs of Example 3 and Example 4, Example 3 took 10 seconds
+to execute and Example 4 took 83 seconds.
 
 ### Example 5:  Runing the test_args.R with GNU Parallel
 
@@ -580,7 +604,8 @@ module load R/4.4.2-gfbf-2024a
 echo "Running on $(hostname)"
 echo "CPUs: $SLURM_CPUS_PER_TASK"
 
-parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 #because 7>4, only 4 tasks at a time (queued)
+parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 
+# because 7>4, only 4 tasks at a time (queued)
 # -j specify the maximum number of jobs that can run at the same time
 ```
 
