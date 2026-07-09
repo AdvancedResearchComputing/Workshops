@@ -1,9 +1,8 @@
 # Running Remote Desktop
 
-
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 ## Launching Remote Desktop
 
@@ -189,6 +188,9 @@ Mesa is an open-source software implementation of OpenGL. It provides software-b
 > [!NOTE]
 > This is a waste of resources for you and for all users.
 
-
-
-
+### Next
+- [Running Jupyter notebooks](./jupyter.md)
+- [Running Visual Studio Code](./vs-code.md)
+- [Running Matlab](./matlab.md)
+- [Running RStudio](./R-studio.md)
+- [Running LLM Chatbot](./llm-chatgpt.md)

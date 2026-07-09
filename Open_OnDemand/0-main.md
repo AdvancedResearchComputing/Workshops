@@ -45,19 +45,17 @@ layer (i.e., OOD) into the process of executing commands.
 
 ## Outline
 
-- [Background, Motivation, and Learning Objectives](./bmlo.md)
-- [Accessing OOD](./access-ood.md)
-- [Navigating Directories and Files](./directories-files.md)
-- [Viewing Active Jobs on Clusters](./active_job.md)
-- [Obtaining a Cluster Shell (Terminal)](./cluster-shell.md)
+- [Background, Motivation, and Learning Objectives](./1-background.md)
+- [Accessing OOD](./2-access-ood.md)
+- [Navigating Directories and Files](./3-directories-files.md)
+- [Viewing Active Jobs on Clusters](./4-active_job.md)
+- [Obtaining a Cluster Shell (Terminal)](./5-cluster-shell.md)
 - [Running R-studio](./R-studio.md)
 - [Running Matlab](./matlab.md)
 - [Running Jupyter notebooks](./jupyter.md)
 - [Running Remote Desktop](./remote-desktop.md)
 - [Running LLM Chatbot](./llm-chatgpt.md)
 - [Running VS Code](./vs-code.md)
-
-
 
 ## Relinquishing Resources When Done With an OOD Job
 
@@ -72,10 +70,5 @@ also present it here.
 > [!NOTE]
 > This is a waste of resources for you and for all users.
 
-## Acknowledgments
-
-
-
-## References
-
-
+### Next
+[Background, Motivation, and Learning Objectives](./1-background.md)

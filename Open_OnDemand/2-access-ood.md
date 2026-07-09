@@ -1,9 +1,8 @@
 # Accessing OOD
-April 17th, 2026
 
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 ## Steps to Access OOD for VT ARC Cluster Use
 
@@ -36,5 +35,6 @@ We will focus on main tabs:
 3. Clusters
 4. Interactive Apps
 
-
+### Next
+[Navigating Directories and Files](./3-directories-files.md)
 

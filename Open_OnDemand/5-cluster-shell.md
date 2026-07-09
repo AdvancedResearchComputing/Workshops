@@ -1,9 +1,8 @@
 # Obtaining a Terminal Window and Shell
 
-
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 
 ## Obtaining a Terminal Window and Shell on a Specified Cluster
@@ -34,4 +33,11 @@ That is, you can open multiple terminal screens for one cluster (e.g., Owl)
 or multiple terminal screens for all clusters.
 
 
+### Next
+- [Running R-studio](./R-studio.md)
+- [Running Matlab](./matlab.md)
+- [Running Jupyter notebooks](./jupyter.md)
+- [Running Remote Desktop](./remote-desktop.md)
+- [Running LLM Chatbot](./llm-chatgpt.md)
+- [Running VS Code](./vs-code.md)
 
