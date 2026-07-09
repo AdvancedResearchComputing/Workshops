@@ -184,7 +184,7 @@ seff  SLURM_JOB_ID
 to see the use of CPUs and memory.
 
 And example is:
-
+ 
 ```
 [ckuhlman@tinkercliffs2 srun]$ seff 6291640
 Job ID: 6291640
