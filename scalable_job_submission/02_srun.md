@@ -87,7 +87,7 @@ echo "slurm_ntasks (total number of tasks across all nodes):  $SLURM_NTASKS"
 echo "slurm_job_num_nodes: $SLURM_JOB_NUM_NODES"
 
 # This is going to run 32 instances of the R code.
-srun --ntasks=$SLURM_NTASKS Rscript test_args.R  12 14 16 18 test_args.R
+srun --ntasks=$SLURM_NTASKS Rscript test_args.R  12 14 16 18 "the cat in the hat"
 ```
 
 
@@ -140,38 +140,38 @@ Each execution of srun is one task.
 ```output
 slurm_ntasks (total number of tasks across all nodes):  32
 slurm_job_num_nodes: 2
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc034 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
-[1] "Tag, from  tc035 ...   Arguments:    12   14   16   18   test_args.R"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
 ```
 
 To build intuition about the performance of your codes,
@@ -182,6 +182,24 @@ seff  SLURM_JOB_ID
 ```
 
 to see the use of CPUs and memory.
+
+And example is:
+
+```
+[ckuhlman@tinkercliffs2 srun]$ seff 6291640
+Job ID: 6291640
+Cluster: tinkercliffs
+User/Group: ckuhlman/ckuhlman
+State: COMPLETED (exit code 0)
+Nodes: 2
+Cores per node: 16
+CPU Utilized: 00:00:11
+CPU Efficiency: 8.59% of 00:02:08 core-walltime
+Job Wall-clock time: 00:00:04
+Memory Utilized: 571.22 MB
+Memory Efficiency: 0.92% of 60.75 GB (1.90 GB/core)
+The task which had the largest memory consumption differs by 349.45% from the average task max memory consumption
+```
 
 ---
 
