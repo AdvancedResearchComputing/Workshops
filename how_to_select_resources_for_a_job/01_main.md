@@ -29,6 +29,8 @@ Other cluster resource specifications are similar.
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:1
+#SBATCH --output slurm.tc.a100.namd.01.%j.out
+#SBATCH --error slurm.tc.a100.namd.01.%j.err
 #
 # Load modules
 # Invoke your code
@@ -700,10 +702,10 @@ _**Procedure**_
 - Type `squeue`.
 - Get the slurm job ID of the job of interest.  Call this `sjid`.
 - On terminal type, `scontrol show job --details sjid`.
-   - Get the compute node IDs of the compute nodes that you are using.
+   - Get the compute node IDs of the compute nodes that you are using (these should also be shown on `squeue` results).
    - Get the GPU indexes of the GPUs you are using.
 - You can also do:  on terminal type, `showjobusage sjid`.
-   - Get the compute node IDs of the compute nodes that you are using.
+   - Get the compute node IDs of the compute nodes that you are using (these should also be shown on `squeue` results).
    - Get the GPU indexes of the GPUs you are using.
 - Go to the dashboards below (per cluster).
   - Dashboards
@@ -716,9 +718,65 @@ _**Procedure**_
       for the GPUs that your job is using. 
     - Look at the GPU utilization plot and confirm that GPU usage is as you expect.
 
+
+#### If Your Job Uses CPUs
+
+Follow the steps in the previous subsection:
+- `squeue`
+- `scontrol show job --details sjid` or `showjobusage sjid`
+
+... to obtain:
+- Your slurm job ID `sjid`.
+- The compute nodes on which you are running.
+- The CPU IDs that are running your code on each compute node.
+- From a terminal screen on the cluster on which your job is running,
+  ssh into each compute node of your list.
+  - Example:  if your job is running on the TC compute
+    node tc003, then enter `ssh tc003`
+  - Type `htop -u $USER`
+  - Look at the plot on the top of the resulting page.
+  - Note that you have to "add 1" to each CPU ID that you get
+    from the `scontrol` and `showjobusage`
+    commands above
+       - This is because the linux commands number CPUs starting
+         at zero, while htop numbers themn starting at 1.
+           - Example:  if one a TC compute node, there are 128 CPUs or cores,
+             then:
+                - `scontrol` and `showjobusage` will number them 0 to 127.
+                - `htop` will number them 1 to 128.
+  - Look at the CPUs (cores) on this upper graphic and see the instantaneous
+    utilization for each core that is running your code.
+  - Confirm that the CPUs are being used.
+      
+
 ## Checking on Completed Jobs
 
+When your slurm job completes, you can either remember the slurm job ID
+from your terminal screen output (earlier in time), or you can
+look at your slurm-generated output and error files, which should have
+the slurm job ID in their names.
 
+You specify that the job ID will appear in the slurm-generated output
+and error files by putting `%j` in their filenames in the 
+sbatch slurm script.
+Examples were given early in this presentation.
+
+Now, from a terminal screen, issue:
+
+`seff <slurm-job-ID>`
+
+This will give you the memory and CPU utilization of your job.
+
+You can use these data to inform you as to whether you should change
+your resource allocations.
+
+For example, you may have used very little memory from that assigned
+to your job.
+In this case, in the next job of this type, you can reduce the
+amount of memory requested.
+
+**You want to use the `seff` command to build your intuition
+about cluster performance.**
 
 ## An Estimate of When Your Job Will Start
 
@@ -828,7 +886,7 @@ There are at least two ways to get an estimate.
 11. X Caution about specifying whole nodes for jobs.
    - This can take time for slurm to achieve and provide to you.
    - Example alternative
-12. If using GPUs in your job, use the grafana dashboards to ensure that your code is using the GPUs.
+12. X If using GPUs in your job, use the grafana dashboards to ensure that your code is using the GPUs.
    - These are a limited resources, so their efficient use if important to everyone.
    - Procedure
      - Go to a terminal for the cluster your jobs are on.
