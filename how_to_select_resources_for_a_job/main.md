@@ -20,7 +20,7 @@
 3. [Beyond compute considerations](./beyond_compute_considerations.md)
 4. [Reduce time your job spends in queue](./reduce_job_queued_time.md)
 5. [Partitions](./partitions.md)
-6. [Mapping job types to gpus](./mapping_job_types_to_gpus.md)
+6. [Mapping job types to GPUs](./mapping_job_types_to_gpus.md)
 7. [Storage](./storage.md)
 8. [Longer running jobs](./longer-running-jobs.md)
 9. [Interactive versus batch jobs](./interactive_vs_batch_jobs.md)

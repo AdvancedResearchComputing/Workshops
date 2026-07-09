@@ -35,7 +35,7 @@ partition is not sufficient.
 |    ---     |    ---    |      ---                |
 |   TC       |    normal_q       |  CPUs:  AMD and Intel nodes.    |
 |   TC       |    a100_normal_q  |  GPUs:  Nvidia and HPE nodes.      |
-|   Owl      |    normal_q       |  CPUs: Genoa and Milan.     |
+|   Owl      |    normal_q       |  CPUs: Genoa and Milan nodes.     |
 
 We note that for many jobs, the type of compute node is
 not important.
