@@ -312,11 +312,12 @@ Then submit the job:
 sbatch sbatch.three.nodes.slurm
 ```
 
-In the first example, all lines of output started with "Tag, from <compute node ID>"
+In the first example, all lines of output started with "Tag, from < compute node ID >"
 where compute node ID is one value across all lines.
 
 In the second example, compute node ID changes:  for one value of 
-`+/-12 +/-14 +/-16 +/-18`, each of the three lines has a different compute node ID,
+`+/-12 +/-14 +/-16 +/-18`, each of the three lines has a different compute node ID
+(matching `#SBATCH --nodes=3`),
 illustrating that srun is running jobs across different compute nodes.
 
 
