@@ -1,3 +1,8 @@
+
+⬅️ [Previous: Main](vs-code-on-compute-nodes.md) | [Next: Step 1:  Setup ➡️](step_1_setup.md)
+
+
+
 ## Summary of Major Steps
 
 We order the activities into setup steps that you execute
@@ -29,3 +34,8 @@ VSC on a compute node.
 
 [ProxyJump on ARC Clusters](figures/proxy-jump.png)
 ![ProxyJump on ARC Clusters](figures/proxy-jump.png)
+
+
+---
+
+⬅️ [Previous: Main](vs-code-on-compute-nodes.md) | [Next: Step 1:  Setup ➡️](step_1_setup.md)

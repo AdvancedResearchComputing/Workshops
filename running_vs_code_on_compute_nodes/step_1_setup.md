@@ -1,3 +1,5 @@
+⬅️ [Previous: Summary of Steps](summary_of_steps.md) | [Next: Step 2:  Use of VS Code on compute nodes ➡️](step_2_every_session.md)
+
 ## Step 1:  One-Time Setup
 
 ---------------------------------------
@@ -89,3 +91,7 @@ installed.
 4. Find the `Remote - SSH` package in the list of choices provided from the search
    (there should be a blue `Install` button associated with each package).
    1. Click the `Install` button corresponding to `Remote - SSH` and the package will be installed into VSC.
+
+
+
+⬅️ [Previous: Summary of Steps](summary_of_steps.md) | [Next: Step 2:  Use of VS Code on compute nodes ➡️](step_2_every_session.md)

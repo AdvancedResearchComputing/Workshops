@@ -62,8 +62,8 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 ## Detailed Topics
 
 1. [Summary of steps](./summary_of_steps.md)
-2. [Step 1:  One-Time Setup](./step_1_setup.md)
-3. [Step 2:  Use of VS Code on Compute Nodes](./step_2_every_session.md)
+2. [Step 1:  One-time setup](./step_1_setup.md)
+3. [Step 2:  Use of VS Code on compute nodes](./step_2_every_session.md)
 4. [Step 3:  Potential access issue and solution](./step_3_possible_error.md)
 
 
@@ -77,3 +77,6 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
    This workshop is largely based on his information and document.
 2. Matthew Brown and Ayat Mohammed are thanked for
    interpreting the authentication problem.
+
+
+[Next: Summary of steps ➡️](summary_of_steps.md)

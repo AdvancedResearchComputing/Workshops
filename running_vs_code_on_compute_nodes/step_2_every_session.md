@@ -1,3 +1,5 @@
+⬅️ [Previous: Step 1:  Setup](step_1_setup.md) | [Next: Step 3:  Potential access issue and solution ➡️](step_3_possible_error.md)
+
 ## Step 2:  Using VS Code on an ARC Compute Node
 
 ---------------------------------------
@@ -212,3 +214,6 @@ So you do not need to close anything---everything will be closed for you.
 > If you do not `exit` off of the compute node, and you are not using
 > the provided resources, then you tie up those
 > resources for others who could otherwise use them.
+
+
+⬅️ [Previous: Step 1:  Setup](step_1_setup.md) | [Next: Step 3:  Potential access issue and solution ➡️](step_3_possible_error.md)
