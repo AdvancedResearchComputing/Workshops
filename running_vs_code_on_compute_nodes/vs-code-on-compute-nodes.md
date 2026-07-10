@@ -10,16 +10,16 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 1. VS Code (VSC) is a popular IDE for developing code and content
    for other files.
-2. Running VS Code is allowable on head nodes _**IF**_:
+2. Running VS Code is allowable on login (head) nodes _**IF**_:
    1. You do not run with plugins, e.g., do not run with AI plugins.
    2. You do not run code:  no code execution, no major code debugging.
 3. Why these restrictions?
-   1. Because head nodes are communal resources that all users make use of _**simultaneously**_.
+   1. Because login nodes are communal resources that all users make use of _**simultaneously**_.
    2. Compute nodes, on the other hand, are used by a _**selected few**_ users at a time according to Slurm scheduler operations.
-   3. So if you are consuming lots of resources on head nodes,
+   3. So if you are consuming lots of resources on login nodes,
           then you are degrading 
-          the performance of the head nodes for all other users.
-       1. VS Code is a _**primary**_ way that users consume too many resources on head nodes.
+          the performance of the login nodes for all other users.
+       1. VS Code is a _**primary**_ way that users consume too many resources on login nodes.
    4. It is most useful to think of yourself and all other
          1000 ARC users as being in the same boat:
          we need to be respectful of others, by following agreed upon procedures, so that everyone
@@ -30,7 +30,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
    2. I want to use AI or other plugins with VSC.
 5. How do I do this?
 6. By running your instance of VS Code on a _**compute**_ node 
-   (and not a _**head**_ node).
+   (and not a _**login**_ node).
 7. This workshop focuses on how to run VSC on ARC compute nodes.
 
 [VS Code Use](figures/vs-code-in-ways.png)

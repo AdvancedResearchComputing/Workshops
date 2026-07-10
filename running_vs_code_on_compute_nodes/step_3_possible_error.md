@@ -29,7 +29,7 @@ From your laptop, open a terminal window and connect _**DIRECTLY**_ to the compu
 The steps are:
 
 1. Open a terminal window on your laptop.
-   1. If you used a laptop terminal window above to log into the head 
+   1. If you used a laptop terminal window above to log into the login 
       node and request compute node resources, then open a second terminal window now.  (You need a separate
       terminal window for this.)
 2. Establish an `ssh` connection _**DIRECTLY**_ to the compute node

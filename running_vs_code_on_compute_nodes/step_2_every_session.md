@@ -14,7 +14,7 @@ subsequent session.
 
 The major steps to execute, which we describe in more detail below, are:
 
-1. From a cluster head node, request an interactive Slurm job
+1. From a cluster login node, request an interactive Slurm job
    through a terminal window.
    1. You will be provided a compute node (name).
 2. Use VSC, running on your laptop, to connect to the compute node
@@ -29,12 +29,12 @@ The major steps to execute, which we describe in more detail below, are:
 Save our work frequently in VSC.  When the interactive job ends, your VSC connection to the compute node WILL end and you will lose any work that you have not saved.
 ```
 
-### Log Into an ARC Cluster Head Node
+### Log Into an ARC Cluster Login Node
 
-We need to log into an ARC cluster head node so that
+We need to log into an ARC cluster login node so that
 we can request resources on a compute node.
 
-Logging onto a head node, can be performed using any of the following:
+Logging onto a login node, can be performed using any of the following:
 
 1. A terminal window on your laptop.
 2. A terminal window obtained through [ARC's Open OnDemand](https://ood.arc.vt.edu) (OOD).
@@ -42,25 +42,25 @@ Logging onto a head node, can be performed using any of the following:
 
 Execute the commands in _**ONE**_ of the two following subsections
 (per the listing immediately above), to
-log into a head node using a terminal window.
+log into a login node using a terminal window.
 
-#### Recommended Way:  Using a Terminal Window on Your Laptop to Log Into an ARC Cluster Head Node
+#### Recommended Way:  Using a Terminal Window on Your Laptop to Log Into an ARC Cluster Login Node
 
 1. Open a terminal window on your laptop.
-2. ssh into a cluster head node for the cluster where you want to do VSC work.
-   1. For example, if you want to log into the owl head node 2:
+2. ssh into a cluster login node for the cluster where you want to do VSC work.
+   1. For example, if you want to log into the owl login node 2:
       1. `ssh <user_name>@owl2.arc.vt.edu`
-3. Now you are logged into a head node.
+3. Now you are logged into a login node.
 
 #### Alternative Way:  Using a Terminal Window Through Open OnDemand (OOD) to Log Into an ARC Cluster Head Node
 
 1. Go to the [ARC OOD landing page](https://ood.arc.vt.edu).
 2. At the command bar at the top of the page (currently in maroon),
    click the `Clusters` drop down and select one of the Falcon, Owl,
-   or Tinkercliffs shell access for a head node corresponding to the
+   or Tinkercliffs shell access for a login node corresponding to the
    cluster on which you want to use a compute node for VSC.
 3. You will be placed on a terminal window.
-4. You are now logged into a head node.
+4. You are now logged into a login node.
 
 ### Request Compute Node Resources From a Cluster Head Node
 
@@ -201,7 +201,7 @@ So you do not need to close anything---everything will be closed for you.
 2. You finish your work and end your session.
    1. In VSC, follow the last major bullet in the section above, "Do Your Work and Then End Your Session."
    2. In the terminal screen where you issued the `interact` command, type `exit`.
-      1. This will log you off of the compute node and put you back on the head node.
+      1. This will log you off of the compute node and put you back on the login node.
       2. This will end your interactive job and hence will make impossible any further action on the compute node with VSC.
       3. If you have to deal with the "authenticity problem" in the major section below, this should also end the `ssh` session that you created directly from your laptop.
 

@@ -22,9 +22,9 @@ VSC on a compute node.
 2. Steps To Use for Every VS Code Session on Compute Node
    1. Request an interactive job on the ARC clusters.
       1. From a terminal window on your local machine, make an `ssh`
-         connection to a head node whose compute nodes you want to
+         connection to a login node whose compute nodes you want to
          run VSC on.
-      2. From this head node, make a request of slurm, via the `interact` command,
+      2. From this login node, make a request of slurm, via the `interact` command,
       to provide you with your specified resources (on a compute node).
       3. Note `hostname` of the _**compute**_ node you are given.
    2. From your laptop, using VSC, connect to the compute node via ProxyJump.
