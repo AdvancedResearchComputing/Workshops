@@ -27,8 +27,8 @@ different storage devices.
      - For example, with files, there are ways to 
        control each of:
        - who can see a file.
-       - who can view the file.
-       - who can edit the file.
+       - who can view the file contents.
+       - who can edit the file contents.
        - who can execute (an appropriate) file. 
    - So that when a student leaves, the advisor has access.
    - The PI will have access anyway; ARC will ensure that,
