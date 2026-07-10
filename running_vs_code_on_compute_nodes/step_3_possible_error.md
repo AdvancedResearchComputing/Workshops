@@ -38,7 +38,7 @@ The steps are:
    2. You will be asked some question to establish authenticity; enter `yes`.
 3. Just leave this terminal window as is, e.g., do not close it. 
 
-Now, you should be able to return to the Section above
+Now, you should be able to return to the Section [Step 2](./step_2_every_session.md) above
 "_Using VS Code From Your Laptop to Run on a Compute Node_" to connect to the cluster compute node.
 When you go back to that section and those directions, (1) close the VS Code instance that was
 trying---unsuccessfully---to connect to the compute node and (2) start over at the beginning of
