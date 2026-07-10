@@ -103,6 +103,9 @@ then the bit has value 0.
 
 We will both structures for examining permissions below.
 
+![directory and file permissions format](./figures/permissions-01.png)
+
+
 ### Permission Classes
 
 In the previous two sections, we spoke about actions and whether
@@ -114,6 +117,11 @@ three permission classes:
 2. group:  typically the name of the PI's project under which the
    student is working.
 3. other:  everyone else (that is the user or in the group).
+
+
+Format of permissions for directories and files.
+
+
 
 ## Putting These Ideas Together
 
