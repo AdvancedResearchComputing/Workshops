@@ -564,7 +564,16 @@ to execute and Example 4 took 83 seconds.
 
 ### Example 5:  Runing the test_args.R with GNU Parallel
 
-Note the change of number of nodes, --nodes=1 and --cpus-per-task=4 which we used as -j $SLURM_CPUS_PER_TASK. It denotes the maximum number of jobs that can run at the same time and if the number of the input parameters is more than $SLURM_CPUS_PER_TASK then the rest of tasks will be queued. GNU parallel only repeat the task for different inputs.
+Note the change of number of nodes to one: `--nodes=1`.
+The number of CPUs per task is four:  `--cpus-per-task=4`.
+The slurm parameter `$SLURM_CPUS_PER_TASK` takes the value assigned
+to `--cpus-per-task`.
+The arguments `--jobs $SLURM_CPUS_PER_TASK` denotes the maximum
+number of jobs that can run at the same time and if the number
+of input parameters (here, 7) is more than `$SLURM_CPUS_PER_TASK`,
+then the rest of the tasks will be queued and subsequently run
+as CPUs become available.
+GNU parallel will only repeat the task for different inputs.
 
 Here is r_GNUP.sh:
 
@@ -584,7 +593,7 @@ Here is r_GNUP.sh:
 
 ## Num compute nodes, executing tasks, compute cores.
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16 
+#SBATCH --ntasks-per-node=1 
 #SBATCH --cpus-per-task=4 
 
 ## Slurm output and error files.
@@ -609,7 +618,8 @@ parallel --jobs $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7
 # --jobs specify the maximum number of jobs that can run at the same time
 ```
 
-Here is the last part of the output:
+Here is the last part of the output from one job:
+
 ```
 slurm_ntasks (total number of tasks across all nodes):  16
 slurm_job_num_nodes: 1
