@@ -40,14 +40,14 @@ This account is under `/projects/<PIs-account>`.
             (3) can execute appropriate files inside
             of the directory by ...
             - Student
-            - Advisor
+            - Advisor/group (i.e., the PI's project)
           - No one outside of the PI's (advisor's) group
             has any access to the files. 
         - file permissions: 660
           - A student's file can be (1) read, and
             (2) written to (i.e., modified) by ...
             - Student
-            - Advisor
+            - Advisor/group
           - No one outside of the PI's (advisor's) group
             has any access to the file. 
 
@@ -69,10 +69,12 @@ It is best to think of directories as files;
 files that contain other files, directories, and symlinks.
 
 With this in mind, the three actions for directories are:
-1. read:  you can/cannot read the contents (files, directories,
-   symlinks _names_) within a directory.
+1. read:  you can/cannot read the contents of a directory (e.g., names of files, directories,
+   symlinks).
 2. write:  you can/cannot add and delete files.
-3. execute:  you can enter a directory and access metadata.  You can alter files per file permissions.  (If not x, then you cannot access the files in it, even if you have r + w permissions on files therein.)
+3. execute:  you can enter a directory and access metadata.  You can alter files per file permissions.
+   -  If you do not have `x` (execute permission), then you cannot access the
+      files in it, even if you have r + w permissions on files therein.
 
 
 
