@@ -64,6 +64,8 @@ log into a login node using a terminal window.
 
 ### Request Compute Node Resources From a Cluster Head Node
 
+You are on an ARC cluster login node.
+
 Use the `interact` command to request compute node resources.
 
 Note that these are the resources that you will have access to
@@ -93,10 +95,9 @@ Example for Falcon
 interact --account=<account> --partition=l40s_normal_q --nodes=1 --ntasks-per-node=1 --cpus-per-task=4  --mem=4GB --gres=gpu:1 --time=04:00:00
 ```
 
-Since all GPU-based partitions have only a single node type, 
-the `--constraint` switch is not used when requesting GPU resources.
-See [constraints](https://docs.arc.vt.edu/usage/job_scheduling/01_slurm_overview.html#slurm-constraints) for more details.
-But a GPU-based interactive job needs `--gres` to specify the 
+For more about the `constraint` switch, 
+see [constraints](https://docs.arc.vt.edu/usage/job_scheduling/01_slurm_overview.html#slurm-constraints) for more details.
+A GPU-based interactive job needs `--gres` to specify the 
 number of GPUs needed.
 
 Since these are the resources that you will use with VSC,
@@ -139,25 +140,30 @@ The steps are:
          VSC IDE, type `Remote-SSH → Connect to Host…` and select
          that option from the dropdown list.
 2. Enter the compute node name directly (this is the output from the `hostname` command above) and hit "return."
-3. A pop-up box will appear:  select the `/Users/<your_user_name>/.ssh/config` option.
-4. Go down to the lower right of the IDE, and click the "Connect" button.
-5. VS Code will launch a new IDE instance.
-6. This is where you might encounter the _**Authentication Problem**_ referred to in the major section 3 below.
-   In the new VS Code instance, in the upper middle of the IDE,
-   you will see a message in very light gray---which is very difficult to 
-   see---that there is an authentication problem.
-   That section describes how to solve this problem.
-   A tip-off that there is a problem is that the new VS Code instance is trying to connect to the 
-   compute node named `hostname`, and in the lower left of this new window, in blue, it will just
-   keep "spinning," showing "Opening Remote..."
-7. If all is going well, then in the new VS Code instance,
+3. A new VS Code Instance will pop up---the one that is trying to start on the compute node.
+4. One of two paths now occurs:
+   - Success path:
+     - A pop-up box may appear.  If so, select the `/Users/<your_user_name>/.ssh/config` option.
+     - Go down to the lower right of the IDE, and click the "Connect" button.
+     - VS Code will launch a new IDE instance.
+   - Problem path:
+     - You might encounter the _**Authentication Problem**_ referred to in the
+       [summary of steps](./summary_of_steps.md) below.
+       In the new VS Code instance, in the upper middle of the IDE,
+       you will see a message in very light gray---which is very difficult to 
+       see---that there is an authentication problem.
+       [That section (Step 3)](./step_3_possible_error.md) describes how to solve this problem.
+       A tip-off that there is a problem is that the new VS Code instance is trying to connect to the 
+       compute node named `hostname`, and in the lower left of this new window, in blue, it will just
+       keep "spinning," showing "Opening Remote..."
+5. If all is going well, then in the new VS Code instance,
    you should see at lower right something like
    "Downloading VS Code Server".  This is good.
-8. IF/When prompted, choose `Linux` as the remote platform.
-9. VS Code’s remote server now runs on the compute node instead of the login node.
-10. You should see a blue box in the new VS Code IDE instance 
+6. IF/When prompted, choose `Linux` as the remote platform.
+7.  VS Code’s remote server now runs on the compute node instead of the login node.
+8.  You should see a blue box in the new VS Code IDE instance 
    at the lower left stating `SSH: <hostname>`, indicating that you are connected to the ARC compute node `<hostname>`.
-11. Another way to verify that you are on a compute node is to select
+9.  Another way to verify that you are on a compute node is to select
    `Terminal` from the VSC main menu and then select `New Terminal`.
    Your VSC diplay should show you a terminal at the bottom and the 
    command prompt should include the `<hostname>`, indicating that
