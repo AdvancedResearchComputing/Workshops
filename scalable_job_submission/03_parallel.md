@@ -569,7 +569,8 @@ The number of CPUs per task is four:  `--cpus-per-task=4`.
 The slurm parameter `$SLURM_CPUS_PER_TASK` takes the value assigned
 to `--cpus-per-task`.
 The arguments `--jobs $SLURM_CPUS_PER_TASK` denotes the maximum
-number of jobs that can run at the same time and if the number
+number of jobs that can run at the same time.
+If the number
 of input parameters (here, 7) is more than `$SLURM_CPUS_PER_TASK`,
 then the rest of the tasks will be queued and subsequently run
 as CPUs become available.
