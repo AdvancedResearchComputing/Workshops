@@ -204,7 +204,7 @@ if we are given for one file that:
 2. the group can read and execute the file.
 3. other can only execute the file.
 
-Then the integer value, from the table above,
+Then the integer values, from the table above,
 for the three permission classes are:
 1. user:  7
 2. group: 5
