@@ -39,6 +39,9 @@ with the `%A` and `%a` symbols, like so:
 #SBATCH --error   r.para.job.array.%A_%a.err
 ```
 
+By comparison, with conventional sbatch slurm scripts,
+we use `%j` to embed the slurm job ID into the
+slurm-generated output and error files.
 
 
 #### Inputs
@@ -76,7 +79,7 @@ This slurm sbatch script is _slurm.02.sbatch_.
 #!/bin/bash
 
 
-## #SBATCH -J rPara
+## Job name.
 #SBATCH --job-name jarray
 
 ## Account.
@@ -96,6 +99,7 @@ This slurm sbatch script is _slurm.02.sbatch_.
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-7
 
+## Selected alternatives for the "--array" switch.
 ## The command below means that of the 100 jobs,
 ## you can only run at most 7 jobs at one time.
 ## #SBATCH --array=1-100%7
