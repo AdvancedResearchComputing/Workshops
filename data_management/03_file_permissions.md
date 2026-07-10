@@ -101,11 +101,6 @@ bit has value 1.
 If a bit for read, write, or execute is "unset" (i.e., not set),
 then the bit has value 0.
 
-We will both structures for examining permissions below.
-
-[directory and file permissions format](./figures/permissions-01.png)
-![directory and file permissions format](./figures/permissions-01.png)
-
 
 ### Permission Classes
 
@@ -121,6 +116,11 @@ three permission classes:
 
 
 Format of permissions for directories and files.
+
+We will both structures for examining permissions below.
+
+[directory and file permissions format](./figures/permissions-01.png)
+![directory and file permissions format](./figures/permissions-01.png)
 
 
 
