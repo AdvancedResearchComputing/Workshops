@@ -4,10 +4,10 @@
 
 We will demonstrate two jobs.
 The jobs are almost identical.
-In the first job, all executions of a code
+- In the first job, all executions of a code
 are run on one compute node.
-In the second job, with very small modifications,
-how all executions of a code are run on more
+- In the second job, with very small modifications,
+all executions of a code are run on more
 than one compute node.
 
 Consistent with the notes above, `srun` is the tool
@@ -21,7 +21,7 @@ results for the same inputs.
 Here, we use a simple deterministic code in the examples.
 
 
-### Patterns With GNU Parallel and srun
+### A Pattern for the Combined Use of GNU Parallel and srun
 
 Patterns are code designs and implementations that are used over and over
 again for different types of problems.
@@ -32,8 +32,10 @@ again for different types of problems.
         - Stochasticity of inputs is a reason to run the same code with same inputs multiple times.
 2. The graphics below illustrate this.
     - There is one sbatch slurm script.
-    - But the values for switches `--ntasks-per-node` and `--nodes`, for srun,
-      and `--cpus-per-task`, for parallel, work in combination to complete the executions.
+    - srun uses the values for switches `--ntasks-per-node` and `--nodes` to control
+      the total number of tasks.
+    - parallel uses the value of `--cpus-per-task` to control the work within one task.
+    - srun and parallel work in combination to complete the executions.
 
 [pattern3a](figures/slide-2-parallel-n-srun.pdf)
 ![patter3a](figures/slide-2-parallel-n-srun.png)
@@ -48,13 +50,13 @@ again for different types of problems.
 We are running `parallel` as an outer loop.
 And `srun` as an inner loop.
 
-We run `parallel` a total of 16 times, see `--cpus-per-task`,
+We run `parallel` a total of 16 times (cf. `--cpus-per-task`),
 using all combinations (i.e., the Cartesian product) of the two values
 for each of four parameters:  2^4=16.
 
 For each of the 16 combinations of the four input parameters,
 we run test_args.R three times.
-(We make believe that test_args.R is a stoachistic code so that
+(We make believe that test_args.R is a stochastic code so that
 we want to run it four times.)
 
 #### Files
@@ -157,7 +159,7 @@ The output is below (time information and compute node information will vary).
 
 Notes:  In the output below:
 
-1. There are 16 lines with `values : 12 14 16 18`, per `parallel`.
+1. There are 16 lines with `values : +/-12 +/-14 +/-16 +/-18`, per `parallel`.
 2. There are three lines per parallel statement, per `srun`.
 
 
@@ -309,6 +311,15 @@ Then submit the job:
 ```
 sbatch sbatch.three.nodes.slurm
 ```
+
+In the first example, all lines of output started with "Tag, from <compute node ID>"
+where compute node ID is one value across all lines.
+
+In the second example, compute node ID changes:  for one value of 
+`+/-12 +/-14 +/-16 +/-18`, each of the three lines has a different compute node ID,
+illustrating that srun is running jobs across different compute nodes.
+
+
 ---
 
 ⬅️ [Previous: GNU pararllel](03_parallel.md) | [Next: Job Arrays ➡️](05_job_arrays.md)

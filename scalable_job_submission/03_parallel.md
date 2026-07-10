@@ -576,6 +576,8 @@ then the rest of the tasks will be queued and subsequently run
 as CPUs become available.
 GNU parallel will only repeat the task for different inputs.
 
+The code test_args.R is given in the previous lesson.
+
 Here is r_GNUP.sh:
 
 ```bash
