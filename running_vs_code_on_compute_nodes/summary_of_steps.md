@@ -26,7 +26,7 @@ VSC on a compute node.
          run VSC on.
       2. From this login node, make a request of slurm, via the `interact` command,
       to provide you with your specified resources (on a compute node).
-      3. Note `hostname` of the _**compute**_ node you are given.
+      3. Note `hostname` of the _**compute**_ node you are given.  You will need it below.
    2. From your laptop, using VSC, connect to the compute node via ProxyJump.
       1. You will need that hostname of the compute node.
 3. Actions to take for authenticity problem, if you get the message
