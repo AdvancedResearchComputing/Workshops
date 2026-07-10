@@ -604,9 +604,9 @@ module load R/4.4.2-gfbf-2024a
 echo "Running on $(hostname)"
 echo "CPUs: $SLURM_CPUS_PER_TASK"
 
-parallel -j $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 
+parallel --jobs $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7 
 # because 7>4, only 4 tasks at a time (queued)
-# -j specify the maximum number of jobs that can run at the same time
+# --jobs specify the maximum number of jobs that can run at the same time
 ```
 
 Here is the last part of the output:
