@@ -1,10 +1,9 @@
 ⬅️ [Previous: Summary of Steps](summary_of_steps.md) | [Next: Step 2:  Use of VS Code on compute nodes ➡️](step_2_every_session.md)
 
+---
+
 ## Step 1:  One-Time Setup
 
----------------------------------------
-
----------------------------------------
 
 ### Altering Your SSH `config` File for Wildcard ProxyJump
 
@@ -93,5 +92,6 @@ installed.
    1. Click the `Install` button corresponding to `Remote - SSH` and the package will be installed into VSC.
 
 
+---
 
 ⬅️ [Previous: Summary of Steps](summary_of_steps.md) | [Next: Step 2:  Use of VS Code on compute nodes ➡️](step_2_every_session.md)

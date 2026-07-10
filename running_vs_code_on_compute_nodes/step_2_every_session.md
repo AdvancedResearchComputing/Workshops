@@ -1,10 +1,10 @@
 ⬅️ [Previous: Step 1:  Setup](step_1_setup.md) | [Next: Step 3:  Potential access issue and solution ➡️](step_3_possible_error.md)
 
+---
+
 ## Step 2:  Using VS Code on an ARC Compute Node
 
----------------------------------------
 
----------------------------------------
 
 By "session" we mean make a connection through VSC on your laptop
 to an ARC cluster compute node and do your work.
@@ -215,5 +215,7 @@ So you do not need to close anything---everything will be closed for you.
 > the provided resources, then you tie up those
 > resources for others who could otherwise use them.
 
+
+---
 
 ⬅️ [Previous: Step 1:  Setup](step_1_setup.md) | [Next: Step 3:  Potential access issue and solution ➡️](step_3_possible_error.md)

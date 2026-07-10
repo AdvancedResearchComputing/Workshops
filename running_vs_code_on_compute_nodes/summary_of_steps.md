@@ -1,7 +1,7 @@
 
 ⬅️ [Previous: Main](vs-code-on-compute-nodes.md) | [Next: Step 1:  Setup ➡️](step_1_setup.md)
 
-
+---
 
 ## Summary of Major Steps
 

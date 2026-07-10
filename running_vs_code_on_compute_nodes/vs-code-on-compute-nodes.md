@@ -78,5 +78,6 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 2. Matthew Brown and Ayat Mohammed are thanked for
    interpreting the authentication problem.
 
+---
 
 [Next: Summary of steps ➡️](summary_of_steps.md)

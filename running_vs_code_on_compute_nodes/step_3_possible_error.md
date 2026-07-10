@@ -1,10 +1,10 @@
 ⬅️ [Previous: Step 2:  Use of VS Code on compute nodes](step_2_every_session.md) 
 
+---
+
 ## Step 3:  Actions to Take if You Receive an Authentication Problem Within VS Code While Connecting to the ARC Compute Node
 
----------------------------------------
 
----------------------------------------
 
 It is highly likely that at some point, you will run into this situation/problem.
 
@@ -44,6 +44,8 @@ When you go back to that section and those directions, (1) close the VS Code ins
 trying---unsuccessfully---to connect to the compute node and (2) start over at the beginning of
 those instructions.
 
+
+---
 
 ⬅️ [Previous: Step 2:  Use of VS Code on compute nodes](step_2_every_session.md) 
 
