@@ -2,8 +2,7 @@
 
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
-
+[Back to Main Page](./0-main.md)
 
 ## Overview
 
@@ -51,7 +50,7 @@ There are four classes of work/activities that can be done with OOD:
 3. Shell access
 4. Interactive apps
 
-you can upload and download files; create, edit, submit, and monitor jobs; run GUI applications; and connect via SSH, all via a web broswer, with no client software to install and nothing to configure.
+You can upload and download files; create, edit, submit, and monitor jobs; run GUI applications; and connect via SSH, all via a web broswer, with no client software to install and nothing to configure.
 
 
 ## Example Comparison:  OOD vs. terminal window and ssh
@@ -90,4 +89,7 @@ The learning objectives are:
 
 Essentially, there is one episode in these web pages (i.e., one lesson)
 for each of these objectives.
+
+### Next
+[Accessing OOD](./2-access-ood.md)
 

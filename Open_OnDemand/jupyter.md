@@ -1,9 +1,8 @@
 # Running Jupyter Notebooks
 
-
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 
 ## Launching Jupyter
@@ -353,5 +352,12 @@ You can continue adding to this notebook as you would any other.
 
 > [!NOTE]
 > This is a waste of resources for you and for all users.
+
+### Next
+- [Running Visual Studio Code](./vs-code.md)
+- [Running Matlab](./matlab.md)
+- [Running RStudio](./R-studio.md)
+- [Running Remote Desktop](./remote-desktop.md)
+- [Running LLM Chatbot](./llm-chatgpt.md)
 
 

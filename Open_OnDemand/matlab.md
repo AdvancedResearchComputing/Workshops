@@ -1,9 +1,8 @@
 # Running Matlab
 
-
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 ## Copying and Pasting with noVNC
 
@@ -335,9 +334,12 @@ your inclinations.
 > [!NOTE]
 > This is a waste of resources for you and for all users.
 
-
-
-
+### Next
+- [Running Jupyter notebooks](./jupyter.md)
+- [Running Visual Studio Code](./vs-code.md)
+- [Running RStudio](./R-studio.md)
+- [Running Remote Desktop](./remote-desktop.md)
+- [Running LLM Chatbot](./llm-chatgpt.md)
 
 
 

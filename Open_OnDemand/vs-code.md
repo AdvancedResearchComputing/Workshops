@@ -1,9 +1,8 @@
 # Running VS Code
 
-
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 
 ## Launching VS Code on OOD
@@ -73,4 +72,9 @@ Specifics for this use case are:
 An entire workshop on how to do this is [here](https://github.com/AdvancedResearchComputing/Workshops/tree/main/running_vs_code_on_compute_nodes).
 
 
-
+### Next
+- [Running Jupyter notebooks](./jupyter.md)
+- [Running Matlab](./matlab.md)
+- [Running RStudio](./R-studio.md)
+- [Running Remote Desktop](./remote-desktop.md)
+- [Running LLM Chatbot](./llm-chatgpt.md)

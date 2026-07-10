@@ -1,9 +1,8 @@
 # Running LLM Chatbots
 
-
 #### Link Back To Main
 
-[Back to Main Page](./main-ood.md)
+[Back to Main Page](./0-main.md)
 
 
 ## Launching Chatbot
@@ -41,4 +40,9 @@ Here is a sample screen with some simple questions and answers.
 ![LLM Landing](./figures/llms-chatgpt/llm-llama-3.3-70B-Instruct.png)
 
 
-
+### Next
+- [Running Jupyter notebooks](./jupyter.md)
+- [Running Visual Studio Code](./vs-code.md)
+- [Running Matlab](./matlab.md)
+- [Running RStudio](./R-studio.md)
+- [Running Remote Desktop](./remote-desktop.md)
