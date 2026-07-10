@@ -86,6 +86,9 @@ This slurm sbatch script is _slurm.02.sbatch_.
 #SBATCH --account arcadm
 
 ## Time.
+## This is the time allotted to each task
+## of the job array (it is not cumulative
+## over tasks).
 #SBATCH --time 00:10:00
 
 ## Partition.
