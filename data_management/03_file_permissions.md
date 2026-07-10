@@ -103,6 +103,7 @@ then the bit has value 0.
 
 We will both structures for examining permissions below.
 
+[directory and file permissions format](./figures/permissions-01.png)
 ![directory and file permissions format](./figures/permissions-01.png)
 
 
