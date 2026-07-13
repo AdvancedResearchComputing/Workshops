@@ -45,7 +45,7 @@ layer (i.e., OOD) into the process of executing commands.
 
 ## Outline
 
-- [Background, Motivation, and Learning Objectives](./1-background.md)
+- [Background & Motivation](./1-background.md)
 - [Accessing OOD](./2-access-ood.md)
 - [Navigating Directories and Files](./3-directories-files.md)
 - [Viewing Active Jobs on Clusters](./4-active_job.md)
@@ -72,4 +72,4 @@ also present it here.
 > This is a waste of resources for you and for all users.
 
 ### Next
-[Background, Motivation, and Learning Objectives](./1-background.md)
+[Background & Motivation](./1-background.md)
