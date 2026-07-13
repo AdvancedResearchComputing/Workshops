@@ -35,7 +35,7 @@ Example
 6. Bit-wise AND on the following:
    - 0  110   110   110
    - 0  111   111   000
-   - ------------------
+   - ==================
    - 0  110   110   000
 7. The conversion of the above result is: 0660
 8. The file permission is 660, which is what you will get for permissions on a new file.
