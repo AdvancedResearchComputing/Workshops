@@ -234,102 +234,20 @@ python -m ipykernel install --name networkx  --display-name "Python (networkx)" 
 # All done with building VE.  Deactivate the VE.
 conda deactivate
 
-# Now get back in and test simply:  load packages.
-# Use the python interpreter.
-# Each import should give NO feedback; successful 
-# loads will give no error message, so that is what we want to see.
-source activate ~/env/owl/normal_q/py312_mf_jupyter_networkx
-python
-import matplotlib
-import pandas
-import networkx
-exit()
-
-# All done with building VE.  Deactivate the VE.
-conda deactivate
-
 # Get off of compute node.
 exit
 
 # Now back on login node of the ARC cluster.
 
 # See what slurm job is our salloc command above.
-squeue -u <username>
+squeue
 
 # Release resources.
 scancel <job ID of the salloc command>
-
 ~~~
 
-
-## Using a Virtual Environment with Jupyter via OOD
-
-
-Now we go back to OOD.
-Click `Interactive Apps` and `Jupyter`.
-Fill out the screen below (split into two here because
-we could not get the entire screen in one capture; there
-is some overlap in the screens).
-
-In the field `Conda Environment (Only Python)`,
-you want to specify the root of the Conda Virtual Environment (CVE).
-It is the full path including the directory such that a subdirectory
-is `bin`. 
-This is the same specification as when, from the command line,
-we activate a CVE, per the commands above.
-
-The "partition" field must be filled with the same partition that
-you used to create the VE.  In this case, it is the "normal_q" partition.
-
-Part 1
-![Jupyter CVE Launch](./figures/jupyter/jupyter-launch-cve-part-1.png)
-
-Part 2
-![Jupyter CVE Launch](./figures/jupyter/jupyter-launch-cve-part-2.png)
-
-
-Note that the queue specified here, `normal_q` matches the partition used to
-create the CVE, and `Owl` matches the cluster on which the CVE was made.
-You should use some naming convention for your CVEs (and all VEs).
-The path and file, created by the user is: `~/env/owl/normal_q/py312_mf_jupyter_networkx`.
-This means that the CVE was built on the `owl` cluster, using a compute node on the 
-`normal_q`. 
-The CVE uses python 3.12 and the CVE was built with Miniforge3 (`mf`), so
-this is how we know it is a CVE and not some other type of VE.
-It was made to be run with `jupyter` and contains as a central
-package `networkx`.
-
-With all clusters sharing the same disk mount, it is imparative in your work to
-label things clearly.
-
-
-Click the `Launch` button.
-You will wait for the `Connect to Jupyter` to appear and connect just as you did above
-by clicking that button.
-Now we are going to create a new Jupyter notebook with python.
-
-As before, we are on the `Files` tab.
-Go to the directory `jupyter-notebooks` and double-click that.
-Then double-click `python`.
-You will see a screen sort of like the one below.
-Click on `New` at the right and you will see a new option:  `Python (networkx)`.
-Select that.
-
-![Jupyter With CVE](./figures/jupyter/select-jupyter-networkx.png)
-
-
-You will be presented with a new notebook like below.
-
-![Jupyter With CVE](./figures/jupyter/new-notebook-jupyter-networkx.png)
-
-You can fill it out as shown below.  We are using NetworkX heavily here.
-
-
-![Jupyter With CVE](./figures/jupyter/notebook-jupyter-networkx.png)
-
-
-At this point, you can save the notebook using `File`->`Save Notebook As ...`.
-You can continue adding to this notebook as you would any other.
+In Jupyter (via Open OnDemand), select from the top menu: Kernel → Change Kernel → Python (networkx)), then execute your cell.
+We have additional information on our [documentation page](https://docs.arc.vt.edu/usage/virtual_environments/virtual_env_conda.html#use-a-jupyter-kernel-to-load-a-conda-environment-in-a-jupyter-application). 
 
 ## Ending a Jupyter Notebook Session
 

@@ -4,15 +4,6 @@
 
 [Back to Main Page](./0-main.md)
 
-## Copying and Pasting with noVNC
-
-In the instructions for this example, a lot of detail is shown
-as to how to copy commands from terminal windows on ARC clusters
-(including those within OOD) into the Matlab windows.
-
-This more elaborate procedure is not an ARC issue:  it is a 
-windowing issue over which VT ARC has no control.
-
 ## Launching Matlab
 
 On command bar at top of the landing page, click `Interactive Apps` and 
@@ -53,7 +44,7 @@ When you come onto the Matlab UI, it will look as below.
 ![Matlab Landing Page](./figures/matlab/matlab-landing-page.png)
 
 
-## Setting Preference to Windows Format
+## Setting Preferences to Windows Format (older Matlab versions ONLY)
 
 Copying and pasting text is a somewhat of a issue with Matlab
 through OOD.
@@ -65,7 +56,7 @@ both approaches to running Matlab code below.
 Here, we change a setup option to help us with this copying
 and pasting.
 
-At the top, roughly center to center-right of screen, click `preferences`.
+At the top, roughly center to center-right of screen, click `Settings`.
 You will see the screen below.
 
 
@@ -94,7 +85,7 @@ even across sessions.
 ## Running Matlab:  Approach 1 of 2
 
 As an aside, note that if you `ssh` into the cluster and issue
-`squeue -u <username>` then the output will not show as Matlab
+`squeue` then the output will not show as Matlab
 running, but rather as `sys/dash` running.
 
 
@@ -151,7 +142,7 @@ You make these files on the ARC cluster by copying the contents
 of the files from these web pages and pasting them directly into files
 on the cluster.
 (You can use the vi editor, for example.)
-For this copying and pasting, you use `cntrl-c` and `cntrl-v`
+For this copying and pasting, you use `ctrl-c` and `ctrl-v`
 on Windows and `cmd-c` and `cmd-v` on Mac OS, just as you 
 normally do.
 
@@ -179,7 +170,7 @@ code01
 ~~~
 
 To do this, first highlight the `cd` command and use `cmd-c` on a Mac 
-and `cntrl-c` on Windows to copy the text.
+and `ctrl-c` on Windows to copy the text.
 From here on, we only specify the Mac OS commands.
 
 You see a small tab at the left side of the figure below, about one-half
@@ -200,7 +191,7 @@ The result is that a clipboard popup appears, as below.
 
 ![Matlab Approach 01-03](./figures/matlab/matlab-approach-01-03.png)
 
-Use `cmd-v` (on Mac) or `cntrl-v` (on Windows)
+Use `cmd-v` (on Mac) or `ctrl-v` (on Windows)
 to paste the `cd` command into the popup box.
 The result is the next figure below, where the text is now in the
 popup box.
