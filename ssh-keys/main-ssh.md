@@ -151,12 +151,15 @@ These methods essentially work the same way.
     - id_rsa (we will generate this private key).
     - id_rsa.pub (we will generate this public key; the "pub" is for public).
 4. If you have id_rsa and id_rsa.pub files already, then you may be using these keys
-   in different apps like github or other clusters, so it is your choice as
-   to whether to create new keys.
-    - If you want, you could consider moving these files to different names
-      so that they do not get overwritten/destroyed.  Example:
-        - `mv id_rsa is_rsa.back`
-        - `mv id_rsa.pub id_rsa.pub.back`
+   in different apps like github or other clusters, so it is your choice:
+    - Option 1:  Use the keys you already have.
+      I personally see no reason to create new keys if you already have them.
+      If you decide to use the keys you already have, you are done with 
+      Task 1; do not execute any more steps in this task.
+    - Option 2:  Create a new set of keys, keeping the existing set as a backup.
+      - Example:
+          - `mv id_rsa is_rsa.back`
+          - `mv id_rsa.pub id_rsa.pub.back`
 5. Create your new key pair = (public key, private key).
    Read this entire step first before doing anything because you will
    be asked for responses, so you do not want to jump ahead inadvertently.
@@ -179,7 +182,7 @@ These methods essentially work the same way.
 6. We are going to copy the contents of the public key.  One way to do that is:
     - Type `cat id_rsa`
     - Highlight the resulting text and copy it
-      (using `control-c` or whatever on your machine).
+      (using `control-c` or similar on your machine).
 7. Log into the TC, Owl, or Falcon cluster, the old clunky way.
     - `ssh my_vt_pid@owl3.arc.vt.edu`
     - Go to directory .ssh by typing `cd ~/.ssh`.
