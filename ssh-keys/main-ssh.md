@@ -221,9 +221,22 @@ On your laptop, you want to start an "ssh agent."
 
 This agent will remember that passphrase for a specified length of time.
 
-The command is: `ssh-add  -t1h ~/.ssh/id_rsa`
+The command is: `ssh-add    -t <time agent runs>    ~/.ssh/id_rsa`
 
-This command starts an ssh agent, uses the private key, and for this example,
+Example:
+
+To set for one hour:
+
+`ssh-add   -t  1h    ~/.ssh/id_rsa`
+
+Example:
+
+To set for four weeks:
+
+`ssh-add   -t  4w    ~/.ssh/id_rsa`
+
+
+This command starts an ssh agent, uses the private key, and for the first example,
 the passphrase is held by the agent for 1 hour (the `-t1h` switch).
 For this duration of time, you will not have to enter the passphrase in 
 Step 2 of **Log into the cluster** in Task 1 because the ssh agent will automatically supply it.
