@@ -1,4 +1,4 @@
-# Using Open OnDemand (OOD) on ARC Clusters
+# SSH Keys on ARC Clusters:  Simplify Your Cluster Login Process
 
 ## ARC Resources and Mechanisms for Assistance
 
@@ -179,8 +179,8 @@ These methods essentially work the same way.
     - This will create two new files, using the default names:
         - id_rsa (the private key)
         - id_rsa.pub (the public key)
-6. We are going to copy the contents of the public key.  One way to do that is:
-    - Type `cat id_rsa`
+6. We are going to copy the contents of the _**public**_ key.  One way to do that is:
+    - Type `cat id_rsa.pub`
     - Highlight the resulting text and copy it
       (using `control-c` or similar on your machine).
 7. Log into the TC, Owl, or Falcon cluster, the old clunky way.
