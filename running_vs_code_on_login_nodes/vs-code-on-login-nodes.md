@@ -52,17 +52,18 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 ### Prerequisites
 
-1.  Have SSH installed on your local machine (comes with most laptops).
+1.  Install VS Code on your laptop.  See, for example:  [download page](https://code.visualstudio.com/download?_exp_download=fb315fc982).
+2.  Have SSH installed on your local machine (comes with most laptops).
     [SSH keys](https://docs.arc.vt.edu/usage/sshkeys.html) is a great way to configure ssh and the clusters so that 
     login is fast.
     This is covered in detail in the workshop _ssh keys_.
-2.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html) installed on your laptop (local machine).
-3.  Have an ARC [account](https://arc.vt.edu/account).
-4.  Have an ARC Project for file storage.  Not absolutely critical for this
+3.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html) installed on your laptop (local machine).
+4.  Have an ARC [account](https://arc.vt.edu/account).
+5.  Have an ARC Project for file storage.  Not absolutely critical for this
     workshop, because you can here use `/home/<username>` for this workshop, but critical for your work long-term.
       1. If you are a professor (i.e., PI), then create a project [here](https://docs.arc.vt.edu/pi_info/allocations.html).
       2. If you are a student, find a professor to work with.
-5.  Have an [allocation](https://docs.arc.vt.edu/pi_info/allocations.html) to charge "jobs" to.  (Not critical for this workshop.)
+6.  Have an [allocation](https://docs.arc.vt.edu/pi_info/allocations.html) to charge "jobs" to.  (Not critical for this workshop.)
 
 
 ### Overview:  Major Activities in this Workshop
