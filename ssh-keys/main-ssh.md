@@ -43,17 +43,19 @@ It gets old/tedious really fast.
 ####  What can I do to make its use easy and fast?
 
 There are two (possibly three) major tasks to complete.
-Two are one-time setups.  The third can be done periodically.
+Two are one-time setups.  The third (Task 2) can be done periodically.
 Then you use the results to significantly streamline logging into ARC clusters.
 It eliminates a LOT of hassle.
 
+Please read all three of these descriptions now, so that you
+are aware that the choices you make in the procedures for Task 1
+affect whether you have to do Task 2.
 
 ##### Task 1
 
 Using ssh keys and a setup procedure, you can set up your computer
 (e.g., laptop) so that
-logins to clusters are fast (essentially instantaneous) and easy
-(involves about six key strokes).
+logins to clusters are faster.
 From a practical perspective, this setup with ssh keys enables
 you to issue the `ssh` command and
 have it validate you, as a user, automatically, 
