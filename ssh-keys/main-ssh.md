@@ -21,7 +21,8 @@ in our case, the ARC clusters and servers.
 ####  What can it do for me?
 
 You must log in to the clusters---even for using OOD you must
-log in to the VT network---and ssh is the way to log in to the clusters.
+log in to the VT network---and ssh is the way to log in to the clusters
+through terminal windows.
 
 ####  Is it a pain to use default procedures?
 
