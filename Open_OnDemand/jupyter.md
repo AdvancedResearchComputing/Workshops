@@ -136,32 +136,12 @@ Then I can repeat more iterations.
 
 ![Open Existing Notebook](./figures/jupyter/running-shutdown.png)
 
-## Cooperative Work on Multiple OOD Windows
+## Organzing notebooks in different directories/folders
 
 Say you have created a notebook, but you want to move it to a 
 different directory to preserve your intended structure.
 The jupyter windows are not really well-suited for this operation.
-But we can easily do it in a terminal window.
-
-One goes back to the landing page for OOD, shown again below.
-
-
-![OOD Root](./figures/jupyter/ood-root.png)
-
-Click on `Clusters`->`Owl Shell Access` and you have a screen like the one
-below.
-You simply navigate to the notebook, which the "Files"
-tab can show you, and then perform your move operation
-as you would with any terminal session.
-
-![OOD Terminal Window](./figures/jupyter/ood-terminal-window.png)
-
-You can also accomplish a move by going back to the landing page for OOD
-and then clicking `Files` and then either `Home` or `Projects` depending
-on where your notebooks are located, navigate to the appropriate
-directory, and use the `Copy/Move` operation as we did in a previous
-episode.
-
+But we can easily do it in a terminal window (`Clusters`->`Owl Shell Access`) or through the `Files` tab in OOD (`Files` -> Jupyter Notebook -> use the `Copy/Move` operation).
 
 ## Creating Conda Virtual Environment for Use in Jupyter
 
