@@ -1,15 +1,11 @@
 # Running Jobs on ARC Systems  
 
-February 06, 2026
-
 Nicole Braunscheidel\
 Computational Scientist (ARC)\
 Email: nbraunsc@vt.edu
 
 ## Logistics
-Please sign in: [https://docs.google.com/document/d/1KLXoQWPeVevkeBH8WNjgtNDxAiwdcG4GLJOx9yMRvqw/edit?usp=sharing](https://docs.google.com/document/d/1KLXoQWPeVevkeBH8WNjgtNDxAiwdcG4GLJOx9yMRvqw/edit?usp=sharing)
-
-Feedback form: [https://forms.gle/BCQ4SfdiE3KhQ6sM8](https://forms.gle/BCQ4SfdiE3KhQ6sM8)
+Please sign in: [https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing](https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
@@ -379,6 +375,6 @@ This is not good! DO NOT continue to run your code as many things could be broke
 
 # Submitting Jobs through Open OnDemand (OOD)
 
-More information about this in the April 17th workshop "Hands-On HPC Access and Application with Open OnDemand". 
+More information about this is covered in our Open OnDemand Workshop. The material link and video recording can be found here: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html). 
 
 Make sure you cancel your job when you are done! If you just close the browser it will not stop your job. Also, make sure that if you submit an OOD job, that you are actively using the resources and not leaving them idle. When we see idle jobs we consider that wasting resources and try to minimize this on the clusters as much as possible. 
