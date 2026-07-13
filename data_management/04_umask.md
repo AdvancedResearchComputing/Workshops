@@ -20,9 +20,10 @@ Procedure for specifying file permissions.
 3. Convert the base permission to binary.
 4. Convert the umask to binary.
 5. Take the complement of the umask (keep the leading zero).
-6. Perform a bit-wise AND operation on the binary base permission and the binary umask.
-7. Convert the binary result to octal.
-8. The result is the file permission.
+6. Perform a bit-wise AND operation on the binary base permission
+   and the complement of the binary umask.
+8. Convert the binary result to octal.
+9. The result is the file permission.
 
 
 Example
@@ -50,9 +51,10 @@ Procedure for specifying directory permissions.
 3. Convert the base permission to binary.
 4. Convert the umask to binary.
 5. Take the complement of the umask (keep the leading zero).
-6. Perform a bit-wise AND operation on the binary base permission and the binary umask.
-7. Convert the binary result to octal.
-8. The result is the directory permission.
+6. Perform a bit-wise AND operation on the binary base permission
+   and the complement of the binary umask.
+8. Convert the binary result to octal.
+9. The result is the directory permission.
 
 
 Example
@@ -72,7 +74,7 @@ Example
    for permissions on a new directory.
 
 
-And this is how the default permissions are set on files and directories.
+And this is how the current default permissions are set on files and directories.
 
 
 
