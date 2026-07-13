@@ -1,4 +1,4 @@
-# Background, Motivation, and Learning Objectives
+# Background & Motivation
 
 #### Link Back To Main
 
@@ -14,6 +14,13 @@ text on the right.
 [ood conceptual view](./figures/ood-files-n-jobs/ood-vs-cl-conceptual.pdf)
 ![ood conceptual view](./figures/ood-files-n-jobs/ood-vs-cl-conceptual.png)
 
+Ways to use OOD:
+1. File management and transfer.
+2. Job creation, editing, and management (submission and monitoring).
+3. Shell access
+4. Interactive apps
+
+You can upload and download files; create, edit, submit, and monitor jobs; run GUI applications; and connect via SSH, all via a web broswer, with no client software to install and nothing to configure.
 
 There are postives and negatives in using OOD.
 
@@ -40,19 +47,6 @@ scalability in terms of numbers of operations that a user can perform in a given
 then this OOD approach is impractical and one often writes scripts to automate job creation and submission.
 In this case, many users `ssh` into a cluster using terminal windows.
 
-
-## Categories of Work on OOD 
-
-
-There are four classes of work/activities that can be done with OOD:
-1. File management and transfer.
-2. Job creation, editing, and management (submission and monitoring).
-3. Shell access
-4. Interactive apps
-
-You can upload and download files; create, edit, submit, and monitor jobs; run GUI applications; and connect via SSH, all via a web broswer, with no client software to install and nothing to configure.
-
-
 ## Example Comparison:  OOD vs. terminal window and ssh
 
 In the figure below we contrast running (slurm) jobs using sbatch scripts with slurm via
@@ -68,27 +62,6 @@ This is an example where you can do the same thing---submit a slurm job---with b
 
 Other things are more useful to do with OOD and still other things are more
 useful to do with terminal windows.
-
-## Learning Objectives
-
-The learning objectives are:
-
-1. Understand (Open OnDemand) OOD conceptually, including how it compares with using terminal screens to access ARC clusters.
-2. OOD's strengths and weaknesses.
-3. How to access OOD in a browser window.
-4. Accessing, managing files and directories, including how to make new ones and change existing ones.
-5. Viewing Slurm jobs you have submitted on clusters.
-6. Accessing terminal screens.
-7. Running R Studio.
-8. Running Matlab.
-9. Running Jupyter notebooks.
-10. Creating a conda virtual environment to run with Jupyter notebooks.
-11. Running a remote desktop.
-12. Running LLMs (large language models).
-13. Running VS Code.
-
-Essentially, there is one episode in these web pages (i.e., one lesson)
-for each of these objectives.
 
 ### Next
 [Accessing OOD](./2-access-ood.md)
