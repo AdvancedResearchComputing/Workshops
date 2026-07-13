@@ -1,20 +1,13 @@
 # Resource Utilization and Job Monitoring
 
-February 13, 2026
-
-Nicole Braunscheidel\
-Computational Scientist (ARC)\
-Email: nbraunsc@vt.edu
-
 ## Logistics
-Please sign in: [https://docs.google.com/document/d/1mgWPL9hWIozxv62IS1EdXLolL4Jk9cjbu8w4VyJX4Zo/edit?usp=sharing](https://docs.google.com/document/d/1mgWPL9hWIozxv62IS1EdXLolL4Jk9cjbu8w4VyJX4Zo/edit?usp=sharing)
+Please sign in: [https://docs.google.com/document/d/1Bj6RQK2iccjto8WBX3l638z5IHtjteNgFhiZAIKzW7s/edit?usp=sharing](https://docs.google.com/document/d/1Bj6RQK2iccjto8WBX3l638z5IHtjteNgFhiZAIKzW7s/edit?usp=sharing)
 
-Feedback form: [https://forms.gle/oa1BrfZGhLEmbbzF9](https://forms.gle/oa1BrfZGhLEmbbzF9)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- This document in both PDF and HTML format is uploaded in Files on the Canvas site or you can also access it here: [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Running_Jobs_on_ARC/Running_Jobs_On_ARC.md)
-- We have a lot of short video tutorials (I will eventually record this workshop without attendees): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
+- This workshop is recorded and can be accessed after this workshop here: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html). 
+- We have a lot of other short video tutorials [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
 Useful links:
