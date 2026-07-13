@@ -11,6 +11,15 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 - understand overall cluster status and performance, as well as those of your jobs, via dashboards
 - more
 
+## MS Windows Versus Mac
+
+These directions in this file are for MacOS-based laptops.
+
+
+This page [https://docs.arc.vt.edu/usage/sshkeys.html](https://docs.arc.vt.edu/usage/sshkeys.html) contains details for constructing ssh keys
+on both Mac and Windows laptops.
+The Windows instructions are largely the same.
+
 ## SSH (Secure SHell)
 
 ####  What is ssh?
