@@ -19,9 +19,10 @@ Procedure for specifying file permissions.
 2. Given a umask of 0007.  (This is the current system default for each user.)
 3. Convert the base permission to binary.
 4. Convert the umask to binary.
-5. Take the complement of the umask.
+5. Take the complement of the umask (keep the leading zero).
 6. Perform a bit-wise AND operation on the binary base permission and the binary umask.
-7. The result is the file permission.
+7. Convert the binary result to octal.
+8. The result is the file permission.
 
 
 Example
@@ -30,6 +31,18 @@ Example
 2. umask 0007.
 3. binary base permission:  0  110   110   110
 4. binary umask:            0  000   000   111
+5. Take the complement of the umask:    0  111  111  000
+6. Bit-wise AND on the following:
+   - 0  110   110   110
+   - 0  111   111   000
+   - ------------------
+   - 0  110   110   000
+7. The conversion of the above result is: 0660
+8. The file permission is 660, which is what you will get for permissions on a new file.
+
+
+
+
 
 
 #### 
