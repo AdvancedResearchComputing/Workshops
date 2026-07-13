@@ -6,6 +6,33 @@
 
 ## umask
 
+An octal system of digits that is used as a "reference" to set
+file and directory permissions from _**base permissions**_.
+
+A umask is a user-specified value.
+
+#### File Permissions Using Umask
+
+Procedure for specifying file permissions.
+
+1. Given a base permission of 0666.
+2. Given a umask of 0007.  (This is the current system default for each user.)
+3. Convert the base permission to binary.
+4. Convert the umask to binary.
+5. Take the complement of the umask.
+6. Perform a bit-wise AND operation on the binary base permission and the binary umask.
+7. The result is the file permission.
+
+
+Example
+
+1. base permission 0666.
+2. umask 0007.
+3. binary base permission:  0  110   110   110
+4. binary umask:            0  000   000   111
+
+
+#### 
 
 
 =====================

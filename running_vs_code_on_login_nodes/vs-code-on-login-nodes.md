@@ -195,7 +195,9 @@ The highlighted one is the one we want.
    1. Some text might be: "Host added!"
    2. Other text might be:  "Source: Remote-SSH"
    3. There will be a button `connect`.  Click on it.
-   4. A new instance of VS Code will appear. 
+   4. A new instance of VS Code will appear.
+   5. In the new instance, look at the lower left.
+      In a small blue box should be the name of the cluster you logged into. 
 
 
 Some details of the above steps ...
