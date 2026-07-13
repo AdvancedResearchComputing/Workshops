@@ -14,16 +14,13 @@ Bulk movement of files is covered [elsewhere](https://github.com/AdvancedResearc
 
 On command bar at top of the landing page, click `Files` and click `Projects`.
 
-You will be presented with a list of directories under `Projects`.
-
-Find your project (can hit `cntrl-F` to search for it in the browser).
+You will be presented with a list of your directories under `Projects`.
 
 You can click on the name of the directory to go to it, 
 or in the drop-down list to the right of the filename,
 you can 
 rename or download the directory.
 You can also delete it.  Be careful.
-
 
 Directories are shown with a yellow folder icon; files with a gray paper.
 
