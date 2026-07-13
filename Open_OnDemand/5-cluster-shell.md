@@ -34,10 +34,9 @@ or multiple terminal screens for all clusters.
 
 
 ### Next
-- [Running R-studio](./R-studio.md)
-- [Running Matlab](./matlab.md)
 - [Running Jupyter notebooks](./jupyter.md)
+- [Running Visual Studio Code](./vs-code.md)
+- [Running Matlab](./matlab.md)
+- [Running R-studio](./R-studio.md)
 - [Running Remote Desktop](./remote-desktop.md)
 - [Running LLM Chatbot](./llm-chatgpt.md)
-- [Running VS Code](./vs-code.md)
-
