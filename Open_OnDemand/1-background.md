@@ -1,4 +1,4 @@
-# Background, Motivation, and Learning Objectives
+# Background & Motivation
 
 #### Link Back To Main
 
