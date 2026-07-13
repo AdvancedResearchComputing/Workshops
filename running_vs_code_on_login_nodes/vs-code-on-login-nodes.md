@@ -128,6 +128,8 @@ using VS Code on ARC cluster login nodes.
 6. When you locate this entry, look to the lower right of this
    entry for a blue box that says "install" and click that install
    button.
+      - If the little blue box does not appear, this means that the
+        extension is already installed.
 7. When the installation is completed, go back to the 
    search field and backspace over the characters until the field
    is blank.
