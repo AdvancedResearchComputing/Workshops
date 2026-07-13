@@ -82,7 +82,7 @@ The third section contains some illustrative examples for
 using VS Code on ARC cluster login nodes.
 
 1. One-time setup steps
-   1. VS Code is installed on your laptop.
+   1. Install VS Code on your laptop, if it is not already installed.
    2. Start VS Code.
    3. Install the "Remote - SSH" plugin on your laptop instance of VS Code.
 2. Steps to repeat each time you want to use VS Code
