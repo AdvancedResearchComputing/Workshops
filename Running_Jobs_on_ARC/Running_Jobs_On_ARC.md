@@ -1,16 +1,11 @@
 # Running Jobs on ARC Systems  
 
-Nicole Braunscheidel\
-Computational Scientist (ARC)\
-Email: nbraunsc@vt.edu
-
 ## Logistics
 Please sign in: [https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing](https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- This PDF is uploaded in Files on the Canvas site
-- There will be no recording of this workshop but we have a lot of short video tutorials: [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
+- This workshop is recorded and can be accessed after this workshop here: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html). 
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
 Useful links:
