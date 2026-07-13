@@ -68,7 +68,12 @@ Example
    - ==================
    - 0  111   111   000
 7. The conversion of the above result is: 0770
-8. The directory permission is 770, which is what you will get for permissions on a new file.
+8. The directory permission is 770, which is what you will get
+   for permissions on a new directory.
+
+
+And this is how the default permissions are set on files and directories.
+
 
 
 
