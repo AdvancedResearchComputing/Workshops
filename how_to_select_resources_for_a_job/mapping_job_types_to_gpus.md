@@ -20,7 +20,7 @@ jobs as possible in some unit of time.
 |   ---                |     ---   |  ---            |
 |  LLM inference; AI training; data analytics; HPC  |   TC   |    A100    |
 |  memory-intensive, large-scale LLM; HPC           |    TC      |     H200     |
-|  `*` AI workloads; low-prec HPC       |    Owl       |  B200 |
+|  AI workloads; low-prec HPC       |    Owl       |  B200`*` |
 |  AI inference; HPC FP32 only         |    Falcon  |    L40S      |
 |  HPC FP64; AI inference        |    Falcon  |    A30       |
 |  HPC FP64; Light ML (training and inference); data analytics; graphics         |    Falcon  |    v100      |
