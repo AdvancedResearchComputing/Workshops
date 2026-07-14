@@ -1,8 +1,7 @@
 # Motivation:  Resources That Can be Requested for a Job
 
 ---
-1. [Motivation ⬅️ Previous:](./motivation.md)
-3. [Next: ➡️ Reduce time your job spends in queue](./reduce_job_queued_time.md)
+[Motivation ⬅️ Previous:](./motivation.md) [Next: ➡️ Reduce time your job spends in queue](./reduce_job_queued_time.md)
 
 
 Below are sections from two job scripts, which are used to 
