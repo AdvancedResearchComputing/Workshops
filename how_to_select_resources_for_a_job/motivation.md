@@ -4,16 +4,15 @@
 [Next: File systems ➡️](02_file_systems.md)
 
 
-Below are sections from two sbatch slurm scripts, which are used to 
-submit batch jobs on a cluster.
+Below are sections from two job scripts, which are used to 
+submit batch jobs on a cluster with `sbatch`.
 
-The sections provided are where resources are specified.
-These give a sense of what resources can (or have to) be
-specified, and hence what features of the cluster to understand.
+The sections provided show how resources for the job are specified.
+These examples give a sense of what resources are typically
+specified and what features of the cluster a job may need to request.
 
 
-Illustrative resources for a GPU-based slurm job
-(for the Tinkercliffs [TC or tc] cluster).
+*Example 1:* Resources for a job requesting a GPU on the Tinkercliffs ("TC" or "tc").
 Other cluster resource specifications are similar.
 
 ```
@@ -33,7 +32,7 @@ Other cluster resource specifications are similar.
 # Invoke your code
 ```
 
-Illustrative resources for a CPU-based slurm job
+*Example 2:* Resources for a CPU-only job
 (again for TC, but are similiar for other nodes).
 
 ```
@@ -54,20 +53,20 @@ Illustrative resources for a CPU-based slurm job
 # Invoke your code
 ``` 
 
-Note that an sbatch slurm script is created for a particular cluster.
-Then the resources specified in the sbatch slurm script
-are used to identify particular resource needs to run your job.
+Note that an batch script is often created for a particular cluster.
+Then the resources specified in the script
+are used to identify particular resource needs (CPU, GPU, memory, layout) to run your job.
 
-Some questions motivated by these data above.
+Some questions motivated by these examples:
 
-1. Is my code a serial code or a parallel code.
+1. Is my code a serial code or a parallel code?
    - If a serial code, I will use one core (CPU) of one compute node.
    - If a parallel code ...
      - Am I using CPUs to achieve parallelism?
      - Am I using GPUs to achieve parallelism?
      - Am I using both?
 2. How many processes will I have?
-   - If a serial code, there will be one process.
+   - If a serial code, there will usually be one process.
    - A parallel code may have one process or many.
      - A purely threaded code will have one process.
      - A distributed code will have at least two processes.
@@ -77,18 +76,17 @@ Some questions motivated by these data above.
    - If it is a parallel code, I might run my code across several compute nodes
      and specify memory on a per-compute-node basis (as is done with `#SBATCH --mem=100GB` above). 
 
-This is not a workshop on how to design codes, but these three categories 
-of questions above have impacts on all of the parameters listed in the
+These three categories of questions above have impacts on all of the parameters listed in the
 two examples above:  time, partition, constraint, nodes or ntasks, ntasks-per-node,
 cpus-per-task, mem, and gres.
 
 **And in turn, these parameters and their values affect which resources you should
 choose to run your jobs.**
 
-Best practices:  many of these sbatch slurm script parameters have defaults.
-Do not use the defaults.  Specify everything.
+Best practices:  many of these Slurm job parameters have defaults.
+Explicity specify what you need to get to exercise full control of the job environment.
 
 
 
 ---
-[Next: File systems ➡️](02_file_systems.md)
+
