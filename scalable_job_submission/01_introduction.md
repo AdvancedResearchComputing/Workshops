@@ -106,6 +106,7 @@ that will orchestrate the construction of (configuration) files and
 compose an sbatch slurm job submission script and then submit it.
 But this would be highly uncommon/nonstandard.
 
+
 ### Prerequisites
 
 - You will need an ARC account to follow along and set up these tools.
@@ -114,6 +115,16 @@ But this would be highly uncommon/nonstandard.
 ### Applicability
 
 These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
+
+### Outline
+
+
+1. [srun](./summary_of_steps.md)
+2. [GNU Parallel](./step_1_setup.md)
+3. [GNU Parallel and srun](./step_2_every_session.md)
+4. [Step 3:  Potential access issue and solution](./step_3_possible_error.md)
+
+
 
 ### Acknowledgment
 
