@@ -284,6 +284,8 @@ values : 12 14 -16 18
 This example is just like the last except now we run the code
 instances on multiple (three) compute nodes.
 
+Remember:  we can run on multiple nodes because we are using `srun`.
+
 Steps:
 
 1. Make a copy of `sbatch.one.node.slurm` and call it `sbatch.three.nodes.slurm`.
