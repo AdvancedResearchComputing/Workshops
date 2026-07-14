@@ -1,15 +1,18 @@
 ## Differences in Cluster Resources
 
-ARC documentation contains details on the components (compute elements, volatile memory,
+ARC provides documentation that contains details on the components (compute elements, volatile memory,
 etc.) of clusters.
-Be familiar with them.
-(Also, in the late summer/fall 2026 timeframe, new resources will come online.)
+Use these as a reference when designing your workloads and assessing which cluster(s)/partition(s) to run on.
+Additions, updates, and changes are communicated through several channels:
+ - emails to the ARC users email list
+ - ARC Town Hall sessions (3x each semester)
+ - ARC documentation site: https://docs.arc.vt.edu
 
-The resource pages are:
+The resource pages for the main three current clusters are:
 
-- TC:  [tc resources](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html)
-- Owl:  [owl resources](https://docs.arc.vt.edu/resources/compute/01owl.html)
-- Falcon:  [falcon resources](https://docs.arc.vt.edu/resources/compute/02falcon.html)  
+- Tinkercliffs:  [TC resources](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html)
+- Owl:  [Owl resources](https://docs.arc.vt.edu/resources/compute/01owl.html)
+- Falcon:  [Falcon resources](https://docs.arc.vt.edu/resources/compute/02falcon.html)  
 
 #### Example 1.
 
@@ -20,13 +23,13 @@ It implements parallelism through threading.
 I want as many workers as possible.
 My memory requirements are pretty light (i.e., low).
 
+_Implications_:
+1. Single node jobs: The workload can only run on one compute node because the code has no distributed processing capabilities.
+2. A GPU will not help and asking for one would be wasteful in several ways (wait time, idle resource)
+
 _Solution_:
-
-You can only run on one compute node because the code has no distributed
-processing capabilities.
-
 By looking at the clusters, we see that Falcon has no CPU-only nodes.
-It is a GPU-based cluster.
+It is a GPU-based cluster. 
 You cannot just use the CPUs of a GPU node because that can potentially
 cut off users from using the GPUs---which is the purpose of having a GPU-based
 cluster.
@@ -40,11 +43,12 @@ per node.
 
 This is not the end of the story.
 Be prepared to wait in queue a long(er) time to run a job that uses all cores
-of a compute node.
-It takes slurm time to free these resources.
-It might well be better to specify say, 100 or 70 cores of the 128, and
+of a compute node. 
+You may decide to try to *minimize time-to-completion* (queue time + processing time):
+ARC clusters are always busy. It takes Slurm time to free these resources and
+It might well be better to specify say, 96 or 64 cores of the 128, and
 then increase your "time" parameter (because your job will presumably
-take longer with 70 cores than 128 cores [but not always]).
+take longer with 64 cores than 128 cores [but not always]).
 
 Also, you see large and huge memory nodes with 128 cores.
 We do not want to specify a 128 core job to run on a large or 
@@ -53,6 +57,13 @@ This is using resources that are in demand (there are few large and high
 memory nodes) for a purpose not that is inconsistent with their
 features.
 
+```
+# Targeting Tinkercliffs for large pool of nodes with 128 cores
+#SBATCH --partition=normal_q
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=64
+#SBATCH --memory=25G
+```
 
 #### Example 2
 
@@ -102,7 +113,7 @@ _Requirement_:
 
 I have a need to do HPC computing with GPUs.
 
-Which GPUs should I use.
+Which GPUs should I use?
 
 _Solution_
 
