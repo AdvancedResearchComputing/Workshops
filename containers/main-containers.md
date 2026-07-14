@@ -5,6 +5,7 @@
 ## ARC Resources and Mechanisms for Assistance
 
 A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help from VT ARC and access to information, and links to those resources, are provided.  Examples:
+- ARC Docs (documentation) pages
 - determine and attend office hours
 - submit help tickets (for errors, problems, or request a consultation)
 - obtain listings of workshops (and video recordings and notes files)
