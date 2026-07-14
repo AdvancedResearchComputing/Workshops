@@ -1,3 +1,5 @@
+7. [Longer running jobs ⬅️ Previous:](./longer-running-jobs.md)
+
 # Interactive Versus Batch Jobs
 
 ### Loose Definitions
@@ -72,3 +74,5 @@ The above reasoning is just to present the issues.
 But remember this ...
 
 **You should choose the job type that you need:  if you need interactive jobs, then use them.**
+
+9. [Next: ➡️ Checking on in-progress jobs](./checking_on_in_progress_jobs.md)

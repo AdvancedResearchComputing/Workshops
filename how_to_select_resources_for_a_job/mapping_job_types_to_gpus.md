@@ -1,3 +1,5 @@
+4. [Partitions ⬅️ Previous:](./partitions.md)
+
 # Mapping Job Types to GPUs:  All GPU-Based Compute Nodes Are Not Created Equal
 
 ARC has six (soon to be seven) types of GPUs.
@@ -29,3 +31,5 @@ jobs as possible in some unit of time.
 `*` coming in late summer/fall 2026.
 
 Tomorrow's workshop on GPU Basics will provides more info on GPU charactistics and usage.
+
+6. [Next: ➡️ Storage](./storage.md)

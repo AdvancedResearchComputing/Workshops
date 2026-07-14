@@ -1,3 +1,5 @@
+8. [Interactive versus batch jobs ⬅️ Previous:](./interactive_vs_batch_jobs.md)
+
 # Checking on In-Progress Jobs
 
 ## ARC provided scripts:
@@ -30,3 +32,4 @@ _**Procedure**_
    - `mpstat`
    - `nfsiostat 2 5 /scratch`
   
+  10. [Next: ➡️ Checking on completed jobs](./checking_on_completed_jobs.md)

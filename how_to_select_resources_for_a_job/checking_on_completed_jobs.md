@@ -1,3 +1,5 @@
+9. [Checking on in-progress jobs ⬅️ Previous:](./checking_on_in_progress_jobs.md)
+
 ## Checking on Completed Jobs
 
 As before, you will need to know the Slurm job ID to inspect resource utilization for a completed job. `squeue` will not show information for completed jobs. You can usually recover the jobid from output files in the job directory, or you can use

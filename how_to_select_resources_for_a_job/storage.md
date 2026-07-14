@@ -1,3 +1,5 @@
+5. [Mapping job types to GPUs ⬅️ Previous:](./mapping_job_types_to_gpus.md)
+
 # Storage
 
 ARC clusters use a variety of storage options.
@@ -107,3 +109,5 @@ Then, if you have heavy I/O needs, you can try localscratch
 and can determine whether the files will fit into localscratch.
 That is, get your job to run successfully first and then
 focus on optimizations (in this case, by using localscratch).
+
+7. [Next: ➡️ Longer running jobs](./longer-running-jobs.md)

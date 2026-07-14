@@ -1,3 +1,5 @@
+2. [Resource differences across clusters ⬅️ Previous:](./cluster_resources.md)
+
 # How to Get Your Jobs to Spend Less Time in Queued State
 
 ## Cluster Dynamics and Slurm Job Priority Calculation
@@ -123,3 +125,5 @@ Examples showing the syntax for QoS specification in an sbatch slurm script:
 - `#SBATCH --qos=tc_h200_normal_short`
 - `#SBATCH --qos=owl_normal_short`
 - `#SBATCH --qos=fal_a30_normal_short`
+
+4. [Next: ➡️Partitions](./partitions.md)

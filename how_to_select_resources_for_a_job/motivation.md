@@ -1,7 +1,6 @@
 # Motivation:  Resources That Can be Requested for a Job
 
 ---
-[Motivation ⬅️ Previous:](./motivation.md) [Next: ➡️ Reduce time your job spends in queue](./reduce_job_queued_time.md)
 
 
 Below are sections from two job scripts, which are used to 
@@ -89,5 +88,4 @@ Explicity specify what you need to get to exercise full control of the job envir
 
 
 ---
-1. [Motivation ⬅️ Previous:](./motivation.md)
-3. [Next: ➡️ Reduce time your job spends in queue](./reduce_job_queued_time.md)
+2. [Resource differences across clusters ⬅️ Previous:](./cluster_resources.md)
