@@ -1,17 +1,6 @@
 # How to Select (Compute) Resources for a (Slurm) Job
 
 ---
-[Next: File systems ➡️](02_file_systems.md)
-
-## Topics
-
-
-
-
-## Learning Objectives
-
-1. blah
-2. blah
 
 ## Detailed Topics
 
