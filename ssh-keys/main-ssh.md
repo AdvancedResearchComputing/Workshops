@@ -174,7 +174,7 @@ These methods essentially work the same way.
           - `mv id_rsa.pub id_rsa.pub.back`
       - Now go to step 5.
 5. Create your new key pair = (public key, private key).
-   Read this entire step first before doing anything because you will
+   _**Read this entire step first before doing anything**_ because you will
    be asked for responses, so you do not want to jump ahead inadvertently.
     - `ssh-keygen -b 4096 -t rsa`
         - You will be asked for two things:
