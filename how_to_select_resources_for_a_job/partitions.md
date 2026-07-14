@@ -9,7 +9,7 @@ is of one type (i.e., one specific architecture),
 say a particular class of GPU nodes.
 But this is not always the case.
 Partitions may have more than one type of compute node, e.g.,
-to increase job throughput (which is a driver for ARC).
+to increase job throughput when they are sufficiently similar.
 
 The partitions of all one node type are given below.
 Specifying the partition completely specifies the type of 
