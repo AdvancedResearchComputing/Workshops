@@ -11,6 +11,12 @@ One should/could consider repeating the steps herein for each different code.
 In slurm, one element of a job array is a _task_, so each task has a _TASK_ID_.
 
 
+We will do an example with seven tasks in one slurm job.
+Slurm treats each task as a separate job in scheduling
+the seven tasks.
+So you do NOT get some magic free priority by having
+all tasks run fast because they are considered one
+execution.
 
 ## Example 1
 
