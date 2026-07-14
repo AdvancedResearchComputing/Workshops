@@ -25,7 +25,6 @@
 8. [Interactive versus batch jobs](./interactive_vs_batch_jobs.md)
 9. [Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
 10. [Checking on completed jobs](./checking_on_completed_jobs.md)
-11. [Estimating job start time](./estimating_job_start_time.md)
 
 
 ### Prerequisites
@@ -39,4 +38,4 @@ This content is applicable to all ARC compute clusters.
 
 
 ---
-[Next: File systems ➡️](02_file_systems.md)
+[Next: Motivation ➡️](./motivation.md)
