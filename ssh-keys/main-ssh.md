@@ -162,13 +162,16 @@ These methods essentially work the same way.
 4. If you have id_rsa and id_rsa.pub files already, then you may be using these keys
    in different apps like github or other clusters, so it is your choice:
     - Option 1:  Use the keys you already have.
-      I personally see no reason to create new keys if you already have them.
-      If you decide to use the keys you already have, you are done with 
-      Task 1; do not execute any more steps in this task.
+      - There is no reason to create new keys if you already have them.
+      - There could be damage in doing so:  apps that rely on your current keys
+        will no longer work
+      - If you decide to use the keys you already have, you go directly
+        to Step 6 below.
     - Option 2:  Create a new set of keys, keeping the existing set as a backup.
-      - Example:
+      - Example in moving your current keys to backup files:
           - `mv id_rsa is_rsa.back`
           - `mv id_rsa.pub id_rsa.pub.back`
+      - Now go to step 5.
 5. Create your new key pair = (public key, private key).
    Read this entire step first before doing anything because you will
    be asked for responses, so you do not want to jump ahead inadvertently.
