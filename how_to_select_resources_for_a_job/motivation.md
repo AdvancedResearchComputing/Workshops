@@ -1,7 +1,6 @@
 # Motivation:  Resources That Can be Requested for a Job
 
 ---
-[Next: File systems ➡️](02_file_systems.md)
 
 
 Below are sections from two job scripts, which are used to 
@@ -89,4 +88,4 @@ Explicity specify what you need to get to exercise full control of the job envir
 
 
 ---
-
+2. [Resource differences across clusters ⬅️ Previous:](./cluster_resources.md)

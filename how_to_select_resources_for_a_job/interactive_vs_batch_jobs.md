@@ -1,3 +1,5 @@
+7. [Longer running jobs ⬅️ Previous:](./longer-running-jobs.md)
+
 # Interactive Versus Batch Jobs
 
 ### Loose Definitions
@@ -7,12 +9,13 @@
 - You submit the resource needs to slurm.
 - You receive those resources and are notified.
 - You _manually_ use those resources to do work.
+- You will be directly interacting with the resources for the entire time they are allocated
 - You have allocated to you those resources until one of these events:
   - You exceed your allotted time for the resources.
-  - You finish your work early and relinquish the resources.
+  - You finish your work early and _manually_ relinquish the resources.
 
 
-**Interactive Job**:  Process by which:
+**Batch Job**:  Process by which:
 - You specify your resource needs _AND_ the work you want done with those resources.
 - You submit the resource needs _AND_ job definition to slurm.
 - You receive those resources _AND_ your job definition starts running on those resources.
@@ -24,6 +27,7 @@
 
 _Use of interactive jobs_:
 
+ - Workflow development and testing
  - You are doing scoping studies and you want to:
     - determine what the analysis steps are
     - see intermediate results
@@ -70,3 +74,5 @@ The above reasoning is just to present the issues.
 But remember this ...
 
 **You should choose the job type that you need:  if you need interactive jobs, then use them.**
+
+9. [Next: ➡️ Checking on in-progress jobs](./checking_on_in_progress_jobs.md)

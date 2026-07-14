@@ -1,3 +1,5 @@
+1. [Motivation ⬅️ Previous:](./motivation.md)
+
 ## Differences in Cluster Resources
 
 ARC provides documentation that contains details on the components (compute elements, volatile memory,
@@ -121,4 +123,4 @@ We address this in Section XXXX below.
 
 
 ---
-[Next: File systems ➡️](02_file_systems.md)
+3. [Next: ➡️ Reduce time your job spends in queue](./reduce_job_queued_time.md)

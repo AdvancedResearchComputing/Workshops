@@ -1,3 +1,5 @@
+6. [Storage ⬅️ Previous:](./storage.md)
+
 # Longer-Running Jobs
 
 Key ideas:
@@ -38,3 +40,4 @@ Examples showing the syntax for QoS specification in an sbatch slurm script:
 - `#SBATCH --qos=owl_normal_long`
 - `#SBATCH --qos=fal_a30_normal_long`
   
+8. [Next: ➡️ Interactive versus batch jobs](./interactive_vs_batch_jobs.md)

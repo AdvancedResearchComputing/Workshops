@@ -1,3 +1,5 @@
+5. [Mapping job types to GPUs ⬅️ Previous:](./mapping_job_types_to_gpus.md)
+
 # Storage
 
 ARC clusters use a variety of storage options.
@@ -16,16 +18,16 @@ provided with four dimensions:
 - access speed (e.g., how fast are code-based input read and output write operations).
 
 
-|   Directory  |   File System  |  Size Limit   |  inode Limit   |   Permanence  | Accessibility  |  Qualitative Access Speed  |
+|   Directory  |   File System  |  Size Limit   |  inode Limit   |   Permanence  | Accessibility  | Locality  |
 |   ----       |    ----------  |   ----------- |   ---------    |   --------    |  ---------     |   -----        |
-|    /home     | Qumulo         |    640 GB per user  |  1 M     |   permanent   |  Across all 3 clusters |  slow   |
-|   /projects  |  General Parallel File System (GPFS)  |  50 TB per PI  |   10 M  |  permanent |  Across all 3 clusters |  slow   |
-|  /scratch    |  VAST          |   "No limit"  |   "No limit"   |   90-day limit; then deleted | Individual, per cluster | fast | 
-| "localscratch"*,$ |  NVMe drive or array | Generally smaller | NA  |  Only for life of job  |  Individual, per cluster  | faster  |
+|    `/home`   | Qumulo         |    640 GB per user  |  1 M     |   permanent   |  omnipresent |  remote   |
+|   `/projects`|  General Parallel File System (GPFS)  |  50 TB per PI  |   10 M  |  permanent | omnipresent |  remote   |
+| `/scratch`   |  VAST          |   "No limit"  |   "No limit"   |   90-day limit; then deleted | per cluster | remote | 
+| `/localscratch`* |  NVMe drive or array | Varies | NA  |  Only for life of job  |  node-specific  | local  |
 
 \* The actual location is job dependent, under the /tmp directory.
 
-\$ NVMe (Non-Volatile Memory Express) is a high-performance storage protocol designed for solid state drives [that use flash memory] that uses the PCIe interface to provide high speed and low latency. It communicates directly with the CPU, etc.
+NVMe (Non-Volatile Memory Express) is a high-performance storage protocol designed for solid state drives [that use flash memory] that uses the PCIe interface to provide high speed and low latency. 
 
 Given the above data, a short description of uses is given for each file system.
 
@@ -42,11 +44,12 @@ Not much use for research since the size limit of 640 GB per user is prohibitive
 Used to store files associated with PI (i.e., professor) research because
 (1) there is adequate space (up to roughly 50 TB per PI) and
 (2) this storage is permanent.
+(3) all data is managed by the PI-owner
 
-Can store VEs here (e.g., instead of in `/home`).
+Can store VEs here (e.g., instead of in `/home`) and share them with a group.
 
 Directory structure is:  `/projects/<PI-specified-directory-name>`.
-Then you and your advisor create directories and soforth under here.
+Then you and your PI create directories and so forth under here. Access permissions can get complicated.
 
 (Slurm) jobs can access files in this file system, but a faster option is given next.
 
@@ -58,9 +61,9 @@ You have this directory on each of the three clusters,
 but unlike `/home` and `/projects`,
 the same physical storage is not accessible from TC, Owl, and Falcon.
 This is because there is a separate scratch mount for each cluster.
-This is done to achieve greater I/O (input/output, read/write) speeds.
+This is done to achieve greater I/O  (input/output, read/write) segregration which benefits speeds.
 
-Your code will perform I/O faster with files in `/scratch` than
+Your code will perform I/O slightly faster with files in `/scratch` than
 it will with files in `/projects`/
 
 `/scratch` has essentially unlimited size in the short-term.
@@ -81,19 +84,14 @@ A common use case is to:
 Localscratch is not a dedicated physical drive, per se, as are the other 
 file systems.
 
-Rather, storage is allocated under `/tmp`.
-
-The storage is right on the compute node, making it even faster than
+The storage is right on the compute node, making it much faster than
 `/scratch` for I/O operations during program execution.
-
-However, the lifetime of files on localscratch are even less than the
-90 days on scratch.
 
 The lifetime of files in localscratch is the duration of a slurm job.
 
 Therefore, if one looks at the 3-step process in the previous subsection,
 then to use localscratch instead of scratch:
-- substitute "localscratch" for `/scratch`.
+- substitute "`$TMPDIR`" for `/scratch`.
 - note that all three steps must be done inside of the slurm scipt.
 
 The second bullet makes sense:  if you write new output files, and
@@ -108,7 +106,8 @@ and select the video "**Batch jobs using volatile resources**".
 It is recommended that you attempt to first run your job with
 files in scratch, because it can store larger files.
 Then, if you have heavy I/O needs, you can try localscratch
-and can determine whether the files will fit into localscratch
-(if not, you may get an OOM error [out of memory error]).
+and can determine whether the files will fit into localscratch.
 That is, get your job to run successfully first and then
 focus on optimizations (in this case, by using localscratch).
+
+7. [Next: ➡️ Longer running jobs](./longer-running-jobs.md)

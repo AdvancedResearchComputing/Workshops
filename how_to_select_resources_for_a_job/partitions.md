@@ -1,3 +1,5 @@
+3. [Reduce time your job spends in queue ⬅️ Previous:](./reduce_job_queued_time.md)
+
 # Partitions:  The Compute Nodes on Which Your Job Runs
 
 A partition is a collection of compute nodes.
@@ -9,7 +11,7 @@ is of one type (i.e., one specific architecture),
 say a particular class of GPU nodes.
 But this is not always the case.
 Partitions may have more than one type of compute node, e.g.,
-to increase job throughput (which is a driver for ARC).
+to increase job throughput when they are sufficiently similar.
 
 The partitions of all one node type are given below.
 Specifying the partition completely specifies the type of 
@@ -76,3 +78,5 @@ are there constraints that separate them.
 Instead, the choice of compute node type is based
 on the memory specified in the sbatch slurm script
 with the `#SBATCH --mem` or similar switch.
+
+5. [Next: ➡️ Mapping job types to GPUs](./mapping_job_types_to_gpus.md)
