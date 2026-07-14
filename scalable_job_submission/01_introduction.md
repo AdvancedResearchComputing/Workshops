@@ -119,10 +119,10 @@ These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
 ### Outline
 
 
-1. [srun](./summary_of_steps.md)
-2. [GNU Parallel](./step_1_setup.md)
-3. [GNU Parallel and srun](./step_2_every_session.md)
-4. [Step 3:  Potential access issue and solution](./step_3_possible_error.md)
+1. [srun](./02_srun.md)
+2. [GNU Parallel](./03_parallel.md)
+3. [GNU Parallel and srun](./04_srun_parallel.md)
+4. [Job arrays](./05_job_arrays.md)
 
 
 
