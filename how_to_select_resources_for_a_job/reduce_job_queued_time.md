@@ -1,14 +1,34 @@
 # How to Get Your Jobs to Spend Less Time in Queued State
 
+## Cluster Dynamics and Slurm Job Priority Calculation
+Think of the clusters as resource pools that are constantly under high demand for resources. 
+ARC actively assesses the aggregate workload characteristics and attempts to tune job scheduling 
+to maintain a sense of "fairness" among job types. The clusters handle over 1M jobs each year: thousands every day. 
+
+Jobs in the queue are assigned a priority score which takes into account several factors:
+ 1. QOS: "Quality of service"
+ 2. Fairshare: recent scale of usage by your account
+ 3. Job age: how long the job has been "eligible"
+ 4. Job size: larger jobs have slightly higher priority
+
+Commands to understand cluster, partition, QOS, and scheduling dynamics and limits:
+1. `showqos`
+2. `sprio`
+3. `squeue --start`
+4. `sjstat -c`
+
+## Options to Reduce Wait time
+
 There are multiple things to try:
 
 - Using partial nodes rather than full nodes.
+- Avoid job arrays and pack workloads into a single job where possible
 - Inspect partition wait times on Grafana.
 - Use short QoS.
 
 Each is presented below.
 
-###  Using Full Nodes Versus Parts of Nodes
+###  Using Partial Nodes 
 
 #### Backing Away From a Full Node
 
@@ -18,6 +38,7 @@ effect---at times--can be so large, we separate it out here.
 When you select all of the resources on a compute node, 
 it can take slurm (the job scheduler) a long time to 
 free up a complete compute node.
+
 If possible, instead, specify a (large) fraction of a node's
 resources; this might reduce the time your job remains queued
 (before it starts to run).
@@ -25,48 +46,36 @@ resources; this might reduce the time your job remains queued
 
 #### Specifying Pieces of Many Nodes
 
-**<< MATT, I DON'T KNOW IF I HAVE THIS RIGHT; IF I'VE UNDERSTOOD YOUR OBSERVATIONS>>**
+Example: MPI distributed memory, parallelized with 128 tasks
 
-A significant fraction of jobs are scheduled by slurm
-using a technique called "backfill."
-Slurm essentially schedules jobs by a formula that 
-produces a priority ranking for each job.
-It then runs jobs in that order.
+```
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=128
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=196G
+```
 
-But when this is done, as you might imagine, there are
-(small) "holes" left in the schedule where resources are
-idle.
-A simplified example:  in scheduling high priority jobs,
-there are three CPUs that are not being used for four
-hours each.
+Giving Slurm flexibility will usually shorten the wait time:
+```
+#SBATCH --nodes=1-8
+#SBATCH --ntasks=128
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-task=1500M
+```
 
-Slurm will go back to the jobs submitted and waiting to be run
-and find (smaller) jobs that will fit into these vacant
-"resource slots."
+### Avoid Job Arrays
 
-The upshot is that small jobs have a better chance of 
-being chose to fill these unused resources, i.e.,
-small jobs are often better candidates for backfill.
+Submitting an array job is an easy way to drop hundres or even thousands of identical jobs on the queue all at once.
+Each job in the array is considered an independent job for priority and usage calculations. 
+If job scheduling was strictly FIFO, then large job arrays would always allow a single person to eventually monopololize a cluster resource.
 
-As a result of this concept, consider the following.
-You have a distributed CPU job or a distributed GPU job.
-Rather than specify that all of the resources 
-you need be run on one compute node, specify that the
-resources can come from multiple compute nodes.
-In this way, you are telling slurm that it can run 
-your job using "small hunks of resources" from a
-combination of several compute nodes.
+Use job arrays for the convenience, but be aware that:
+ - only a limited number will accrue age-based priority at any given time: Slurm's configuration is "flattening the curve"
+ - later jobs in the array will suffer from steadily declining fairshare
 
-Another example using the same setup.
-Suppose you have a parallel job, but it can be run
-in an embarrassingly parallel fashion.
-If you "carve up" the data so that each piece of data can
-be run (operated on) by a single CPU as an individual job, you may
-be able to get lots of individual CPU jobs done before
-many CPUs become available, at one time, to do all of your work as 
-one job.
+In light of those limitations, it will often be beneficial to "move the loop inside the script". Job arrays are often used to run the same workflow on a set of enumerated inputs based on the array ID. A single non-array job with a bash loop would easily do the same thing.
 
-### Use of Grafana Dashboards to Select Partitions
+### Use of Dashboards to Assess Partitions
 
 ARC provides many different dashboards to obtain
 cluster information.
