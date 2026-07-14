@@ -1,14 +1,7 @@
 ## Checking on Completed Jobs
 
-When your slurm job completes, you can either remember the slurm job ID
-from your terminal screen output (earlier in time), or you can
-look at your slurm-generated output and error files, which should have
-the slurm job ID in their names.
-
-You specify that the job ID will appear in the slurm-generated output
-and error files by putting `%j` in their filenames in the 
-sbatch slurm script.
-Examples were given early in this presentation.
+As before, you will need to know the Slurm job ID to inspect resource utilization for a completed job. `squeue` will not show information for completed jobs. You can usually recover the jobid from output files in the job directory, or you can use
+`sacct` for jobs which were running at some point "today" or `sacct --start=YYYY-MM-DD` to show info about older jobs.
 
 Now, from a terminal screen, issue:
 
@@ -26,3 +19,5 @@ amount of memory requested.
 
 **You want to use the `seff` command to build your intuition
 about cluster performance.**
+
+As with running jobs you can access node-level utilization via dashboard URLs with: `getjobutilurl <jobid>`
