@@ -10,21 +10,23 @@
 In generating a container, there are operations 
 that are common to set up:
 
-1. Start an interactive job to get resources on a compute node.
-2. Load the apptainer module in terminal windows where you 
+1. Start an interactive job from a login node
+   to get resources on a compute node.
+2. Once on a compute node, load the apptainer
+   module in terminal windows where you 
    will issue apptainer commands.
-3. Relinquish/release the compute node resources
+4. Relinquish/release the compute node resources
    when you are done with your container work.
 
 Each of these is discussed below.
 
-#### Trying to Run on a Head Node
+#### Trying to Run on a Login (Head) Node
 
-On a head node, you do not have proper permissions
+On a login node, you do not have proper permissions
 to run apptainer.
 Run on a compute node.
 You will most likely generate errors if you try
-to build a container on a head node.
+to build a container on a login node.
 
 #### Request Resources On A Compute Node:
 
@@ -47,8 +49,8 @@ has more than one type of compute node.
 compute node architecture you run on.
 If you do not care which one you run on, then you do
 not have to specify the `--constraint` switch.
-In many cases you do not have to care.
-But in this case---in building containers---you do have to 
+In many cases outside of the container world, you do not have to care.
+But in this case---in building containers---you _**DO**_ have to 
 care
 (actually, there are cases when you do and do not have to 
 care when building containers, but instead of getting into all
@@ -70,7 +72,7 @@ needed.
 > And, in the cases where it is needed, like when using
 > **sandboxes**, then you are automatically covered.
 
-Also, the difference between Option 1 and Option 2 is `interact` 
+Also, the difference between Option 1 and Option 2 (below) is `interact` 
 versus `alloc`.
 ARC prefers you to use `interact` because `interact` automatically
 frees resources when you log off a compute node.
@@ -147,11 +149,11 @@ salloc --partition=l40s_normal_q   --account=arcadm  --nodes=1  --tasks-per-node
 
 Then when done with work:
 
-1. exit
+1. `exit`
    1. (to get off of the compute node).
-2. squeue -u $USER
+2. `squeue -u $USER`
    1. (to get the PID of the `salloc` job); this is why `interact` is preferred.
-3. scancel PID
+3. `scancel PID`
    1. (for `salloc` job, to give back the resources that you have been granted by slurm that you used to do your work).
 
 
