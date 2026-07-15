@@ -132,17 +132,21 @@ or
 The output should be:
 
 ```
- ______________________________
-< Hello from inside Apptainer! >
- ------------------------------
+ ------------------------------   
+< Hello from inside Apptainer!>
+ ------------------------------                                                                                                                                                              
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
                 ||----w |
                 ||     ||
- 
+
+ ------------------
+
 The inputted argument(s) are  I'm hoping this works ...
- 
+
+ ------------------
+
   The inputted string :  I'm hoping this works ...
   The tokens in the inputted string are:
 I'm
