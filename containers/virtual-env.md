@@ -71,6 +71,20 @@ You can compare that result with the default python version:
 python --version
 ```
 
+### Run a Code to Generate a Linear Model for Data and Plot
+
+
+The execution is:
+
+```
+apptainer exec python.ve.container.02.sif python linear-fit.py  in_data.inp  results.png
+```
+
+After the code runs, the contents of the output file _results.png_ is:
+
+
+
+
 ### Very Simple Python Code
 
 This one-line python code is used to demonstrate the execution
