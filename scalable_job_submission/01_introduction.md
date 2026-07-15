@@ -14,62 +14,40 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 - more
 
 
-## Ideas Behind This Workshop
-
-1. There are limits as to how many SLURM batch jobs that you can submit
-     at one time.
-2. There are ways to "pack" multiple executions of a code into one sbatch script.
-3. Thus, you can stay under the limit.
-4. The purpose of this workshop is to present and demonstrate tools to 
-   enable job "packing."
-
 ## Motivation
 
-There is a limit on the number of jobs that you can submit
-to different partitions (i.e., queues) on the ARC clusters.
+Typically, one slurm sbatch slurm script contains commands to run some 
+code one time.
 
-The current limit is 5000 submitted jobs (jobs queued and jobs running, combined).
+However, once you are allocated resources, you can run any number of codes
+any number of times, as long as you stay within the resources assigned to you.
 
-This limit is not hard to reach:
-roughly 10,000 quite large jobs can be submitted and run overnight
-if a cluster is not heavily used.
+Herein, we refer to the process of specifying more than one code execution
+within one slurm batch job 
+(i.e., within one sbatch slurm script)
+as _**packing**_.
 
+The purpose of this workshop is to present and demonstrate tools and approaches to enable job packing.
 
-From one perspective, one would submit all 10000 jobs
-(each slurm job is a separate slurm script and a single
-"sbatch" invocation) at one time and let
-slurm handle execution of these and other users' jobs.
-But the above limit prevents this.
-
-What can be done?
-
-One can "pack" jobs into one `sbatch` submission to slurm.
-
-How can this be done?
+How can packing be done?
 
 There are several ways to do this.
-
-These ways are the subjects of this workshop.
-
-We note that there is also a limit on the maximum number of steps
-that can be executed in slurm jobs, and this issue will also
-appear in these notes.
-
-There is also an issue of wall-clock time.
-A standard job is allowed to run for a maximum of seven days.
-So it does not matter how many code executions that you pack into one
-sbatch slurm job submission.
-They will run for at most seven days
-(this time is an input field in a slurm sbatch script, but you
-cannot go over seven days).
-There is an exception to this:  you can specify a "long" QoS
-(Quality of Service), but we ignore that case here.
+1. request sufficient resources where multiple
+   codes can be run in parallel
+   (embarrassingly parallel).
+2. request sufficient resources for one job,
+   but increase the time (`#SBATCH --time=`)
+   so that there is sufficient time to run
+   `n` jobs.
+   Run, in sequence, one at a time,
+   `n` jobs.
+3. use job arrays (embarrasingly parallel potentially).
 
 
 ## Learning Objectives
 
-1. Techniques for submitting multiple codes within one slurm job.
-2. Examples using each of these techniques.
+1. Learn techniques for submitting multiple codes within one slurm job.
+2. Understand examples using each of these techniques.
 
 
 ## Overview
