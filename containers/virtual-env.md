@@ -41,6 +41,7 @@ From: continuumio/miniconda3
     conda install -y matplotlib
     conda install -y pandas
     conda install -y numpy
+    conda install -c conda-forge statsmodels
 ```
 
 #### Build the Container and Check for Correct Packages in the VE
@@ -231,6 +232,95 @@ apptainer exec --bind /scratch/ckuhlman  python.ve.container.03.sif python /scra
 ```
 
 
+#### Codes
+
+Code _linear-fit.py_:
+
+```python
+# Purpose:  demonstrate simple plotting of x-y data and linear fit.
+
+# Modules:
+# module load
+
+import time
+import sys
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import statsmodels.formula.api as smf
+import statsmodels.api as sma
+
+begin_time=time.time()
+
+# CLAs (command line arguments).
+input_filename=sys.argv[1]
+output_filename=sys.argv[2]
+x_lower_fit=(int)(sys.argv[3])
+x_upper_fit=(int)(sys.argv[4])
+
+# Load the data into a df.
+df = pd.read_csv(input_filename, sep=' ')
+
+# Print the data to confirm.
+print("  Contents of dataframe (df):")
+print(df)
+
+# Fit the ordinary least squares (OLS) model
+# The formula 'y_values ~ x_values' automatically includes an intercept (b)
+model = smf.ols(formula='response ~ predictor', data=df)
+results = model.fit()
+
+# Print out only the calculated coefficients (Intercept and Slope)
+print("Intercept (b):", results.params['Intercept'])
+print("Slope (m):", results.params['predictor'])
+print("  model summary: ")
+print(results.summary())
+
+# Generate the line from the least squares fit.
+x_fit=list()
+y_fit=list()
+
+x_fit.append(x_lower_fit)
+x_fit.append(x_upper_fit)
+
+y_val = results.params['predictor'] * x_lower_fit + results.params['Intercept']
+y_fit.append(y_val)
+y_val = results.params['predictor'] * x_upper_fit + results.params['Intercept']
+y_fit.append(y_val)
+
+
+# Plot the results.
+
+# Plot the original data points and the fit line
+plt.scatter(df.predictor, df.response, color='blue', alpha=0.6, label='Data Points')
+plt.plot(x_fit, y_fit, color='red', linewidth=2, label='Statsmodels Fit')
+plt.xlabel('predictor')
+plt.ylabel('response')
+plt.legend()
+plt.savefig(output_filename)
+
+end_time=time.time()
+duration = end_time - begin_time
+
+print("  execution duration (s) : ",duration)
+```
+
+
+File _in_data.inp_:
+
+```bash
+predictor response
+40 62
+45 64
+58 70
+63 72
+69 79
+72 85
+75 82
+80 87
+85 92
+93 99
+```
 
 #### Finished
 
