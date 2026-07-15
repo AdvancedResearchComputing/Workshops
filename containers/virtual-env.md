@@ -91,15 +91,24 @@ python --version
 
 ### Run a Code to Generate a Linear Model for Data and Plot
 
+The _linear-fit.py_ code is at the bottom of this file, as is the
+data file _in_data.inp_.
+
+The arguments for the python code, linear-fit.py, are:
+- input data file name
+- output file that will contain a plot
+- the min and max x-axis values over which to display the linear model.
 
 The execution is:
 
 ```
-apptainer exec python.ve.container.02.sif python linear-fit.py  in_data.inp  results.png
+apptainer exec python.ve.container.02.sif python linear-fit.py  in_data.inp  linear-fit.png  40  100
 ```
 
 After the code runs, the contents of the output file _results.png_ is:
 
+
+![Result plot](./figures/linear-fit.png)
 
 
 
