@@ -103,7 +103,8 @@ These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
 1. [srun](./02_srun.md)
 2. [GNU Parallel](./03_parallel.md)
 3. [GNU Parallel and srun](./04_srun_parallel.md)
-4. [Job arrays](./05_job_arrays.md)
+4. [(Bash) scripting loops](./05_bash_loops.md)
+5. [Job arrays](./06_job_arrays.md)
 
 
 
