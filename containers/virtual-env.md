@@ -105,63 +105,13 @@ The execution is:
 apptainer exec python.ve.container.02.sif python linear-fit.py  in_data.inp  linear-fit.png  40  100
 ```
 
-After the code runs, the contents of the output file _results.png_ is:
+After the code runs, the contents of the output file _linear-fit.png_ is:
 
 
 ![Result plot](./figures/linear-fit.png)
 
 
 
-### Very Simple Python Code
-
-This one-line python code is used to demonstrate the execution
-of python code using the virtual environment in the container.
-
-File _main.py_.
-
-```
-print("  From inside a VE inside a container:  hi")
-```
-
-
-### Running Python Codes With the Container That Use the Virtual Environment
-
-A key consideration in these examples is that _main.py_ is NOT in the container.
-
-If the _main.py_ code resides in the same directory as the container, this works:
-
-```
-apptainer exec python.ve.container.02.sif python ./main.py
-```
-
-And it works, too, if _main.py_ is in your $HOME directory.
-The final case where the above command will work is if _main.py_ is in the `tmp`
-directory.
-
-But these examples are limiting.
-
-Consider a more general case in that the container is made on _/projects_.
-But the _main.py_ code resides on _/scratch/ckuhlman_.
-
-Then the straight-forward invocation of _main.py_ does not work, i.e.,
-
-```
-apptainer exec  python.ve.container.02.sif python /scratch/ckuhlman/main.py
-```
-
-does not work.  An error will display saying that the file cannot be found.
-
-We need something more:  the `bind` command, which tells the contain
-to work with files in the directory specified with `bind`.
-This is what is needed:
-
-```
-apptainer exec --bind /scratch/ckuhlman python.ve.container.02.sif python /scratch/ckuhlman/main.py
-```
-
-> [!NOTE]
-> If you need multiple bind directories, simply separate them with commas.
-> Example  `--bind  ${first_dir},${second_dir}`.
 
 ### Case 2:  A Container Housing a Python Virtual Environment and a Python Code
 

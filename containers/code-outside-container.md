@@ -80,6 +80,13 @@ cat results.03.out
   c = 18
 ```
 
+
+> [!NOTE]
+> If you need multiple bind directories, simply separate them with commas.
+> Example  `--bind  ${first_dir},${second_dir}`.
+
+
+
 #### Finished
 
 We are finished your container work, so you can:
