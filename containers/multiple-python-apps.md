@@ -85,7 +85,7 @@ From: continuumio/miniconda3
 
 %files
     # Copy a python script from your host machine to the container
-    tokenize.py         tokenize.py
+    tokenize.py         my_tokenizer.py
     count_tokens.py     count_tokens.py
     classify_tokens.py  classify_tokens.py
     letter_counts.py    letter_counts.py
@@ -97,13 +97,13 @@ From: continuumio/miniconda3
     conda install -y python=3.14
 
 
-# Application 1: 'tokenize'
-%apprun tokenize
-    echo "Running python app tokenize"
-    python tokenize.py "$@"
+# Application 1: 'my_tokenizer'
+%apprun my_tokenizer
+    echo "Running python app my_tokenizer"
+    python my_tokenizer.py "$@"
 
-%applabels tokenize
-    Name tokenize
+%applabels my_tokenizer
+    Name my_tokenizer
     Version 1.0
 
 # ----------------------------------------
@@ -160,7 +160,7 @@ The string should be wrapped in double-quotes like this:
 ```
 
 
-For the _tokenize_ application, the script _run.app.tokenize.sif.sh_ contains
+For the _my_tokenizer_ application, the script _run.app.my_tokenizer.sif.sh_ contains
 
 ```
 apptainer run  --app tokenize  python_string.sif  "How many football games will the Hokies win this year?"
@@ -258,7 +258,7 @@ Not included in these codes, but easy enough to do---and
 it should be done---is to check that there is one 
 CLA in the invocation and that it is a string.
 
-Code _tokenize.py_:
+Code _my_tokenizer.py_:
 
 ```
 import sys

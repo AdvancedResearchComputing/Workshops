@@ -130,8 +130,6 @@ files in my home directory at the time that I ran this command.
 Your number, for your home directory, will almost surely differ.
 
 
-Note that you can use `exec` as we did in an earlier lesson
-to override the operation for the application bar
 
 ##### Navigate
 
