@@ -125,7 +125,9 @@ Running App Bar
 ```
 
 where the 78 is the number of directories, symbolic links, and
-files in your home directory.
+files in my home directory at the time that I ran this command.
+
+Your number, for your home directory, will almost surely differ.
 
 
 Note that you can use `exec` as we did in an earlier lesson
