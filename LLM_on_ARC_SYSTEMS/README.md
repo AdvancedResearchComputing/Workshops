@@ -1,9 +1,9 @@
 # Using LLMs on ARC Systems
 
-**Date:** 2026-03-19
+**Date:** 2026-07-15
+
 **Presented by:** Ben Sandbrook (bsandbro@vt.edu)
 
-[Spring 2026 ARC Workshop Schedule](https://github.com/AdvancedResearchComputing/Workshops/blob/main/README.md)
 
 ## Logistics
 
@@ -11,7 +11,7 @@
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
 - This material is uploaded in our GitHub repo: [LLM_on_ARC_SYSTEMS](https://github.com/AdvancedResearchComputing/Workshops/tree/main/LLM_on_ARC_SYSTEMS)
-- If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
+- If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account and allocation
 
 Useful links:
 - ARC's documentation site: [https://docs.arc.vt.edu/](https://docs.arc.vt.edu/)
@@ -23,6 +23,7 @@ Useful links:
 ## Prerequisites
 
 - An ARC account (apply at [https://coldfront.arc.vt.edu](https://coldfront.arc.vt.edu))
+- An active allocation (not personal)
 - Connected to VT network or VPN
 - An API key from [https://llm.arc.vt.edu](https://llm.arc.vt.edu) (we'll walk through this together)
 
@@ -96,8 +97,8 @@ A browser-based chat interface (built on Open WebUI) for conversational interact
 Features include chat, web search, document upload (RAG), and image generation. Available models:
 
 - `gpt-oss-120b`: fast general-purpose responses
-- `Kimi-K2.5`: complex tasks and multimodal work
-- `MiniMax-M2.5`: optimized for software engineering tasks
+- `Kimi-K2.6`: complex tasks and multimodal work
+- `GLM-5.2`: frontier general-purpose
 
 > **Tip:** This is also where you generate your API key for programmatic access. Click your profile icon (top right) > **Settings** > **Account** > **API keys** > **Show**.
 
