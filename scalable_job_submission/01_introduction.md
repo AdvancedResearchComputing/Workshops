@@ -86,6 +86,9 @@ All source code files are right in the notes:  you
 simply use the copy button and copy the contents into
 files on the ARC cluster using your favorite editor
 (vi, nano, etc.).
+Keep the same filenames specified in these notes because
+files call each other so if you use a different filename,
+then the examples will not run.
 All examples are CPU-based examples.
 That is, there are no GPU-based examples.
 Therefore, the Falcon cluster should not be used.
