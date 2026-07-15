@@ -85,7 +85,7 @@ From: continuumio/miniconda3
 
 %files
     # Copy a python script from your host machine to the container
-    tokenize.py         my_tokenizer.py
+    my_tokenizer.py     my_tokenizer.py
     count_tokens.py     count_tokens.py
     classify_tokens.py  classify_tokens.py
     letter_counts.py    letter_counts.py
