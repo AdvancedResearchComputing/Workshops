@@ -37,7 +37,7 @@ convert its layers into the Apptainer format,
 and populate the `my_sandbox/` directory.
 So it is bootstrapping the contents of the sandbox.
 
-The format is:
+The format more general format is:
 
 ```
 apptainer build --sandbox <directory_name_for_sandbox>  <initial-docker-image>
@@ -92,6 +92,7 @@ the sandbox.
 apptainer build   my_py310_container.sif    my_sandbox/
 ```
 
+We will use this Apptainer container in a subsequent lesson.
 
 
 #### Finished
