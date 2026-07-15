@@ -115,6 +115,9 @@ After the code runs, the contents of the output file _linear-fit.png_ is:
 
 ### Case 2:  A Container Housing a Python Virtual Environment and a Python Code
 
+The previous example focuses on building only a VE into the container.
+
+Let us assume we want to provide a base behavior using linear-fit.py.
 
 #### Build the Apptainer Definition File
 
@@ -137,7 +140,7 @@ From: continuumio/miniconda3
     conda install -y numpy
 
 %runscript
-    python  ./main.py
+    python  linear-fit.py    "$@"
 
 ```
 
@@ -149,60 +152,22 @@ Build the container:
 apptainer build --fakeroot python.ve.container.03.sif  ver03.def
 ```
 
-Check resulting container/VE to ensure that the desired packages exist:
-
-
-```
-apptainer exec python.ve.container.03.sif conda list
-```
-
-Check more directly that the version of python is correct:
-
-```
-apptainer exec python.ve.container.03.sif python --version
-```
-
-You can compare that result with the default python version:
-
-```
-python --version
-```
+Use the same checks as above, but now use the current container name.
 
 
 ### Running Python Codes With the Container That Use the Virtual Environment
 
-A key consideration in these examples is that _main.py_ is in the container.
 
 This means that we can use the apptainer `run` command to run the enclosed code.
 
 ```
-apptainer run python.ve.container.03.sif
+apptainer run python.ve.container.03.sif   in_data.inp    linear-fit.03.png    40  100
 ```
 
 We can still run other python codes that use the VE in the container by
 once again using the `exec` command.
  
-Consider a more general case in that the container is made on _/projects_.
-But the _main.02.py_ code resides on _/scratch/ckuhlman_.
 
-
-We need something more:  the `bind` command, which tells the container
-to work with files in the directory specified with `bind`.
-Two cases are below:  the first does not work, the second does.
-We see that the second case executes a code outside of the container 
-instead of the code inside the container.
-
-```
-echo " " 
-echo "  this will NOT work:"
-apptainer exec python.ve.container.03.sif python /scratch/ckuhlman/main.02.py
-
-
-echo " " 
-echo "  this will work:"
-apptainer exec --bind /scratch/ckuhlman  python.ve.container.03.sif python /scratch/ckuhlman/main.02.py
-
-```
 
 
 #### Codes
