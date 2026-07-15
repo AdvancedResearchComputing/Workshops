@@ -25,6 +25,16 @@ customizability,
 sameness,
 and pseudo-permanence.
 
+
+## Our Focus
+
+Our focus is Apptainer.  Some other container types are Docker and Singularity.
+
+In the process of building some Apptainer containers, we will start with Docker containers.
+
+Apptainer is the open source version of Singularity.
+
+
 ## Our Approach
 
 We have two main goals:
