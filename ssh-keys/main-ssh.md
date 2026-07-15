@@ -154,6 +154,10 @@ We are going to use the RSA method for generating keys.
 Other methods include ed25519.
 These methods essentially work the same way.
 
+This Task 1 is almost exclusively executed on your 
+laptop; the only command that is executed on an 
+ARC cluster is called out.
+
 1. On your laptop, `cd ~/.ssh`
 2. Type `ls -l` to long list the files.
 3. Look for files:
@@ -232,6 +236,9 @@ If you did not enter a passphrase, skip this step.
 
 On your laptop, you want to start an "ssh agent."
 
+So this Task 2 is exclusively executed on your 
+laptop.
+
 This agent will remember that passphrase for a specified length of time.
 
 The command is: `ssh-add    -t <time agent runs>    ~/.ssh/id_rsa`
@@ -266,6 +273,9 @@ also becomes tedious.
 There is a way to "alias" the long cluster specification with a short
 substitute, and this will ease the cluster login process, e.g., 
 to something like `ssh tc2`.
+
+This Task 3 is exclusively executed on your 
+laptop.
 
 
 The `config` file, which on a Mac resides under `Users/my_user_name/.ssh`,
