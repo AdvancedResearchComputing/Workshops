@@ -12,7 +12,7 @@
    you only want to make use of the environment of that 
    container.
 3. In these cases, you may want to run a code that you
-   possess in the container's environment.
+   possess, but you want to run it in the container's environment.
 4. Illustrating how to run codes outside of the container.
    1. Use the `exec` and `bind` commands.
 
@@ -65,13 +65,13 @@ The _main.03.py_ code is given at the end of this page.
 The illustrative invocation is:
 
 ```
-apptainer exec --bind /scratch/ckuhlman my_py310_container.sif python3 /scratch/ckuhlman/main.03.py  7   11  results.02.out
+apptainer exec --bind /scratch/ckuhlman my_py310_container.sif python3 /scratch/ckuhlman/main.03.py  7   11  results.03.out
 ```
 
 ... and the output shown via:
 
 ```
-cat results.02.out
+cat results.03.out
 ```
 
 ... which should contain:
