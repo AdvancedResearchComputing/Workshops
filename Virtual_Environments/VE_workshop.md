@@ -1,14 +1,11 @@
 # Virtual Environments on ARC  
 
 ## Logistics
-Please sign in: [https://docs.google.com/document/d/1jmMzTOsw9PACbf1_EDGZlEHL2Uj7TAlmXcEXH0LlWFA/edit?usp=sharing](https://docs.google.com/document/d/1jmMzTOsw9PACbf1_EDGZlEHL2Uj7TAlmXcEXH0LlWFA/edit?usp=sharing)
-
-Feedback form: [https://forms.gle/P7BwENWMTpwHiH3bA](https://forms.gle/P7BwENWMTpwHiH3bA)
+Please sign in: [https://docs.google.com/document/d/1lx1uOYSjb-F0QHjvg0j_iq3nW12QmMXFA-hFXz8es1Y/edit?usp=sharing](https://docs.google.com/document/d/1lx1uOYSjb-F0QHjvg0j_iq3nW12QmMXFA-hFXz8es1Y/edit?usp=sharing)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- This material is uploaded in Files on the Canvas site and in our Github Repo [https://github.com/AdvancedResearchComputing/Workshops/blob/main/Virtual_Environments/VE_workshop.md](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Virtual_Environments/VE_workshop.md)
-- I will post a recording of this workshop: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html) 
+- There will be a recording of this workshop posted after the workshop: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html) 
 - We also have a lot of shorter video tutorials: [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
@@ -65,7 +62,71 @@ OR you can create a CVE with a specified path and/or a specific python version
 conda create -p ~/path/to/env/falcon_v100_pytorch python=3.12
 ```
 
-4. Will have to type `y` to say yes to installing the listed packages:
+4. You will have to type `y` to say yes to proceed:
+```
+Retrieving notices: done
+Channels:
+ - conda-forge
+ - https://conda.software.inl.gov/public
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 25.11.0
+    latest version: 26.5.3
+
+Please update conda by running
+
+    $ conda update -n base -c conda-forge conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/nbraunsc/environments/falcon_v100_pytorch
+
+
+
+Proceed ([y]/n)? y
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ source activate /home/nbraunsc/environments/falcon_v100_pytorch
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+```
+
+5. Activate the newly-created CVE.
+```
+source activate /home/nbraunsc/environments/falcon_v100_pytorch
+```
+
+6. Look at what packages are already installed in this VE.
+```
+conda list
+```
+
+7. Install package(s) to the CVE. You can install multiple packages (package names separated by commas).
+```
+conda install <package_name>
+```
+
+Example:
+```
+conda install python=3.12
+```
+You will have to type `y` to install the packages:
 ```
 ...
 
@@ -99,21 +160,6 @@ The following NEW packages will be INSTALLED:
 
 
 Proceed ([y]/n)? y
-```
-
-5. Activate the newly-created CVE.
-```
-source activate ~/path/to/env/<name of CVE>
-```
-
-6. Look at what packages are already installed in this VE.
-```
-conda list
-```
-
-7. Install package(s) to the CVE. You can install multiple packages (package names separated by commas).
-```
-conda install <package_name>
 ```
 
 Sometimes, packages are not available via `conda install`. Alternatively, you may use `pip install`.
@@ -168,8 +214,7 @@ As a result, you should create and build a virtual environment on a node of the 
 
 Because you must build an environment for each node type, organizing your environments well is important for proper usage.
 
-If given the `-n` flag, conda will create the environment in `$HOME/.conda/envs/<name>`. Environments stored in `$HOME/.conda/envs` are convenient becuase they can be loaded without the full path names and display nicely on the command prompt. 
-
+If given the `-n` flag, conda will create the environment in `$HOME/.conda/envs/<name>`. Environments stored in `$HOME/.conda/envs` are convenient because they can be loaded without the full path names and display nicely on the command prompt. 
 
 The `-p` flag may be used to specify a another location for your environment. This may be desirable if you want the environment in a shared location.
 
@@ -305,7 +350,7 @@ Virtual environments are great ways to create clean workflows on HPC systems lik
 ```
 conda clean --all
 ```
-- Delete unused virutal environements
+- Delete unused virtual environments
 ```
 conda env remove -n <environment_name>
 ```
