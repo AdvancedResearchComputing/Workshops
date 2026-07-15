@@ -175,7 +175,7 @@ The output from the latest command, in file linear-fit.03.png, is:
 
 ![Second result plot](./figures/linear-fit.03.png)
 
-
+This is the same as the first plot.
 
 #### Codes
 
