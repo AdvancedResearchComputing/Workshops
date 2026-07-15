@@ -61,8 +61,8 @@ The sbatch slurm script is _slurm.01.sbatch_.
 
 ## -----------------------
 ## SLURM OUTPUT AND ERROR FILES.
-#SBATCH -o slurm.open.mpi.%j.out
-#SBATCH -e slurm.open.mpi.%j.err
+#SBATCH -o slurm.bash.loops.%j.out
+#SBATCH -e slurm.bash.loops.%j.err
 
 ## -----------------------
 ## MEMORY FOR SMP.
@@ -224,71 +224,62 @@ of values across all inputs:
 
 This is also the number of output files.
 
-
+Output file _wiki.t.8.ms.15.ti.3.p.hs.k.4000.inp_ is:
 
 ```output
-slurm_ntasks (total number of tasks across all nodes):  32
-slurm_job_num_nodes: 2
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
-[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+## Try50-1 example.
+## Open MP if value is 1.
+ OpenMP 1
+## Number of OpenMP threads to use is parallel sections.  Value 0 means use max threads possible.
+## Eg., on pecos, this means 8; on shadowfax this means 12.
+ NumOpenMpThreads 19
+## For hybrid code, threshold number of messages in a bundle, for
+## a particular send queue, such that when this number is
+## reached, the bundle of messages is sent.
+ HybridNumBundleMessagesSend 40
+## Graph stuff.
+## 0 means edges are undirected (or bidirected). 1 is directed.
+ GraphEdgeDirectionality 0
+ ## GraphFormat EdgeList try01.uel.w.rank.nodes 1 try01.strip.uel
+ ## Changed so nodes assigned randomly.
+ ## Assuming this is in mif/<subdir>.
+ GraphFormat EdgeList ../../../networks/wiki.nodes 0  ../../../networks/wiki.uel
+## Node attribute file.
+## The integer node traits are:  NIM Model ID, submodel ID, and the duration of infection.
+ IntegerNodeTraits 2  2  ../../../properties/wiki/wiki.int.node.traits
+ IntegerEdgeTraits 6  6  ../../../properties/wiki/wiki.int.edge.traits
+## State is denoted by 1 integer.
+ IntegerNodeStates 3  6  ../../../properties/wiki/wiki.t.8.int.node.states
+ DoubleNodeStates 2  4  ../../../properties/wiki/wiki.t.8.double.node.states
+ ShortEdgeStates 2  4  ../../../properties/wiki/wiki.t.8.short.edge.states
+ ShortEdgeStates 4  8  ../../../properties/wiki/wiki.t.8.char.edge.states
+## For node properties; number of FSMs, FSM ID, number of kinds in node state, for each kind i, d, or c, and indices.
+ NodeStateVectorIndices 1     1     1    i 0 2 3 5
+ FsmDiffusionModelIndicesTraits 1  1 0
+ FSM ../../../models/nim-11-6.fsm.cntrl
+## Fixed seed; if this line exists, gives reproducible results in stochastic computations.
+ FixedRandomSeed 14
+## Maximum number of time steps.
+ MaximumNumTimeStepsPerRun 50
+## For deterministic computations, stop on fixed point.
+## Specify the initial seeding method-- only valid entry is 1.  This is seed by explicit nodes in seed file.
+ InitialSeedByNodeAndState 1
+## Initial conditions:  Filename containing initially infected nodes.
+##  SeedFile ../../../seeds/blocking/wiki/hs/wiki.p.hs.ms.15.k.4000.bt.8.ti.3.seeds
+ SeedFile ../../../seeds/blocking/wiki/hs/wiki.p.hs.ms.15.bt.8.ti.3.seeds
+## Intervention conditions:  Filename containing blocking nodes.
+ InterventionFile ../../../seeds/blocking/wiki/hs/wiki.p.hs.ms.15.k.4000.bt.8.ti.3.seeds
+## output all of the node states, even the zeros.
+ StopOnFixedPoint 1
+ OutputAllStateChanges 1
+ NumRunsPerSimulation 100
+ OutFile ../../../../runs/wiki.t.8.ms.15.ti.3.p.hs.k.4000.is01
+ LogFile ../../../../runs/wiki.t.8.ms.15.ti.3.p.hs.k.4000.log
 ```
 
-To build intuition about the performance of your codes,
-always run `seff` on your job after it completes:
+Note that here, the six variables, AAAA through FFFF, 
+are not replaced with values.
 
-```bash
-seff  SLURM_JOB_ID
-```
-
-to see the use of CPUs and memory.
-
-And example is:
- 
-```
-[ckuhlman@tinkercliffs2 srun]$ seff 6291640
-Job ID: 6291640
-Cluster: tinkercliffs
-User/Group: ckuhlman/ckuhlman
-State: COMPLETED (exit code 0)
-Nodes: 2
-Cores per node: 16
-CPU Utilized: 00:00:11
-CPU Efficiency: 8.59% of 00:02:08 core-walltime
-Job Wall-clock time: 00:00:04
-Memory Utilized: 571.22 MB
-Memory Efficiency: 0.92% of 60.75 GB (1.90 GB/core)
-The task which had the largest memory consumption differs by 349.45% from the average task max memory consumption
-```
 
 ---
 
