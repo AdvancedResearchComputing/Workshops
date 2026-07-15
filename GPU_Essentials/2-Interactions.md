@@ -18,7 +18,7 @@ Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
 #SBATCH --cpus-per-task=4   # A least 1 CPU
 #SBATCH --mem=12G           # Memory per-node
 ```
-> [!HINT]
+>[!NOTE]
 > When starting out with GPUs, first make sure that you can make good use of a single, mid-range GPU before scaling up to high-end or multiple GPUs.
 
 ## `nvidia-smi`
@@ -116,6 +116,5 @@ ARC's [dashboard](https://dashboard.arc.vt.edu) site collects cluster and node i
 0. [Welcome](./0-intro.md)
 1. [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
 2. [Inspection and Interfacing with GPUs](./2-Interactions.md)
-3. Break
 3. [Programming with GPUs](./3-Programming.md)
 4. [Parallelization with GPUs](./4-Parallelization.md)

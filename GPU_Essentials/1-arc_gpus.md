@@ -33,6 +33,5 @@ Takeaways:
 0. [Welcome](./0-intro.md)
 1. [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
 2. [Inspection and Interfacing with GPUs](./2-Interactions.md)
-3. Break
 3. [Programming with GPUs](./3-Programming.md)
 4. [Parallelization with GPUs](./4-Parallelization.md)

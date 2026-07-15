@@ -5,12 +5,11 @@ Presented by: Matthew Brown
 [Spring 2026 ARC Workshop Schedule](https://github.com/AdvancedResearchComputing/Workshops/blob/main/README.md)
 
 ## Outline
-0. (10 min) [Welcome](./0-intro.md)
-1. (15 min) [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
-2. (30 min) [Inspection and Interfacing with GPUs](./2-Interactions.md)
-3. (10 min) Break
-3. (30 min) [Programming with GPUs](./3-Programming.md)
-4. (20 min) [Parallelization with GPUs](./4-Parallelization.md)
+0. [Welcome](./0-intro.md)
+1. [ARC Cluster GPU Offerings and Comparisons](./1-arc_gpus.md)
+2. [Inspection and Interfacing with GPUs](./2-Interactions.md)
+3. [Programming with GPUs](./3-Programming.md)
+4. [Parallelization with GPUs](./4-Parallelization.md)
 
 ## Why are we using GPUs for scientific computing?
 
@@ -18,7 +17,7 @@ GPUs were originally created to accelerate graphics processing. This task often 
 
 By recognizing the the graphics processing workload is very much "single-instruction, multiple-data" (SIMD), early developers designed add-on devices which grouped together very simplified (and thus cheap and efficient) components to work in locked synchonization to handle this problem.
 
-In the 2000's PC display resolutions crept up from 800x600 to 1024x768 to 1600x1200. This trend was both enabled by GPUs and also pushed GPUs to grow in capability and performance.
+In the 2000's PC display resolutions crept up from 800x600 to 1024x768 to 1600x1200 and beyond. This trend was both enabled by GPUs and also pushed GPUs to grow in capability and performance.
 
 
 ### Recent CPU specs and capabilities
@@ -40,9 +39,10 @@ This AMD Epyc Zen2 "Rome" CPU, as found in Tinkercliffs nodes, shows AMD's "syst
 | Zen 4 “Genoa”      | 2022     | 3800            | 5                 | 48            | AVX512  | 1 459.2                | 290       | 5.03    | 34 800                     |
 
 ## Conceptual GPU Architecture
-GPUs can do a wide variety of things, but clearly prioritize fast, vectorized, arithmetic. It's not enough to increase arithmetic density, but the accelerators also have to grow internal memory circuits, data busses, GPU-to-host and GPU-to-GPU connectivity, and other architectural components to avoid bottlenecks.
+GPUs can do a wide variety of things, but clearly prioritize fast, vectorized arithmetic. It's not enough to increase arithmetic density, but the accelerators also have to grow internal memory circuits, data busses, GPU-to-host and GPU-to-GPU connectivity, and other architectural components to avoid bottlenecks.
 
-Nvidia GA100 architecture: 
+*Nvidia GA100 architecture:*
+
 "The NVIDIA GA100 GPU is composed of multiple GPU Processing Clusters (GPCs), Texture Processing Clusters (TPCs), Streaming Multiprocessors (SMs), and HBM2 memory controllers."
  - 52.4 billion transistors
  - 7 GPCs, 7 or 8 TPCs/GPC, 2 SMs/TPC, up to 16 SMs/GPC, 108 SMs
@@ -67,3 +67,6 @@ Some others are integrating GPUs but not universally:
 There are some problems whose structure makes it difficult to run efficiently on GPUs:
  - serialized or iterative problems which lack scale internal to each step
  - problems whose solution paths are difficult to predict (e.g., graph analytics)
+
+ [Next: ARC GPUs ➡️](./1-arc_gpus.md)
+ 
