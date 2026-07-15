@@ -283,4 +283,4 @@ are not replaced with values.
 
 ---
 
-⬅️ [Previous: Introduction](01_introduction.md) | [Next: GNU pararllel ➡️](03_parallel.md)
+⬅️ [Previous: srun and parallel](04_srun_parallel.md) | [Next: Job arrays ➡️](06_job_arrays.md)
