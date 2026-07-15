@@ -18,7 +18,7 @@ Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
 #SBATCH --cpus-per-task=4   # A least 1 CPU
 #SBATCH --mem=12G           # Memory per-node
 ```
->[!HINT]
+>[!NOTE]
 > When starting out with GPUs, first make sure that you can make good use of a single, mid-range GPU before scaling up to high-end or multiple GPUs.
 
 ## `nvidia-smi`
