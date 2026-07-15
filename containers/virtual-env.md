@@ -4,6 +4,23 @@
 
 [Back to Main Page](./main-containers.md)
 
+
+## Note About This Exercise
+
+All other example codes have been run on Tinkercliffs (TC, tc).
+
+This example must be run on Owl.
+There is an error---must be my error---in running this on TC right 
+now
+(but we [Ben] will sort that out.)
+
+But this works on Owl now.
+
+So you will have to log into Owl, get the an interactive 
+job on a compute node, set up the modules
+(module reset; module load apptainer),
+and then follow the directions here.
+
 ## Summary of this Lesson
 
 1. Demonstrate how to add packages to a default virtual environment (VE)
@@ -27,9 +44,9 @@ See the preconditions for this work [here](./preliminaries.md).
 #### Build the Apptainer Definition File
 
 The goal is to build a container that houses a virtual environment
-containing python 3.14 and packages matplotlib, pandas, and numpy.
+containing python 3.14 and packages matplotlib, pandas, numpy, and statsmodels.
 
-This is file _ver02.def_.
+This is file _ver02.fit.n.plot.def_.
 
 ```
 Bootstrap: docker
@@ -50,7 +67,7 @@ From: continuumio/miniconda3
 Build the container:
 
 ```
-apptainer build --fakeroot python.ve.container.02.sif  ver02.def
+apptainer build --fakeroot python.ve.container.02.sif  ver02.fit.n.plot.def
 ```
 
 Check resulting container/VE to ensure that the desired packages exist:
