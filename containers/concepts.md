@@ -143,7 +143,8 @@ Docker requires a person to have root access for its use on a target computer (s
 For cluster use, one does not have root privileges
 because there are many users and hence security issues that preclude root privileges.
 Hence, Singularity was born.
-Singularity is now **Apptainer**.  (Is it?  No.)
+**Apptainer** is the open version of Singularity.
+Apptainer shares some features with Singularity, like the `*.sif` file format.
 
 There are many ways to build Apptainers.
 Some of the starting points are listed [here](https://apptainer.org/docs/user/main/build_a_container.html#overview).
