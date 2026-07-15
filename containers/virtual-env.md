@@ -177,24 +177,6 @@ You can compare that result with the default python version:
 python --version
 ```
 
-### Very Simple Python Code
-
-This is the same _main.py_ code as used above.
-
-File _main.py_.
-
-```
-print("  From inside a VE inside a container:  hi")
-```
-
-We have a second python script, _main.02.py_, which is:
-
-```
-a=2
-b=3
-c=a+b
-print("  c : ",c)
-```
 
 ### Running Python Codes With the Container That Use the Virtual Environment
 
@@ -233,6 +215,25 @@ apptainer exec --bind /scratch/ckuhlman  python.ve.container.03.sif python /scra
 
 
 #### Codes
+
+This is the same _main.py_ code as used above.
+
+File _main.py_.
+
+```
+print("  From inside a VE inside a container:  hi")
+```
+
+We have a second python script, _main.02.py_, which was also used before:
+
+```
+a=2
+b=3
+c=a+b
+print("  c : ",c)
+```
+
+
 
 Code _linear-fit.py_:
 
