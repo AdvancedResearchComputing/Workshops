@@ -79,6 +79,22 @@ These are not the only ways of doing this type of work.
 They are just some of the most common or standard ways.
 
 
+### Critical Note About Examples
+
+There are perhaps 10 or so example codes that you can run.
+All source code files are right in the notes:  you
+simply use the copy button and copy the contents into
+files on the ARC cluster using your favorite editor
+(vi, nano, etc.).
+All examples are CPU-based examples.
+That is, there are no GPU-based examples.
+Therefore, the Falcon cluster should not be used.
+These examples have been run many times, so they should
+work for you.
+It is recommended that you run these codes on the
+Tinkercliffs cluster just because these examples have
+all been successfully run most recently on the 
+Tinkercliffs cluster.
 
 
 ### Prerequisites
