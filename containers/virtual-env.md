@@ -161,6 +161,8 @@ Use the same checks as above, but now use the current container name.
 
 This means that we can use the apptainer `run` command to run the enclosed code.
 
+The arguments (command line arguments) are the same as those run in the first case above. 
+
 ```
 apptainer run python.ve.container.03.sif   in_data.inp    linear-fit.03.png    40  100
 ```
