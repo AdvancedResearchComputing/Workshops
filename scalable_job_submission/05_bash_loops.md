@@ -1,0 +1,295 @@
+
+
+## Use of (bash) Scripting Loops
+
+
+### Example 1:  Sbatch Slurm Job Submission
+
+
+#### Background
+
+You have a code that you want to run multiple
+times with different inputs.
+
+For each input variable, you create one loop.
+
+Then, by nesting all of these loops, you can
+call the code/software with every combination
+of inputs.
+
+The executions are serial, one after the other.
+
+
+
+#### Inputs
+
+Please copy the contents of the files below into files on the cluster, using the same names.
+
+The purpose of this example is to take a template file
+and specialize it for a host of different
+sets of inputs.
+
+All files should be put in one directory.
+
+
+The sbatch slurm script is _slurm.01.sbatch_.
+
+```bash
+#!/bin/bash
+
+## -----------------------
+# SLURM JOB SCRIPT OPTIONS:
+
+## -----------------------
+## ACCOUNT.
+#SBATCH --account arcadm
+
+## -----------------------
+## EXECUTION DURATION.
+# Set the time, which is the maximum time your job can run in HH:MM:SS
+#SBATCH --time=0:30:00
+
+## -----------------------
+## JOB QUEUE/PARTITION.
+#SBATCH --partition=normal_q
+
+## -----------------------
+## NUM NODES AND CORES.
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+
+## -----------------------
+## SLURM OUTPUT AND ERROR FILES.
+#SBATCH -o slurm.open.mpi.%j.out
+#SBATCH -e slurm.open.mpi.%j.err
+
+## -----------------------
+## MEMORY FOR SMP.
+##  #SBATCH --mem=128MB
+
+
+
+## -----------------------
+## MODULES.
+# Optional: If modules are needed, source modules environment
+module reset
+
+## -----------------------
+## WORKING DIRECTORY.
+## cd $PBS_O_WORKDIR
+## cd $SLURM_SUBMIT_DIR
+
+## -----------------------
+## EXPORTS 
+
+
+## -----------------------
+sh run.gen.configs.sh
+
+```
+
+
+The configuration file template: _config.template_.
+
+
+```bash
+## Try50-1 example.
+## Open MP if value is 1.
+ OpenMP 1
+## Number of OpenMP threads to use is parallel sections.  Value 0 means use max threads possible.
+## Eg., on pecos, this means 8; on shadowfax this means 12.
+ NumOpenMpThreads 19
+## For hybrid code, threshold number of messages in a bundle, for
+## a particular send queue, such that when this number is
+## reached, the bundle of messages is sent.
+ HybridNumBundleMessagesSend 40
+## Graph stuff.
+## 0 means edges are undirected (or bidirected). 1 is directed.
+ GraphEdgeDirectionality 0
+ ## GraphFormat EdgeList try01.uel.w.rank.nodes 1 try01.strip.uel
+ ## Changed so nodes assigned randomly.
+ ## Assuming this is in mif/<subdir>.
+ GraphFormat EdgeList ../../../networks/AAAA.nodes 0  ../../../networks/AAAA.uel
+## Node attribute file.
+## The integer node traits are:  NIM Model ID, submodel ID, and the duration of infection.
+ IntegerNodeTraits 2  2  ../../../properties/AAAA/AAAA.int.node.traits
+ IntegerEdgeTraits 6  6  ../../../properties/AAAA/AAAA.int.edge.traits
+## State is denoted by 1 integer.
+ IntegerNodeStates 3  6  ../../../properties/AAAA/AAAA.t.BBBB.int.node.states
+ DoubleNodeStates 2  4  ../../../properties/AAAA/AAAA.t.BBBB.double.node.states
+ ShortEdgeStates 2  4  ../../../properties/AAAA/AAAA.t.BBBB.short.edge.states
+ ShortEdgeStates 4  8  ../../../properties/AAAA/AAAA.t.BBBB.char.edge.states
+## For node properties; number of FSMs, FSM ID, number of kinds in node state, for each kind i, d, or c, and indices.
+ NodeStateVectorIndices 1     1     1    i 0 2 3 5
+ FsmDiffusionModelIndicesTraits 1  1 0
+ FSM ../../../models/nim-11-6.fsm.cntrl
+## Fixed seed; if this line exists, gives reproducible results in stochastic computations.
+ FixedRandomSeed 14
+## Maximum number of time steps.
+ MaximumNumTimeStepsPerRun 50
+## For deterministic computations, stop on fixed point.
+## Specify the initial seeding method-- only valid entry is 1.  This is seed by explicit nodes in seed file.
+ InitialSeedByNodeAndState 1
+## Initial conditions:  Filename containing initially infected nodes.
+##  SeedFile ../../../seeds/blocking/AAAA/EEEE/AAAA.p.EEEE.ms.CCCC.k.FFFF.bt.BBBB.ti.DDDD.seeds
+ SeedFile ../../../seeds/blocking/AAAA/EEEE/AAAA.p.EEEE.ms.CCCC.bt.BBBB.ti.DDDD.seeds
+## Intervention conditions:  Filename containing blocking nodes.
+ InterventionFile ../../../seeds/blocking/AAAA/EEEE/AAAA.p.EEEE.ms.CCCC.k.FFFF.bt.BBBB.ti.DDDD.seeds
+## output all of the node states, even the zeros.
+ StopOnFixedPoint 1
+ OutputAllStateChanges 1
+ NumRunsPerSimulation 100
+ OutFile ../../../../runs/AAAA.t.BBBB.ms.CCCC.ti.DDDD.p.EEEE.k.FFFF.is01
+ LogFile ../../../../runs/AAAA.t.BBBB.ms.CCCC.ti.DDDD.p.EEEE.k.FFFF.log
+```
+
+File _run.gen.configs.sh_.
+
+```bash
+# Inputs
+
+base_graph="
+wiki
+        "
+thresholds="  1  2 3 4 5 6 7 8 9 10"
+
+tincreases=" 1 2 3 4 5 6 7 8 9 10"
+
+min_seeds="   15  100  500  1000  5000   "
+
+props=" nd  cl  bc  cc  ec  pr hs as  kn "
+
+kvalues="10 50 100 500 1000  2000  3000  4000    5000"
+
+template_file="../../config.template"
+
+# Execution
+
+for c in $min_seeds
+do
+
+    locDir=block-min-seeds-"$c"
+
+    mkdir -p "$locDir"
+    cd "$locDir"
+
+    for a in $base_graph
+    do
+
+        mkdir -p "$a"
+        cd "$a"
+
+        for b in $thresholds
+        do
+
+            for d in $tincreases
+            do
+                for e in $props
+                do
+                    for f in $kvalues
+                    do
+                        sed -e "s/AAAA/$a/g"   -e "s/BBBB/$b/g"  -e  "s/CCCC/$c/g"   -e  "s/DDDD/$d/g"    -e  "s/EEEE/$e/g"    -e  "s/FFFF/$f/g"   ${template_file}    >    "$a".t."$b".ms."$c".ti."$d".p."$e".k."$f".inp
+                    done
+                done
+            done
+        done
+        cd ..
+
+    done
+    cd ..
+
+done
+```
+
+
+
+#### Slurm Sbatch Job Submission
+
+To submit the job to the Slurm scheduler on ARC clusters, type:
+
+```
+sbatch slurm.01.sbatch
+```
+
+#### Output
+
+First, note our main objective:  to run many executions of a code
+from one sbatch slurm script.
+
+The number of executions is the product of the number
+of values across all inputs:
+
+1 x 10 x 10 x 5 x 9 x 9 = 40500
+
+This is also the number of output files.
+
+
+
+```output
+slurm_ntasks (total number of tasks across all nodes):  32
+slurm_job_num_nodes: 2
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc007 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+[1] "Tag, from  tc008 ...   Arguments:    12   14   16   18   the cat in the hat"
+```
+
+To build intuition about the performance of your codes,
+always run `seff` on your job after it completes:
+
+```bash
+seff  SLURM_JOB_ID
+```
+
+to see the use of CPUs and memory.
+
+And example is:
+ 
+```
+[ckuhlman@tinkercliffs2 srun]$ seff 6291640
+Job ID: 6291640
+Cluster: tinkercliffs
+User/Group: ckuhlman/ckuhlman
+State: COMPLETED (exit code 0)
+Nodes: 2
+Cores per node: 16
+CPU Utilized: 00:00:11
+CPU Efficiency: 8.59% of 00:02:08 core-walltime
+Job Wall-clock time: 00:00:04
+Memory Utilized: 571.22 MB
+Memory Efficiency: 0.92% of 60.75 GB (1.90 GB/core)
+The task which had the largest memory consumption differs by 349.45% from the average task max memory consumption
+```
+
+---
+
+⬅️ [Previous: Introduction](01_introduction.md) | [Next: GNU pararllel ➡️](03_parallel.md)
