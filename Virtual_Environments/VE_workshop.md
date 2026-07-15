@@ -35,6 +35,7 @@ Virtual environments (VE) on ARC can allow you to:
 - compile code/load modules outside of your $HOME environment
 
 Most common types of VE are conda environments or using `pip` and `venv`. 
+We also have uv available on the clusters as an additional python package manager.
 
 ___
 
