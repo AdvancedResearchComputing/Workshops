@@ -76,13 +76,9 @@ the elements of the collection is not important.
 
 
 These are not the only ways of doing this type of work.
-They are just the most common or standard ways.
+They are just some of the most common or standard ways.
 
-But there are all sorts of possibilities.
-For example, one could write a job submission system, in say, Java or C++,
-that will orchestrate the construction of (configuration) files and
-compose an sbatch slurm job submission script and then submit it.
-But this would be highly uncommon/nonstandard.
+
 
 
 ### Prerequisites
