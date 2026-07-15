@@ -59,7 +59,7 @@ conda create -n falcon_v100_pytorch
 ```
 OR you can create a CVE with a specified path and/or a specific python version
 ```
-conda create -p ~/path/to/env/falcon_v100_pytorch python=3.12
+conda create -p ~/path/to/env/falcon_v100_pytorch
 ```
 
 4. You will have to type `y` to say yes to proceed:
