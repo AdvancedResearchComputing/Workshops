@@ -105,6 +105,6 @@ We are finished, so you can
 
 [Back to Main Page](./main-containers.md)
 
-[previous lesson:  concepts](./preliminaries.md)
+[previous lesson:  Preliminaries](./preliminaries.md)
 
-[next lesson:  executing containers](./ways-to-execute-containers.md)
+[next lesson:  Executing containers](./ways-to-execute-containers.md)

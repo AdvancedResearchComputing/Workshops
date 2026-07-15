@@ -50,6 +50,8 @@ You can run a container in one of three ways:
 #### Method 1:  Run the Image As-Is (i.e., With the Default Command)
 
 On the compute node, run the predefined command within the image.
+The singularity image file (*.sif) is specified after `run`.
+(`apptainer`, almost without exception, is the first word on commands.)
 
 This way is preferred.
 
@@ -67,7 +69,12 @@ fit the format for invoking containers in more exotic ways.
 
 #### Method 2:  Run the Image With Tailored Input
 
-On the compute node, run a custom command within the container (here, overriding the input to script cowsay):
+On the compute node, run a custom command within the container (here, overriding the input to script cowsay).
+
+The general approach to do this is to specify `exec`, then the *.sif filename, and then the
+command (and any command line arguments) that you want to invoke
+(which uses the environment within the container).
+
 
 ```
 apptainer exec moo-me.sif cowsay "Moooo to youuuuuu"
@@ -126,6 +133,12 @@ to this container.
 
 #### Method 3:  Run Within The Container
 
+Commands can be run by first entering the container
+(for those familiar with virtual environments, this is akin to
+activating a virtual environment).
+
+This is done with the `shell` command.
+
 Issuing the command 
 
 ```
@@ -133,6 +146,8 @@ apptainer shell moo-me.sif
 ```
 
 will give you a shell inside the container, as noted by the "**Apptainer>**" prompt.
+
+Now you can run commands by directly specifying them.
 
 Issue this command:
 
