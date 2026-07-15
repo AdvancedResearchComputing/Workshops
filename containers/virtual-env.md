@@ -138,6 +138,7 @@ From: continuumio/miniconda3
     conda install -y matplotlib
     conda install -y pandas
     conda install -y numpy
+    conda install -c conda-forge statsmodels
 
 %runscript
     python  linear-fit.py    "$@"
