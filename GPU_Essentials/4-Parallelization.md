@@ -42,7 +42,7 @@ cp ${SLURM_JOB_ID}_output.tar /scratch/user/
 > [!NOTE]
 > If you work with LLMs, we may already have the models you need available on the clusters. Check in `/common/data/models`
 
-### One GPU per process
+#### One GPU per process
 In the classical HPC paradigm with MPI, you would launch many MPI processes for a job and they would divide the work. The most common starting point was "one rank per core" or equivalently "one CPU per process" and try to run all CPUs at 100%. These programs were "CPU-bound".
 
 There is a paradigm shift when adjusting from classical MPI to MPI+GPU simulations. The first  priority is keeping the GPU busy and running efficiently, but it takes extremely careful planning to effectively have multiple processes share a single GPU. Think of GPUs as arithmetic factories where the machines have to be switched out to serve the requests of different processes. 
