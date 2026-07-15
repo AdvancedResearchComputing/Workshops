@@ -36,7 +36,7 @@ Notes:
 1. We bootstrap from continuumio/miniconda3, instead
    of ubuntu:22.04, because we now have python code in the
    container.
-2. We copy the _local_ file _tokenize.py_ into the container,
+2. We copy the _local_ file _my_tokenizer.py_ into the container,
    keeping the same name.
 3. In addition to updating apptainer get and installing
    cowsay as before, we now also update conda and change
@@ -58,7 +58,7 @@ From: continuumio/miniconda3
 
 %files
     # Copy files into container.
-    tokenize.py   tokenize.py
+    my_tokenizer.py    my_tokenizer.py
 
 %post
     apt-get update
@@ -74,7 +74,7 @@ From: continuumio/miniconda3
     echo " "
     echo "The inputted argument(s) are  $@"
     echo " "
-    python tokenize.py    "$@"
+    python my_tokenizer.py    "$@"
 
 ```
 
@@ -185,7 +185,7 @@ apptainer exec pipeline.sif ls
 The output for me is:
 
 ```
-__pycache__  multi_runscript.def  pipeline.sif	run.base.pipeline  run.build.sif  run.container.itself	run.sif.directly  tokenize.py
+__pycache__  multi_runscript.def  pipeline.sif	run.base.pipeline  run.build.sif  run.container.itself	run.sif.directly  my_tokenizer.py
 ```
 
 
@@ -218,10 +218,10 @@ Apptainer> cowsay "hi"
                 ||     ||
 ```
 
-Now enter the python tokenize.py command below (we are still inside the container):
+Now enter the python my_tokenizer.py command below (we are still inside the container):
 
 ```
-Apptainer> python tokenize.py  "Man, it sure is dark in this container."
+Apptainer> python my_tokenizer.py  "Man, it sure is dark in this container."
 ```
 ... and the output will be:
 
@@ -261,7 +261,7 @@ We are finished, so you can
 
 #### Source Code Files
 
-File _tokenize.py_
+File _my_tokenizer.py_
 
 ```
 import sys
