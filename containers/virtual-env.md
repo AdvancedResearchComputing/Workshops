@@ -6,9 +6,10 @@
 
 ## Summary of this Lesson
 
-1. Demonstrate how to add packages to a default virtual environment (VE),
-   to customize it, using a definition file.
-2. Illustrating how to run codes outside of the container.
+1. Demonstrate how to add packages to a default virtual environment (VE)
+   and thereby customize it, using a definition file.
+   - The resulting VE is inside a container.
+2. Illustrating how to run codes outside of the container that use the VE.
    1. Use the `exec` and `bind` commands.
 3. Demonstrate how to extend a container with a VE:
    1. By adding applications.
