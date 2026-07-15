@@ -63,9 +63,6 @@ execution of your code (a collection is a group of such
 executions), are independent, so the order of execution of
 the elements of the collection is not important.
 
-**In most cases, you will want to use job arrays.**
-
-**You may have particular users for "srun" and "parallel".**
 
 
 | Code or Command  |  Type of Packing     |
