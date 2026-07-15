@@ -325,4 +325,4 @@ illustrating that srun is running jobs across different compute nodes.
 
 ---
 
-⬅️ [Previous: GNU pararllel](03_parallel.md) | [Next: Job Arrays ➡️](05_job_arrays.md)
+⬅️ [Previous: GNU pararllel](03_parallel.md) | [Next: Bash loops ➡️](05_bash_loops.md)

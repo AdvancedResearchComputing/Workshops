@@ -63,9 +63,6 @@ execution of your code (a collection is a group of such
 executions), are independent, so the order of execution of
 the elements of the collection is not important.
 
-**In most cases, you will want to use job arrays.**
-
-**You may have particular users for "srun" and "parallel".**
 
 
 | Code or Command  |  Type of Packing     |
@@ -103,7 +100,8 @@ These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
 1. [srun](./02_srun.md)
 2. [GNU Parallel](./03_parallel.md)
 3. [GNU Parallel and srun](./04_srun_parallel.md)
-4. [Job arrays](./05_job_arrays.md)
+4. [(Bash) scripting loops](./05_bash_loops.md)
+5. [Job arrays](./06_job_arrays.md)
 
 
 
