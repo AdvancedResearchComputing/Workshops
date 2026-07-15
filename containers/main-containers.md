@@ -48,6 +48,17 @@ So, for example, what is NOT covered here are more sophisticated
 container examples.
 These are covered in the links in Section "VT-Generated Resources" below.
 
+
+## Where to Run the Examples
+
+The examples are all CPU-based; no GPU-based examples in this workshop.
+
+The great majority of these examples will run on Tinkercliffs (TC, tc) or Owl.
+However, the most recent verification of all examples has been on
+TC, so that is recommended.
+
+
+
 ## Outline/Examples
 
 - [Concepts](./concepts.md)
