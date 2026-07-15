@@ -168,6 +168,10 @@ apptainer run python.ve.container.03.sif   in_data.inp    linear-fit.03.png    4
 We can still run other python codes that use the VE in the container by
 once again using the `exec` command.
  
+The output from the latest command, in file linear-fit.03.png, is:
+
+
+![Second result plot](./figures/linear-fit.03.png)
 
 
 
