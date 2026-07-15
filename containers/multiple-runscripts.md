@@ -72,7 +72,11 @@ From: continuumio/miniconda3
 %runscript
     cowsay "Hello from inside Apptainer!"
     echo " "
+    echo " ------------------"
+    echo " "
     echo "The inputted argument(s) are  $@"
+    echo " "
+    echo " ------------------"
     echo " "
     python my_tokenizer.py    "$@"
 
