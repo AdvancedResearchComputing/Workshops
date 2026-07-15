@@ -562,7 +562,7 @@ in:
 In one pair of runs of Example 3 and Example 4, Example 3 took 10 seconds
 to execute and Example 4 took 83 seconds.
 
-### Example 5:  Runing the test_args.R with GNU Parallel
+### Example 5:  Running the test_args.R R Script with GNU Parallel
 
 Note the change of number of nodes to one: `--nodes=1`.
 The number of CPUs per task is four:  `--cpus-per-task=4`.
