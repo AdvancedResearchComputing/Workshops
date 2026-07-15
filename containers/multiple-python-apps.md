@@ -163,7 +163,7 @@ The string should be wrapped in double-quotes like this:
 For the _my_tokenizer_ application, the script _run.app.my_tokenizer.sif.sh_ contains
 
 ```
-apptainer run  --app tokenize  python_string.sif  "How many football games will the Hokies win this year?"
+apptainer run  --app  my_tokenizer  python_string.sif  "How many football games will the Hokies win this year?"
 ```
 
 You should see output:
