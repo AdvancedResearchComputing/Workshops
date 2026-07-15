@@ -12,10 +12,23 @@
    that can be executed independently.
     - Using `%apprun`
 
+
+Note in previous examples where we ran multiple codes, those
+codes were part of a pipeline, i.e., _all_ of the codes
+were executed.
+We used `%runscript` for that, and we merely wrote one 
+code invocation after another.
+In that case, the codes could depend on each other, e.g.,
+the output of one code could be input for a subsequent code.
+
+The examples now, in this page, are different:  we want the ability to run multiple,
+isolated, independent codes one at a time.
+
 ## `%apprun` versus `%runscript`
 
 
 If one has multiple applications, and therefore multiple entry points
+into a container
 (one for each app),
 you want to use `%apprun` rather than `%runscript` in the definition file.
 
