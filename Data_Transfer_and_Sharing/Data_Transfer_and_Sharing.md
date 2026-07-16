@@ -264,7 +264,7 @@ You know you have made a successful connection when you see the following as you
 VTPID@globus:~$
 ```
 
-This host was created to move large data file transfer off of the login nodes. Be aware though, that you will not be able to access any data in `/scratch` file systems as these are cluster specific. 
+This host was created to move large data file transfer off of the login nodes. Be aware though, that you will not be able to access any data in `/scratch` file systems as these are cluster specific and are not mounted on the DTN which is not part of any cluster.
 
 Additionally, there are limited modules on this host as no computations should be done on this node. Modules that are file transfer specific are still provided like `rclone`. 
 
