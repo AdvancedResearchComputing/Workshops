@@ -1,18 +1,14 @@
 # Data Transfer and Sharing on ARC
 
-April 10, 2026
-
-Nicole Braunscheidel\
-Computational Scientist (ARC)\
-Email: nbraunsc@vt.edu
-
 ## Logistics
-Feedback form: [https://forms.gle/vR9FyfrZm8Hb6F7k7](https://forms.gle/vR9FyfrZm8Hb6F7k7)
+Sign in: [https://docs.google.com/document/d/1YZw4t2TGKk5nv1PRc59sEH-xReXuM3XXndbgtQ-bSHw/edit?usp=sharing](https://docs.google.com/document/d/1YZw4t2TGKk5nv1PRc59sEH-xReXuM3XXndbgtQ-bSHw/edit?usp=sharing)
+
+Feedback form: [https://forms.gle/3N27hWkAsiB4vs3y6](https://forms.gle/3N27hWkAsiB4vs3y6)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- You can also access the material here: [https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing)
-- We have a lot of short video tutorials (I will eventually record this workshop without attendees): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
+- There will be a recording of this workshop posted: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html)
+- We also have a lot of short video tutorials: [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
 Useful links:
@@ -171,7 +167,7 @@ data_transfer
 ```
 
 ### `rclone`
-`rclone` is another great tool when you want to transfer files from a storage server or cloud storage to ARC. One current workflow is to use our Remote Desktop application on Open OnDemand (ood.arc.vt.edu)
+`rclone` is another great tool when you want to transfer files from a storage server or cloud storage to ARC. 
 
 First you will have to load the module:
 ```
@@ -251,12 +247,13 @@ In addition, individuals may create personal Globus accounts and use Globus Conn
 
 To share data with other institutions and people outside of VT, you will use Globus Guest Collections. When you create a Guest Collection, you will define who can access it and what permissions they will have on the data within it.
 
-Everyone at VT has a globus account, https://globus.org that you can login to.
+Globus accounts are free for everyone regardless of institutional affiliation or subscription status. A VT username can be associated with your Globus account by using it to log in https://globus.org. Other credentials you may have, including personal (non-VT) email accounts and usernames from other institutions can also be affiliated with your Globus account.
+
 Search for Guest Collections (might have to unclick "Recent Tasks") and you should see "Virginia Tech ARC Globus Projects Directories".
 
 # Data Transfer Node
 Analaogus to ARC's login nodes (e.g. `tinkercliffs1`, `owl2`, or `falcon1`), we have a data transfer node named `datatransfer.arc.vt.edu`. 
-We recommend to use this host `datatransfer.arc.vt.edu` to improve the performance of the data transfer.
+We recommend using this host `datatransfer.arc.vt.edu` when possible to potentially improve the performance of the data transfer and to keep data transfer workloads off of the cluster login nodes which are more heavily used and have limited resources.
 
 To connect to this data transfer node, you would make a similar ssh connection like you would to make a connection to one of our clusters:
 ```
@@ -267,12 +264,16 @@ You know you have made a successful connection when you see the following as you
 VTPID@globus:~$
 ```
 
-This host was created to move large data file transfer off of the login nodes. Be aware though, that you will not be able to access any data in `/scratch` file systems as these are cluster specific. 
+This host was created to move large data file transfer off of the login nodes. Be aware though, that you will not be able to access any data in `/scratch` file systems as these are cluster specific and are not mounted on the DTN which is not part of any cluster.
 
 Additionally, there are limited modules on this host as no computations should be done on this node. Modules that are file transfer specific are still provided like `rclone`. 
 
 # Tar and Compression Tools
-It is often best, when transfering a large number of files to first tar or compress the files and then transfer.
+It is often best, when transfering a large number of files to package the files using a tool like `tar` before transferring. This is especially true when handling datasets that contain many small files. Here "many" generally means thousands or more and "small" means less than 10MB.
+
+Compressing datasets can significantly shrink their size in some cases and smaller files can be moved faster. But since we're usually working with very fast networks and compression is VERY compute intensive, the compression + decompression work itself will usually take much longer than the time saved by transferring a smaller file. 
+
+Tar is fast and makes a big difference when datasets with lots of small files and compression is slow, so we usually recommend using tar with no compression.
 
 ## `tar`
 A common tool you can use is `tar` or "tape archive". This is fast, only limited by read/write speed. Also has options for create, inspect, extract, compress.
@@ -285,7 +286,7 @@ Inspect example:
 ```
 tar -tf archive_filename.tar
 ```
-Zip (with gzip; "tarball") example:
+Zip (with gzip; "tarball") example (not recommended in most cases):
 ```
 tar -zcf archive_filename.tar.gz <dirname>
 ```
@@ -298,7 +299,7 @@ tar -zxf archive_filename.tar.gz
 ## Compression/Zip
 Compression and Zip work to minimize the size of the tar directory. Compression algorithms take advantage of redundancy to reduce size. They are CPU-bound so they can consumes considerable time and energy.
 
-`gzip` is popular and widely supported and is natively supported by many analysis tools. The following examples are using DNA sequencing files that are in a FASTQ format (“Q” stands for quality score). This format is necessary for bioinformatics software.
+`gzip` is popular and widely supported and is natively supported by many analysis tools, but it is also one of the slowest and least capable compression tools. The following examples are using DNA sequencing files that are in a FASTQ format (“Q” stands for quality score). This format is necessary for bioinformatics software.
 
 #### Compress
 With `gzip`:
@@ -321,10 +322,10 @@ Various compression levels:
 - `gzip` has 1-9 levels
 - `xz` has 0-9 levels 
 
-With 0 or 1 being the fastest and 9 being the best or most optimial compression.
+With 0 or 1 being the fastest and 9 being the highest level of compression. The tradeoff between compression level and compute intensity is not usually favorable. For example, selecting a higher compression level may double the time it takes to compress while reducing the size by only 5%. Accordingly, we usually recommend selecting lower compression levels.
 
 ```
-gzip -9 archive_filename.fastq
+gzip -3 archive_filename.fastq
 ```
 
 Note: Binary data formats are often incompressible (already compressed)
@@ -358,4 +359,4 @@ A common one is Visual Studio Code (VS Code).
 We also offer file management in Open OnDemand [https://ood.arc.vt.edu/](https://ood.arc.vt.edu/).
 
 # Wrap-up
-Feedback form: [https://forms.gle/vR9FyfrZm8Hb6F7k7](https://forms.gle/vR9FyfrZm8Hb6F7k7)
+Feedback form: [https://forms.gle/3N27hWkAsiB4vs3y6](https://forms.gle/3N27hWkAsiB4vs3y6)
