@@ -26,7 +26,12 @@ With `apps` this is quite common.
 
 Also note that in addition to the two specified containers,
 my_apps.sif and python.ve.container.03.sif, you need this file:
-`/scratch/ckuhlman/main.02.py`
+`/scratch/<username>/main.02.py`.
+That is, you need to put main.02.py (given below), in your scratch
+area.
+Actually, you can put it anywhere but `/scratch/<username>` is nice
+because it illustrates how to do this when your executing code
+can be anywhere.
 
 All three of these files were built in previous lessons, so they should
 be available (_main.02.py_ is given at the end of this file).
