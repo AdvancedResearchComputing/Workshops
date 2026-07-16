@@ -269,7 +269,11 @@ This host was created to move large data file transfer off of the login nodes. B
 Additionally, there are limited modules on this host as no computations should be done on this node. Modules that are file transfer specific are still provided like `rclone`. 
 
 # Tar and Compression Tools
-It is often best, when transfering a large number of files to first tar or compress the files and then transfer.
+It is often best, when transfering a large number of files to package the files using a tool like `tar` before transferring. This is especially true when handling datasets that contain many small files. Here "many" generally means thousands or more and "small" means less than 10MB.
+
+Compressing datasets can significantly shrink their size in some cases and smaller files can be moved faster. But since we're usually working with very fast networks and compression is VERY compute intensive, the compression + decompression work itself will usually take much longer than the time saved by transferring a smaller file. 
+
+Tar is fast and makes a big difference when datasets with lots of small files and compression is slow, so we usually recommend using tar with no compression.
 
 ## `tar`
 A common tool you can use is `tar` or "tape archive". This is fast, only limited by read/write speed. Also has options for create, inspect, extract, compress.
@@ -282,7 +286,7 @@ Inspect example:
 ```
 tar -tf archive_filename.tar
 ```
-Zip (with gzip; "tarball") example:
+Zip (with gzip; "tarball") example (not recommended in most cases):
 ```
 tar -zcf archive_filename.tar.gz <dirname>
 ```
@@ -295,7 +299,7 @@ tar -zxf archive_filename.tar.gz
 ## Compression/Zip
 Compression and Zip work to minimize the size of the tar directory. Compression algorithms take advantage of redundancy to reduce size. They are CPU-bound so they can consumes considerable time and energy.
 
-`gzip` is popular and widely supported and is natively supported by many analysis tools. The following examples are using DNA sequencing files that are in a FASTQ format (“Q” stands for quality score). This format is necessary for bioinformatics software.
+`gzip` is popular and widely supported and is natively supported by many analysis tools, but it is also one of the slowest and least capable compression tools. The following examples are using DNA sequencing files that are in a FASTQ format (“Q” stands for quality score). This format is necessary for bioinformatics software.
 
 #### Compress
 With `gzip`:
@@ -318,10 +322,10 @@ Various compression levels:
 - `gzip` has 1-9 levels
 - `xz` has 0-9 levels 
 
-With 0 or 1 being the fastest and 9 being the best or most optimial compression.
+With 0 or 1 being the fastest and 9 being the highest level of compression. The tradeoff between compression level and compute intensity is not usually favorable. For example, selecting a higher compression level may double the time it takes to compress while reducing the size by only 5%. Accordingly, we usually recommend selecting lower compression levels.
 
 ```
-gzip -9 archive_filename.fastq
+gzip -3 archive_filename.fastq
 ```
 
 Note: Binary data formats are often incompressible (already compressed)
