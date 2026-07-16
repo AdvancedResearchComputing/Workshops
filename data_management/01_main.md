@@ -63,7 +63,7 @@ different storage devices.
      not being able to access their students' files.
    - Sometimes the student has already left.
    - This can be a significant frustration for PIs.
-   - The permissions that we have allow PIs to look
+   - The default permissions that we now have allow PIs to look
      into student directories.  
 2. The default permissions, mentioned above, for files
    and directories are established and assigned to
