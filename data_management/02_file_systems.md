@@ -75,7 +75,7 @@ This is because there is a separate scratch mount for each cluster.
 This is done to achieve greater I/O (input/output, read/write) speeds.
 
 Your code will perform I/O faster with files in `/scratch` than
-it will with files in `/projects`/
+it will with files in `/projects`.
 
 `/scratch` has essentially unlimited size in the short-term.
 
@@ -84,10 +84,14 @@ However, the critical thing to know about scratch is that when files reach
 So this is NOT permanent storage.
 
 A common use case is to:
-1. copy files from `/projects` to `/scratch`.
-2. Run your code by accessing input files from `/scratch` and writing data to files
+1. Copy files from `/projects` to `/scratch`.
+2. Construct an sbatch slurm script for a batch job.
+3. Submit an sbatch slurm script to 
+   run your code by accessing input files from `/scratch` and
+   writing data to (output) files
    in `/scratch`.
-3. When your code execution completes, move the output files from
+4. When your slurm sbatch script (i.e., your slurm job) completes,
+   move the output files from
    your area in `/scratch` to some directory under `/projects`.
 
 #### Localscratch
@@ -105,12 +109,19 @@ However, the lifetime of files on localscratch are even less than the
 
 The lifetime of files in localscratch is the duration of a slurm job.
 
-Therefore, if one looks at the 3-step process in the previous subsection,
+Therefore, if one looks at the steps of the use case in the previous subsection,
 then to use localscratch instead of scratch:
-- substitute "localscratch" for `/scratch`.
-- note that all three steps must be done inside of the slurm scipt.
+1. Construct an sbatch slurm script for a batch job.
+   1. _**ALL**_ of the steps in this list must be done _**inside**_
+      the sbatch slurm script.
+2. Copy files from `/projects` to `localscratch`.
+3. Run your code or codes by accessing input files from `localscratch` and
+   writing data to (output) files in `localscratch`.
+4. For any files that you want to permanently save,
+   move the output files from
+   `localscratch` to some directory under `/projects`.
 
-The second bullet makes sense:  if you write new output files, and
+If you write new output files, and
 wait until after the slurm job is over to move them, then they are
 already gone because localscratch ends with the slurm job.
 
