@@ -54,9 +54,10 @@ This account is under `/projects/<PIs-account>`.
 
 ## Permissions Fundamentals
 
-### Actions You May Have Permissions For
+### Actions For Which You May Have Permissions
 
-There is one permission value (i.e., yes, you have permission,
+There is one permission value (it is binary,
+i.e., yes, you have permission,
 or no, you do not have permission) for each of the actions:
 1. read:  you can/cannot read the contents of a file.
 2. write:  you can/cannot modify the file by altering its content.
@@ -108,16 +109,18 @@ In the previous two sections, we spoke about actions and whether
 permission is granted to perform that action.
 
 Each action is either granted or not granted permission for
-three permission classes:
+three permission classes (permission classes are like roles of users):
 1. user:  typically the user that created the file.
 2. group:  typically the name of the PI's project under which the
    student is working.
-3. other:  everyone else (that is the user or in the group).
+3. other:  everyone else (everyone that is not the user nor in the group).
 
+The permission classes are always with respect to a particular
+directory or a particular file.
 
-Format of permissions for directories and files.
+### Format of Permissions for Directories and Files
 
-We will both structures for examining permissions below.
+We will use both structures for examining permissions below.
 
 [directory and file permissions format](./figures/permissions-01.png)
 ![directory and file permissions format](./figures/permissions-01.png)
