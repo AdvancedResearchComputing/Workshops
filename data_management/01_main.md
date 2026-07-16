@@ -91,8 +91,8 @@ different storage devices.
 
 ### Data Recovery and Long-Term Storage
 
-1. It is paramount to realize that YOUR DATA ARE NOT
-   BACKED UP on the ARC clusters.
+1. It is paramount to realize that _**YOUR DATA ARE NOT
+   BACKED UP**_ on the ARC clusters.
 2. If you want/need your data backed up, you must take
    the steps to do so.
 3. This decision is a university-wide decision based
@@ -121,7 +121,7 @@ different storage devices.
 2. [File and directory permissions](./03_file_permissions.md)
 3. [umask](./04_umask.md) (`*`)
 4. [File and directory ownership](./05_file_ownership.md)
-5. [Data recovery and LT storage](./06_data_recovery_and_long_term_storage.md)
+5. [Data recovery and long-term storage](./06_data_recovery_and_long_term_storage.md)
 6. [Best practices](./07_best_practices.md)
 
 `*` This material is more in-depth and should be skipped for one-hour workshop.
