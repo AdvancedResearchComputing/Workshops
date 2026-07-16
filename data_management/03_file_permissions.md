@@ -42,7 +42,7 @@ This account is under `/projects/<PIs-account>`.
             - Student
             - Advisor/group (i.e., the PI's project)
           - No one outside of the PI's (advisor's) group
-            has any access to the files. 
+            has any access to the directory. 
         - file permissions: 660
           - A student's file can be (1) read, and
             (2) written to (i.e., modified) by ...
