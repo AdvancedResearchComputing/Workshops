@@ -180,7 +180,8 @@ as described above.
 
 ### Everything Else on the Line
 
-Continuing on the line, the individual owner is mharvey and the
+Continuing on the line, there are two hard links to the file,
+the individual owner is mharvey and the
 group owner is genomics-01, the size of the file "trial-01.txt" is
 322 bytes, and date/time of last file modification is 15 March at time 15:32.
 
