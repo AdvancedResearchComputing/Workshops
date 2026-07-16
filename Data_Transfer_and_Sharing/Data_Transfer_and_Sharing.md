@@ -1,18 +1,14 @@
 # Data Transfer and Sharing on ARC
 
-April 10, 2026
-
-Nicole Braunscheidel\
-Computational Scientist (ARC)\
-Email: nbraunsc@vt.edu
-
 ## Logistics
-Feedback form: [https://forms.gle/vR9FyfrZm8Hb6F7k7](https://forms.gle/vR9FyfrZm8Hb6F7k7)
+Sign in: [https://docs.google.com/document/d/1YZw4t2TGKk5nv1PRc59sEH-xReXuM3XXndbgtQ-bSHw/edit?usp=sharing](https://docs.google.com/document/d/1YZw4t2TGKk5nv1PRc59sEH-xReXuM3XXndbgtQ-bSHw/edit?usp=sharing)
+
+Feedback form: [https://forms.gle/3N27hWkAsiB4vs3y6](https://forms.gle/3N27hWkAsiB4vs3y6)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
-- You can also access the material here: [https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Data_Transfer_and_Sharing)
-- We have a lot of short video tutorials (I will eventually record this workshop without attendees): [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
+- There will be a recording of this workshop posted: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html)
+- We also have a lot of short video tutorials: [https://docs.arc.vt.edu/usage/video.html#video](https://docs.arc.vt.edu/usage/video.html#video)
 - If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
 
 Useful links:
@@ -359,4 +355,4 @@ A common one is Visual Studio Code (VS Code).
 We also offer file management in Open OnDemand [https://ood.arc.vt.edu/](https://ood.arc.vt.edu/).
 
 # Wrap-up
-Feedback form: [https://forms.gle/vR9FyfrZm8Hb6F7k7](https://forms.gle/vR9FyfrZm8Hb6F7k7)
+Feedback form: [https://forms.gle/3N27hWkAsiB4vs3y6](https://forms.gle/3N27hWkAsiB4vs3y6)
