@@ -49,9 +49,10 @@ So specifically in the sbatch slurm script below:
    which is the path you need to assign to this variable,
    is wherever you executed the steps in this lesson:
    [virtual environments](./virtual-env.md).
-5. Alter the `bind` path in two places, which is currently specified as 
+5. Alter the `bind` path in two places (it is in two place on one line),
+   which is currently specified as 
    `/scratch/ckuhlman`, to wherever you put the file `main.02.py`.
-6. Once you set the two variables (i.e., the paths that are the
+7. Once you set the two variables (i.e., the paths that are the
    values of these variables) and you have put `main.02.py` in
    an appropriate directory, you are ready to submit the
    sbatch slurm script.
