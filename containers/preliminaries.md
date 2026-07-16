@@ -17,11 +17,15 @@ that are common to set up:
 
 1. Start an interactive job from a login node
    to get resources on a compute node.
-2. Once on a compute node, load the apptainer
+   (Commands below.)
+2. Once on a compute node, reset modules and
+   then load the apptainer
    module in terminal windows where you 
    will issue apptainer commands.
+   (Commands below.)
 4. Relinquish/release the compute node resources
    when you are done with your container work.
+   (Commands below.)
 
 Each of these is discussed below.
 
@@ -182,8 +186,8 @@ module load apptainer
 
 We are finished your container work, so you can:
 
-1. exit (off the compute node).
-2. scancel (if you use the `salloc` command; the `interact`
+1. `exit` (off the compute node).
+2. `scancel` (if you use the `salloc` command; the `interact`
    command will release compute resources automatically).
 
 We repeat the above notes:
