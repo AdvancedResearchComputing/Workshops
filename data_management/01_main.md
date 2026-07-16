@@ -55,14 +55,24 @@ different storage devices.
 
 ### Umask
 
-1. The default permissions, mentioned above, for files
+1. _**If you are considering changing your umask, we ask that you 
+   first submit a help ticket [here](arc.vt.edu/help) and describe
+   your need.**_
+   - We can talk about this together.
+   - We get tickets from students and professors about not PIs
+     not being able to access their students' files.
+   - Sometimes the student has already left.
+   - This can be a significant frustration for PIs.
+   - The permissions that we have allow PIs to look
+     into student directories.  
+2. The default permissions, mentioned above, for files
    and directories are established and assigned to
    files and directories based on a user-assigned umask.
-2. So each user can change their umask, but we do not 
+3. So each user can change their umask, but we do not 
    advise changing it unless you have a very compelling need.
-3. We will describe the umask concept, tell you its
+4. We will describe the umask concept, tell you its
    default value, and how to change it.
-4. Changing your user umask will change the default
+5. Changing your user umask will change the default
    permissions on files and directories that were described
    above.
 
