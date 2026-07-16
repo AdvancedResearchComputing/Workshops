@@ -78,8 +78,11 @@ here are some of the dominant ones:
 
 You can run a container in at least these three ways:
 
-1. Run the default command (the one under `%runscript`) with
-   the `run` command.
+1. Run codes in your container.
+   - Run the default command (the one under `%runscript`) with
+     the `run` command.
+   - Run a particular app (under `%apprun`) within the container with 
+     `run --app` command. 
 2. Run a customized command with `exec` (overriding the 
    command(s) under `%runscript`)
 3. Enter the container interactively for manual execution
