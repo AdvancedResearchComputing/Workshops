@@ -64,7 +64,7 @@ For definiteness below, call this file _sbatch.container.slurm_.
 ## You need your own account.
 #SBATCH --account=arcadm
 #SBATCH --partition=normal_q
-#SBATCH --output=result_%j.out
+#SBATCH --output=output_%j.out
 #SBATCH --error=error_%j.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -134,7 +134,7 @@ sbatch sbatch.container.slurm
 
 #### Job Output
 
-Per the other lessons, the output in the _results_SLURM_JOB_ID.out_ file is:
+Per the other lessons, the output in the _output_SLURM_JOB_ID.out_ file is:
 
 
 ```
@@ -168,7 +168,7 @@ JobId=458698 JobName=apptainer_job
    WorkDir=/projects/kuhlman-project-storage/workshops/y2026/spring-2026/containers-apptainer/slurm-job/try01
    StdErr=/projects/kuhlman-project-storage/workshops/y2026/spring-2026/containers-apptainer/slurm-job/try01/error_458698.err
    StdIn=/dev/null
-   StdOut=/projects/kuhlman-project-storage/workshops/y2026/spring-2026/containers-apptainer/slurm-job/try01/result_458698.out
+   StdOut=/projects/kuhlman-project-storage/workshops/y2026/spring-2026/containers-apptainer/slurm-job/try01/output_458698.out
    TresPerTask=cpu=1
 
 
