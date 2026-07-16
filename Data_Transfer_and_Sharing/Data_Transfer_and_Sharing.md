@@ -251,7 +251,8 @@ In addition, individuals may create personal Globus accounts and use Globus Conn
 
 To share data with other institutions and people outside of VT, you will use Globus Guest Collections. When you create a Guest Collection, you will define who can access it and what permissions they will have on the data within it.
 
-Everyone at VT has a globus account, https://globus.org that you can login to.
+Globus accounts are free for everyone regardless of institutional affiliation or subscription status. A VT username can be associated with your Globus account by using it to log in https://globus.org. Other credentials you may have, including personal (non-VT) email accounts and usernames from other institutions can also be affiliated with your Globus account.
+
 Search for Guest Collections (might have to unclick "Recent Tasks") and you should see "Virginia Tech ARC Globus Projects Directories".
 
 # Data Transfer Node
