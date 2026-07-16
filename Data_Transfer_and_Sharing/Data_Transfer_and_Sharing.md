@@ -257,7 +257,7 @@ Search for Guest Collections (might have to unclick "Recent Tasks") and you shou
 
 # Data Transfer Node
 Analaogus to ARC's login nodes (e.g. `tinkercliffs1`, `owl2`, or `falcon1`), we have a data transfer node named `datatransfer.arc.vt.edu`. 
-We recommend to use this host `datatransfer.arc.vt.edu` to improve the performance of the data transfer.
+We recommend using this host `datatransfer.arc.vt.edu` when possible to potentially improve the performance of the data transfer and to keep data transfer workloads off of the cluster login nodes which are more heavily used and have limited resources.
 
 To connect to this data transfer node, you would make a similar ssh connection like you would to make a connection to one of our clusters:
 ```
