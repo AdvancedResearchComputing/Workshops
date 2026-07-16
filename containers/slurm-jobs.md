@@ -12,8 +12,14 @@
 2. Generally, you do not want to run codes in containers
    via interactive jobs.
    You want to use **batch jobs**.
-3. Illustrate how to incorporate a container 
-   into an sbatch slurm script and run it.
+3. Illustrate how to incorporate multiple containers 
+   into an sbatch slurm script and run them.
+   - Note that because we built the container with the VE on Owl,
+     we are running one container that was built on TC and one
+     container that was built on Owl, all within one slurm job
+     on one cluster.  Ordinarily, this "mixing and matching" between
+     clusters is verboten, but with containers this is _**EXACTLY**_
+     the sort of thing you _**CAN**_ do. 
 
 ## Sbatch Slurm Script
 
