@@ -36,7 +36,10 @@ cluster data.
 3. To see snapshots—--for your `$HOME` area, not `/projects`
    - `cd  ~/.snapshot`        # This will NOT tab complete.
    - `ls -l`                  # Will show the snapshots saved.
-4. You might find under some date directory a version (perhaps not the 
+4. To see snapshots---for your `/scratch` area (i.e., `/scratch/<username>`)
+   - `cd /scratch/<username>/.snapshot`
+   - `ls -l`                  # Will show you directories of snapshots saved.
+5. You might find under some date directory a version (perhaps not the 
    latest version) of a file that is missing.
 
 If you have a lost file(s) problem, then please enter a help ticket at [www.arc.vt.edu/help](www.arc.vt.edu/help) and click on “Request this service.”
