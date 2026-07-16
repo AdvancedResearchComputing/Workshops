@@ -56,6 +56,9 @@ The examples are all CPU-based; no GPU-based examples in this workshop.
 The great majority of these examples will run on Tinkercliffs (TC, tc) or Owl.
 However, the most recent verification of all examples has been on
 TC, so that is recommended.
+The exception is this lesson:  [Use of Virtual Environments Inside a Container](./virtual-env.md).
+You must use Owl for this.  Right now, there is a bug in using
+Tinkercliffs; this will be corrected.
 
 
 
