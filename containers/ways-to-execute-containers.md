@@ -8,7 +8,7 @@
 ## Summary of this Lesson
 
 1. We use the container built in the previous lesson
-   as a vehicle to emphasize the 
+   as a vehicle to illustrate the 
    three main ways to execute a container (or execute code
    or an environment inside the container):
    - `run`:  runs the "default" code (i.e., the code that
