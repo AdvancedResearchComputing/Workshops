@@ -13,8 +13,6 @@ VSC on a compute node.
    1. Laptop (or local machine)
       1. Alter the `config` file under directory `~/.ssh` as below.
       2. This will enable ProxyJump.
-   (meaning that the directory `.ssh` is located right below
-   your $HOME directory).
    2. VS Code
       1. Install VS Code (VSC) on your laptop.
       2. Install the `Remote-SSH` plugin in your VSC app.
