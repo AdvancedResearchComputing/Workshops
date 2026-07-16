@@ -204,21 +204,6 @@ that is subsequently transformed into a container.
 
 
 
-
-## Lessons
-
-I typically put commands inside files, and in particular (bash) scripts,
-and I prefix them with `run.`.
-I do this so that if I go back to a directory later, I have all of the 
-commands in files, and I know scripts are in all files prefixed with
-`run.`.
-So a file that starts `run.build.` builds some other file(s).
-And a file that starts `run.app.` runs an app in a container
-(i.e., it does not run a script).
-This, to me, makes the directory self-contained.
-If you choose not to do this, that is fine:  you can simply
-paste the command on the command line.
-
 ## Structure and Anatomy of a Container
 
 See a definition file.  There are some in these notes.
