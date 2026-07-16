@@ -7,6 +7,11 @@
 
 #### Basic Operations
 
+> [!NOTE]
+> You must build containers on compute nodes, not login nodes.
+> You will probably get errors if you try to build containers
+> on login nodes.
+
 In generating a container, there are operations 
 that are common to set up:
 
