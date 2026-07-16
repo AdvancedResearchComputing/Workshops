@@ -191,7 +191,8 @@ entry on the line.
 ### Summary Integer of Permissions of Permission Class
 
 The combinations of read, write, and execute for one permission
-class (each value read, write, or execute being set or unset) give rise a unique mapping from the permission to an integer in [0, 7].
+class (each value read, write, or execute being set or unset) give rise 
+to a unique mapping from the permission to an integer in [0, 7].
 
 The table below gives this mapping.
 
@@ -211,7 +212,7 @@ not execute, then the integer that summarizes these read,
 write, and execute permissions of one permission class is 6.
 
 Using the table above, and noting that permission classes are
-always in the order of user, group, and other, then 
+always in the order of user, group, and other (see graphic above), then 
 if we are given for one file that:
 1. a user can read, write to, and execute the file.
 2. the group can read and execute the file.
