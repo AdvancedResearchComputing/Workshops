@@ -85,8 +85,8 @@ different storage devices.
      the file)
    - group ownership (usually the group designated
      by the PI that the student is working under).
-3. Because individual ownership is rarely changes
-   (one reason is for prevenance), we focus on how
+3. Because individual ownership is rarely changed
+   (one reason is for provenance), we focus on how
    to change group ownership.
 
 ### Data Recovery and Long-Term Storage
