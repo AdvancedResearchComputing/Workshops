@@ -167,7 +167,7 @@ data_transfer
 ```
 
 ### `rclone`
-`rclone` is another great tool when you want to transfer files from a storage server or cloud storage to ARC. One current workflow is to use our Remote Desktop application on Open OnDemand (ood.arc.vt.edu)
+`rclone` is another great tool when you want to transfer files from a storage server or cloud storage to ARC. 
 
 First you will have to load the module:
 ```
