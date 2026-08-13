@@ -392,7 +392,6 @@ The sbatch slurm script, named _run.01.slurm_, is:
 ## Wall time.
 #SBATCH --time=00:10:00 # 1 hour
 
-## #SBATCH --account=personal
 # Have to use your own account.
 #SBATCH --account=arcadm
 
@@ -748,7 +747,6 @@ The slurm script, named _run.01.slurm_, is:
 #SBATCH --time=00:30:00 # 1 hour
 
 ## Account.
-## #SBATCH --account=personal
 #SBATCH --account=arcadm
 
 ### This requests 1 node, 1 core.
@@ -1145,7 +1143,6 @@ NetworKit's concurrency.
 ## Wall time.
 #SBATCH --time=00:10:00 # 1 hour
 
-## #SBATCH --account=personal
 # Have to use your own account.
 #SBATCH --account=arcadm
 
@@ -1535,7 +1532,6 @@ The slurm script, named _run.01.slurm_, is:
 ## Wall time.
 #SBATCH --time=01:00:00 # 1 hour
 
-## #SBATCH --account=personal
 # Have to use your own account.
 #SBATCH --account=arcadm
 

@@ -23,7 +23,7 @@ Useful links:
 ## Prerequisites
 
 - An ARC account (apply at [https://coldfront.arc.vt.edu](https://coldfront.arc.vt.edu))
-- An active allocation (not personal)
+- An active allocation
 - Connected to VT network or VPN
 - An API key from [https://llm.arc.vt.edu](https://llm.arc.vt.edu) (we'll walk through this together)
 

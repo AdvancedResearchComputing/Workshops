@@ -1056,7 +1056,7 @@ we can generate a file that looks like this:
 
 ## SBATCH directives.
 #SBATCH --time=3:00:05
-#SBATCH --account=personal
+#SBATCH --account=<your account name>
 #SBATCH --partition=normal_q
 #SBATCH --mem=400G
 #SBATCH --nodes=3

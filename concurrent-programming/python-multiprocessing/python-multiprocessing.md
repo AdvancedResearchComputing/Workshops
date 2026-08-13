@@ -102,7 +102,6 @@ The sbatch slurm script file _run.01.sbatch_.
 ## Wall time.
 #SBATCH --time=00:10:00 # 1 hour
 
-## #SBATCH --account=personal
 #SBATCH --account=arcadm
 
 ### This requests 1 node, 5 cores.
