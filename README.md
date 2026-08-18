@@ -15,7 +15,7 @@ There are materials for workshops herein that are not given every semester.
 We welcome any comments that help us improve these workshops.
 Please enter your comments at [https://arc.vt.edu/help](https://arc.vt.edu/help).
 
-Our Virginia Tech ARC web page is here: 
+Our Virginia Tech ARC Workshops web page is here: 
 [https://docs.arc.vt.edu/usage/workshops.html#workshops](https://docs.arc.vt.edu/usage/workshops.html#workshops)
 
 Users may wish to visit that site to see listings of our workshops,
