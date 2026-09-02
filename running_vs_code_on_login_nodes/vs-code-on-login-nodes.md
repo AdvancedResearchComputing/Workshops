@@ -6,7 +6,7 @@
 A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of all ways to get help and access to information, and links to those resources, are provided.  Examples:
 
 - ARC Docs (documentation) pages
-- determine and attend office hours
+- determine and attend office hours (online and in-person)
 - submit help tickets (for errors, problems, or request a consultation)
 - obtain listings of workshops (and video recordings and notes files)
 - view video tutorials
@@ -14,7 +14,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 - understand overall cluster status and performance, as well as those of your jobs, via dashboards
 - more
 
-## Ideas Behind This Workshop
+## Background and Motivation
 
 1. VS Code (VSC) is a popular IDE for developing code and content
    for other files.
@@ -27,7 +27,7 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
    1. Because login nodes are communal resources that all users make use of _**simultaneously**_.
    2. Resources on compute nodes, on the other hand, are 
       _**dedicated**_ to a particular user for a specified time; slurm does the resource assignments.
-5. Hence, if you want to do all of the following, please see the
+5. Hence, if you want to do any of the following (beyond constructing source code), please see the
    workshop materials on _**running VS Code on compute nodes**_. 
    1. Construct source code.
    2. Use any number of plugins to help you develop code.
@@ -38,27 +38,12 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 [VS Code Use](figures/vs-code-in-ways.png)
 ![VS Code Use](figures/vs-code-in-ways.png)
 
----------------------------------------
+## Skills You Will Acquire
 
----------------------------------------
-
-
-## Organization
-
----------------------------------------
-
----------------------------------------
-
-### Applicability
-
-1. These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
-2. If your code uses CPUs only, then you should run VSC on clusters 
-   and partitions on them that are CPU-only.
-3. If your code uses GPUs, then you should run VSC on clusters 
-   and partitions on them that have GPUs.
+1.  How to set up VS Code to run on login nodes of clusters.
 
 
-### Prerequisites
+## Prerequisites
 
 1.  Install VS Code on your laptop.  See, for example:  [download page](https://code.visualstudio.com/download?_exp_download=fb315fc982).
 2.  Have SSH installed on your local machine (comes with most laptops).
@@ -67,14 +52,19 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
     This is covered in detail in the workshop _ssh keys_.
 3.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html) installed on your laptop (local machine).
 4.  Have an ARC [account](https://arc.vt.edu/account).
-5.  Have an ARC Project for file storage.  Not absolutely critical for this
-    workshop, because you can here use `/home/<username>` for this workshop, but critical for your work long-term.
-      1. If you are a professor (i.e., PI), then create a project [here](https://docs.arc.vt.edu/pi_info/allocations.html).
-      2. If you are a student, find a professor to work with.
-6.  Have an [allocation](https://docs.arc.vt.edu/pi_info/allocations.html) to charge "jobs" to.  (Not critical for this workshop.)
 
 
-### Overview:  Major Activities in this Workshop
+## Applicability
+
+1. These procedures apply to Tinkercliffs (TC), Owl, and Falcon clusters.
+2. If your code uses CPUs only, then you should run VSC on clusters 
+   and partitions on them that are CPU-only.
+3. If your code uses GPUs, then you should run VSC on clusters 
+   and partitions on them that have GPUs.
+
+
+
+## Overview:  Major Activities in this Workshop
 
 We order the activities into setup steps that you execute
 one time and steps that you repeat every time you use 
@@ -103,10 +93,20 @@ using VS Code on ARC cluster login nodes.
    3. Creating a new file.
 
 
----------------------------------------
+## Outline
+
+
+1. (One-time setup)[one-time-setup]
+2. (Start VS Code on a login node)[start-vsc-on-login-node]
+3. (Start VS Code on a login node)[using-vsc-on-login-node]
+
+
 
 ---------------------------------------
 
+---------------------------------------
+
+(one-time-setup)=
 ## One-Time Setup
 
 ---------------------------------------
@@ -158,7 +158,8 @@ The highlighted one is the one we want.
 
 ---------------------------------------
 
-## Using VS Code on an ARC Login Node
+(start-vsc-on-login-node)=
+## Start VS Code on an ARC Login Node
 
 ---------------------------------------
 
@@ -249,6 +250,7 @@ You can now do your work.
 
 ---------------------------------------
 
+(using-vsc-on-login-node)=
 ## Using VS Code on an ARC Login Node
 
 ---------------------------------------
