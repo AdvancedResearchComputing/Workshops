@@ -96,9 +96,9 @@ using VS Code on ARC cluster login nodes.
 ## Outline
 
 
-1. (One-time setup)[one-time-setup]
-2. (Start VS Code on a login node)[start-vsc-on-login-node]
-3. (Start VS Code on a login node)[using-vsc-on-login-node]
+1. (One-time setup)[#one-time-setup]
+2. (Start VS Code on a login node)[#start-vsc-on-login-node]
+3. (Start VS Code on a login node)[#using-vsc-on-login-node]
 
 
 
