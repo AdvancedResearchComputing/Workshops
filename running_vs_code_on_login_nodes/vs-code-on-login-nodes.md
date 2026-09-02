@@ -106,8 +106,7 @@ using VS Code on ARC cluster login nodes.
 
 ---------------------------------------
 
-(one-time-setup)=
-## One-Time Setup
+## <a id="one-time-setup"></a>One-Time Setup
 
 ---------------------------------------
 
@@ -158,8 +157,7 @@ The highlighted one is the one we want.
 
 ---------------------------------------
 
-(start-vsc-on-login-node)=
-## Start VS Code on an ARC Login Node
+## <a id="start-vsc-on-login-node"></a>Start VS Code on an ARC Login Node
 
 ---------------------------------------
 
@@ -250,8 +248,7 @@ You can now do your work.
 
 ---------------------------------------
 
-(using-vsc-on-login-node)=
-## Using VS Code on an ARC Login Node
+## <a id="using-vsc-on-login-node"></a>Using VS Code on an ARC Login Node
 
 ---------------------------------------
 
