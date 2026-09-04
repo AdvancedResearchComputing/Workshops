@@ -174,7 +174,7 @@ ARC cluster is called out.
         to Step 6 below.
     - Option 2:  Create a new set of keys, keeping the existing set as a backup.
       - Example in moving your current keys to backup files:
-          - `mv id_rsa is_rsa.back`
+          - `mv id_rsa id_rsa.back`
           - `mv id_rsa.pub id_rsa.pub.back`
       - Now go to step 5.
 5. Create your new key pair = (public key, private key).
