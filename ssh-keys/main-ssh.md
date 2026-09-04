@@ -239,9 +239,10 @@ On your laptop, you want to start an "ssh agent."
 So this Task 2 is exclusively executed on your 
 laptop.
 
-This agent will remember that passphrase for a specified length of time.
+This agent will remember that passphrase for the lifetime of your ssh-agent session or for a specified length of time.
 
-The command is: `ssh-add    -t <time agent runs>    ~/.ssh/id_rsa`
+To add your SSH keys to the ssh-agent: `ssh-add` and for a specific key `ssh-add ~/.ssh/id_rsa`  
+But if you want the the ssh-agent to remember your keys for a specified length of time, the command is: `ssh-add    -t <time agent runs>    ~/.ssh/id_rsa`
 
 Example:
 
