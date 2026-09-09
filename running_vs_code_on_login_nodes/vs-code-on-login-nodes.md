@@ -115,6 +115,8 @@ using VS Code on ARC cluster login nodes.
 
 ### Install the `Remote-SSH` plugin in your VSC app.
 
+0. Install VS Code on your laptop.
+   See, for example:  [download page](https://code.visualstudio.com/download?_exp_download=fb315fc982).
 1. Start VS Code on your laptop.
 2. On the left command bar, click on the "Extensions" icon.
    (Hover over an icon with your cursor to see the
