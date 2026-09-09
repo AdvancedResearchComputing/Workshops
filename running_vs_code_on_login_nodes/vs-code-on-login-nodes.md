@@ -182,7 +182,8 @@ The highlighted one is the one we want.
    In that
    field you will type any of these ssh connection commands,
    depending on which login node you want to connect to
-   (substitute your actual VT PID for `my_pid`):
+   (substitute your actual VT PID for `my_pid` [this is the sequence of 
+   characters in your VT email address, `my_pid@vt.edu`]):
    1. `ssh my_pid@tinkercliffs1.arc.vt.edu`
    2. `ssh my_pid@tinkercliffs2.arc.vt.edu`
    3. `ssh my_pid@owl1.arc.vt.edu`
