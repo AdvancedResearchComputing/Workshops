@@ -148,7 +148,7 @@ Some details of the above ...
 
 Extensions icon is fifth one down on left side.
 
-![extensions command](figures/extensions-icon.png)
+![extensions command](figures/extensions-icon-02.png)
 
 Typing "Remote - SSH" in the search field brings up
 multiple extensions that can be installed.
