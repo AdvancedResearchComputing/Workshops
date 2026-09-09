@@ -121,7 +121,7 @@ using VS Code on ARC cluster login nodes.
 2. On the left command bar, click on the "Extensions" icon.
    (Hover over an icon with your cursor to see the
    name of the icon.)
-3. In the new view, you will see "Extensions: Marketplace"
+3. In the new view, just to the right of your last click, you will see "Extensions"
    at the top.
 4. Just below this heading is a search field.  Enter "Remote SSH" into
    that field and hit return. 
@@ -141,6 +141,7 @@ using VS Code on ARC cluster login nodes.
    1. You can scroll through each of these in the event there
       are many entries under a heading.
    2. You can thereby see all of the plugins you have.
+   3. You should see the "Remote - SSH" package under "Installed."
 
 
 Some details of the above ...
