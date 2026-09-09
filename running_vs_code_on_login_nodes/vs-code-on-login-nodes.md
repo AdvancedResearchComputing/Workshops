@@ -45,13 +45,14 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 ## Prerequisites
 
-1.  Install VS Code on your laptop.  See, for example:  [download page](https://code.visualstudio.com/download?_exp_download=fb315fc982).
+1.  Have an ARC [account](https://arc.vt.edu/account).
 2.  Have SSH installed on your local machine (comes with most laptops).
     [SSH keys](https://docs.arc.vt.edu/usage/sshkeys.html) is a great way to configure ssh and the clusters so that 
     login is fast.
     This is covered in detail in the workshop _ssh keys_.
-3.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html) installed on your laptop (local machine).
-4.  Have an ARC [account](https://arc.vt.edu/account).
+3.  If working remotely, have [VT VPN](https://www.nis.vt.edu/ServicePortfolio/Network/RemoteAccess-VPN.html)
+    installed on your laptop (local machine).
+4.  Install VS Code on your laptop.  See, for example:  [download page](https://code.visualstudio.com/download?_exp_download=fb315fc982).
 
 
 ## Applicability
