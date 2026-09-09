@@ -169,6 +169,9 @@ The highlighted one is the one we want.
 
 ### To Begin Work on a Login Node of an ARC Cluster with VS Code
 
+All of these instructions are executed with your laptop while you are on your laptop.
+That is, for example, you have NOT ssh'ed into a clusters.
+
 1. Make sure you are on the `eduroam` network (not `VT Open WIFI` or any other network).
 2. If you are working remotely (i.e., not on the VT campus), then start VPN.
 3. Start VS Code on your laptop.
