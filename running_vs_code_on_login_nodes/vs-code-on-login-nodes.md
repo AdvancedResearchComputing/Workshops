@@ -169,15 +169,17 @@ The highlighted one is the one we want.
 
 ### To Begin Work on a Login Node of an ARC Cluster with VS Code
 
-1. Start VS Code on your laptop.
-2. On the left command bar, click on the "Remote Explorer" icon.
-3. In the new view, you will see "Remotes (Tunnels/ssh)."
+1. Make sure you are on the `eduroam` network (not `VT Open WIFI` or any other network).
+2. If you are working remotely (i.e., not on the VT campus), then start VPN.
+3. Start VS Code on your laptop.
+4. On the left command bar, click on the "Remote Explorer" icon.
+5. In the new view, you will see "Remotes (Tunnels/ssh)."
    Under this heading, click on the "SSH" heading.
-4. Keeping your mouse/arrow hovering over the "SSH", on the far right of this
+6. Keeping your mouse/arrow hovering over the "SSH", on the far right of this
    clicked heading, you will see a 
    gear and a "+" sign.
-5. Click the "+" sign.
-6. A pop-up box will appear in the middle of the IDE and show the title
+7. Click the "+" sign.
+8. A pop-up box will appear in the middle of the IDE and show the title
    "Enter SSH Connection Command."
    In that
    field you will type any of these ssh connection commands,
@@ -192,10 +194,10 @@ The highlighted one is the one we want.
    6. `ssh my_pid@falcon1.arc.vt.edu`
    7. `ssh my_pid@falcon2.arc.vt.edu`
    8. ssh to any other appropriate login node.
-7. Hit return after entering the ssh command above.
-8. Four options will be displayed.
+9. Hit return after entering the ssh command above.
+10. Four options will be displayed.
    1. If you are on a mac, choose `/Users/<user ID>/.ssh/config`.
-9. At the lower right of your VS Code screen, you will 
+11. At the lower right of your VS Code screen, you will 
    see a box and some text inside.
    1. Some text might be: "Host added!"
    2. Other text might be:  "Source: Remote-SSH"
