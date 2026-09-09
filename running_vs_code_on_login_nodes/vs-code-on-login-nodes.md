@@ -267,6 +267,11 @@ You can now do your work.
 
 ### Navigating Directories
 
+The pre-condition here is that you are on VS Code, on a login node of
+a cluster, that you reached via VS Code on your laptop.
+If you are not at this step, go to the instructions
+[Start VS Code on a login node](#start-vsc-on-login-node).
+
 
 1. Click on Explorer icon in left pane.
 2. Click on the blue box "Open..." or "Open Folder" hyperlink
