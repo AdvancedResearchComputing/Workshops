@@ -85,7 +85,7 @@ layer (i.e., OOD) into the process of executing commands.
 
 ## Outline
 
-- [OOD Context](./1-background.md)
+- [OOD Context](./1-context.md)
 - [Accessing OOD](./2-access-ood.md)
 - [Navigating Directories and Files](./3-directories-files.md)
 - [Viewing Active Jobs on Clusters](./4-active_job.md)
