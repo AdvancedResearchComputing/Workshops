@@ -14,9 +14,12 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 
 ## Background and Motivation
 
-Open OnDemand (OOD) is a user interface layer and supporting infrastructure
+Open OnDemand (OOD) is an interface layer and supporting infrastructure
 that serves as a wrapper around much of the cluster software used 
 conventionally through terminal windows.
+This wrapper is UI-based, which can make a lot of cluster operations
+more accessible to users who do not have appreciable levels of 
+terminal window and command line usage experience.
 
 It can make some activities---like running applications that have a user
 interface component---much easier.
