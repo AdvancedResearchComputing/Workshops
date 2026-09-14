@@ -36,8 +36,14 @@ We will give examples as we go through the workshop.
 3. How to obtain terminal windows with OOD to operate at the command line.
 4. How to submit interactive jobs and perform work on clusters, particularly those that involve UIs.
 
-Note that if items #2 and/or #3 are your primary use for
-some unit of work on the clusters, then we 
+Note that if any of these is true:
+
+1. you need to perform only basic file and directory management operations (see item #2);
+2. you need to perform only command line operations (see item #3);
+3. you need to work with interactive and/or batch jobs, but you need no user interface
+(see item #4)
+
+then we 
 recommend that you use terminal windows and the command line
 to complete your work and do not use OOD.
 
@@ -84,7 +90,7 @@ layer (i.e., OOD) into the process of executing commands.
 
 ## Outline
 
-- [Background & Motivation](./1-background.md)
+- [OOD Context](./1-background.md)
 - [Accessing OOD](./2-access-ood.md)
 - [Navigating Directories and Files](./3-directories-files.md)
 - [Viewing Active Jobs on Clusters](./4-active_job.md)
