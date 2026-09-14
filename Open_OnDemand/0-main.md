@@ -70,11 +70,6 @@ but the changes can be rapid.
 
 #### High Level View of OOD
 
-OOD is execution environment that is tailored more
-for people who prefer a windowing environment over
-the conventional terminal screen and command line,
-which is exclusively text-based.
-
 Some tasks, like those involving remote desktops
 and Jupyter notebooks for Python development,
 are vastly more easily done through OOD.
