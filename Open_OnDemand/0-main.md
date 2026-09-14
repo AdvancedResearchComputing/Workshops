@@ -116,5 +116,11 @@ also present it here.
 > [!NOTE]
 > This is a waste of resources for you and for all users.
 
+This screen shows the `cancel` button that is to be clicked when you are
+done with your work and have saved your files.
+
+[OOD screen and canceling job](./figures/canceling-job/cancel-job.png)
+
+
 ### Next
-[Background & Motivation](./1-background.md)
+[OOD Context](./1-background.md)
