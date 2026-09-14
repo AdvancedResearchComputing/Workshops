@@ -12,6 +12,41 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 - understand overall cluster status and performance, as well as those of your jobs, via dashboards
 - more
 
+## Background and Motivation
+
+Open OnDemand (OOD) is a user interface layer and supporting infrastructure
+that serves as a wrapper around much of the cluster software used 
+conventionally through terminal windows.
+
+It can make some activities---like running applications that have a user
+interface component---much easier.
+
+It can also make other activities much more cumbersome and non-scalable.
+
+We will give examples as we go through the workshop.
+
+
+## Skills to Acquire
+
+1. An understanding of ODD, its context, and when to use and not to use it.
+2. How to perform basic operations for file and directory creation, modification, and management.
+3. How to obtain terminal windows with OOD to operate at the command line.
+4. How to submit interactive jobs and perform work on clusters, particularly those that involve UIs.
+
+Note that if items #2 and/or #3 are your primary use for
+some unit of work on the clusters, then we 
+recommend that you use terminal windows and the command line
+to complete your work and do not use OOD.
+
+## Prerequisites
+
+1. An ARC account.
+2. An association with a Virginia Tech Faculty member or similar
+who can provide you with an account so that you can submit and
+run jobs.
+3. Cisco VPN to reach ARC clusters.
+
+
 ## Open OnDemand Overview
 
 #### Ever-Changing Nature of OOD
