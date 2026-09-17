@@ -136,7 +136,7 @@ Then I can repeat more iterations.
 
 ![Open Existing Notebook](./figures/jupyter/running-shutdown.png)
 
-## Organzing notebooks in different directories/folders
+## Organizing notebooks in different directories/folders
 
 Say you have created a notebook, but you want to move it to a 
 different directory to preserve your intended structure.
@@ -250,6 +250,11 @@ We have additional information on our [documentation page](https://docs.arc.vt.e
 
 > [!NOTE]
 > This is a waste of resources for you and for all users.
+
+### Back
+
+[OOD Context](./5-cluster-shell.md)
+
 
 ### Next
 - [Running Visual Studio Code](./vs-code.md)
