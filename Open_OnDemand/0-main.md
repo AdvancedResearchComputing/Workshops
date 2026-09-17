@@ -38,7 +38,7 @@ We will give examples as we go through the workshop.
 
 Note that if any of these is true:
 
-1. you need to perform only basic file and directory management operations (see item #2);
+1. you need to perform a lot of file and directory management operations (see item #2);
 2. you need to perform only command line operations (see item #3);
 3. you need to work with interactive and/or batch jobs, but you need no user interface
 (see item #4)
@@ -53,7 +53,7 @@ to complete your work and do not use OOD.
 2. An association with a Virginia Tech Faculty member or similar
 who can provide you with an account so that you can submit and
 run jobs.
-3. Cisco VPN to reach ARC clusters.
+3. Cisco VPN to reach ARC clusters if/when you are off campus.
 
 
 ## Open OnDemand Overview
@@ -119,4 +119,4 @@ done with your work and have saved your files.
 
 
 ### Next
-[OOD Context](./1-background.md)
+[OOD Context](./1-contenxt.md)
