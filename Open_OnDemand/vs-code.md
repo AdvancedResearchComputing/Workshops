@@ -52,7 +52,7 @@ Specifics for this use case are:
 
 1. You use VS Code to construct source code.
 2. You _**CANNOT**_ use any plugins, including no AI plugins.
-3. YOU _**CANNOT**_ debug your code.
+3. You _**CANNOT**_ debug your code.
 4. You _**CANNOT**_ run your code.
 
 An entire workshop on how to do this is [here](https://drive.google.com/file/d/1MNW_qvnOkavxhtZLvNzP6bqYbdfgdgJf/view?usp=sharing).  
