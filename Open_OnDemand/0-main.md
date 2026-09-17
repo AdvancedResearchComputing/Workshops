@@ -12,6 +12,50 @@ A <a href="https://docs.arc.vt.edu/all-help.html" target="_blank">listing</a> of
 - understand overall cluster status and performance, as well as those of your jobs, via dashboards
 - more
 
+## Background and Motivation
+
+Open OnDemand (OOD) is an interface layer and supporting infrastructure
+that serves as a wrapper around much of the cluster software used 
+conventionally through terminal windows.
+This wrapper is UI-based, which can make a lot of cluster operations
+more accessible to users who do not have appreciable levels of 
+terminal window and command line usage experience.
+
+It can make some activities---like running applications that have a user
+interface component---much easier.
+
+It can also make other activities much more cumbersome and non-scalable.
+
+We will give examples as we go through the workshop.
+
+
+## Skills to Acquire
+
+1. An understanding of ODD, its context, and when to use and not to use it.
+2. How to perform basic operations for file and directory creation, modification, and management.
+3. How to obtain terminal windows with OOD to operate at the command line.
+4. How to submit interactive jobs and perform work on clusters, particularly those that involve UIs.
+
+Note that if any of these is true:
+
+1. you need to perform a lot of file and directory management operations (see item #2);
+2. you need to perform only command line operations (see item #3);
+3. you need to work with interactive and/or batch jobs, but you need no user interface
+(see item #4)
+
+then we 
+recommend that you use terminal windows and the command line
+to complete your work and do not use OOD.
+
+## Prerequisites
+
+1. An ARC account.
+2. An association with a Virginia Tech Faculty member or similar
+who can provide you with an account so that you can submit and
+run jobs.
+3. Cisco VPN to reach ARC clusters if/when you are off campus.
+
+
 ## Open OnDemand Overview
 
 #### Ever-Changing Nature of OOD
@@ -25,11 +69,6 @@ We work to keep these workshops up to date,
 but the changes can be rapid.
 
 #### High Level View of OOD
-
-OOD is execution environment that is tailored more
-for people who prefer a windowing environment over
-the conventional terminal screen and command line,
-which is exclusively text-based.
 
 Some tasks, like those involving remote desktops
 and Jupyter notebooks for Python development,
@@ -46,7 +85,7 @@ layer (i.e., OOD) into the process of executing commands.
 
 ## Outline
 
-- [Background & Motivation](./1-background.md)
+- [OOD Context](./1-context.md)
 - [Accessing OOD](./2-access-ood.md)
 - [Navigating Directories and Files](./3-directories-files.md)
 - [Viewing Active Jobs on Clusters](./4-active_job.md)
@@ -72,5 +111,12 @@ also present it here.
 > [!NOTE]
 > This is a waste of resources for you and for all users.
 
+This screen shows the `cancel` button that is to be clicked when you are
+done with your work and have saved your files.
+
+[OOD screen and canceling job](./figures/canceling-job/cancel-job.png)
+![OOD screen and canceling job](./figures/canceling-job/cancel-job.png)
+
+
 ### Next
-[Background & Motivation](./1-background.md)
+[OOD Context](./1-context.md)

@@ -1,4 +1,4 @@
-# Background & Motivation
+# OOD Context
 
 #### Link Back To Main
 
@@ -29,7 +29,7 @@ There are postives and negatives in using OOD.
 - Open OnDemand (OOD) is a software application (web portal) that enables users to 
   access ARC clusters and perform work on them.
 - Requires no client-side installations.
-- It is an alternative to ssh’ing (secure shelling) into a head node of a cluster using a terminal (screen).
+- It is an alternative to ssh’ing (secure shelling) into a login node of a cluster using a terminal (screen).
 - [You can also access terminal screens from within OOD.]
 - Users that are somewhat inexperienced in working with clusters from the command line;
   OOD places a slightly lesser burden on users in utilizing the clusters.
@@ -60,8 +60,24 @@ This is an example where you can do the same thing---submit a slurm job---with b
 (1) the terminal window and ssh'ing into a cluster, and
 (2) using OOD.
 
+Example:  An R script that performs a linear regression on (x,y) data.
+You have this script and the file of (x,y) data.
+
+1. batch job.  Compose an sbatch slurm script and submit it with the names
+of the R script and data file.
+2. interactive job.  Start Rstudio.  The R script and data file are in one directory.
+Load the R script and run it from within Rstudio.
+
+Both approaches will produce the same results. 
+
+-----------------------
+
 Other things are more useful to do with OOD and still other things are more
 useful to do with terminal windows.
+
+### Back
+
+[main page](./0-main.md)
 
 ### Next
 [Accessing OOD](./2-access-ood.md)
