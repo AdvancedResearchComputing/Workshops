@@ -50,13 +50,13 @@ An example batch script named `hello_world.slurm`:
 #!/bin/bash
 #SBATCH --job-name=hello-world
 #SBATCH --account=<youraccountname>
-#SBATCH --partition=normal_q
+#SBATCH --partition=normal_q  #If you will request GPUs, make sure you request a partition with GPUs
 #SBATCH --nodes=1 
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1 
 #SBATCH --time=0-00:10:00 # 10 minutes
 #SBATCH --mem=5GB
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:1 #Make sure you requested a partition with GPUs
 ```
 
 Other optional configurations
