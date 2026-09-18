@@ -107,6 +107,9 @@ The QoS associated with a job affects the job in three key ways: scheduling prio
 
 To see the defaults, use the command `showqos`.
 
+To check for available constraints, use the command `sjstat -c`.
+
+
 ## Run an example job and see it in the queue
 
 ```
