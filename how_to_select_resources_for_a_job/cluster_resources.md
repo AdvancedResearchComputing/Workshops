@@ -194,5 +194,12 @@ _Solution_
 We address this in Section XXXX below.
 
 
+#### Final Notes
+
+There are many ARC resources for partitions and constraints.
+See:
+1. [ARC docs page on constraints](https://docs.arc.vt.edu/usage/job_scheduling/02_slurm_options.html).
+2. [several videos on how to submit sbatch jobs](https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software)
+:  simple jobs and those with constraints. 
 ---
 3. [Next: ➡️ Reduce time your job spends in queue](./reduce_job_queued_time.md)
