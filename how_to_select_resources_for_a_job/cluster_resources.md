@@ -154,7 +154,7 @@ Hence, we can use either type of compute node.
 Thefore, we do NOT specify a constraint.
 We simply specify the partition, immediately below, and do
 not specify a constraint so that Slurm knows that it 
-allocate any type of normal_q compute node to your job,
+can allocate any type of normal_q compute node to your job,
 thereby potentially reducing its wait time.
 
  
