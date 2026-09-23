@@ -37,7 +37,7 @@ This can be operationalized in multiple ways.  Here are two.
 #### Backing Away From a Full Node
 
 This was covered in an example above, but because the
-effect---at times--can be so large, we separate it out here.
+effect---at times---can be so large, we separate it out here.
 
 When you select all of the resources on a compute node, 
 it can take slurm (the job scheduler) a long time to 
