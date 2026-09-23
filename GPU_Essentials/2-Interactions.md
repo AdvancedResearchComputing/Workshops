@@ -2,7 +2,7 @@
 
 ## Requesting GPUs
 
-### Slurm 
+## Slurm `sbatch` and `srun` options for GPU selection
 
 |Option | Meaning | Use Case |
 |-|-|-|
@@ -11,7 +11,7 @@
 |`-G N` or `--gpus=N`|Request `N` GPUs for the job, possibly distributed across multiple nodes|multi-gpu, multi-process, non-communicating workload|
 
 
-Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
+Example: Use `--gres=gpu:N` to request `N` GPUs per node.
 ```bash
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1        # GPUs per node
@@ -21,7 +21,7 @@ Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
 >[!NOTE]
 > When starting out with GPUs, first make sure that you can make good use of a single, mid-range GPU before scaling up to high-end or multiple GPUs.
 
-### Partition configuration sets default co-allocation of cpus and memory
+## Slurm Partition configuration sets default co-allocation of cpus and memory
 
 Example: Check default CPU and memory allocations per GPU for Falcon A30 GPUs.
 ```bash
@@ -43,8 +43,8 @@ would also provide 8 CPU cores and 63,360MB of system memory. These are just def
 3. larger jobs take longer to schedule
 
 
-## `nvidia-smi`
-
+## `nvidia-smi` for inspection of allocated resources
+Nvidia provides a command-line tool for inspecting the GPU resources available to you and their current operating conditions. In a job allocation, it can only "see" the GPUs which have been allocated to your job.
 ```bash
 nvidia-smi
 ```
