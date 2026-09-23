@@ -1,12 +1,12 @@
 # Running Jobs on ARC Systems  
 
 ## Logistics
-Please sign in: [https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing](https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing)
+ <!--Please sign in: [https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing](https://docs.google.com/document/d/1N3vHWl5ucRPY2Q6HOUUZ5czHqUClcJda_WG8HY4AzJE/edit?usp=sharing)-->
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
 - This workshop is recorded and can be accessed after this workshop here: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html). 
-- If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account
+- If you want to follow along, make sure you are connected to VT network (VPN if off campus) and have an ARC account and have been added to a project by your PI.
 
 Useful links:
 - ARC's documentation site: [https://docs.arc.vt.edu/](https://docs.arc.vt.edu/)
@@ -50,13 +50,13 @@ An example batch script named `hello_world.slurm`:
 #!/bin/bash
 #SBATCH --job-name=hello-world
 #SBATCH --account=<youraccountname>
-#SBATCH --partition=normal_q
+#SBATCH --partition=normal_q  #If you will request GPUs, make sure you request a partition with GPUs
 #SBATCH --nodes=1 
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1 
 #SBATCH --time=0-00:10:00 # 10 minutes
 #SBATCH --mem=5GB
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:1 #Make sure you requested a partition with GPUs
 ```
 
 Other optional configurations
@@ -106,6 +106,9 @@ ARC must balance the needs of individuals with the needs of all to ensure fairne
 The QoS associated with a job affects the job in three key ways: scheduling priority, resource limits, and time limits. Each partition has a default QoS named partitionname_base with a default priority, resource limits, and time limits. 
 
 To see the defaults, use the command `showqos`.
+
+To check for available constraints, use the command `sjstat -c`.
+
 
 ## Run an example job and see it in the queue
 
