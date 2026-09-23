@@ -12,7 +12,7 @@ Additions, updates, and changes are communicated through several channels:
 
 The resource pages for the main three current clusters are:
 
-- Tinkercliffs:  [TC resources](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html)
+- Tinkercliffs (TC):  [TC resources](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html)
 - Owl:  [Owl resources](https://docs.arc.vt.edu/resources/compute/01owl.html)
 - Falcon:  [Falcon resources](https://docs.arc.vt.edu/resources/compute/02falcon.html)  
 
@@ -27,7 +27,7 @@ My memory requirements are pretty light (i.e., low).
 
 _Implications_:
 1. Single node jobs: The workload can only run on one compute node because the code has no distributed processing capabilities.
-2. A GPU will not help and asking for one would be wasteful in several ways (wait time, idle resource)
+2. A GPU will not help and asking for one would be wasteful in several ways (wait time, idle resource).
 
 _Solution_:
 By looking at the clusters, we see that Falcon has no CPU-only nodes.
@@ -43,12 +43,33 @@ On Owl, it is 96.
 I would choose to run my code on TC AMD EPYC 7702 nodes, with 128 cores
 per node.
 
+We need to dig a little deeper.  On the Tinkercliffs resources page,
+you see in the first table TWO types of CPU-based compute nodes:
+1. Base Compute Nodes
+2. Intel Nodes 
+
+It is only the former that have 128 cores.
+So we cannot accept ANY compute node from the normal_q
+(the normal_q is the partition that contains the CPU-based compute nodes).
+Rather, we need the "base compute nodes," which are AMD nodes
+(see in the table "AMD EPYC 7702").
+
+When a partition has more than one type of compute node, you need to 
+use the `--constraint` switch to specify which type of compute node.
+Here, the constraint would be:
+
+`#SBATCH --constraint=amd`
+
+and this line would go near the `#SBATCH --partition` command 
+(not because it has to from a correctness point of view, but because
+the two switches are highly related from a logical point of view).
+
 This is not the end of the story.
 Be prepared to wait in queue a long(er) time to run a job that uses all cores
 of a compute node. 
 You may decide to try to *minimize time-to-completion* (queue time + processing time):
 ARC clusters are always busy. It takes Slurm time to free these resources and
-It might well be better to specify say, 96 or 64 cores of the 128, and
+it might well be better to specify say, 96 or 64 cores of the 128, and
 then increase your "time" parameter (because your job will presumably
 take longer with 64 cores than 128 cores [but not always]).
 
@@ -59,6 +80,13 @@ This is using resources that are in demand (there are few large and high
 memory nodes) for a purpose not that is inconsistent with their
 features.
 
+So if we use some of this advice and specify only 64 cores,
+then both types of compute nodes (the AMD nodes and the Intel nodes) have
+64 cores, and therefore we can use either type.
+Hence, in the snippet below from an sbatch slurm script, we
+do not have to use a `--constraint` switch.
+
+
 ```
 # Targeting Tinkercliffs for large pool of nodes with 128 cores
 #SBATCH --partition=normal_q
@@ -66,6 +94,21 @@ features.
 #SBATCH --cpus-per-task=64
 #SBATCH --memory=25G
 ```
+
+With all of the preceding discussion of resources and possible use of `--constraint`,
+one may wonder why we have all of this nuance.
+The answer is:  because it increases job and computational throughput on
+the clusters.
+By combining CPU-based nodes into one partition, and letting Slurm
+choose the type of compute node to use---in cases where the type
+of compute node does not matter---then Slurm has more options to run
+your job faster.
+The data show this.
+
+
+
+
+
 
 #### Example 2
 
