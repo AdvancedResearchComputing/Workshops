@@ -191,7 +191,7 @@ Which GPUs should I use?
 
 _Solution_
 
-We address this in Section XXXX below.
+See [GPU Essentials Workshop](https://github.com/AdvancedResearchComputing/Workshops/tree/main/GPU_Essentials)
 
 
 #### Final Notes
