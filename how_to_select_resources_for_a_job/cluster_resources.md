@@ -55,7 +55,8 @@ Rather, we need the "base compute nodes," which are AMD nodes
 (see in the table "AMD EPYC 7702").
 
 When a partition has more than one type of compute node, you need to 
-use the `--constraint` switch to specify which type of compute node.
+use the `--constraint` switch to specify which type of compute node,
+if you require a particular type of compute node for your computations.
 Here, the constraint would be:
 
 `#SBATCH --constraint=amd`
@@ -82,7 +83,7 @@ features.
 
 So if we use some of this advice and specify only 64 cores,
 then both types of compute nodes (the AMD nodes and the Intel nodes) have
-64 cores, and therefore we can use either type.
+64 cores and 25G of memory, and therefore we can use either type.
 Hence, in the snippet below from an sbatch slurm script, we
 do not have to use a `--constraint` switch.
 
@@ -127,20 +128,48 @@ Much of the early part of this solution is the same as for Example 1.
 But at the end, we are driven to the opposite conclusion.
 
 As before:
-- We need one compute node.
-- We cannot use the Falcon cluster.
-- The choice is either Owl or Falcon.
+- We need one compute node (because we are using threads).
+- We cannot use the Falcon cluster (no CPU-based nodes).
+- The choice is either TC or Owl.
   
 We see that the maximum memory per compute node on conventional
 TC CPU nodes is 368 GB per node.
 And there are only 16 of these nodes.
 On Owl, the maximum memory is greater than 2x that of TC:  747 GB per node.
 I would choose to run my code on Owl "AMD EPYC 9454 - Genoa" nodes.
-Also, there are 96 of these nodes (relatively soon to be doubled).
+Also, there are 160 of these nodes.
+
+So a snippet of your sbatch slurm script,for Owl, will look like:
+
+```
+#SBATCH --partition=normal_q
+#SBATCH --constraint=avx512
+```
+
+Now, what if you need more memory than what TC standard nodes
+(i.e., NOT high memory nodes) can provide, say 480G?
+In this case, BOTH types of standard Owl nodes (AMD Genoa
+and AMD Milan) can provide 480G of memory.
+Hence, we can use either type of compute node.
+Thefore, we do NOT specify a constraint.
+We simply specify the partition, immediately below, and do
+not specify a constraint so that Slurm knows that it 
+allocate any type of normal_q compute node to your job,
+thereby potentially reducing its wait time.
+
+ 
+```
+#SBATCH --partition=normal_q
+```
+
+
 
 If you run a job and you get an OOM error (Out of Memory error),
-then you can either decrease the number of cores (threads)
-or you can go to the large or huge memory nodes.
+then you can do any of:
+
+1. decrease the number of cores (threads).
+2. rearrange your work to demand less memory (may be impossible).
+3. you can go to the large or huge memory nodes.
 
 When you have choices as to what resources you run on, all other things
 being equal, choose the resource type that is most plentiful.
