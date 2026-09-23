@@ -24,13 +24,15 @@ Commands to understand cluster, partition, QOS, and scheduling dynamics and limi
 There are multiple things to try:
 
 - Using partial nodes rather than full nodes.
-- Avoid job arrays and pack workloads into a single job where possible
+- Avoid job arrays and pack workloads into a single job where possible.
 - Inspect partition wait times on Grafana.
 - Use short QoS.
 
 Each is presented below.
 
 ###  Using Partial Nodes 
+
+This can be operationalized in multiple ways.  Here are two.
 
 #### Backing Away From a Full Node
 
@@ -57,13 +59,21 @@ Example: MPI distributed memory, parallelized with 128 tasks
 #SBATCH --mem=196G
 ```
 
-Giving Slurm flexibility will usually shorten the wait time:
+Giving Slurm flexibility by specifying that the processes can
+be run on any number of (from one to eight) compute nodes
+will usually shorten the wait time:
+
 ```
 #SBATCH --nodes=1-8
 #SBATCH --ntasks=128
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-task=1500M
 ```
+
+We've seen this now in a couple of ways:  the more flexibility
+you can give Slurm, the greater the probability that your job
+will start earlier.
+
 
 ### Avoid Job Arrays
 
