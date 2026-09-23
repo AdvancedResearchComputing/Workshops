@@ -119,8 +119,7 @@ HISTORICAL wait times
 and the number of jobs currently waiting to run in each partition.
 
 Another dashboard that can be used, the 
-[available resources dashboard]
-(https://dashboard.arc.vt.edu/d/feavoh81ioglca/arc-cluster-job-resources-availability?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-cpus=1&var-gpus=0&var-memory=8&refresh=1m)
+[available resources dashboard](https://dashboard.arc.vt.edu/d/feavoh81ioglca/arc-cluster-job-resources-availability?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-cpus=1&var-gpus=0&var-memory=8&refresh=1m)
 can be used to look at individual compute nodes.
 Although more tedious to examine, it can give you some feel for what
 types of compute nodes are available.
