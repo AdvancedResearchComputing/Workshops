@@ -144,6 +144,8 @@ Also, the amount of resources (numbers of CPUs and GPUs,
 amount of memory) that you request must be below
 specified limits but these limits are _GREATER THAN_
 the "normal QoS" limits; see the links above.
+But the maximum job duration for short QoS is less than for 
+normal QoS:  short QoS is intended for shorter-running jobs.
 
 There are additional limitations on resources at the account
 level; again, see the links above.
