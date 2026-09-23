@@ -82,10 +82,21 @@ Each job in the array is considered an independent job for priority and usage ca
 If job scheduling was strictly FIFO, then large job arrays would always allow a single person to eventually monopololize a cluster resource.
 
 Use job arrays for the convenience, but be aware that:
- - only a limited number will accrue age-based priority at any given time: Slurm's configuration is "flattening the curve"
+ - only a limited number of jobs in the array will accrue
+   age-based priority at any given time:
+   Slurm's configuration is "flattening the curve"
  - later jobs in the array will suffer from steadily declining fairshare
 
-In light of those limitations, it will often be beneficial to "move the loop inside the script". Job arrays are often used to run the same workflow on a set of enumerated inputs based on the array ID. A single non-array job with a bash loop would easily do the same thing.
+In light of those limitations, it will often be beneficial to
+"move the loop inside the script".
+Job arrays are often used to run the same workflow on a set of
+enumerated inputs based on the array ID.
+A single non-array job with a bash loop would easily do the same thing.
+We have an example of this.
+Specifically, we have a workshop "Scalable Job Submission."
+In that workshop, there is a page, [bash loop example](https://github.com/AdvancedResearchComputing/Workshops/blob/main/scalable_job_submission/05_bash_loops.md),
+which shows exactly how to do this.
+
 
 ### Use of Dashboards to Assess Partitions
 
