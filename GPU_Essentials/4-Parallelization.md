@@ -3,10 +3,16 @@
 ## General Recommendations
 ### Release resources when you're finished
 
+ - `scancel <jobid>`
+ - Cancel OnDemand jobs
+
 ### Keep the GPUs busy
 GPUs are useful to accelerate workloads, but they do not help at all with serial portions of the code or i/o.
 > [!TIP]
 > Amdahl's Law: "the overall performance improvement gained by optimizing a single part of a system is limited by the fraction of time that the improved part is actually used"
+
+#### Example: Alphafold 
+Alphafold can use GPUs to greatly accelerate the ML inference step which is computationally intensive. But the program also has a data-pipeline step which is i/o bound. Typically Alphafold runs will take 30-60 minutes to run but only spend 5-10 minutes using the GPU. These stages can be split so that the data-pipeline is run first on CPU-only nodes and then the inference step is run on GPU resources. Splitting the workload is more complex up front, but speeds overall runtime, greatly reduces GPU-waste, and incurs much less "billing" for use of ARC systems.
 
 #### Use large chunk sizes
 Because of their massive internal SIMD parallelism, GPUs are only efficient when they are asked to perform the same operation on large sets of data. In some applications, the data handling is controlled internally, but if you are in a situation where you can tune "batch size", "chunk size", etc., tend to make these large to leverage the SIMD efficiency.
@@ -52,6 +58,10 @@ There is a paradigm shift when adjusting from classical MPI to MPI+GPU simulatio
 Because of this, the general best practice is to use 1 GPU per MPI process. 
 Ref: [LAMMPS](https://docs.lammps.org/Speed_kokkos.html#running-on-gpus), [VASP](https://www.vasp.at/wiki/index.php/OpenACC_GPU_port_of_VASP#Running_the_OpenACC_version), [Amber](https://ambermd.org/GPUHowTo.php)
 
+
+#### GPU-Direct
+
+GPU-Direct is a suite of tools that set up driver-like interfaces to directly connect data on GPUs with other system PCIe-connected components like NVMe storage (`TMPDIR`) and Infiniband network HCAs where available. By directly connecting these devices, copies of data through CPU to system memory can be avoided and data movement is accelerated.
 
 ## Outline
 0. [Welcome](./0-intro.md)
