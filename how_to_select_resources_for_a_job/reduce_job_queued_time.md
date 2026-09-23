@@ -2,6 +2,11 @@
 
 # How to Get Your Jobs to Spend Less Time in Queued State
 
+The time from when a Slurm job is submitted until the time that Slurm
+allocates resources to the job so that computations can begin is the 
+time spent in the queued state.
+It is natural to want to reduce this time.
+
 ## Cluster Dynamics and Slurm Job Priority Calculation
 Think of the clusters as resource pools that are constantly under high demand for resources. 
 ARC actively assesses the aggregate workload characteristics and attempts to tune job scheduling 
