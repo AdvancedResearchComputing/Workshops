@@ -31,7 +31,7 @@ jobs as possible in some unit of time.
 |  Light ML inference; FP32 ; visualization and graphics        |    Falcon  |    T4        |
 
 
-Tomorrow's workshop on [GPU Essentials/Basics](https://github.com/AdvancedResearchComputing/Workshops/tree/main/GPU_Essentials)
+Another workshop, on [GPU Essentials/Basics](https://github.com/AdvancedResearchComputing/Workshops/tree/main/GPU_Essentials),
 will provides more info on GPU charactistics and usage.
 
 6. [Next: ➡️ Storage](./storage.md)

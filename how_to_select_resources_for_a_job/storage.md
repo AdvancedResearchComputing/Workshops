@@ -41,17 +41,21 @@ Not much use for research since the size limit of 640 GB per user is prohibitive
 
 #### Projects
 
-Used to store files associated with PI (i.e., professor) research because
-(1) there is adequate space (up to roughly 50 TB per PI) and
-(2) this storage is permanent.
-(3) all data is managed by the PI-owner
+Used to store files associated with a PI's (i.e., professor's) research because:
+1. there is adequate space (up to roughly 50 TB per PI).
+2. this storage is permanent.
+3. all data is managed by the PI-owner.
 
-Can store VEs here (e.g., instead of in `/home`) and share them with a group.
+Students, post-docs, etc.:
+this is the location (i.e., `/projects`) under which your PI's/professor's 
+project name will be found.  This is the "project storage."
 
 Directory structure is:  `/projects/<PI-specified-directory-name>`.
-Then you and your PI create directories and so forth under here. Access permissions can get complicated.
+Then you and your PI create directories and so forth under here.
 
 (Slurm) jobs can access files in this file system, but a faster option is given next.
+
+Can store VEs here (e.g., instead of in `/home`) and share them with a group.
 
 #### Scratch
 
@@ -59,9 +63,11 @@ Your scratch area is : `/scratch/<username>`.
 
 You have this directory on each of the three clusters,
 but unlike `/home` and `/projects`,
-the same physical storage is not accessible from TC, Owl, and Falcon.
+the same physical storage is NOT accessible from TC, Owl, and Falcon.
 This is because there is a separate scratch mount for each cluster.
-This is done to achieve greater I/O  (input/output, read/write) segregration which benefits speeds.
+This is done to achieve greater I/O (input/output, read/write) segregration which benefits speeds.
+To be clear, although you have a `/scratch/<username>` on each of TC,
+Owl, and Falcon, these three are three separate storage areas.
 
 Your code will perform I/O slightly faster with files in `/scratch` than
 it will with files in `/projects`/
@@ -70,10 +76,10 @@ it will with files in `/projects`/
 
 However, the critical thing to know about scratch is that when files reach
 90 days in age, they are automatically deleted.
-So this is NOT permanent storage.
+**So this is NOT permanent storage.**
 
 A common use case is to:
-1. copy files from `/projects` to `/scratch`.
+1. copy files from your PI's `/projects` area to your `/scratch` directory.
 2. Run your code by accessing input files from `/scratch` and writing data to files
    in `/scratch`.
 3. When your code execution completes, move the output files from
@@ -99,9 +105,9 @@ wait until after the slurm job is over to move them, then they are
 already gone because localscratch ends with the slurm job.
 
 There is a video on how to construct slurm sbatch scripts for
-running out of local scratch:  [section of videos doc page](https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software)
+running jobs out of local scratch:
+[section of videos doc page](https://docs.arc.vt.edu/usage/video.html#how-to-run-codes-your-own-or-commercial-open-software)
 and select the video "**Batch jobs using volatile resources**".
-
 
 It is recommended that you attempt to first run your job with
 files in scratch, because it can store larger files.
@@ -109,5 +115,14 @@ Then, if you have heavy I/O needs, you can try localscratch
 and can determine whether the files will fit into localscratch.
 That is, get your job to run successfully first and then
 focus on optimizations (in this case, by using localscratch).
+
+Finally, there is an entire workshop where file systems are a main focus.
+Recordings (current and from the past) can be accessed from the
+Workshops ARC Docs page](https://docs.arc.vt.edu/usage/workshops.html),
+and is typically named "Managing Data on ARC Resources" (or similar).
+Look at a row entry in the tables of workshops, under column "Recording."
+The workshop notes are at
+[Data Management Workshop Materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/data_management).
+
 
 7. [Next: ➡️ Longer running jobs](./longer-running-jobs.md)
