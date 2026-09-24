@@ -2,6 +2,13 @@
 
 # Longer-Running Jobs
 
+In an early page of these notes, we looked at how to increase the priority of your Slurm
+job, for jobs that take no more than one day to execute.
+
+Here we look at the other extreme:  longer-running jobs.
+
+
+
 Key ideas:
 
 - "Normal" jobs on ARC clusters can run up to seven days.
