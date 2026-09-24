@@ -26,5 +26,9 @@
 This content is applicable to all ARC compute clusters.
 
 
+### Big Picture
+
+![job-life-cycle](./figures/job-life-cycle.png)
+
 ---
 [Next: Motivation ➡️](./motivation.md)
