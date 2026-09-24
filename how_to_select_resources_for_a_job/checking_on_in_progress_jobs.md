@@ -51,5 +51,12 @@ to ensure that your code is using the GPUs and using them efficiently.
 
 These are a limited resources, so their efficient use is important to everyone.
 
+## Further direction
+
+There is an entire workshop on job monitoring.
+
+1. [Workshop materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Resource_Utilization_and_Job_Monitoring)
+2. Video links are on the [ARC workshops page](https://docs.arc.vt.edu/usage/workshops.html), and see workshop titled **Resource Utilization and Job Efficiency on ARC Clusters**,
+or similar, in the first two tables of the page.
   
   10. [Next: ➡️ Checking on completed jobs](./checking_on_completed_jobs.md)
