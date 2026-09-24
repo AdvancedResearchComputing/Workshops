@@ -13,6 +13,9 @@ But this is not always the case.
 Partitions may have more than one type of compute node, e.g.,
 to increase job throughput when they are sufficiently similar.
 
+### Homogeneous Partitions of ARC Clusters
+
+
 The partitions of all one node type are given below.
 Specifying the partition completely specifies the type of 
 compute node.
@@ -26,6 +29,8 @@ compute node.
 |   Falcon   |    v100_normal_q   |   V100 GPUs    |
 |   Falcon   |    t4_normal_q     |   T4 GPUs      |
 
+
+### Heterogeneous Partitions of ARC Clusters
 
 The partitions with more than one node type are given
 below.
