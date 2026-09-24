@@ -2,12 +2,17 @@
 
 # Checking on In-Progress Jobs
 
-## ARC provided scripts:
+## ARC provided scripts
 
 ARC provides convenience commands to get detailed information on current job resource utilization and access to dashboard pages customized for your running job:
 
- - Current moment-in-time utilization: `showjobusage <jobid>`
+ - Current job-level moment-in-time utilization: `showjobusage <jobid>`
  - Node-level utilization since job start: `getjobutilurl <jobid>`
+
+Here, `<jobid>` is the Slurm job ID.
+It can be obtained from running `squeue` on a login node of the cluster on which your
+job is running.
+
 
 ## Connect to compute nodes to manually inspect
 
