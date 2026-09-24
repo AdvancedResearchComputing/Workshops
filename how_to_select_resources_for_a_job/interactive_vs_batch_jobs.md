@@ -85,7 +85,7 @@ This provides maximum benefit to you and everyone else.
            - For an OOD job, find the job card and click the red "Cancel" button.
            - For an interactive job on the command line (generated with `interact` or `salloc`),
               find the Slurm job ID (`<jobid>`) with the `squeue` command, and type:
-              _scancel <jobid>_.
+              _scancel <jobid> _.
    - Batch jobs, by their nature, do not suffer these inefficiencies.
      - So resources spend more time devoted to running jobs with batch mode.
      - **This is why we (gently) push batch jobs.**
