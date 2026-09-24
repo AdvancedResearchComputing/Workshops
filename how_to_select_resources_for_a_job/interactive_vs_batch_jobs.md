@@ -9,7 +9,7 @@
 - You submit the resource needs to slurm.
 - You receive those resources and are notified.
 - You _manually_ use those resources to do work.
-- You will be directly interacting with the resources for the entire time they are allocated
+- You can directly interact with the resources for the entire time they are allocated.
 - You have allocated to you those resources until one of these events:
   - You exceed your allotted time for the resources.
   - You finish your work early and _manually_ relinquish the resources.
@@ -31,8 +31,8 @@ _Use of interactive jobs_:
  - You are doing scoping studies and you want to:
     - determine what the analysis steps are
     - see intermediate results
-    - (e.g., you are exploring and uncertain.)
- - You need visualization.
+    - explore because things are uncertain.
+ - You need visualization:  either UI to run your code or visualizations of inputs and/or outputs.
  - You have very few jobs to run.
   
 Note: for all of these cases above, except for visualization, you can still use
@@ -59,7 +59,8 @@ This provides maximum benefit to you and everyone else.
  - EVERYONE benefits when this happens.
  - Specifics:
    - Interactive jobs
-     - (1) Interactive jobs may not start when you are around.
+     - (1) Interactive jobs may not start when you are around, 
+         e.g., they can start while you are sleeping or are in class.
        - In this case, resources are assigned to you but you are not using them.
        - So the resources sit idle waiting for you; others cannot use these resources.
      - (2) When a person is done with an interactive job, they must explicitly give back the resources.
@@ -68,6 +69,7 @@ This provides maximum benefit to you and everyone else.
        - Idle resources are wasted resources; others cannot use these resources.
    - Batch jobs, by their nature, do not suffer these inefficiencies.
      - So resources spend more time devoted to running jobs with batch mode.
+     - **This is why we (gently) push batch jobs.**
 
 The above reasoning is just to present the issues.
 

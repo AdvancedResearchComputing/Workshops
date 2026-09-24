@@ -11,7 +11,7 @@ ARC provides convenience commands to get detailed information on current job res
 
 ## Connect to compute nodes to manually inspect
 
-If using GPUs in your job, use the dashboards to ensure that your code is using the GPUs.
+If using GPUs in your job, use the [ARC dashboards](https://dashboard.arc.vt.edu/) to ensure that your code is using the GPUs.
 
 These are a limited resources, so their efficient use is important to everyone.
 
@@ -26,6 +26,7 @@ _**Procedure**_
 - You can also do:  on terminal type, `showjobusage <jobid>`.
    - Get the compute node IDs of the compute nodes that you are using (these should also be shown on `squeue` results).
    - Get the GPU indexes of the GPUs you are using.
+- ssh into a compute node, based on the compute node name, e.g., `ssh tc-dgx003`, `ssh owl007`.
 - Use shell commands to inspect resource utilization such as
    - `top` or `htop`
    - `nvidia-smi`
