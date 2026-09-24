@@ -119,7 +119,7 @@ focus on optimizations (in this case, by using localscratch).
 Finally, there is an entire workshop where file systems are a main focus.
 Recordings (current and from the past) can be accessed from the
 [Workshops ARC Docs page](https://docs.arc.vt.edu/usage/workshops.html),
-and the workshp is typically named "Managing Data on ARC Resources" (or similar).
+and the workshop is typically named "Managing Data on ARC Resources" (or similar).
 Look at a row entry in the tables of workshops, under column "Recording."
 The workshop notes are at
 [Data Management Workshop Materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/data_management).
