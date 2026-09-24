@@ -45,6 +45,8 @@ partition is not sufficient.
 |   TC       |    a100_normal_q  |  GPUs:  Nvidia and HPE nodes.      |
 |   Owl      |    normal_q       |  CPUs: Genoa and Milan nodes.     |
 
+### Using `constraint`s to Specify A Compute Node Type in a Heterogeneous Partition
+
 We note that for many jobs, the type of compute node is
 not important.
 For example, one may want to run an app that will 
