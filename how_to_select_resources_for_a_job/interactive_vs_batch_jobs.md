@@ -2,6 +2,13 @@
 
 # Interactive Versus Batch Jobs
 
+All of the issues presented in this workshop
+are relevant for both interactive jobs and batch jobs.
+
+We now take a look at some differences, and when you 
+might choose an interactive job, or a batch job.
+
+
 ### Loose Definitions
 
 **Interactive Job**:  Process by which:
