@@ -46,7 +46,7 @@ _Use of interactive jobs_:
             - [Learning materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Open_OnDemand)
             - Look on the [workshop page](https://docs.arc.vt.edu/usage/workshops.html) and
               find in the upper one or two (i.e., most recent) tables the workshop named 
-              **ARC Clusters and Open OnDemand" or similar.
+              **ARC Clusters and Open OnDemand** or similar.
  - You have very few jobs to run.
   
 Note: for all of these cases above, except for visualization, you can still use
