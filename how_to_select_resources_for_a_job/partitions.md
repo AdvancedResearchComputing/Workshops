@@ -77,6 +77,8 @@ the VE and in running your job.
 Another situation is profiling your code for performance evaluation:
 you will want your data to correspond to a particular compute node type.
 
+### Specifying Node Type Indirectly Through Memory Specification
+
 There is one more issue worth addressing.
 This is applicable to:
 1. the Owl cluster and its use of standard, large memory,
