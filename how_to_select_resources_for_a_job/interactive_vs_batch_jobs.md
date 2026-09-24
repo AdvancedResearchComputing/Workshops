@@ -41,7 +41,7 @@ _Use of interactive jobs_:
     - explore because things are uncertain.
  - You need visualization:  either UI to run your code or visualizations of inputs and/or outputs.
     - In these cases Open OnDemand (OOD) is an excellent tool to use.
-        - See [OOD](ood.arc.vt.edu).
+        - See [OOD](https://ood.arc.vt.edu).
         - See the workshop on OOD:
             - [Learning materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Open_OnDemand)
             - Look on the [workshop page](https://docs.arc.vt.edu/usage/workshops.html) and
