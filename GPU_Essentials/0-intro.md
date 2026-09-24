@@ -1,8 +1,8 @@
 # Welcome to the ARC "GPU Essentials" Workshop
 
-Date: July 15, 2026
+Date: September 23, 2026
 Presented by: Matthew Brown
-[Summer 2026 ARC Workshop Schedule](https://docs.arc.vt.edu/usage/workshops.html#summer-2026)
+[Fall 2026 ARC Workshop Schedule](https://docs.arc.vt.edu/usage/workshops.html#fall-2026)
 
 ## Outline
 0. [Welcome](./0-intro.md)

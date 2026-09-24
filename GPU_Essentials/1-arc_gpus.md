@@ -21,10 +21,10 @@
 |A100| 80G|  400W| 9.7TF | 19.5TF | 19.5TF | 156TF | 624TO| 48.8G  (TF) |390G (TF) |1560G|
 |L40S| 48G|  350W|  - | - | 91.6TF | 183TF | 733TO |-| 523G (TF)|2094G|
 |H200|141G|  700W| 34TF | 67TF | 67TF | 989TF | 3958TO| 95.7G (TF) |1413G (TF)|5654G|
-|_B200_|_184G_| _1000W_|_37TF_|_37TF_|_75TF_|_1100TF_|_4500TO_|_37G (TF_)| _75G (TF)_|_4500G_|
+|B200|184G| 1000W| 37TF| 37TF| 75TF| 1100TF | 4500TO | 37G (TF)| 75G (TF)| 4500G |
 
 Takeaways:
- - 64-bit arithemtic is not universally available in GPUs. Try to determine whether or not you need that double-precision capability when selecting a GPU
+ - 64-bit arithmetic is not universally available in GPUs. Try to determine whether or not you need that double-precision capability when selecting a GPU
  - Increasing power consumption and resulting density is stretching the limits of datacenter infrastructure
  - Latest GPUs (Blackwell) are prioritizing lower-precision capabilities which are needed by AI
 
