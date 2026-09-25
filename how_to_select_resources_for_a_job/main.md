@@ -28,6 +28,14 @@ This content is applicable to all ARC compute clusters.
 
 ### Big Picture
 
+The graphic below represents a job life cycle, from the models
+you employ and the computations that result, to job completion
+and evaluation of results.
+For our purposes here, the results are computational efficiencies
+of cluster hardware
+(not application results, which are also paramount).
+
+
 Our focus in this workshop is Step 2, specifying resources.
 
 We have workshops on all of these steps, except Step 1, where
@@ -42,8 +50,8 @@ But one should keep in mind this entire process.
 For example, once you compose and submit a job (Step 3), the
 next step is _**NOT**_ to wait for it to complete.
 Rather, there is a Step 4 that is vital for each user to 
-execute to do their part in trying to ensure that the 
-resources are used to the greatest extent possible.
+execute in order to do their part in trying to ensure that the 
+ARC system resources are used to the greatest extent possible.
 
 Finally, this process is iterative.
 
