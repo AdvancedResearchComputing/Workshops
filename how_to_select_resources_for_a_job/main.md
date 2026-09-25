@@ -53,6 +53,9 @@ Rather, there is a Step 4 that is vital for each user to
 execute in order to do their part in trying to ensure that the 
 ARC system resources are used to the greatest extent possible.
 
+One could equally call this graphic the 
+_**User Responsibility Life Cycle**_.
+
 Finally, this process is iterative.
 
 ![job-life-cycle](./figures/job-life-cycle.png)
