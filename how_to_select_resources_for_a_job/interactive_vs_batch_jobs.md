@@ -96,4 +96,4 @@ But remember this ...
 
 **You should choose the job type that you need:  if you need interactive jobs, then use them.**
 
-9. [Next: ➡️ Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
+9. [Next: ➡️ Submit Jobs](./submit_job.md)

@@ -12,8 +12,9 @@
 6. [Storage](./storage.md)
 7. [Longer running jobs](./longer-running-jobs.md)
 8. [Interactive versus batch jobs](./interactive_vs_batch_jobs.md)
-9. [Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
-10. [Checking on completed jobs](./checking_on_completed_jobs.md)
+9. [Submitting batch jobs](./submit_job.md)
+10. [Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
+11. [Checking on completed jobs](./checking_on_completed_jobs.md)
 
 
 ### Prerequisites
