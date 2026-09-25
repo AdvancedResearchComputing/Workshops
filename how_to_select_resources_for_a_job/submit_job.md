@@ -11,7 +11,8 @@ We have various resources on this topic:
 2. videos:
     - [section on how to construct and submit various jobs](https://docs.arc.vt.edu/usage/workshops.html) 
 3. [ARC documentation]
-    - Example sbatch slurm scripts for TC, Owl, and Falcon under [this page](https://docs.arc.vt.edu/resources/compute.html)
+    - Example sbatch slurm scripts for TC, Owl, and Falcon under each 
+      cluster's page, accessed from [this page](https://docs.arc.vt.edu/resources/compute.html)
 
 
-9. [Next: ➡️ Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
+[Next: ➡️ Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
