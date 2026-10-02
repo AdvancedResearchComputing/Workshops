@@ -1,6 +1,6 @@
 # Using LLMs on ARC Systems
 
-**Date:** 2026-07-15
+**Date:** 2026-10-02
 
 **Presented by:** Ben Sandbrook (bsandbro@vt.edu)
 
