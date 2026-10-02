@@ -97,8 +97,8 @@ A browser-based chat interface (built on Open WebUI) for conversational interact
 Features include chat, web search, document upload (RAG), and image generation. Available models:
 
 - `gpt-oss-120b`: fast general-purpose responses
-- `Kimi-K2.6`: complex tasks and multimodal work
-- `GLM-5.2`: frontier general-purpose
+- `Deepseek 4.1 Flash`: complex tasks and multimodal work
+- `GLM-5.3`: frontier general-purpose
 
 > **Tip:** This is also where you generate your API key for programmatic access. Click your profile icon (top right) > **Settings** > **Account** > **API keys** > **Show**.
 
@@ -108,7 +108,6 @@ An OpenAI-compatible REST API for programmatic access to the same models availab
 
 - Base URL: `https://llm-api.arc.vt.edu/api/v1`
 - Authentication: Bearer token using your API key from llm.arc.vt.edu
-- Rate limits: 60 requests/min, 1,000/hour, 3,000 per 3-hour window
 - Features: Chat completions, web search, document upload/RAG, image generation, vision
 
 Because the API is OpenAI-compatible, you can use the standard `openai` Python library. Just change the `base_url` to point at ARC's servers.
@@ -123,7 +122,7 @@ Launch your own private LLM instance on a GPU via Open OnDemand.
 - Rate limits: None (you have exclusive access to the GPU)
 - Session limit: Max 5 days; auto-terminates after 1 hour of inactivity
 
-> **Note:** The centralized API (llm-api) is free and shared among all users with rate limits. The OOD dedicated LLM gives you exclusive GPU access with no rate limits, but consumes service units (SUs) from your allocation.
+> **Note:** The centralized API (llm-api) is free and shared among all users with fair-share limits. The OOD dedicated LLM gives you exclusive GPU access with no rate limits, but consumes usage from your allocation.
 
 ___
 
