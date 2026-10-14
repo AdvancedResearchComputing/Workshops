@@ -1,9 +1,6 @@
 # Resource Utilization and Job Monitoring
 
 ## Logistics
-Please sign in: [https://docs.google.com/document/d/1Bj6RQK2iccjto8WBX3l638z5IHtjteNgFhiZAIKzW7s/edit?usp=sharing](https://docs.google.com/document/d/1Bj6RQK2iccjto8WBX3l638z5IHtjteNgFhiZAIKzW7s/edit?usp=sharing)
-
-
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
 - This workshop is recorded and can be accessed after this workshop here: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html). 
@@ -109,7 +106,7 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 4574752.1          bash                arcadm          1     FAILED    127:0
 4574752.2          bash                arcadm          1  COMPLETED      0:0
 ```
-This will show multiple lines per job like the `.batch`, `.extern`, and the `.0` lines. 
+This will show multiple lines per job like the `.batch`, `.extern`, and the `.0` lines. These are different "steps" of your job. `.batch` is the step that actually submits your batch script. `.extern` is the step that is monitoring processes outside of main environment (e.g. ssh connections). `.0` or `.1` are actual job calculation steps that are initialized by some MPI task or parallel computation. 
 
 A useful command to see all the jobs you have submitted in the last month with a single line per job (`-X`) with the output (`-o`) in the format of jobid, start (start time of job), state, and what the allocated resources were for that job:
 ```
