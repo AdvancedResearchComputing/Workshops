@@ -625,7 +625,7 @@ parallel --jobs $SLURM_CPUS_PER_TASK Rscript test_args.R {} ::: 1 2 3 4 5 6 7
 Here is the last part of the output from one job:
 
 ```
-slurm_ntasks (total number of tasks across all nodes):  16
+slurm_ntasks (total number of tasks across all nodes):  7
 slurm_job_num_nodes: 1
 Running on tc017
 CPUs: 1
