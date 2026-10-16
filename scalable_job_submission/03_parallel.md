@@ -22,8 +22,9 @@ Examples: for `parallel`.
            Then running two or more batch jobs concurrently on the same compute node may be impossible.
          - Suppose you have to run many jobs using `parallel` and the code you are running is a serial code.
            (Examples are below.)
-           Then it may be beneficial to run each each of these many `parallel` batch jobs with one core
-           each so that Slurm can run many of your jobs simultaneously.
+           Then it may be beneficial to run each each of these many `parallel` batch jobs 
+           as individual Slurm jobs with one core
+           each, so that Slurm can run many of your jobs simultaneously.
            (An analogous thing has happened to me many times.)
     - So while concurrency is very often very good, it is not necessarily good for all cases.
 
