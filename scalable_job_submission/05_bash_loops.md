@@ -282,6 +282,9 @@ are not replaced with values.
 
 ### Part 2:  Sbatch Slurm Job Submission to Run the Code With All of These Inputs
 
+**The code here will not run:  one needs the MPI code that is not provided here.**
+
+
 The single sbatch slurm script _slurm.02.sbatch_ that runs all jobs.
 
 
