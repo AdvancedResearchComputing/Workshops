@@ -1,8 +1,5 @@
 # Virtual Environments on ARC  
 
-## Logistics
-Please sign in: [https://docs.google.com/document/d/1lx1uOYSjb-F0QHjvg0j_iq3nW12QmMXFA-hFXz8es1Y/edit?usp=sharing](https://docs.google.com/document/d/1lx1uOYSjb-F0QHjvg0j_iq3nW12QmMXFA-hFXz8es1Y/edit?usp=sharing)
-
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
 - There will be a recording of this workshop posted after the workshop: [https://docs.arc.vt.edu/usage/workshops.html](https://docs.arc.vt.edu/usage/workshops.html) 
@@ -46,7 +43,7 @@ ARC suggests the use of Miniforge or Miniconda as the preferred way to build con
 
 1. Create an interactive session to a compute node.
 ```
-interact --account=<account> --mem 8G --partition=v100_normal_q --gres=gpu:1
+interact --account=<account> --mem 8G --partition=v100_normal_q --gres=gpu:1 --nodes=1 --ntasks=1 --cpus-per-task=8
 ```
 
 2. Load Miniforge3/25.11.0-1.
@@ -240,11 +237,11 @@ If you want to follow along and also submit a job, you can do one of the followi
 1. Download the slurm and python script from our Github repo example: https://github.com/AdvancedResearchComputing/examples/blob/master/python/miniconda/ and move them over to your ARC directory (either via scp or VS Code)
 Here is an example of a secure copy command from local computer to remote ARC systems:
 ```
-scp numpy_compute.py example.slurm <username>@tinkercliffs1.arc.vt.edu:/path/to/destination
+scp numpy_compute.py example.slurm <PID>@tinkercliffs1.arc.vt.edu:/path/to/destination
 ```
 OR
 
-2. Copy the contents of the numpy_compute.py and example.slurm and make new files in your $HOME/user/ directory on ARC
+2. Copy the contents of the numpy_compute.py and example.slurm and make new files in your $HOME/$USER/ directory on ARC
 
 OR
 
@@ -271,7 +268,7 @@ However, there may be times when you want to go with a different approach to cre
 
 1. Create an interactive session to a compute node.
 ```
-interact --account=<account> --mem 8G --partition=v100_normal_q --gres=gpu:1
+interact --account=<account> --mem 8G --partition=v100_normal_q --gres=gpu:1 --nodes=1 --ntasks=1 --cpus-per-task=8
 ```
 
 2. Identify the Python versions available on the clusters.

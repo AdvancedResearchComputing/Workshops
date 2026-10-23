@@ -2,6 +2,11 @@
 
 # How to Get Your Jobs to Spend Less Time in Queued State
 
+The time from when a Slurm job is submitted until the time that Slurm
+allocates resources to the job so that computations can begin is the 
+time spent in the queued state.
+It is natural to want to reduce this time.
+
 ## Cluster Dynamics and Slurm Job Priority Calculation
 Think of the clusters as resource pools that are constantly under high demand for resources. 
 ARC actively assesses the aggregate workload characteristics and attempts to tune job scheduling 
@@ -24,7 +29,7 @@ Commands to understand cluster, partition, QOS, and scheduling dynamics and limi
 There are multiple things to try:
 
 - Using partial nodes rather than full nodes.
-- Avoid job arrays and pack workloads into a single job where possible
+- Avoid job arrays and pack workloads into a single job where possible.
 - Inspect partition wait times on Grafana.
 - Use short QoS.
 
@@ -32,10 +37,12 @@ Each is presented below.
 
 ###  Using Partial Nodes 
 
+This can be operationalized in multiple ways.  Here are two.
+
 #### Backing Away From a Full Node
 
 This was covered in an example above, but because the
-effect---at times--can be so large, we separate it out here.
+effect---at times---can be so large, we separate it out here.
 
 When you select all of the resources on a compute node, 
 it can take slurm (the job scheduler) a long time to 
@@ -57,13 +64,21 @@ Example: MPI distributed memory, parallelized with 128 tasks
 #SBATCH --mem=196G
 ```
 
-Giving Slurm flexibility will usually shorten the wait time:
+Giving Slurm flexibility by specifying that the processes can
+be run on any number of (from one to eight) compute nodes
+will usually shorten the wait time:
+
 ```
 #SBATCH --nodes=1-8
 #SBATCH --ntasks=128
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-task=1500M
 ```
+
+We've seen this now in a couple of ways:  the more flexibility
+you can give Slurm, the greater the probability that your job
+will start earlier.
+
 
 ### Avoid Job Arrays
 
@@ -72,10 +87,21 @@ Each job in the array is considered an independent job for priority and usage ca
 If job scheduling was strictly FIFO, then large job arrays would always allow a single person to eventually monopololize a cluster resource.
 
 Use job arrays for the convenience, but be aware that:
- - only a limited number will accrue age-based priority at any given time: Slurm's configuration is "flattening the curve"
+ - only a limited number of jobs in the array will accrue
+   age-based priority at any given time:
+   Slurm's configuration is "flattening the curve"
  - later jobs in the array will suffer from steadily declining fairshare
 
-In light of those limitations, it will often be beneficial to "move the loop inside the script". Job arrays are often used to run the same workflow on a set of enumerated inputs based on the array ID. A single non-array job with a bash loop would easily do the same thing.
+In light of those limitations, it will often be beneficial to
+"move the loop inside the script".
+Job arrays are often used to run the same workflow on a set of
+enumerated inputs based on the array ID.
+A single non-array job with a bash loop would easily do the same thing.
+We have an example of this.
+Specifically, we have a workshop "Scalable Job Submission."
+In that workshop, there is a page, [bash loop example](https://github.com/AdvancedResearchComputing/Workshops/blob/main/scalable_job_submission/05_bash_loops.md),
+which shows exactly how to do this.
+
 
 ### Use of Dashboards to Assess Partitions
 
@@ -89,8 +115,15 @@ For our purposes here, we view the
 [time wait dashboard](https://dashboard.arc.vt.edu/d/fej6n6nqfytc0f/arc-cluster-wait-times?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-timelimit=$__all&refresh=1m)
 that contains
 HISTORICAL wait times
-(versus predicted future wait times) for jobs in cluster partitions
+(i.e., these are NOT predicted future wait times) for jobs in cluster partitions
 and the number of jobs currently waiting to run in each partition.
+
+Another dashboard that can be used, the 
+[available resources dashboard](https://dashboard.arc.vt.edu/d/feavoh81ioglca/arc-cluster-job-resources-availability?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=$__all&var-partition=$__all&var-cpus=1&var-gpus=0&var-memory=8&refresh=1m)
+can be used to look at individual compute nodes.
+Although more tedious to examine, it can give you some feel for what
+types of compute nodes are available.
+
 
 ### Short QoS
 

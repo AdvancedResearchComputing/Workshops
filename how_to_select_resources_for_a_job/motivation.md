@@ -28,6 +28,8 @@ Other cluster resource specifications are similar.
 #SBATCH --error slurm.tc.a100.namd.01.%j.err
 #
 # Load modules
+module reset
+
 # Invoke your code
 ```
 
@@ -49,6 +51,8 @@ Other cluster resource specifications are similar.
 #SBATCH --mem=100GB
 #
 # Load modules
+module reset
+
 # Invoke your code
 ``` 
 
@@ -64,12 +68,16 @@ Some questions motivated by these examples:
      - Am I using CPUs to achieve parallelism?
      - Am I using GPUs to achieve parallelism?
      - Am I using both?
-2. How many processes will I have?
-   - If a serial code, there will usually be one process.
+2. How many processes and CPUs and GPUs will I have?
+   - If a serial code, there will usually be one process and one CPU.
    - A parallel code may have one process or many.
-     - A purely threaded code will have one process.
+     - A purely threaded code will have one process and use one compute node:
+         - if CPU-based threading, then at least two CPUs.
+         - if GPU-based threading, then at least one CPU and one GPU.
      - A distributed code will have at least two processes.
-     - Again, here, you can have both:  threading and distribution.
+         - Often, these will be distributed across multiple compute nodes (but not always).
+         - Each process can have threading and/or GPUs.
+     - You can have both:  threading and distribution.
 3. How much memory do I need?
    - If it is a serial code, I might specify twice the size of my input data, as a start.
    - If it is a parallel code, I might run my code across several compute nodes
@@ -79,11 +87,17 @@ These three categories of questions above have impacts on all of the parameters 
 two examples above:  time, partition, constraint, nodes or ntasks, ntasks-per-node,
 cpus-per-task, mem, and gres.
 
-**And in turn, these parameters and their values affect which resources you should
-choose to run your jobs.**
+**And in turn, these parameters and their values
+affect which resources (i.e., which clusters and
+partitions) you should choose to run your jobs.**
 
-Best practices:  many of these Slurm job parameters have defaults.
-Explicity specify what you need to get to exercise full control of the job environment.
+Best practices:  Many of these Slurm job parameters have defaults.
+Explicity specify what you need to get full control of the job environment
+and learn all of the options.
+
+Interactive Jobs:  We focus in this workshop on **batch** jobs.
+But the above considerations and Slurm switches are also 
+important for interactive jobs.
 
 
 

@@ -23,6 +23,10 @@ attaching to the correct GPU.
 available to all processes.
 - You can safely use relative paths in your application.
 
+srun is like a Swiss Army Knife in the following sense:
+- It can be used inside of an sbatch slurm script to launch codes.
+- It can be used outside of an sbatch slurm script (at the command
+  line) and can be used to submit a slurm job.
 
 srun, and the next topic, GNU parallel, can:
 

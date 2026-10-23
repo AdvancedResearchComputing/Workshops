@@ -13,6 +13,9 @@ But this is not always the case.
 Partitions may have more than one type of compute node, e.g.,
 to increase job throughput when they are sufficiently similar.
 
+### Homogeneous Partitions of ARC Clusters
+
+
 The partitions of all one node type are given below.
 Specifying the partition completely specifies the type of 
 compute node.
@@ -20,11 +23,14 @@ compute node.
 |  Cluster   | Partition |   Type of Compute Node  |
 |    ---     |    ---    |      ---                |
 |   TC       |    h200_normal_q   |  H200 GPUs     |
+|   Owl      |    b200_normal_q   |  B200 GPUs     |
 |   Falcon   |    l40s_normal_q   |   L40S GPUs    |
 |   Falcon   |    a30_normal_q    |   A30 GPUs     |
 |   Falcon   |    v100_normal_q   |   V100 GPUs    |
 |   Falcon   |    t4_normal_q     |   T4 GPUs      |
 
+
+### Heterogeneous Partitions of ARC Clusters
 
 The partitions with more than one node type are given
 below.
@@ -38,6 +44,8 @@ partition is not sufficient.
 |   TC       |    normal_q       |  CPUs:  AMD and Intel nodes.    |
 |   TC       |    a100_normal_q  |  GPUs:  Nvidia and HPE nodes.      |
 |   Owl      |    normal_q       |  CPUs: Genoa and Milan nodes.     |
+
+### Using `constraint`s to Specify A Compute Node Type in a Heterogeneous Partition
 
 We note that for many jobs, the type of compute node is
 not important.
@@ -57,20 +65,26 @@ Expanding the previous table, the mapping is:
 |   TC       |    a100_normal_q  |  Nvidia; `--constraint=a100-dgx`.    |  HPE;  `constraint=a100-hpe`.      |
 |   Owl      |    normal_q       |  Genoa; `--constraint=avx512`.     |    Milan; `--constraint=milan`. |
 
-As given in an earlier example, one situation in 
+One situation in 
 which constraints are required is when your code
 uses a virtual environment.
 This is because the virtual environment must be built
 on the same type of compute node on which the 
 environment is used.
 So you must specify the same constraint in creating
-the VE and running your job.
+the VE and in running your job.
 
-Another situation is profiling your code for performance evaluation.
+Another situation is profiling your code for performance evaluation:
+you will want your data to correspond to a particular compute node type.
+
+### Specifying Node Type Indirectly Through Memory Specification
 
 There is one more issue worth addressing.
-This is the Owl cluster and its use of standard, large memory,
+This is applicable to:
+1. the Owl cluster and its use of standard, large memory,
 and huge memory nodes.
+2. the TC cluster and its high memory nodes.
+
 You can see on the [Owl resources page](https://docs.arc.vt.edu/resources/compute/01owl.html)
 that these are all "AMD EPYC 7000 series" nodes.
 There are not distinct partitions for these nodes, nor
@@ -78,5 +92,7 @@ are there constraints that separate them.
 Instead, the choice of compute node type is based
 on the memory specified in the sbatch slurm script
 with the `#SBATCH --mem` or similar switch.
+Analogous behavior is experienced with the TC cluster; 
+see the [TC resources page](https://docs.arc.vt.edu/resources/compute/00tinkercliffs.html).
 
 5. [Next: ➡️ Mapping job types to GPUs](./mapping_job_types_to_gpus.md)

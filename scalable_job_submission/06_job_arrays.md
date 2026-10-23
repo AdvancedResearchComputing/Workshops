@@ -33,6 +33,25 @@ then you can do a lot of work with just one
 sbatch submission---which will only count one against the
 number of jobs you have in the queue.
 
+Note, however, that from a slurm standpoint, each task in the 
+job array is treated _internally_ like its own slurm submission.
+What does this mean:
+1.  Each task accumulates its own priority to run.
+2.  Only the top 20 tasks accumulate any increase in priority.
+   - Example:  Only the top 20 tasks age, i.e., increase their
+     priority owing to age at any one time.
+     The remaining tasks just sit there with the base priority.
+3.  The resources specified in the sbatch slurm script are applied
+    to each task.
+   - Example:  You have a job array with 50 tasks.  Each task  
+    needs three CPUs.  Then `--cpus-per-task=3` should be specified;
+    _**NOT**_ `--cpus-per-task=150`.
+
+These conditions mean that you are not "tricking" slurm, or getting
+around waiting your turn, by submitting a job array.
+In some ways, it is less advantageous than using a bash looping
+approach.
+
 Each job array task will generate its own sbatch output
 and error files.
 This is why the format for the slurm-generated output

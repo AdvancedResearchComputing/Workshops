@@ -2,7 +2,7 @@
 
 ## Requesting GPUs
 
-### Slurm 
+## Slurm `sbatch` and `srun` options for GPU selection
 
 |Option | Meaning | Use Case |
 |-|-|-|
@@ -11,7 +11,7 @@
 |`-G N` or `--gpus=N`|Request `N` GPUs for the job, possibly distributed across multiple nodes|multi-gpu, multi-process, non-communicating workload|
 
 
-Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
+Example: Use `--gres=gpu:N` to request `N` GPUs per node.
 ```bash
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1        # GPUs per node
@@ -21,8 +21,30 @@ Example: Use `--gres=gpu:N` to requent `N` GPUs per node.
 >[!NOTE]
 > When starting out with GPUs, first make sure that you can make good use of a single, mid-range GPU before scaling up to high-end or multiple GPUs.
 
-## `nvidia-smi`
+## Slurm Partition configuration sets default co-allocation of cpus and memory
 
+Example: Check default CPU and memory allocations per GPU for Falcon A30 GPUs.
+```bash
+[brownm12@falcon2 ~]$ scontrol show partition a30_normal_q
+PartitionName=a30_normal_q
+   AllowGroups=ALL AllowAccounts=ALL...
+   ...
+   JobDefaults=DefCpuPerGPU=8
+   DefMemPerCPU=7920 MaxMemPerNode=UNLIMITED
+```
+So this request for 1 A30 GPU
+```bash
+#SBATCH --partition=a30_normal_q
+#SBATCH --gres=gpu:1
+```
+would also provide 8 CPU cores and 63,360MB of system memory. These are just defaults and you can request more or less as needed. Use tools from [Resource Utilization and Job Monitoring](https://github.com/AdvancedResearchComputing/Workshops/blob/main/Resource_Utilization_and_Job_Monitoring/Resource_Utilization_and_Job_Montiorring.md) to understand your actual needs and try to right-size your requests. Requesting more than you need is detrimental in several ways:
+1. unused resources are wasted resources and this is intrinsically bad
+2. wasted resources means all subsequent jobs (including yours) are waiting in queue longer than they should
+3. larger jobs take longer to schedule
+
+
+## `nvidia-smi` for inspection of allocated resources
+Nvidia provides a command-line tool for inspecting the GPU resources available to you and their current operating conditions. In a job allocation, it can only "see" the GPUs which have been allocated to your job.
 ```bash
 nvidia-smi
 ```

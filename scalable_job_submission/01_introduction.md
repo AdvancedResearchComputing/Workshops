@@ -70,8 +70,8 @@ the elements of the collection is not important.
 |    srun     |  Many executions of the same code with perhaps different inputs.   Is a cornerstone of MPI launching, but useful beyond that.  It, for example, is tightly woven into Slurm.  |
 |    GNU parallel      |  Many executions of the same code with perhaps different inputs. |
 |  srun and GNU parallel together | Complementary strengths:  srun at task level; parallel at cpu level. |
-|    Scripting: loops      |  Using Linux/UNIX shells, like bash and tcsh.  (Some others:  csh, sh, ksh, tsh, zsh.) These scripting languages are used for a LOT of things; the context of this workshop is just one of many.  Here, too, the selling point is flexibility.|
-|    Slurm Job Array      |  This is specific to Slurm, ARC's batch job submission system.  It is more flexible, inherently, than srun or GNU parallel.  Operates at a higher level of granularity.  |
+|    Scripting: loops      |  Using Linux/UNIX shells, like bash and tcsh.  (Some others:  csh, sh, ksh, tsh, zsh.) These scripting languages are used for a LOT of things; the context of this workshop is just one of many.  Here, too, the selling point is flexibility.  This is the most versatile approach and the one we recommend using (compared to job arrays). |
+|    Slurm Job Array      |  This is specific to Slurm, ARC's batch job submission system.  It is more flexible, inherently, than srun or GNU parallel.  Operates at a higher level of granularity.  It is not considered best practice unless for special cases.  |
 
 
 

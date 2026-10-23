@@ -2,34 +2,61 @@
 
 # Checking on In-Progress Jobs
 
-## ARC provided scripts:
+## ARC provided scripts
+
+The commands in this section are executed on login nodes of the clusters on which
+the user's jobs are running.
 
 ARC provides convenience commands to get detailed information on current job resource utilization and access to dashboard pages customized for your running job:
 
- - Current moment-in-time utilization: `showjobusage <jobid>`
+ - Current job-level moment-in-time utilization: `showjobusage <jobid>`
  - Node-level utilization since job start: `getjobutilurl <jobid>`
 
-## Connect to compute nodes to manually inspect
+Here, `<jobid>` is the Slurm job ID.
+It can be obtained from running `squeue` on a login node of the cluster on which your
+job is running.
 
-If using GPUs in your job, use the dashboards to ensure that your code is using the GPUs.
 
-These are a limited resources, so their efficient use is important to everyone.
+## Connect to compute nodes to manually inspect jobs
 
 _**Procedure**_
 
-- Get a shell on the cluster your jobs are on.
+- Get a shell on a login node of the cluster your jobs are on.
 - Type `squeue`.
 - Get the slurm job ID of the job of interest.  Call this `<jobid>`.
 - On terminal type, `scontrol show job --details <jobid>`.
    - Get the compute node IDs of the compute nodes that you are using (these should also be shown on `squeue` results).
    - Get the GPU indexes of the GPUs you are using.
-- You can also do:  on terminal type, `showjobusage <jobid>`.
+- You can also type on a terminal, `showjobusage <jobid>`.
    - Get the compute node IDs of the compute nodes that you are using (these should also be shown on `squeue` results).
    - Get the GPU indexes of the GPUs you are using.
+- ssh into a compute node, based on the compute node name, e.g., `ssh tc-dgx003`, `ssh owl007`.
 - Use shell commands to inspect resource utilization such as
    - `top` or `htop`
    - `nvidia-smi`
    - `mpstat`
    - `nfsiostat 2 5 /scratch`
+
+## Use the Grafana dashboard to check your jobs
+
+This is primarily for GPU utilization, but can be useful for other resources.
+
+Use the first four steps in the subsection above to get the 
+compute node name (ID), partition, GPU indexes, and CPU IDs for the
+Slurm job of interest.
+
+If using GPUs in your job, use the [ARC dashboards](https://dashboard.arc.vt.edu/)
+to view a time history of the performance of the GPU(s)
+to ensure that your code is using the GPUs and using them efficiently.
+
+These are a limited resources, so their efficient use is important to everyone.
+
+## Further direction
+
+There is an entire workshop on job monitoring.
+
+1. [Workshop materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Resource_Utilization_and_Job_Monitoring)
+2. Video links are on the [ARC workshops page](https://docs.arc.vt.edu/usage/workshops.html), and see workshop titled **Resource Utilization and Job Efficiency on ARC Clusters**,
+or similar, in the first two tables of the page.
   
   10. [Next: ➡️ Checking on completed jobs](./checking_on_completed_jobs.md)

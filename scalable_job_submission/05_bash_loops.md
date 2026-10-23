@@ -3,7 +3,7 @@
 ## Use of (bash) Scripting Loops
 
 
-### Example 1:  Sbatch Slurm Job Submission
+### Part 1:  Sbatch Slurm Job Submission to Create Job Configuration Files
 
 
 #### Background
@@ -279,6 +279,132 @@ Output file _wiki.t.8.ms.15.ti.3.p.hs.k.4000.inp_ is:
 
 Note that here, the six variables, AAAA through FFFF, 
 are not replaced with values.
+
+### Part 2:  Sbatch Slurm Job Submission to Run the Code With All of These Inputs
+
+**The code here will not run:  one needs the MPI code that is not provided here.**
+
+
+The single sbatch slurm script _slurm.02.sbatch_ that runs all jobs.
+
+
+```bash
+#!/bin/bash
+
+## -----------------------
+# SLURM JOB SCRIPT OPTIONS:
+
+## -----------------------
+## ACCOUNT.
+#SBATCH --account arcadm
+
+## -----------------------
+## EXECUTION DURATION.
+# Set the time, which is the maximum time your job can run in HH:MM:SS
+#SBATCH --time=24:00:00
+
+## -----------------------
+## JOB QUEUE/PARTITION.
+#SBATCH --partition=normal_q
+
+## -----------------------
+## NUM NODES AND CORES.
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=30
+
+## -----------------------
+## SLURM OUTPUT AND ERROR FILES.
+#SBATCH -o slurm.bash.loops.run.code.%j.out
+#SBATCH -e slurm.bash.loops.run.code.%j.err
+
+## -----------------------
+## MEMORY FOR SMP.
+##  #SBATCH --mem=128MB
+
+
+
+## -----------------------
+## MODULES.
+# Optional: If modules are needed, source modules environment
+module reset
+
+## -----------------------
+## WORKING DIRECTORY.
+## cd $PBS_O_WORKDIR
+## cd $SLURM_SUBMIT_DIR
+
+## -----------------------
+## EXPORTS
+
+
+## -----------------------
+sh run.launch.codes.sh
+```
+
+
+The bash script _run.launch.codes.sh_ that runs (loops over) all jobs.
+
+Note:
+- The variables and looping structures are identical to those in
+  the bash file above.
+- The invocation changes.
+
+```bash
+# Inputs
+
+base_graph="
+wiki
+        "
+thresholds="  1  2 3 4 5 6 7 8 9 10"
+
+tincreases=" 1 2 3 4 5 6 7 8 9 10"
+
+min_seeds="   15  100  500  1000  5000   "
+
+props=" nd  cl  bc  cc  ec  pr hs as  kn "
+
+kvalues="10 50 100 500 1000  2000  3000  4000    5000"
+
+template_file="../../config.template"
+
+# Execution
+
+for c in $min_seeds
+do
+
+    locDir=block-min-seeds-"$c"
+
+    mkdir -p "$locDir"
+    cd "$locDir"
+
+    for a in $base_graph
+    do
+
+        mkdir -p "$a"
+        cd "$a"
+
+        for b in $thresholds
+        do
+
+            for d in $tincreases
+            do
+                for e in $props
+                do
+                    for f in $kvalues
+                    do
+                        cpp_mpi.exe  "$a".t."$b".ms."$c".ti."$d".p."$e".k."$f".inp  "$a".t."$b".ms."$c".ti."$d".p."$e".k."$f".out
+                    done
+                done
+            done
+        done
+        cd ..
+
+    done
+    cd ..
+
+done
+```
 
 
 ---

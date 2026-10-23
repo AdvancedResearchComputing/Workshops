@@ -107,7 +107,7 @@ NVHPC/24.11-CUDA-12.6.0
 NVHPC/25.1-CUDA-12.6.0
 ```
 
-### Example: C program
+### Example: C programs calling cublas library functions
 [Example 2](./ex2-large.c) from Nvidia's [docs on cuBLAS](https://docs.nvidia.com/cuda/cublas/#example-code) "_shows an application written in C using the cuBLAS library API._"
 
 Attempt to compile using NVHPC
@@ -129,6 +129,22 @@ Instruct the linker to use the cublas library:
 ```bash
 nvcc ex2-large.c -o ex2-large-a30 -lcublas
 ```
+
+[Example 3](./matmul.cu) a tiny generic matrix multiplication
+
+```bash
+module load NVHPC
+nvcc -O2 matmul.cu -lcublas -o matmul
+./matmul
+```
+
+[Example 4](./t4_gemm_bench.cu) a more complex benchmark geared towards T4 GPUs
+```bash
+module load NVHPC
+nvcc -O3 -arch=sm_75 t4_gemm_bench.cu -lcublas -o t4_gemm_bench
+./t4_gemm_bench
+```
+
 
 ### Nvidia Collective Communications Library
 Analogous to the "Message Passing Interface" (MPI), NCCL is an Nvidia-centric library for inter-process communication with the processes are running on GPUs. 

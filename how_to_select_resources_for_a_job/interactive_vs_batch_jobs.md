@@ -2,6 +2,13 @@
 
 # Interactive Versus Batch Jobs
 
+All of the issues presented in this workshop
+are relevant for both interactive jobs and batch jobs.
+
+We now take a look at some differences, and when you 
+might choose an interactive job, or a batch job.
+
+
 ### Loose Definitions
 
 **Interactive Job**:  Process by which:
@@ -9,7 +16,7 @@
 - You submit the resource needs to slurm.
 - You receive those resources and are notified.
 - You _manually_ use those resources to do work.
-- You will be directly interacting with the resources for the entire time they are allocated
+- You can directly interact with the resources for the entire time they are allocated.
 - You have allocated to you those resources until one of these events:
   - You exceed your allotted time for the resources.
   - You finish your work early and _manually_ relinquish the resources.
@@ -31,8 +38,15 @@ _Use of interactive jobs_:
  - You are doing scoping studies and you want to:
     - determine what the analysis steps are
     - see intermediate results
-    - (e.g., you are exploring and uncertain.)
- - You need visualization.
+    - explore because things are uncertain.
+ - You need visualization:  either UI to run your code or visualizations of inputs and/or outputs.
+    - In these cases Open OnDemand (OOD) is an excellent tool to use.
+        - See [OOD](https://ood.arc.vt.edu).
+        - See the workshop on OOD:
+            - [Learning materials](https://github.com/AdvancedResearchComputing/Workshops/tree/main/Open_OnDemand)
+            - Look on the [workshop page](https://docs.arc.vt.edu/usage/workshops.html) and
+              find in the upper one or two (i.e., most recent) tables the workshop named 
+              **ARC Clusters and Open OnDemand** or similar.
  - You have very few jobs to run.
   
 Note: for all of these cases above, except for visualization, you can still use
@@ -59,15 +73,22 @@ This provides maximum benefit to you and everyone else.
  - EVERYONE benefits when this happens.
  - Specifics:
    - Interactive jobs
-     - (1) Interactive jobs may not start when you are around.
+     - (1) Interactive jobs may not start when you are around, 
+         e.g., they can start while you are sleeping or are in class.
        - In this case, resources are assigned to you but you are not using them.
        - So the resources sit idle waiting for you; others cannot use these resources.
      - (2) When a person is done with an interactive job, they must explicitly give back the resources.
        - If a user does not give the resources back, then resources are idle
          until the job wall time is reached.
        - Idle resources are wasted resources; others cannot use these resources.
+       - To end an interactive job:
+           - For an OOD job, find the job card and click the red "Cancel" button.
+           - For an interactive job on the command line (generated with `interact` or `salloc`),
+              find the Slurm job ID (`<jobid>`) with the `squeue` command, and type:
+              `scancel <jobid>`.
    - Batch jobs, by their nature, do not suffer these inefficiencies.
      - So resources spend more time devoted to running jobs with batch mode.
+     - **This is why we (gently) push batch jobs.**
 
 The above reasoning is just to present the issues.
 
@@ -75,4 +96,4 @@ But remember this ...
 
 **You should choose the job type that you need:  if you need interactive jobs, then use them.**
 
-9. [Next: ➡️ Checking on in-progress jobs](./checking_on_in_progress_jobs.md)
+9. [Next: ➡️ Submit Jobs](./submit_job.md)
