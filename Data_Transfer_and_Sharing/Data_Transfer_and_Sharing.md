@@ -1,9 +1,9 @@
 # Data Transfer and Sharing on ARC
 
 ## Logistics
-Sign in: [https://docs.google.com/document/d/1YZw4t2TGKk5nv1PRc59sEH-xReXuM3XXndbgtQ-bSHw/edit?usp=sharing](https://docs.google.com/document/d/1YZw4t2TGKk5nv1PRc59sEH-xReXuM3XXndbgtQ-bSHw/edit?usp=sharing)
+Sign in: [https://docs.google.com/document/d/1m3YfDklPyE1kRYr9cGmdN0BLudmgy61aAwxboIHpBK0/edit?usp=sharing](https://docs.google.com/document/d/1m3YfDklPyE1kRYr9cGmdN0BLudmgy61aAwxboIHpBK0/edit?usp=sharing)
 
-Feedback form: [https://forms.gle/3N27hWkAsiB4vs3y6](https://forms.gle/3N27hWkAsiB4vs3y6)
+Feedback form: [https://forms.gle/Z2ADtqyZ5sH1JpkR7](https://forms.gle/Z2ADtqyZ5sH1JpkR7)
 
 General Comments:
 - Informal workshop so please feel free to interrupt me or use the chat for questions!
@@ -359,4 +359,4 @@ A common one is Visual Studio Code (VS Code).
 We also offer file management in Open OnDemand [https://ood.arc.vt.edu/](https://ood.arc.vt.edu/).
 
 # Wrap-up
-Feedback form: [https://forms.gle/3N27hWkAsiB4vs3y6](https://forms.gle/3N27hWkAsiB4vs3y6)
+Feedback form: [https://forms.gle/Z2ADtqyZ5sH1JpkR7](https://forms.gle/Z2ADtqyZ5sH1JpkR7)
