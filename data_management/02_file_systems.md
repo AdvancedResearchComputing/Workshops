@@ -30,7 +30,7 @@ but not others (e.g., `/scratch` and localscratch).
 |  /scratch    |  VAST          |   "No limit"  |   "No limit"   |   90-day limit; then deleted | Individual, per cluster | fast | 
 | "localscratch"*,$ |  NVMe drive or array | Generally smaller | NA  |  Only for life of job  |  Individual, per cluster  | faster  |
 
-\* The actual location is job dependent, under the /tmp directory.
+\* The actual location is job dependent, accessed with the `$TMPDIR` variable.
 
 \$ NVMe (Non-Volatile Memory Express) is a high-performance storage protocol designed for solid state drives [that use flash memory] that uses the PCIe interface to provide high speed and low latency. It communicates directly with the CPU, etc.
 
@@ -99,7 +99,7 @@ A common use case is to:
 Localscratch is not a dedicated physical drive, per se, as are the other 
 file systems.
 
-Rather, storage is allocated under `/tmp`.
+Rather, storage is allocated under `$TMPDIR`.
 
 The storage is right on the compute node, making it even faster than
 `/scratch` for I/O operations during program execution.
